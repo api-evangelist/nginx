@@ -1,0 +1,63 @@
+name: NGINX API
+description: NGINX is a high-performance web server, reverse proxy server, and load balancer known for its stability, rich feature set, and low resource consumption.
+url: https://nginx.org
+created: '2024'
+modified: '2024'
+apis:
+- name: NGINX API
+  description: NGINX Plus REST API for dynamic configuration and monitoring
+  image: https://nginx.org/nginx.png
+  humanUrl: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  baseUrl: http://127.0.0.1/api
+  tags:
+  - Web Server
+  - Reverse Proxy
+  - Load Balancer
+  - API Gateway
+  properties:
+  - type: Documentation
+    url: https://nginx.org/en/docs/
+  - type: OpenAPI
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: Swagger
+    url: https://nginx.org/swagger-ui/
+  contact:
+  - type: Support
+    url: https://nginx.org/en/support.html
+  - type: Email
+    url: mailto:nginx@nginx.org
+- name: NGINX Configuration API
+  description: API for managing NGINX configuration dynamically
+  humanUrl: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  baseUrl: http://127.0.0.1/api
+  tags:
+  - Configuration
+  - Dynamic Configuration
+  properties:
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+common:
+- type: GitHub
+  url: https://github.com/nginx/nginx
+- type: Blog
+  url: https://www.nginx.com/blog/
+- type: Status
+  url: https://status.nginx.com/
+- type: Community
+  url: https://community.nginx.org/
+- type: Downloads
+  url: https://nginx.org/en/download.html
+- type: Security
+  url: https://nginx.org/en/security_advisories.html
+maintainers:
+- name: NGINX Team
+  email: nginx@nginx.org
+  url: https://nginx.org
+tags:
+- Web Server
+- Reverse Proxy
+- Load Balancing
+- HTTP Server
+- Caching
+- SSL/TLS
+- API Gateway
