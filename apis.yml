@@ -1,63 +1,52 @@
-name: NGINX API
-description: NGINX is a high-performance web server, reverse proxy server, and load balancer known for its stability, rich feature set, and low resource consumption.
-url: https://nginx.org
-created: '2024'
-modified: '2024'
-apis:
-- name: NGINX API
-  description: NGINX Plus REST API for dynamic configuration and monitoring
-  image: https://nginx.org/nginx.png
-  humanUrl: https://nginx.org/en/docs/http/ngx_http_api_module.html
-  baseUrl: http://127.0.0.1/api
-  tags:
+aid: nginx
+name: NGINX
+description: NGINX is a high-performance web server, reverse proxy server, and load
+  balancer known for its stability, rich feature set, and low resource consumption.
+  NGINX Plus provides a REST API for dynamic configuration and real-time monitoring.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
   - Web Server
   - Reverse Proxy
-  - Load Balancer
+  - Load Balancing
+  - HTTP Server
+  - Caching
+  - SSL/TLS
   - API Gateway
-  properties:
+url: https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: nginx:nginx-plus-api
+    name: NGINX Plus API
+    description: NGINX Plus REST API for dynamic configuration, upstream management,
+      and real-time monitoring of NGINX instances.
+    humanURL: https://nginx.org/en/docs/http/ngx_http_api_module.html
+    baseURL: http://127.0.0.1/api
+    tags:
+      - Web Server
+      - Reverse Proxy
+      - Load Balancer
+      - API Gateway
+    properties:
+      - type: Documentation
+        url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+      - type: Reference
+        url: https://nginx.org/en/docs/
+common:
+  - type: Website
+    url: https://nginx.org
   - type: Documentation
     url: https://nginx.org/en/docs/
-  - type: OpenAPI
-    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
-  - type: Swagger
-    url: https://nginx.org/swagger-ui/
-  contact:
+  - type: GitHub Organization
+    url: https://github.com/nginx
+  - type: Blog
+    url: https://www.nginx.com/blog/
+  - type: Community
+    url: https://community.nginx.org/
   - type: Support
     url: https://nginx.org/en/support.html
-  - type: Email
-    url: mailto:nginx@nginx.org
-- name: NGINX Configuration API
-  description: API for managing NGINX configuration dynamically
-  humanUrl: https://nginx.org/en/docs/http/ngx_http_api_module.html
-  baseUrl: http://127.0.0.1/api
-  tags:
-  - Configuration
-  - Dynamic Configuration
-  properties:
-  - type: Documentation
-    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
-common:
-- type: GitHub
-  url: https://github.com/nginx/nginx
-- type: Blog
-  url: https://www.nginx.com/blog/
-- type: Status
-  url: https://status.nginx.com/
-- type: Community
-  url: https://community.nginx.org/
-- type: Downloads
-  url: https://nginx.org/en/download.html
-- type: Security
-  url: https://nginx.org/en/security_advisories.html
 maintainers:
-- name: NGINX Team
-  email: nginx@nginx.org
-  url: https://nginx.org
-tags:
-- Web Server
-- Reverse Proxy
-- Load Balancing
-- HTTP Server
-- Caching
-- SSL/TLS
-- API Gateway
+  - FN: Kin Lane
+    email: kin@apievangelist.com
