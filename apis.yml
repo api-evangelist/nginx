@@ -34,13 +34,136 @@ apis:
         url: https://nginx.org/en/docs/
       - type: Getting Started
         url: https://nginx.org/en/docs/beginners_guide.html
+      - type: Reference
+        url: https://nginx.org/en/docs/dirindex.html
+      - type: Change Log
+        url: https://nginx.org/en/CHANGES
+      - type: GitHubRepository
+        url: https://github.com/nginx/nginx
+  - aid: nginx:nginx-http-api
+    name: NGINX Plus HTTP API
+    description: >-
+      The NGINX Plus HTTP API provides a RESTful interface for dynamic
+      configuration and real-time monitoring of a running NGINX Plus instance.
+      It supports managing upstream servers, key-value pairs, and retrieving
+      connection, cache, and rate-limiting statistics without requiring
+      configuration reloads. Available as part of the NGINX commercial
+      subscription.
+    humanURL: https://nginx.org/en/docs/http/ngx_http_api_module.html
+    tags:
+      - NGINX Plus
+      - Admin
+      - Management
+      - Monitoring
+    properties:
+      - type: Documentation
+        url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+      - type: Reference
+        url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - aid: nginx:nginx-stub-status
+    name: NGINX Stub Status API
+    description: >-
+      The NGINX Stub Status module exposes a simple HTTP endpoint providing
+      basic server performance metrics including active connections, total
+      accepts, handled connections, and request counts. It is available in
+      open-source NGINX and must be enabled at compile time with the
+      --with-http_stub_status_module flag.
+    humanURL: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+    tags:
+      - Monitoring
+      - Metrics
+      - Status
+      - Open Source
+    properties:
+      - type: Documentation
+        url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - aid: nginx:nginx-njs
+    name: NGINX njs Scripting API
+    description: >-
+      The NGINX njs module embeds a JavaScript (ECMAScript 5.1+) runtime into
+      NGINX, allowing developers to write custom request/response handlers,
+      access control logic, and content filters. It provides HTTP and stream
+      request objects, a Fetch-compatible web API, cryptographic functions,
+      and built-in modules for file system, XML, and query string operations.
+    humanURL: https://nginx.org/en/docs/njs/
+    tags:
+      - JavaScript
+      - Scripting
+      - Extensibility
+      - Modules
+    properties:
+      - type: Documentation
+        url: https://nginx.org/en/docs/njs/
+      - type: Reference
+        url: https://nginx.org/en/docs/njs/reference.html
+      - type: Getting Started
+        url: https://nginx.org/en/docs/njs/install.html
+      - type: GitHubRepository
+        url: https://github.com/nginx/njs
+  - aid: nginx:nginx-ingress-controller
+    name: NGINX Ingress Controller
+    description: >-
+      The NGINX Ingress Controller is a Kubernetes-native ingress controller
+      built on NGINX that manages external access to services in a Kubernetes
+      cluster. It supports TLS termination, path-based routing, rate limiting,
+      and advanced traffic management through annotations and custom resources.
+    humanURL: https://github.com/nginx/kubernetes-ingress
+    tags:
+      - Kubernetes
+      - Ingress
+      - Cloud Native
+      - Traffic Management
+    properties:
+      - type: Documentation
+        url: https://docs.nginx.com/nginx-ingress-controller/
+      - type: Getting Started
+        url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/
+      - type: GitHubRepository
+        url: https://github.com/nginx/kubernetes-ingress
+  - aid: nginx:nginx-gateway-fabric
+    name: NGINX Gateway Fabric
+    description: >-
+      NGINX Gateway Fabric is a Kubernetes Gateway API implementation using
+      NGINX as the data plane. It provides standards-based traffic management
+      through Gateway API resources including Gateway, HTTPRoute, GRPCRoute,
+      and TLSRoute, enabling fine-grained control over ingress and routing
+      in Kubernetes environments.
+    humanURL: https://github.com/nginx/nginx-gateway-fabric
+    tags:
+      - Kubernetes
+      - Gateway API
+      - Cloud Native
+      - Routing
+    properties:
+      - type: Documentation
+        url: https://docs.nginx.com/nginx-gateway-fabric/
+      - type: GitHubRepository
+        url: https://github.com/nginx/nginx-gateway-fabric
 common:
   - type: Website
     url: https://nginx.org/
   - type: Documentation
     url: https://nginx.org/en/docs/
+  - type: Getting Started
+    url: https://nginx.org/en/docs/beginners_guide.html
+  - type: Blog
+    url: https://blog.nginx.org/
+  - type: Change Log
+    url: https://nginx.org/en/CHANGES
+  - type: Security
+    url: https://nginx.org/en/security_advisories.html
+  - type: Community
+    url: https://community.nginx.org
   - type: GitHub Organization
+    url: https://github.com/nginx
+  - type: GitHubRepository
     url: https://github.com/nginx/nginx
+  - type: Issue Tracker
+    url: https://github.com/nginx/nginx/issues
+  - type: YouTube
+    url: https://www.youtube.com/nginxinc
+  - type: Stack Overflow
+    url: https://stackoverflow.com/questions/tagged/nginx
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
