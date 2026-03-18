@@ -1,52 +1,46 @@
 aid: nginx
 name: NGINX
-description: NGINX is a high-performance web server, reverse proxy server, and load
-  balancer known for its stability, rich feature set, and low resource consumption.
-  NGINX Plus provides a REST API for dynamic configuration and real-time monitoring.
+description: >-
+  NGINX is a high-performance open-source web server, reverse proxy, and API
+  gateway widely used for load balancing, SSL termination, caching, and
+  traffic management for APIs and microservices.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Web Server
-  - Reverse Proxy
-  - Load Balancing
-  - HTTP Server
-  - Caching
-  - SSL/TLS
   - API Gateway
-url: https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/apis.yml
-created: '2024-01-01'
-modified: '2026-03-16'
+  - Reverse Proxy
+  - Load Balancer
+  - Web Server
+  - Open Source
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/apis.yml
+created: '2026-03-18'
+modified: '2026-03-18'
 specificationVersion: '0.19'
 apis:
-  - aid: nginx:nginx-plus-api
-    name: NGINX Plus API
-    description: NGINX Plus REST API for dynamic configuration, upstream management,
-      and real-time monitoring of NGINX instances.
-    humanURL: https://nginx.org/en/docs/http/ngx_http_api_module.html
-    baseURL: http://127.0.0.1/api
+  - aid: nginx:nginx
+    name: NGINX
+    description: >-
+      NGINX is a versatile open-source software for web serving, reverse
+      proxying, caching, load balancing, media streaming, and API gateway
+      functionality powering a significant portion of the world's web traffic.
+    humanURL: https://nginx.org/
     tags:
+      - API Gateway
       - Web Server
       - Reverse Proxy
-      - Load Balancer
-      - API Gateway
     properties:
       - type: Documentation
-        url: https://nginx.org/en/docs/http/ngx_http_api_module.html
-      - type: Reference
         url: https://nginx.org/en/docs/
+      - type: Getting Started
+        url: https://nginx.org/en/docs/beginners_guide.html
 common:
   - type: Website
-    url: https://nginx.org
+    url: https://nginx.org/
   - type: Documentation
     url: https://nginx.org/en/docs/
   - type: GitHub Organization
-    url: https://github.com/nginx
-  - type: Blog
-    url: https://www.nginx.com/blog/
-  - type: Community
-    url: https://community.nginx.org/
-  - type: Support
-    url: https://nginx.org/en/support.html
+    url: https://github.com/nginx/nginx
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
