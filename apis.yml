@@ -8,10 +8,10 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - API Gateway
-  - Reverse Proxy
   - Load Balancer
-  - Web Server
   - Open Source
+  - Reverse Proxy
+  - Web Server
 url: >-
   https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/apis.yml
 created: '2026-03-18'
@@ -27,8 +27,8 @@ apis:
     humanURL: https://nginx.org/
     tags:
       - API Gateway
-      - Web Server
       - Reverse Proxy
+      - Web Server
     properties:
       - type: Documentation
         url: https://nginx.org/en/docs/
@@ -51,10 +51,10 @@ apis:
       subscription.
     humanURL: https://nginx.org/en/docs/http/ngx_http_api_module.html
     tags:
-      - NGINX Plus
       - Admin
       - Management
       - Monitoring
+      - NGINX Plus
     properties:
       - type: Documentation
         url: https://nginx.org/en/docs/http/ngx_http_api_module.html
@@ -70,10 +70,10 @@ apis:
       --with-http_stub_status_module flag.
     humanURL: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
     tags:
-      - Monitoring
       - Metrics
-      - Status
+      - Monitoring
       - Open Source
+      - Status
     properties:
       - type: Documentation
         url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
@@ -87,10 +87,10 @@ apis:
       and built-in modules for file system, XML, and query string operations.
     humanURL: https://nginx.org/en/docs/njs/
     tags:
-      - JavaScript
-      - Scripting
       - Extensibility
+      - JavaScript
       - Modules
+      - Scripting
     properties:
       - type: Documentation
         url: https://nginx.org/en/docs/njs/
@@ -109,9 +109,9 @@ apis:
       and advanced traffic management through annotations and custom resources.
     humanURL: https://github.com/nginx/kubernetes-ingress
     tags:
-      - Kubernetes
-      - Ingress
       - Cloud Native
+      - Ingress
+      - Kubernetes
       - Traffic Management
     properties:
       - type: Documentation
@@ -130,9 +130,9 @@ apis:
       in Kubernetes environments.
     humanURL: https://github.com/nginx/nginx-gateway-fabric
     tags:
-      - Kubernetes
-      - Gateway API
       - Cloud Native
+      - Gateway API
+      - Kubernetes
       - Routing
     properties:
       - type: Documentation
