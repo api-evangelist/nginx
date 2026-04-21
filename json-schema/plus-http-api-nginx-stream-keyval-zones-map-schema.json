@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-stream-keyval-zones-map-schema.json",
+  "title": "Stream Keyval Shared Memory Zones",
+  "description": "Contents of all stream keyval shared memory zones.\n",
+  "type": "object",
+  "additionalProperties": {
+    "title": "Stream Keyval Shared Memory Zone",
+    "description": "Contents of a stream keyval shared memory zone when using the GET method.\n",
+    "type": "object",
+    "example": {
+      "key1": "value1",
+      "key2": "value2",
+      "key3": "value3"
+    }
+  },
+  "example": {
+    "keyval_zone": {
+      "key1": "value1",
+      "key2": "value2",
+      "key3": "value3"
+    },
+    "one": {
+      "arg1": "value1",
+      "arg2": "value2",
+      "arg3": "value3"
+    }
+  }
+}

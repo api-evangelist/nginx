@@ -1,0 +1,36 @@
+{
+  "processing": 3,
+  "requests": 31070465,
+  "responses": {
+    "1xx": 0,
+    "2xx": 8945123,
+    "3xx": 45210,
+    "4xx": 12043,
+    "5xx": 198,
+    "codes": {
+      "200": 8832451,
+      "301": 42100,
+      "404": 11890,
+      "500": 198
+    },
+    "total": 9002574
+  },
+  "discarded": 45,
+  "received": 180157219,
+  "sent": 20183175459,
+  "ssl": {
+    "handshakes": 79572,
+    "handshakes_failed": 21025,
+    "session_reuses": 15762,
+    "no_common_protocol": 4,
+    "no_common_cipher": 2,
+    "handshake_timeout": 0,
+    "peer_rejected_cert": 0,
+    "verify_failures": {
+      "no_cert": 0,
+      "expired_cert": 2,
+      "revoked_cert": 1,
+      "other": 1
+    }
+  }
+}

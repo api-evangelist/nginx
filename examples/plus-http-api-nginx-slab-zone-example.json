@@ -1,0 +1,20 @@
+{
+  "pages": {
+    "used": 23,
+    "free": 489
+  },
+  "slots": {
+    "64": {
+      "used": 12,
+      "free": 4,
+      "reqs": 120,
+      "fails": 0
+    },
+    "128": {
+      "used": 8,
+      "free": 2,
+      "reqs": 85,
+      "fails": 0
+    }
+  }
+}

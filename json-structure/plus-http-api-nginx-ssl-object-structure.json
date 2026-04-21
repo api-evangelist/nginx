@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SSL",
+  "type": "object",
+  "members": {
+    "handshakes": {
+      "description": "The total number of successful SSL handshakes.",
+      "type": "int32",
+      "example": 79572
+    },
+    "handshakes_failed": {
+      "description": "The total number of failed SSL handshakes.",
+      "type": "int32",
+      "example": 21025
+    },
+    "session_reuses": {
+      "description": "The total number of session reuses during SSL handshake.",
+      "type": "int32",
+      "example": 15762
+    },
+    "no_common_protocol": {
+      "description": "The number of SSL handshakes failed because of no common protocol.",
+      "type": "int32",
+      "example": 4
+    },
+    "no_common_cipher": {
+      "description": "The number of SSL handshakes failed because of no shared cipher.",
+      "type": "int32",
+      "example": 2
+    },
+    "handshake_timeout": {
+      "description": "The number of SSL handshakes failed because of a timeout.",
+      "type": "int32",
+      "example": 0
+    },
+    "peer_rejected_cert": {
+      "description": "The number of failed SSL handshakes when nginx presented the certificate to the client but it was rejected with a corresponding alert message.",
+      "type": "int32",
+      "example": 0
+    },
+    "verify_failures": {
+      "description": "SSL certificate verification errors",
+      "type": "object",
+      "members": {
+        "no_cert": {
+          "description": "A client did not provide the required certificate.",
+          "type": "int32",
+          "example": 0
+        },
+        "expired_cert": {
+          "description": "An expired or not yet valid certificate was presented by a client.",
+          "type": "int32",
+          "example": 2
+        },
+        "revoked_cert": {
+          "description": "A revoked certificate was presented by a client.",
+          "type": "int32",
+          "example": 1
+        },
+        "hostname_mismatch": {
+          "description": "Server's certificate doesn't match the hostname.",
+          "type": "int32",
+          "example": 2
+        },
+        "other": {
+          "description": "Other SSL certificate verification errors.",
+          "type": "int32",
+          "example": 1
+        }
+      },
+      "example": {}
+    }
+  },
+  "example": {
+    "handshakes": 79572,
+    "handshakes_failed": 21025,
+    "session_reuses": 15762,
+    "no_common_protocol": 4,
+    "no_common_cipher": 2,
+    "handshake_timeout": 0,
+    "peer_rejected_cert": 0,
+    "verify_failures": {
+      "no_cert": 0,
+      "expired_cert": 2,
+      "revoked_cert": 1,
+      "hostname_mismatch": 2,
+      "other": 1
+    }
+  }
+}

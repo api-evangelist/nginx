@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Array",
+  "description": "An array of strings.\n",
+  "type": "array",
+  "values": {
+    "type": "string"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-slab-zone-slot-schema.json",
+  "title": "Memory Slot",
+  "description": "NginxSlabZoneSlot schema from NGINX Plus REST API",
+  "type": "object",
+  "properties": {
+    "used": {
+      "type": "integer",
+      "description": "The current number of used memory slots.",
+      "example": 0
+    },
+    "free": {
+      "type": "integer",
+      "description": "The current number of free memory slots.",
+      "example": 0
+    },
+    "reqs": {
+      "type": "integer",
+      "description": "The total number of attempts to allocate memory of specified size.",
+      "example": 0
+    },
+    "fails": {
+      "type": "integer",
+      "description": "The number of unsuccessful attempts to allocate memory of specified size.",
+      "example": 0
+    }
+  }
+}

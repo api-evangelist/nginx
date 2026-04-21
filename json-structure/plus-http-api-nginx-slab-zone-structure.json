@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Shared memory zone with slab allocator",
+  "description": "Shared memory zone with slab allocator\n",
+  "type": "object",
+  "members": {
+    "pages": {
+      "description": "The number of free and used memory pages.",
+      "type": "object",
+      "members": {
+        "used": {
+          "description": "The current number of used memory pages.",
+          "type": "int32",
+          "example": 0
+        },
+        "free": {
+          "description": "The current number of free memory pages.",
+          "type": "int32",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "slots": {
+      "name": "Memory Slots",
+      "description": "Status data for memory slots (8, 16, 32, 64, 128, etc.)",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/NginxSlabZoneSlot"
+      },
+      "example": {}
+    }
+  },
+  "example": {
+    "pages": {
+      "used": 1143,
+      "free": 2928
+    },
+    "slots": {
+      "8": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "16": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "32": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "64": {
+        "used": 1,
+        "free": 63,
+        "reqs": 1,
+        "fails": 0
+      },
+      "128": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "256": {
+        "used": 18078,
+        "free": 178,
+        "reqs": 1635736,
+        "fails": 0
+      }
+    }
+  }
+}

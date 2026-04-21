@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Processes",
+  "type": "object",
+  "members": {
+    "respawned": {
+      "description": "The total number of abnormally terminated and respawned child processes.",
+      "type": "int32",
+      "example": 0
+    }
+  },
+  "example": {
+    "respawned": 0
+  }
+}

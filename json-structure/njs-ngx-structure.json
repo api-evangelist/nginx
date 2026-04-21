@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Ngx",
+  "description": "The ngx global object (since 0.5.0). Provides NGINX runtime information and the fetch() method.",
+  "type": "object",
+  "members": {
+    "build": {
+      "description": "Optional NGINX build name (since 0.8.0).",
+      "type": "string",
+      "readOnly": true,
+      "example": "nginx-plus-r32"
+    },
+    "conf_file_path": {
+      "description": "File path to the current NGINX configuration file (since 0.8.0).",
+      "type": "string",
+      "readOnly": true,
+      "example": "/etc/nginx/nginx.conf"
+    },
+    "conf_prefix": {
+      "description": "NGINX configuration prefix directory (since 0.7.8).",
+      "type": "string",
+      "readOnly": true,
+      "example": "/etc/nginx/"
+    },
+    "error_log_path": {
+      "description": "File path to the current error log file (since 0.8.0).",
+      "type": "string",
+      "readOnly": true,
+      "example": "/var/log/nginx/error.log"
+    },
+    "prefix": {
+      "description": "NGINX installation prefix.",
+      "type": "string",
+      "readOnly": true,
+      "example": "/usr/local/nginx"
+    },
+    "version": {
+      "description": "NGINX version string.",
+      "type": "string",
+      "readOnly": true,
+      "example": "1.25.3"
+    },
+    "version_number": {
+      "description": "NGINX version as a number.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 1025003
+    },
+    "worker_id": {
+      "description": "Current worker process ID.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    }
+  }
+}

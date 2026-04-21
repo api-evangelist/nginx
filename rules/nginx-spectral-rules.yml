@@ -1,0 +1,585 @@
+rules:
+
+  # ============================================================================
+  # INFO / METADATA
+  # ============================================================================
+
+  info-title-starts-with-nginx:
+    description: API title must start with "NGINX"
+    message: "Info title should start with 'NGINX'. Found: {{value}}"
+    severity: error
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: "^NGINX"
+
+  info-description-required:
+    description: API must have a description
+    message: Info object must include a description
+    severity: error
+    given: $.info
+    then:
+      field: description
+      function: truthy
+
+  info-version-required:
+    description: API must have a version
+    message: Info object must include a version
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  info-contact-recommended:
+    description: API should include contact information
+    message: Info object should include a contact section
+    severity: info
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  info-license-recommended:
+    description: API should include license information
+    message: Info object should include a license section
+    severity: info
+    given: $.info
+    then:
+      field: license
+      function: truthy
+
+  # ============================================================================
+  # OPENAPI VERSION
+  # ============================================================================
+
+  openapi-version-3:
+    description: OpenAPI version should be 3.x
+    message: "OpenAPI version should be 3.x. Found: {{value}}"
+    severity: warn
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  openapi-or-swagger-defined:
+    description: Spec must declare openapi or swagger version
+    message: Specification must include an openapi or swagger version field
+    severity: error
+    given: $
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - required: [openapi]
+            - required: [swagger]
+
+  # ============================================================================
+  # SERVERS
+  # ============================================================================
+
+  servers-https-required:
+    description: Server URLs must use HTTPS
+    message: "Server URL should use HTTPS. Found: {{value}}"
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  servers-description-required:
+    description: Each server should have a description
+    message: Server entry should include a description
+    severity: info
+    given: $.servers[*]
+    then:
+      field: description
+      function: truthy
+
+  servers-not-empty:
+    description: Servers array should not be empty
+    message: At least one server must be defined
+    severity: warn
+    given: $.servers
+    then:
+      function: length
+      functionOptions:
+        min: 1
+
+  # ============================================================================
+  # PATHS
+  # ============================================================================
+
+  paths-lowercase:
+    description: Path segments must be lowercase
+    message: "Path should use lowercase characters. Found: {{property}}"
+    severity: warn
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^[a-z0-9/_{}.-]+$"
+
+  paths-no-trailing-slash:
+    description: Paths should not have a trailing slash (except root)
+    message: "Path should not end with a trailing slash: {{property}}"
+    severity: info
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: ".+/$"
+
+  paths-use-underscores:
+    description: NGINX paths use underscores for multi-word segments
+    message: "Path segments should use underscores, not hyphens: {{property}}"
+    severity: info
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "[a-z]-[a-z]"
+
+  paths-parameter-camel-case:
+    description: Path parameters should use camelCase
+    message: "Path parameter should use camelCase: {{property}}"
+    severity: warn
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "\\{[a-z]+_[a-z]+\\}"
+
+  # ============================================================================
+  # OPERATIONS
+  # ============================================================================
+
+  operation-summary-required:
+    description: Every operation must have a summary
+    message: Operation must include a summary
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+
+  operation-description-required:
+    description: Every operation must have a description
+    message: Operation must include a description
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+
+  operation-operationid-required:
+    description: Every operation must have an operationId
+    message: Operation must include an operationId
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+
+  operation-summary-starts-with-nginx:
+    description: Operation summary should start with "NGINX" for branding consistency
+    message: "Operation summary should start with 'NGINX'. Found: {{value}}"
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^NGINX "
+
+  operation-operationid-camel-case:
+    description: operationId should use camelCase
+    message: "operationId should be camelCase. Found: {{value}}"
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  operation-operationid-verb-prefix:
+    description: operationId should start with an HTTP-related verb (get, post, put, patch, delete, create, update, list, reset)
+    message: "operationId should start with a standard verb. Found: {{value}}"
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(get|post|put|patch|delete|create|update|list|reset|add|remove|set)"
+
+  operation-summary-no-period:
+    description: Operation summary should not end with a period
+    message: "Operation summary should not end with a period. Found: {{value}}"
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\.$"
+
+  # ============================================================================
+  # TAGS
+  # ============================================================================
+
+  tags-title-case:
+    description: Tags should use Title Case
+    message: "Tag name should use Title Case. Found: {{value}}"
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].tags[*]
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z]*(\\s[A-Z][a-zA-Z]*)*$"
+
+  tags-required:
+    description: Every operation should have at least one tag
+    message: Operation must include at least one tag
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  tags-not-empty:
+    description: Tags array should not be empty
+    message: Operation tags array must contain at least one tag
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].tags
+    then:
+      function: length
+      functionOptions:
+        min: 1
+
+  tags-global-defined:
+    description: Global tags array should be defined
+    message: Top-level tags array should be defined for documentation
+    severity: info
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  # ============================================================================
+  # PARAMETERS
+  # ============================================================================
+
+  parameter-description-required:
+    description: Every parameter must have a description
+    message: Parameter must include a description
+    severity: error
+    given: $..parameters[*]
+    then:
+      field: description
+      function: truthy
+
+  parameter-name-camel-case:
+    description: Parameter names should use camelCase
+    message: "Parameter name should be camelCase. Found: {{value}}"
+    severity: warn
+    given: $..parameters[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  parameter-path-required:
+    description: Path parameters must be marked as required
+    message: Path parameter must have required set to true
+    severity: error
+    given: $..parameters[?(@.in=='path')]
+    then:
+      field: required
+      function: truthy
+
+  parameter-type-defined:
+    description: Parameters should have a type or schema defined
+    message: Parameter must define a type or schema
+    severity: error
+    given: $..parameters[*]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - required: [type]
+            - required: [schema]
+
+  parameter-query-fields-pattern:
+    description: NGINX APIs commonly use a "fields" query parameter for field filtering
+    message: "Query parameter names should follow NGINX conventions (e.g., fields, name). Found: {{value}}"
+    severity: info
+    given: $..parameters[?(@.in=='query')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9_]*$"
+
+  # ============================================================================
+  # RESPONSES
+  # ============================================================================
+
+  response-success-required:
+    description: Every operation must define at least one success response (2xx)
+    message: Operation must include at least one 2xx success response
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["202"]
+            - required: ["204"]
+
+  response-error-404:
+    description: GET operations should define a 404 response
+    message: GET operation should include a 404 Not Found response
+    severity: warn
+    given: $.paths[*].get.responses
+    then:
+      field: "404"
+      function: truthy
+
+  response-error-405-on-delete:
+    description: DELETE operations should define a 405 response for method disabled
+    message: DELETE operation should include a 405 Method Disabled response
+    severity: info
+    given: $.paths[*].delete.responses
+    then:
+      field: "405"
+      function: truthy
+
+  response-description-required:
+    description: Every response must have a description
+    message: Response must include a description
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].responses[*]
+    then:
+      field: description
+      function: truthy
+
+  response-get-200-has-content:
+    description: GET 200 responses should define a response body schema
+    message: GET 200 response should include a schema or content definition
+    severity: warn
+    given: $.paths[*].get.responses.200
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [schema]
+            - required: [content]
+
+  response-delete-204:
+    description: DELETE operations should return 204 on success
+    message: DELETE operations should use 204 No Content for success responses
+    severity: warn
+    given: $.paths[*].delete.responses
+    then:
+      field: "204"
+      function: truthy
+
+  response-error-schema-consistent:
+    description: Error responses should reference a consistent error schema (NginxError)
+    message: Error response should reference a standard error schema
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].responses[?(@property >= '400' && @property < '600')]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [schema]
+            - required: [content]
+
+  # ============================================================================
+  # SCHEMAS
+  # ============================================================================
+
+  schema-property-camel-case:
+    description: Schema properties should use camelCase
+    message: "Schema property should be camelCase. Found: {{property}}"
+    severity: warn
+    given: $..properties
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*(_[a-z][a-zA-Z0-9]*)*$"
+
+  schema-description-recommended:
+    description: Schemas should include a description
+    message: Schema object should include a description
+    severity: info
+    given: $.components.schemas[*]
+    then:
+      field: description
+      function: truthy
+
+  schema-type-required:
+    description: Schemas should declare a type
+    message: Schema should include a type property
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [type]
+            - required: [$ref]
+            - required: [allOf]
+            - required: [oneOf]
+            - required: [anyOf]
+
+  schema-properties-have-description:
+    description: Schema properties should include descriptions
+    message: Schema property should include a description
+    severity: info
+    given: $..properties[*]
+    then:
+      field: description
+      function: truthy
+
+  schema-nginx-prefix:
+    description: NGINX API definition/schema names should use the Nginx prefix
+    message: "Schema name should start with 'Nginx' or 'Nginx' prefix for consistency. Found: {{property}}"
+    severity: info
+    given: $.definitions
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^Nginx"
+
+  # ============================================================================
+  # SECURITY
+  # ============================================================================
+
+  security-global-defined:
+    description: API should define security at the global or operation level
+    message: Consider defining security schemes for production APIs
+    severity: info
+    given: $
+    then:
+      field: security
+      function: truthy
+
+  security-schemes-defined:
+    description: Security schemes should be declared if security is used
+    message: Security schemes should be defined in components.securitySchemes
+    severity: info
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+
+  # ============================================================================
+  # HTTP METHOD CONVENTIONS
+  # ============================================================================
+
+  http-get-no-request-body:
+    description: GET operations should not have a request body
+    message: GET operations must not include a requestBody
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: requestBody
+      function: falsy
+
+  http-delete-no-request-body:
+    description: DELETE operations should not have a request body
+    message: DELETE operations should not include a requestBody
+    severity: warn
+    given: $.paths[*].delete
+    then:
+      field: requestBody
+      function: falsy
+
+  http-post-request-body:
+    description: POST operations should have a request body
+    message: POST operation should include a requestBody or parameters with body content
+    severity: info
+    given: $.paths[*].post
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [requestBody]
+            - required: [parameters]
+
+  http-patch-request-body:
+    description: PATCH operations should have a request body
+    message: PATCH operation should include a requestBody or parameters with body content
+    severity: info
+    given: $.paths[*].patch
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [requestBody]
+            - required: [parameters]
+
+  # ============================================================================
+  # GENERAL QUALITY
+  # ============================================================================
+
+  general-description-min-length:
+    description: Descriptions should be meaningful (at least 20 characters)
+    message: "Description is too short (minimum 20 characters). Found length: {{value}}"
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].description
+    then:
+      function: length
+      functionOptions:
+        min: 20
+
+  general-no-empty-paths:
+    description: Paths object should not be empty (unless intentional like njs)
+    message: Paths object should contain at least one path
+    severity: info
+    given: $.paths
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          minProperties: 1
+
+  general-external-docs-recommended:
+    description: API should link to external documentation
+    message: Consider adding externalDocs for linking to NGINX documentation
+    severity: info
+    given: $
+    then:
+      field: externalDocs
+      function: truthy
+
+  general-produces-json:
+    description: NGINX APIs should produce application/json responses
+    message: Operations should produce application/json content
+    severity: info
+    given: $.paths[*].get.produces
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            const: application/json

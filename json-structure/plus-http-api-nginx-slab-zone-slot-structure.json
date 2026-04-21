@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Memory Slot",
+  "type": "object",
+  "members": {
+    "used": {
+      "description": "The current number of used memory slots.",
+      "type": "int32",
+      "example": 0
+    },
+    "free": {
+      "description": "The current number of free memory slots.",
+      "type": "int32",
+      "example": 0
+    },
+    "reqs": {
+      "description": "The total number of attempts to allocate memory of specified size.",
+      "type": "int32",
+      "example": 0
+    },
+    "fails": {
+      "description": "The number of unsuccessful attempts to allocate memory of specified size.",
+      "type": "int32",
+      "example": 0
+    }
+  }
+}

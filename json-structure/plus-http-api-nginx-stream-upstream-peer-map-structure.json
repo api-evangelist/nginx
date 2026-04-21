@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream Upstream Servers",
+  "description": "Array of stream upstream servers.",
+  "type": "array",
+  "values": {
+    "$ref": "#/definitions/NginxStreamUpstreamPeer"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/njs-request-schema.json",
+  "title": "Request",
+  "description": "The Request interface of the Fetch API (since 0.7.10). Used to construct requests for ngx.fetch().",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The URL of the request.",
+      "example": "http://upstream.example.com/api"
+    },
+    "method": {
+      "type": "string",
+      "description": "The HTTP method (default GET).",
+      "example": "GET"
+    },
+    "headers": {
+      "type": "object",
+      "description": "The Headers interface of the Fetch API (since 0.5.1). Represents HTTP headers and provides methods to manipulate them.",
+      "properties": null,
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "body": {
+      "type": "string",
+      "description": "The request body (default empty).",
+      "example": "{\"key\":\"value\"}"
+    },
+    "bodyUsed": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "True if the body has already been consumed.",
+      "example": false
+    },
+    "cache": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Cache mode of the request.",
+      "example": "no-cache"
+    },
+    "credentials": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Credentials mode (default same-origin).",
+      "example": "same-origin"
+    },
+    "mode": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Mode of the request.",
+      "example": "cors"
+    }
+  }
+}

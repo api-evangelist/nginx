@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-array-of-strings-schema.json",
+  "title": "Array",
+  "description": "An array of strings.\n",
+  "type": "array",
+  "items": {
+    "type": "string"
+  }
+}

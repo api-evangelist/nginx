@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-http-server-zone-schema.json",
+  "title": "HTTP Server Zone",
+  "description": "NginxHTTPServerZone schema from NGINX Plus REST API",
+  "type": "object",
+  "properties": {
+    "processing": {
+      "type": "integer",
+      "description": "The number of client requests that are currently being processed.",
+      "example": 1
+    },
+    "requests": {
+      "type": "integer",
+      "description": "The total number of client requests received from clients.",
+      "example": 31070465
+    },
+    "responses": {
+      "description": "The total number of responses sent to clients, the number of responses with status codes \u201c<code>1xx</code>\u201d, \u201c<code>2xx</code>\u201d, \u201c<code>3xx</code>\u201d, \u201c<code>4xx</code>\u201d, and \u201c<code>5xx</code>\u201d, and the number of responses per each status code.",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "1xx": {
+          "type": "integer",
+          "description": "The number of responses with \u201c<code>1xx</code>\u201d status codes.",
+          "readOnly": true,
+          "example": 0
+        },
+        "2xx": {
+          "type": "integer",
+          "description": "The number of responses with \u201c<code>2xx</code>\u201d status codes.",
+          "readOnly": true,
+          "example": 0
+        },
+        "3xx": {
+          "type": "integer",
+          "description": "The number of responses with \u201c<code>3xx</code>\u201d status codes.",
+          "readOnly": true,
+          "example": 0
+        },
+        "4xx": {
+          "type": "integer",
+          "description": "The number of responses with \u201c<code>4xx</code>\u201d status codes.",
+          "readOnly": true,
+          "example": 0
+        },
+        "5xx": {
+          "type": "integer",
+          "description": "The number of responses with \u201c<code>5xx</code>\u201d status codes.",
+          "readOnly": true,
+          "example": 0
+        },
+        "codes": {
+          "type": "object",
+          "description": "The number of responses per each status code.",
+          "readOnly": true,
+          "properties": {
+            "codeNumber": {
+              "type": "integer",
+              "description": "The number of responses with this particular status code.",
+              "readOnly": true,
+              "example": 0
+            }
+          },
+          "example": {}
+        },
+        "total": {
+          "type": "integer",
+          "description": "The total number of responses sent to clients.",
+          "readOnly": true,
+          "example": 98765
+        }
+      },
+      "example": 1234567
+    },
+    "discarded": {
+      "type": "integer",
+      "description": "The total number of requests completed without sending a response.",
+      "example": 0
+    },
+    "received": {
+      "type": "integer",
+      "description": "The total number of bytes received from clients.",
+      "example": 180157219
+    },
+    "sent": {
+      "type": "integer",
+      "description": "The total number of bytes sent to clients.",
+      "example": 20183175459
+    },
+    "ssl": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "handshakes": {
+          "type": "integer",
+          "description": "The total number of successful SSL handshakes.",
+          "readOnly": true,
+          "example": 79572
+        },
+        "handshakes_failed": {
+          "type": "integer",
+          "description": "The total number of failed SSL handshakes.",
+          "readOnly": true,
+          "example": 21025
+        },
+        "session_reuses": {
+          "type": "integer",
+          "description": "The total number of session reuses during SSL handshake.",
+          "readOnly": true,
+          "example": 15762
+        },
+        "no_common_protocol": {
+          "type": "integer",
+          "description": "The number of SSL handshakes failed because of no common protocol.",
+          "example": 4
+        },
+        "no_common_cipher": {
+          "type": "integer",
+          "description": "The number of SSL handshakes failed because of no shared cipher.",
+          "example": 2
+        },
+        "handshake_timeout": {
+          "type": "integer",
+          "description": "The number of SSL handshakes failed because of a timeout.",
+          "example": 0
+        },
+        "peer_rejected_cert": {
+          "type": "integer",
+          "description": "The number of failed SSL handshakes when nginx presented the certificate to the client but it was rejected with a corresponding alert message.",
+          "example": 0
+        },
+        "verify_failures": {
+          "type": "object",
+          "description": "SSL certificate verification errors",
+          "properties": {
+            "no_cert": {
+              "type": "integer",
+              "description": "A client did not provide the required certificate.",
+              "example": 0
+            },
+            "expired_cert": {
+              "type": "integer",
+              "description": "An expired or not yet valid certificate was presented by a client.",
+              "example": 2
+            },
+            "revoked_cert": {
+              "type": "integer",
+              "description": "A revoked certificate was presented by a client.",
+              "example": 1
+            },
+            "other": {
+              "type": "integer",
+              "description": "Other SSL certificate verification errors.",
+              "example": 1
+            }
+          },
+          "example": {}
+        }
+      },
+      "example": {}
+    }
+  },
+  "example": {
+    "processing": 1,
+    "requests": 706690,
+    "responses": {
+      "1xx": 0,
+      "2xx": 699482,
+      "3xx": 4522,
+      "4xx": 907,
+      "5xx": 266,
+      "codes": {
+        "200": 699482,
+        "301": 4522,
+        "404": 907,
+        "503": 266
+      },
+      "total": 705177
+    },
+    "discarded": 1513,
+    "received": 172711587,
+    "sent": 19415530115,
+    "ssl": {
+      "handshakes": 104303,
+      "handshakes_failed": 1421,
+      "session_reuses": 54645,
+      "no_common_protocol": 4,
+      "no_common_cipher": 2,
+      "handshake_timeout": 0,
+      "peer_rejected_cert": 0,
+      "verify_failures": {
+        "no_cert": 0,
+        "expired_cert": 2,
+        "revoked_cert": 1,
+        "other": 1
+      }
+    }
+  }
+}

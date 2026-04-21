@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/njs-response-schema.json",
+  "title": "Response",
+  "description": "The Response interface of the Fetch API (since 0.5.1). Returned by ngx.fetch() as a resolved Promise.",
+  "type": "object",
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "True if the response status is 200-299.",
+      "example": true
+    },
+    "redirected": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "True if the response is the result of a redirect.",
+      "example": false
+    },
+    "status": {
+      "type": "integer",
+      "readOnly": true,
+      "description": "HTTP status code of the response.",
+      "example": 200
+    },
+    "statusText": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Status message corresponding to the status code.",
+      "example": "OK"
+    },
+    "headers": {
+      "readOnly": true,
+      "allOf": [
+        {
+          "type": "object",
+          "description": "The Headers interface of the Fetch API (since 0.5.1). Represents HTTP headers and provides methods to manipulate them.",
+          "properties": null,
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "bodyUsed": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "True if the body has already been read.",
+      "example": false
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Type of the response.",
+      "example": "string"
+    },
+    "url": {
+      "type": "string",
+      "readOnly": true,
+      "description": "URL of the response.",
+      "example": "http://upstream.example.com/api"
+    }
+  }
+}

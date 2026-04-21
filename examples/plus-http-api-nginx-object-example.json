@@ -1,0 +1,10 @@
+{
+  "version": "1.25.3",
+  "build": "nginx-plus-r32",
+  "address": "10.0.0.1",
+  "generation": 8,
+  "load_timestamp": "2026-04-21T10:30:00.000Z",
+  "timestamp": "2026-04-21T12:45:22.318Z",
+  "pid": 4521,
+  "ppid": 4519
+}

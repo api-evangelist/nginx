@@ -1,0 +1,567 @@
+name: NGINX Vocabulary
+description: >-
+  Operational vocabulary extracted from NGINX OpenAPI specifications
+  covering the Plus HTTP API, Stub Status module, and njs scripting runtime.
+version: "1.0"
+created: "2026-04-21"
+
+apis:
+  - name: NGINX Plus REST API
+    namespace: nginx-plus
+    version: "9.0"
+    status: Active
+    specFormat: Swagger 2.0
+    basePath: /api/9
+    description: >-
+      Provides access to NGINX Plus status information, on-the-fly
+      configuration of upstream servers, and key-value pairs management
+      for HTTP and stream contexts.
+
+  - name: NGINX Stub Status API
+    namespace: nginx-stub-status
+    version: "1.0"
+    status: Active
+    specFormat: OpenAPI 3.0.3
+    basePath: /stub_status
+    description: >-
+      Provides access to basic NGINX status information via the
+      ngx_http_stub_status_module. Returns plain-text connection metrics.
+
+  - name: NGINX njs Scripting API
+    namespace: nginx-njs
+    version: "0.8"
+    status: Active
+    specFormat: OpenAPI 3.0.3
+    basePath: N/A
+    description: >-
+      JavaScript runtime embedded inside NGINX. Exposes scripting objects
+      (HTTP request, stream session, Fetch API) within njs handler functions.
+      Schema-only specification with no REST endpoints.
+
+resources:
+  - name: Connections
+    description: Client connection statistics including accepted, dropped, active, and idle counts.
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /connections
+
+  - name: Processes
+    description: Abnormally terminated and respawned child process counters.
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /processes
+
+  - name: Workers
+    description: Per-worker process statistics including connections, requests, and process IDs.
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /workers/
+      - /workers/{workerId}
+
+  - name: HTTP Server Zones
+    description: Status information for each HTTP server zone including requests, responses, and SSL stats.
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /http/server_zones/
+      - /http/server_zones/{httpServerZoneName}
+
+  - name: HTTP Location Zones
+    description: Status information for each HTTP location zone.
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /http/location_zones/
+      - /http/location_zones/{httpLocationZoneName}
+
+  - name: HTTP Upstreams
+    description: Upstream server groups with peer status, health checks, load balancing stats, and on-the-fly server management.
+    domain: Load Balancing
+    api: NGINX Plus REST API
+    paths:
+      - /http/upstreams/
+      - /http/upstreams/{httpUpstreamName}/
+      - /http/upstreams/{httpUpstreamName}/servers/
+      - /http/upstreams/{httpUpstreamName}/servers/{httpUpstreamServerId}
+
+  - name: HTTP Caches
+    description: Proxy cache zone statistics including hit, miss, stale, bypass, and expired counters.
+    domain: Caching
+    api: NGINX Plus REST API
+    paths:
+      - /http/caches/
+      - /http/caches/{httpCacheZoneName}
+
+  - name: HTTP Key-Value Pairs
+    description: Key-value shared memory zones for HTTP context with CRUD operations and optional TTL.
+    domain: Configuration
+    api: NGINX Plus REST API
+    paths:
+      - /http/keyvals/
+      - /http/keyvals/{httpKeyvalZoneName}
+
+  - name: HTTP Limit Connections
+    description: Connection limiting zone statistics (passed, rejected, dry-run counters).
+    domain: Security
+    api: NGINX Plus REST API
+    paths:
+      - /http/limit_conns/
+      - /http/limit_conns/{httpLimitConnZoneName}
+
+  - name: HTTP Limit Requests
+    description: Request rate limiting zone statistics (passed, delayed, rejected, dry-run counters).
+    domain: Security
+    api: NGINX Plus REST API
+    paths:
+      - /http/limit_reqs/
+      - /http/limit_reqs/{httpLimitReqZoneName}
+
+  - name: HTTP Requests
+    description: Global HTTP request counters (total and current).
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /http/requests
+
+  - name: Slabs
+    description: Shared memory zone slab allocator status including page and slot usage.
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /slabs/
+      - /slabs/{slabZoneName}
+
+  - name: SSL Statistics
+    description: Global SSL handshake, session reuse, and certificate verification failure counters.
+    domain: Security
+    api: NGINX Plus REST API
+    paths:
+      - /ssl
+
+  - name: Resolvers
+    description: DNS resolver zone statistics for name, SRV, and address lookups.
+    domain: Monitoring
+    api: NGINX Plus REST API
+    paths:
+      - /resolvers/
+      - /resolvers/{resolverZoneName}
+
+  - name: Stream Server Zones
+    description: Status information for each TCP/UDP stream server zone.
+    domain: Streaming
+    api: NGINX Plus REST API
+    paths:
+      - /stream/server_zones/
+      - /stream/server_zones/{streamServerZoneName}
+
+  - name: Stream Upstreams
+    description: Stream upstream server groups with peer status and on-the-fly configuration.
+    domain: Load Balancing
+    api: NGINX Plus REST API
+    paths:
+      - /stream/upstreams/
+      - /stream/upstreams/{streamUpstreamName}/
+      - /stream/upstreams/{streamUpstreamName}/servers/
+      - /stream/upstreams/{streamUpstreamName}/servers/{streamUpstreamServerId}
+
+  - name: Stream Key-Value Pairs
+    description: Key-value shared memory zones for stream context with CRUD operations.
+    domain: Configuration
+    api: NGINX Plus REST API
+    paths:
+      - /stream/keyvals/
+      - /stream/keyvals/{streamKeyvalZoneName}
+
+  - name: Stream Limit Connections
+    description: Stream connection limiting zone statistics.
+    domain: Security
+    api: NGINX Plus REST API
+    paths:
+      - /stream/limit_conns/
+      - /stream/limit_conns/{streamLimitConnZoneName}
+
+  - name: Stream Zone Sync
+    description: Cluster node synchronization status for shared memory zones.
+    domain: Configuration
+    api: NGINX Plus REST API
+    paths:
+      - /stream/zone_sync/
+
+  - name: License
+    description: NGINX Plus license information including evaluation status and reporting health.
+    domain: Configuration
+    api: NGINX Plus REST API
+    paths:
+      - /license
+
+  - name: Stub Status
+    description: Basic plain-text connection metrics (active, accepts, handled, requests, reading, writing, waiting).
+    domain: Monitoring
+    api: NGINX Stub Status API
+    paths:
+      - /stub_status
+
+  - name: HTTP Request Object
+    description: The njs HTTP request object (r) with access to headers, URI, method, variables, and request/response bodies.
+    domain: Scripting
+    api: NGINX njs Scripting API
+
+  - name: Stream Session Object
+    description: The njs stream session object (s) for TCP/UDP session control.
+    domain: Scripting
+    api: NGINX njs Scripting API
+
+  - name: Fetch API Objects
+    description: njs Request, Response, and Headers objects implementing the Fetch API for subrequests.
+    domain: Scripting
+    api: NGINX njs Scripting API
+
+  - name: Ngx Global Object
+    description: The njs ngx global providing NGINX version, paths, build info, and shared dictionaries.
+    domain: Scripting
+    api: NGINX njs Scripting API
+
+actions:
+  - name: Get
+    httpMethod: GET
+    pattern: "/{resource}"
+    description: Retrieve a single resource instance by name or ID.
+    examples:
+      - getConnections
+      - getHttpServerZone
+      - getHttpUpstreamPeer
+      - getSsl
+      - getWorker
+
+  - name: List
+    httpMethod: GET
+    pattern: "/{resource}/"
+    description: Retrieve all instances of a collection resource.
+    examples:
+      - getHttpUpstreams
+      - getHttpServerZones
+      - getHttpCaches
+      - getSlabs
+      - getWorkers
+      - getResolverZones
+
+  - name: Create
+    httpMethod: POST
+    pattern: "/{resource}/"
+    description: Add a new resource instance to a collection.
+    examples:
+      - postHttpUpstreamServer
+      - postHttpKeyvalZoneData
+
+  - name: Update
+    httpMethod: PATCH
+    pattern: "/{resource}/{id}"
+    description: Modify an existing resource instance.
+    examples:
+      - patchHttpUpstreamPeer
+      - patchHttpKeyvalZoneKeyValue
+
+  - name: Delete
+    httpMethod: DELETE
+    pattern: "/{resource}/{id}"
+    description: Remove a resource instance from a collection.
+    examples:
+      - deleteHttpUpstreamServer
+      - deleteHttpKeyvalZoneData
+
+  - name: Reset
+    httpMethod: DELETE
+    pattern: "/{resource}"
+    description: Reset statistics counters for a resource to zero.
+    examples:
+      - deleteConnections
+      - deleteProcesses
+      - deleteHttpRequests
+      - deleteHttpServerZoneStat
+      - deleteHttpCacheZoneStat
+      - deleteSslStat
+      - deleteWorkersStat
+      - deleteResolverZoneStat
+
+schemas:
+  Monitoring:
+    - NginxObject
+    - NginxProcesses
+    - NginxConnections
+    - NginxHTTPRequests
+    - NginxHTTPServerZone
+    - NginxHTTPServerZonesMap
+    - NginxHTTPLocationZone
+    - NginxHTTPLocationZonesMap
+    - NginxSlabZone
+    - NginxSlabZoneMap
+    - NginxSlabZoneSlot
+    - NginxResolverZone
+    - NginxResolverZonesMap
+    - NginxWorker
+    - NginxWorkersMap
+    - NginxError
+
+  Configuration:
+    - NginxHTTPUpstream
+    - NginxHTTPUpstreamMap
+    - NginxHTTPUpstreamConfServer
+    - NginxHTTPUpstreamConfServerMap
+    - NginxHTTPKeyvalZone
+    - NginxHTTPKeyvalZonesMap
+    - NginxHTTPKeyvalZonePostPatch
+    - NginxLicenseObject
+    - ArrayOfStrings
+
+  Security:
+    - NginxSSLObject
+    - NginxHTTPLimitConnZone
+    - NginxHTTPLimitConnZonesMap
+    - NginxHTTPLimitReqZone
+    - NginxHTTPLimitReqZonesMap
+
+  Streaming:
+    - NginxStreamServerZone
+    - NginxStreamServerZonesMap
+    - NginxStreamUpstream
+    - NginxStreamUpstreamMap
+    - NginxStreamUpstreamConfServer
+    - NginxStreamUpstreamConfServerMap
+    - NginxStreamKeyvalZone
+    - NginxStreamKeyvalZonesMap
+    - NginxStreamKeyvalZonePostPatch
+    - NginxStreamLimitConnZone
+    - NginxStreamLimitConnZonesMap
+    - NginxStreamZoneSync
+
+  Caching:
+    - NginxHTTPCache
+    - NginxHTTPCachesMap
+
+  Scripting:
+    - HttpRequest
+    - StreamSession
+    - PeriodicSession
+    - Headers
+    - Request
+    - Response
+    - Ngx
+    - NgxShared
+    - SharedDict
+
+parameters:
+  Identifiers:
+    - name: httpUpstreamName
+      in: path
+      description: The name of an HTTP upstream server group.
+    - name: httpUpstreamServerId
+      in: path
+      description: The ID of a server within an HTTP upstream group.
+    - name: httpServerZoneName
+      in: path
+      description: The name of an HTTP server zone.
+    - name: httpLocationZoneName
+      in: path
+      description: The name of an HTTP location zone.
+    - name: httpCacheZoneName
+      in: path
+      description: The name of a cache zone.
+    - name: httpKeyvalZoneName
+      in: path
+      description: The name of an HTTP keyval shared memory zone.
+    - name: httpLimitConnZoneName
+      in: path
+      description: The name of an HTTP limit_conn zone.
+    - name: httpLimitReqZoneName
+      in: path
+      description: The name of an HTTP limit_req zone.
+    - name: slabZoneName
+      in: path
+      description: The name of a shared memory zone with slab allocator.
+    - name: resolverZoneName
+      in: path
+      description: The name of a resolver zone.
+    - name: workerId
+      in: path
+      description: The ID of a worker process.
+    - name: streamUpstreamName
+      in: path
+      description: The name of a stream upstream server group.
+    - name: streamUpstreamServerId
+      in: path
+      description: The ID of a server within a stream upstream group.
+    - name: streamServerZoneName
+      in: path
+      description: The name of a stream server zone.
+    - name: streamKeyvalZoneName
+      in: path
+      description: The name of a stream keyval shared memory zone.
+    - name: streamLimitConnZoneName
+      in: path
+      description: The name of a stream limit_conn zone.
+
+  Filters:
+    - name: fields
+      in: query
+      description: Limits which fields of the resource will be output. Empty value returns names only.
+    - name: key
+      in: query
+      description: Get a particular key-value pair from a keyval zone.
+
+  Configuration:
+    - name: server
+      in: body
+      description: Upstream server address (required for POST).
+    - name: weight
+      in: body
+      description: Server weight for load balancing.
+    - name: max_conns
+      in: body
+      description: Maximum number of simultaneous active connections to the server.
+    - name: max_fails
+      in: body
+      description: Number of unsuccessful attempts before marking server unavailable.
+    - name: fail_timeout
+      in: body
+      description: Duration for max_fails tracking and unavailability period.
+    - name: slow_start
+      in: body
+      description: Duration to gradually restore weight after recovery.
+    - name: backup
+      in: body
+      description: Whether the server is a backup server.
+    - name: down
+      in: body
+      description: Whether the server is marked as permanently down.
+    - name: route
+      in: body
+      description: Server route string for session persistence.
+    - name: expire
+      in: body
+      description: Expiration time in milliseconds for a key-value pair.
+
+enums:
+  Server States:
+    - up
+    - down
+    - draining
+    - unavail
+    - checking
+    - unhealthy
+
+  HTTP Methods:
+    - GET
+    - POST
+    - PATCH
+    - DELETE
+
+  Cache Hit States:
+    - hit
+    - stale
+    - updating
+    - revalidated
+    - miss
+    - expired
+    - bypass
+
+  DNS Response Codes:
+    - noerror
+    - formerr
+    - servfail
+    - nxdomain
+    - notimp
+    - refused
+    - timedout
+    - unknown
+
+  SSL Verify Failure Types:
+    - no_cert
+    - expired_cert
+    - revoked_cert
+    - hostname_mismatch
+    - other
+
+  Connection States:
+    - active
+    - idle
+    - reading
+    - writing
+    - waiting
+
+authentication:
+  - name: None
+    type: None
+    applies_to:
+      - NGINX Stub Status API
+      - NGINX njs Scripting API
+    description: >-
+      Open-source NGINX modules have no built-in API authentication.
+      Access control is managed via NGINX configuration directives
+      (allow/deny, auth_basic, etc.).
+
+  - name: API-Based Access Control
+    type: Configuration-Based
+    applies_to:
+      - NGINX Plus REST API
+    description: >-
+      The NGINX Plus API does not define authentication in its OpenAPI
+      specification. Access is controlled via NGINX configuration using
+      directives such as allow/deny, auth_basic, auth_jwt, and
+      limit_except within the API location block.
+
+domains:
+  - name: Traffic Management
+    description: Core HTTP and stream traffic handling, request routing, and server zone monitoring.
+    resources:
+      - HTTP Server Zones
+      - HTTP Location Zones
+      - HTTP Requests
+      - Stream Server Zones
+
+  - name: Load Balancing
+    description: Upstream server group management, health checking, and on-the-fly server configuration.
+    resources:
+      - HTTP Upstreams
+      - Stream Upstreams
+
+  - name: Monitoring
+    description: Real-time status metrics for connections, workers, processes, resolvers, and memory zones.
+    resources:
+      - Connections
+      - Processes
+      - Workers
+      - Slabs
+      - Resolvers
+      - Stub Status
+
+  - name: Caching
+    description: Proxy cache zone statistics and hit/miss tracking.
+    resources:
+      - HTTP Caches
+
+  - name: Security
+    description: SSL/TLS statistics, connection limiting, and request rate limiting.
+    resources:
+      - SSL Statistics
+      - HTTP Limit Connections
+      - HTTP Limit Requests
+      - Stream Limit Connections
+
+  - name: Configuration
+    description: Runtime configuration management including key-value stores, zone synchronization, and licensing.
+    resources:
+      - HTTP Key-Value Pairs
+      - Stream Key-Value Pairs
+      - Stream Zone Sync
+      - License
+
+  - name: Scripting
+    description: njs JavaScript runtime objects for programmatic request/response handling and subrequests.
+    resources:
+      - HTTP Request Object
+      - Stream Session Object
+      - Fetch API Objects
+      - Ngx Global Object

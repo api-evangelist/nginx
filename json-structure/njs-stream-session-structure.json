@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "StreamSession",
+  "description": "The stream session object (s) available in ngx_stream_js_module handlers. Provides access to the TCP/UDP session and methods to control data flow.",
+  "type": "object",
+  "members": {
+    "remoteAddress": {
+      "description": "Client IP address.",
+      "type": "string",
+      "readOnly": true,
+      "example": "192.168.1.100"
+    },
+    "status": {
+      "description": "Session status code (alias to $status variable, since 0.5.2).",
+      "type": "int32",
+      "readOnly": true,
+      "example": 200
+    },
+    "variables": {
+      "description": "NGINX variables object (writable, since 0.2.8).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {}
+    },
+    "rawVariables": {
+      "description": "NGINX variables as Buffers (writable, since 0.5.0).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {}
+    }
+  }
+}

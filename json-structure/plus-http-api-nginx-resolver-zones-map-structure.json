@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Resolver Zones",
+  "description": "Status data for all\n<a href=\"https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone\">resolver zones</a>.\n",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/NginxResolverZone"
+  },
+  "example": {
+    "resolver_zone1": {
+      "requests": {
+        "name": 25460,
+        "srv": 130,
+        "addr": 2580
+      },
+      "responses": {
+        "noerror": 26499,
+        "formerr": 0,
+        "servfail": 3,
+        "nxdomain": 0,
+        "notimp": 0,
+        "refused": 0,
+        "timedout": 243,
+        "unknown": 478
+      }
+    },
+    "resolver_zone2": {
+      "requests": {
+        "name": 325460,
+        "srv": 1130,
+        "addr": 12580
+      },
+      "responses": {
+        "noerror": 226499,
+        "formerr": 0,
+        "servfail": 283,
+        "nxdomain": 0,
+        "notimp": 0,
+        "refused": 0,
+        "timedout": 743,
+        "unknown": 1478
+      }
+    }
+  }
+}

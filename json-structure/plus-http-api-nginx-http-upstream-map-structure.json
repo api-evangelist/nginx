@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Upstreams",
+  "description": "Status information of all HTTP\n<a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#zone\">dynamically configurable</a>\n<a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream\">groups</a>.\n",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/NginxHTTPUpstream"
+  },
+  "example": {
+    "trac-backend": {
+      "peers": [
+        {
+          "id": 0,
+          "server": "10.0.0.1:8088",
+          "name": "10.0.0.1:8088",
+          "backup": false,
+          "weight": 5,
+          "state": "up",
+          "active": 0,
+          "ssl": {
+            "handshakes": 620311,
+            "handshakes_failed": 3432,
+            "session_reuses": 36442,
+            "no_common_protocol": 4,
+            "handshake_timeout": 0,
+            "peer_rejected_cert": 0,
+            "verify_failures": {
+              "expired_cert": 2,
+              "revoked_cert": 1,
+              "hostname_mismatch": 2,
+              "other": 1
+            }
+          },
+          "requests": 667231,
+          "header_time": 20,
+          "response_time": 36,
+          "responses": {
+            "1xx": 0,
+            "2xx": 666310,
+            "3xx": 0,
+            "4xx": 915,
+            "5xx": 6,
+            "codes": {
+              "200": 666310,
+              "404": 915,
+              "503": 6
+            },
+            "total": 667231
+          },
+          "sent": 251946292,
+          "received": 19222475454,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26214,
+            "fails": 0,
+            "unhealthy": 0,
+            "last_passed": true
+          },
+          "downtime": 0,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        },
+        {
+          "id": 1,
+          "server": "10.0.0.1:8089",
+          "name": "10.0.0.1:8089",
+          "backup": true,
+          "weight": 1,
+          "state": "unhealthy",
+          "active": 0,
+          "requests": 0,
+          "responses": {
+            "1xx": 0,
+            "2xx": 0,
+            "3xx": 0,
+            "4xx": 0,
+            "5xx": 0,
+            "codes": {},
+            "total": 0
+          },
+          "sent": 0,
+          "received": 0,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26284,
+            "fails": 26284,
+            "unhealthy": 1,
+            "last_passed": false
+          },
+          "downtime": 262925617,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        }
+      ],
+      "keepalive": 0,
+      "zombies": 0,
+      "zone": "trac-backend"
+    },
+    "hg-backend": {
+      "peers": [
+        {
+          "id": 0,
+          "server": "10.0.0.1:8088",
+          "name": "10.0.0.1:8088",
+          "backup": false,
+          "weight": 5,
+          "state": "up",
+          "active": 0,
+          "ssl": {
+            "handshakes": 620311,
+            "handshakes_failed": 3432,
+            "session_reuses": 36442,
+            "no_common_protocol": 4,
+            "handshake_timeout": 0,
+            "peer_rejected_cert": 0,
+            "verify_failures": {
+              "expired_cert": 2,
+              "revoked_cert": 1,
+              "hostname_mismatch": 2,
+              "other": 1
+            }
+          },
+          "requests": 667231,
+          "header_time": 20,
+          "response_time": 36,
+          "responses": {
+            "1xx": 0,
+            "2xx": 666310,
+            "3xx": 0,
+            "4xx": 915,
+            "5xx": 6,
+            "codes": {
+              "200": 666310,
+              "404": 915,
+              "503": 6
+            },
+            "total": 667231
+          },
+          "sent": 251946292,
+          "received": 19222475454,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26214,
+            "fails": 0,
+            "unhealthy": 0,
+            "last_passed": true
+          },
+          "downtime": 0,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        },
+        {
+          "id": 1,
+          "server": "10.0.0.1:8089",
+          "name": "10.0.0.1:8089",
+          "backup": true,
+          "weight": 1,
+          "state": "unhealthy",
+          "active": 0,
+          "requests": 0,
+          "responses": {
+            "1xx": 0,
+            "2xx": 0,
+            "3xx": 0,
+            "4xx": 0,
+            "5xx": 0,
+            "codes": {},
+            "total": 0
+          },
+          "sent": 0,
+          "received": 0,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26284,
+            "fails": 26284,
+            "unhealthy": 1,
+            "last_passed": false
+          },
+          "downtime": 262925617,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        }
+      ],
+      "keepalive": 0,
+      "zombies": 0,
+      "zone": "hg-backend"
+    }
+  }
+}

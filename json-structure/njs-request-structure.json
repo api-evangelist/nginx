@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Request",
+  "description": "The Request interface of the Fetch API (since 0.7.10). Used to construct requests for ngx.fetch().",
+  "type": "object",
+  "members": {
+    "url": {
+      "description": "The URL of the request.",
+      "type": "string",
+      "readOnly": true,
+      "example": "http://upstream.example.com/api"
+    },
+    "method": {
+      "description": "The HTTP method (default GET).",
+      "type": "string",
+      "example": "GET"
+    },
+    "headers": {
+      "$ref": "#/definitions/Headers"
+    },
+    "body": {
+      "description": "The request body (default empty).",
+      "type": "string",
+      "example": "{\"key\":\"value\"}"
+    },
+    "bodyUsed": {
+      "description": "True if the body has already been consumed.",
+      "type": "boolean",
+      "readOnly": true,
+      "example": false
+    },
+    "cache": {
+      "description": "Cache mode of the request.",
+      "type": "string",
+      "readOnly": true,
+      "example": "no-cache"
+    },
+    "credentials": {
+      "description": "Credentials mode (default same-origin).",
+      "type": "string",
+      "readOnly": true,
+      "example": "same-origin"
+    },
+    "mode": {
+      "description": "Mode of the request.",
+      "type": "string",
+      "readOnly": true,
+      "example": "cors"
+    }
+  }
+}

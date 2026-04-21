@@ -1,0 +1,19 @@
+{
+  "resolver_zone": {
+    "requests": {
+      "name": 84520,
+      "srv": 1240,
+      "addr": 320
+    },
+    "responses": {
+      "noerror": 83210,
+      "formerr": 0,
+      "servfail": 12,
+      "nxdomain": 2450,
+      "notimp": 0,
+      "refused": 0,
+      "timedout": 8,
+      "unknown": 0
+    }
+  }
+}

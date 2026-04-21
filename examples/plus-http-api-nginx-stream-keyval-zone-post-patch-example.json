@@ -1,0 +1,7 @@
+{
+  "client_ghi": "active",
+  "client_jkl": {
+    "value": "blocked",
+    "expire": 60000
+  }
+}

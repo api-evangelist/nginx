@@ -1,0 +1,47 @@
+{
+  "args": {
+    "page": "1",
+    "sort": "name"
+  },
+  "headersIn": {
+    "Host": "backend1.example.com",
+    "User-Agent": "nginx-njs/0.8",
+    "Accept": "application/json",
+    "X-Forwarded-For": "192.168.1.100"
+  },
+  "headersOut": {
+    "Content-Type": "application/json",
+    "X-Processed-By": "njs"
+  },
+  "httpVersion": "1.1",
+  "internal": false,
+  "method": "GET",
+  "remoteAddress": "192.168.1.100",
+  "requestBuffer": "",
+  "requestText": "",
+  "responseBuffer": "",
+  "responseText": "{\"result\":\"success\"}",
+  "rawHeadersIn": [
+    [
+      "Host",
+      "backend1.example.com"
+    ],
+    [
+      "User-Agent",
+      "nginx-njs/0.8"
+    ]
+  ],
+  "rawHeadersOut": [
+    [
+      "Content-Type",
+      "application/json"
+    ]
+  ],
+  "status": 200,
+  "uri": "/api/v1/resource",
+  "variables": {
+    "remote_addr": "192.168.1.100",
+    "server_name": "backend1.example.com"
+  },
+  "rawVariables": {}
+}

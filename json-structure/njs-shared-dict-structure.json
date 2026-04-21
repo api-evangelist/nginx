@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "SharedDict",
+  "description": "A shared dictionary zone that can be used to share data between worker processes.",
+  "type": "object",
+  "members": {
+    "name": {
+      "description": "Name of the shared dictionary zone.",
+      "type": "string",
+      "readOnly": true,
+      "example": "my_shared_zone"
+    },
+    "type": {
+      "description": "Type of the shared dictionary (string or number).",
+      "type": "string",
+      "readOnly": true,
+      "example": "string"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Resolver Zone",
+  "description": "Statistics of DNS requests and responses per particular\n<a href=\"https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone\">resolver zone</a>.\n",
+  "type": "object",
+  "members": {
+    "requests": {
+      "type": "object",
+      "members": {
+        "name": {
+          "description": "The total number of requests to resolve names to addresses.",
+          "type": "int32",
+          "readOnly": true,
+          "example": "my_shared_zone"
+        },
+        "srv": {
+          "description": "The total number of requests to resolve SRV records.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "addr": {
+          "description": "The total number of requests to resolve addresses to names.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        }
+      },
+      "readOnly": true,
+      "example": 31070465
+    },
+    "responses": {
+      "type": "object",
+      "members": {
+        "noerror": {
+          "description": "The total number of successful responses.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "formerr": {
+          "description": "The total number of FORMERR (<literal>Format error</literal>) responses.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "servfail": {
+          "description": "The total number of SERVFAIL (<literal>Server failure</literal>) responses.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "nxdomain": {
+          "description": "The total number of NXDOMAIN (<literal>Host not found</literal>) responses.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "notimp": {
+          "description": "The total number of NOTIMP (<literal>Unimplemented</literal>) responses.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "refused": {
+          "description": "The total number of REFUSED (<literal>Operation refused</literal>) responses.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "timedout": {
+          "description": "The total number of timed out requests.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "unknown": {
+          "description": "The total number of requests completed with an unknown error.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        }
+      },
+      "readOnly": true,
+      "example": 1234567
+    }
+  },
+  "example": {
+    "resolver_zone1": {
+      "requests": {
+        "name": 25460,
+        "srv": 130,
+        "addr": 2580
+      },
+      "responses": {
+        "noerror": 26499,
+        "formerr": 0,
+        "servfail": 3,
+        "nxdomain": 0,
+        "notimp": 0,
+        "refused": 0,
+        "timedout": 243,
+        "unknown": 478
+      }
+    }
+  }
+}

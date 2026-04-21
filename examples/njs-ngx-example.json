@@ -1,0 +1,10 @@
+{
+  "build": "nginx-plus-r32",
+  "conf_file_path": "/etc/nginx/nginx.conf",
+  "conf_prefix": "/etc/nginx/",
+  "error_log_path": "/var/log/nginx/error.log",
+  "prefix": "/usr/local/nginx",
+  "version": "1.25.3",
+  "version_number": 1025003,
+  "worker_id": 0
+}

@@ -1,0 +1,55 @@
+{
+  "id": 0,
+  "server": "backend1.example.com:8080",
+  "service": "http",
+  "name": "backend1.example.com:8080",
+  "backup": false,
+  "weight": 5,
+  "state": "up",
+  "active": 3,
+  "ssl": {
+    "handshakes": 12450,
+    "handshakes_failed": 8,
+    "session_reuses": 9832,
+    "no_common_protocol": 0,
+    "handshake_timeout": 0,
+    "peer_rejected_cert": 0,
+    "verify_failures": {
+      "expired_cert": 0,
+      "revoked_cert": 0,
+      "hostname_mismatch": 0,
+      "other": 0
+    }
+  },
+  "max_conns": 250,
+  "requests": 4521987,
+  "responses": {
+    "1xx": 0,
+    "2xx": 4498210,
+    "3xx": 12540,
+    "4xx": 8901,
+    "5xx": 42,
+    "codes": {
+      "200": 4485100,
+      "301": 12540,
+      "404": 8850,
+      "502": 42
+    },
+    "total": 4519693
+  },
+  "sent": 1284567890,
+  "received": 9876543210,
+  "fails": 3,
+  "unavail": 0,
+  "health_checks": {
+    "checks": 84520,
+    "fails": 2,
+    "unhealthy": 0,
+    "last_passed": true
+  },
+  "downtime": 0,
+  "downstart": "2026-04-21T10:30:00.000Z",
+  "selected": "2026-04-21T12:44:58.120Z",
+  "header_time": 12,
+  "response_time": 45
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Error",
+  "description": "nginx error object.\n",
+  "type": "object",
+  "members": {
+    "error": {
+      "type": "object",
+      "members": {
+        "status": {
+          "description": "HTTP error code.",
+          "type": "int32",
+          "example": 200
+        },
+        "text": {
+          "description": "Error description.",
+          "type": "string",
+          "example": "example-text"
+        },
+        "code": {
+          "description": "Internal nginx error code.",
+          "type": "string",
+          "example": 200
+        }
+      },
+      "example": {}
+    },
+    "request_id": {
+      "description": "The ID of the request, equals the value of the <a href=\"https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id\">$request_id</a> variable.",
+      "type": "string",
+      "example": "example-request_id"
+    },
+    "href": {
+      "description": "Link to reference documentation.",
+      "type": "string",
+      "example": "example-href"
+    }
+  }
+}

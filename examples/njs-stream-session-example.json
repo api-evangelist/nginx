@@ -1,0 +1,10 @@
+{
+  "remoteAddress": "10.0.0.50",
+  "status": 200,
+  "variables": {
+    "remote_addr": "10.0.0.50",
+    "server_port": "3306",
+    "protocol": "TCP"
+  },
+  "rawVariables": {}
+}

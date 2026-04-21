@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "PeriodicSession",
+  "description": "Object provided as the first argument to js_periodic handlers for both http and stream (since 0.8.1).",
+  "type": "object",
+  "members": {
+    "variables": {
+      "description": "NGINX variables object (writable).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {}
+    },
+    "rawVariables": {
+      "description": "NGINX variables as Buffers (writable).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {}
+    }
+  }
+}

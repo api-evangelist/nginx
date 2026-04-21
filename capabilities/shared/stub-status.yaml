@@ -1,0 +1,68 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "NGINX Stub Status API"
+  description: >-
+    Provides access to basic NGINX status information via the
+    ngx_http_stub_status_module including active connections, cumulative
+    accepts/handled/requests counters, and current reading/writing/waiting
+    connection counts.
+  tags:
+    - NGINX
+    - Monitoring
+    - Status
+    - Metrics
+  created: "2026-04-21"
+  modified: "2026-04-21"
+
+capability:
+  consumes:
+    - type: http
+      namespace: nginx-stub-status
+      baseUri: http://localhost
+      description: "NGINX stub status endpoint for basic server metrics."
+      resources:
+        - name: stub-status
+          path: /stub_status
+          description: "Basic NGINX status metrics"
+          operations:
+            - name: get-stub-status
+              method: GET
+              description: "Retrieve plain-text stub status metrics including active connections, accepts, handled, requests, and reading/writing/waiting counts"
+              outputRawFormat: text
+              outputParameters:
+                - name: result
+                  type: string
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: nginx-stub-status-rest
+      resources:
+        - path: /v1/stub-status
+          name: stub-status
+          description: "Basic NGINX status metrics"
+          operations:
+            - method: GET
+              name: get-stub-status
+              description: "Get basic NGINX status metrics"
+              call: "nginx-stub-status.get-stub-status"
+              outputParameters:
+                - type: string
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: nginx-stub-status-mcp
+      transport: http
+      tools:
+        - name: get-stub-status
+          description: "Retrieve basic NGINX status metrics including active connections, total accepts/handled/requests, and current reading/writing/waiting counts"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-stub-status.get-stub-status"
+          outputParameters:
+            - type: string
+              mapping: "$."

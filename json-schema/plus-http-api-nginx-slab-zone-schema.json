@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-slab-zone-schema.json",
+  "title": "Shared memory zone with slab allocator",
+  "description": "Shared memory zone with slab allocator\n",
+  "type": "object",
+  "properties": {
+    "pages": {
+      "type": "object",
+      "description": "The number of free and used memory pages.",
+      "properties": {
+        "used": {
+          "type": "integer",
+          "description": "The current number of used memory pages.",
+          "example": 0
+        },
+        "free": {
+          "type": "integer",
+          "description": "The current number of free memory pages.",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "slots": {
+      "type": "object",
+      "title": "Memory Slots",
+      "description": "Status data for memory slots (8, 16, 32, 64, 128, etc.)",
+      "additionalProperties": {
+        "title": "Memory Slot",
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "The current number of used memory slots.",
+            "example": 0
+          },
+          "free": {
+            "type": "integer",
+            "description": "The current number of free memory slots.",
+            "example": 0
+          },
+          "reqs": {
+            "type": "integer",
+            "description": "The total number of attempts to allocate memory of specified size.",
+            "example": 0
+          },
+          "fails": {
+            "type": "integer",
+            "description": "The number of unsuccessful attempts to allocate memory of specified size.",
+            "example": 0
+          }
+        }
+      },
+      "example": {}
+    }
+  },
+  "example": {
+    "pages": {
+      "used": 1143,
+      "free": 2928
+    },
+    "slots": {
+      "8": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "16": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "32": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "64": {
+        "used": 1,
+        "free": 63,
+        "reqs": 1,
+        "fails": 0
+      },
+      "128": {
+        "used": 0,
+        "free": 0,
+        "reqs": 0,
+        "fails": 0
+      },
+      "256": {
+        "used": 18078,
+        "free": 178,
+        "reqs": 1635736,
+        "fails": 0
+      }
+    }
+  }
+}

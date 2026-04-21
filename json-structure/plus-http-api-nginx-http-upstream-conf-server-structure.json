@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Upstream Server",
+  "description": "Dynamically configurable parameters of an HTTP upstream\n<a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server\">server</a>:\n",
+  "type": "object",
+  "members": {
+    "id": {
+      "description": "The ID of the HTTP upstream server. The ID is assigned automatically and cannot be changed.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    },
+    "server": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server\">address</a> parameter of the HTTP upstream server. When adding a server, it is possible to specify it as a domain name. In this case, changes of the IP addresses that correspond to a domain name will be monitored and automatically applied to the upstream configuration without the need of restarting nginx. This requires the <a href=\"https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver\">resolver</a> directive in the \u201c<code>http</code>\u201d block. See also the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#resolve\">resolve</a> parameter of the HTTP upstream server.",
+      "type": "string",
+      "example": "example-server"
+    },
+    "service": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#service\">service</a> parameter of the HTTP upstream server. This parameter cannot be changed.",
+      "type": "string",
+      "readOnly": true,
+      "example": "example-service"
+    },
+    "weight": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#weight\">weight</a> parameter of the HTTP upstream server.",
+      "type": "int32",
+      "example": 0
+    },
+    "max_conns": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_conns\">max_conns</a> parameter of the HTTP upstream server.",
+      "type": "int32",
+      "example": 0
+    },
+    "max_fails": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_fails\">max_fails</a> parameter of the HTTP upstream server.",
+      "type": "int32",
+      "example": 0
+    },
+    "fail_timeout": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#fail_timeout\">fail_timeout</a> parameter of the HTTP upstream server.",
+      "type": "string",
+      "example": "example-fail_timeout"
+    },
+    "slow_start": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#slow_start\">slow_start</a> parameter of the HTTP upstream server.",
+      "type": "string",
+      "example": "example-slow_start"
+    },
+    "route": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#route\">route</a> parameter of the HTTP upstream server.",
+      "type": "string",
+      "example": "example-route"
+    },
+    "backup": {
+      "description": "When <code>true</code>, adds a <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#backup\">backup</a> server. This parameter cannot be changed.",
+      "type": "boolean",
+      "readOnly": true,
+      "example": false
+    },
+    "down": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#down\">down</a> parameter of the HTTP upstream server.",
+      "type": "boolean",
+      "example": false
+    },
+    "drain": {
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#drain\">drain</a> parameter of the HTTP upstream server.",
+      "type": "boolean",
+      "example": false
+    },
+    "parent": {
+      "description": "Parent server ID of the resolved server. The ID is assigned automatically and cannot be changed.",
+      "type": "string",
+      "readOnly": true,
+      "example": "example-parent"
+    },
+    "host": {
+      "description": "Hostname of the resolved server. The hostname is assigned automatically and cannot be changed.",
+      "type": "string",
+      "readOnly": true,
+      "example": "example-host"
+    }
+  },
+  "example": {
+    "id": 1,
+    "server": "10.0.0.1:8089",
+    "weight": 4,
+    "max_conns": 0,
+    "max_fails": 0,
+    "fail_timeout": "10s",
+    "slow_start": "10s",
+    "route": "",
+    "backup": true,
+    "down": true
+  }
+}

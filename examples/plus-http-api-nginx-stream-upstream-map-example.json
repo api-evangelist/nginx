@@ -1,0 +1,50 @@
+{
+  "tcp_backend": {
+    "peers": [
+      {
+        "id": 0,
+        "server": "10.0.0.10:3306",
+        "service": "mysql",
+        "name": "db1.example.com:3306",
+        "backup": false,
+        "weight": 1,
+        "state": "up",
+        "active": 8,
+        "ssl": {
+          "handshakes": 5420,
+          "handshakes_failed": 3,
+          "session_reuses": 4100,
+          "no_common_protocol": 0,
+          "handshake_timeout": 0,
+          "peer_rejected_cert": 0,
+          "verify_failures": {
+            "expired_cert": 0,
+            "revoked_cert": 0,
+            "hostname_mismatch": 0,
+            "other": 0
+          }
+        },
+        "max_conns": 100,
+        "connections": 234567,
+        "connect_time": 3,
+        "first_byte_time": 8,
+        "response_time": 25,
+        "sent": 567890123,
+        "received": 1234567890,
+        "fails": 1,
+        "unavail": 0,
+        "health_checks": {
+          "checks": 42100,
+          "fails": 1,
+          "unhealthy": 0,
+          "last_passed": true
+        },
+        "downtime": 0,
+        "downstart": "2026-04-21T10:30:00.000Z",
+        "selected": "2026-04-21T12:44:59.450Z"
+      }
+    ],
+    "zombies": 0,
+    "zone": "tcp_upstream_zone"
+  }
+}

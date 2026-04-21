@@ -1,0 +1,16 @@
+{
+  "id": 0,
+  "server": "backend1.example.com:8080",
+  "service": "http",
+  "weight": 5,
+  "max_conns": 250,
+  "max_fails": 3,
+  "fail_timeout": "10s",
+  "slow_start": "30s",
+  "route": "a",
+  "backup": false,
+  "down": false,
+  "drain": false,
+  "parent": "0",
+  "host": "backend1.example.com"
+}

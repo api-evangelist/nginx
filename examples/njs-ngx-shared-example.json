@@ -1,0 +1,10 @@
+{
+  "rate_limit": {
+    "name": "rate_limit",
+    "type": "number"
+  },
+  "session_store": {
+    "name": "session_store",
+    "type": "string"
+  }
+}

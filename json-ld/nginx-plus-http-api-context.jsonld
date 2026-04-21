@@ -1,0 +1,336 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "nginx": "https://api-evangelist.github.io/nginx/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "NginxObject": {
+      "@id": "nginx:NginxObject",
+      "@context": {
+        "version": { "@id": "schema:softwareVersion", "@type": "xsd:string" },
+        "build": { "@id": "nginx:build", "@type": "xsd:string" },
+        "address": { "@id": "schema:address", "@type": "xsd:string" },
+        "generation": { "@id": "nginx:generation", "@type": "xsd:integer" },
+        "load_timestamp": { "@id": "nginx:loadTimestamp", "@type": "xsd:dateTime" },
+        "timestamp": { "@id": "dcterms:date", "@type": "xsd:dateTime" },
+        "pid": { "@id": "nginx:pid", "@type": "xsd:integer" },
+        "ppid": { "@id": "nginx:ppid", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxProcesses": {
+      "@id": "nginx:NginxProcesses",
+      "@context": {
+        "respawned": { "@id": "nginx:respawned", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxConnections": {
+      "@id": "nginx:NginxConnections",
+      "@context": {
+        "accepted": { "@id": "nginx:accepted", "@type": "xsd:integer" },
+        "dropped": { "@id": "nginx:dropped", "@type": "xsd:integer" },
+        "active": { "@id": "nginx:active", "@type": "xsd:integer" },
+        "idle": { "@id": "nginx:idle", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxSSLObject": {
+      "@id": "nginx:NginxSSLObject",
+      "@context": {
+        "handshakes": { "@id": "nginx:handshakes", "@type": "xsd:integer" },
+        "handshakes_failed": { "@id": "nginx:handshakesFailed", "@type": "xsd:integer" },
+        "session_reuses": { "@id": "nginx:sessionReuses", "@type": "xsd:integer" },
+        "no_common_protocol": { "@id": "nginx:noCommonProtocol", "@type": "xsd:integer" },
+        "no_common_cipher": { "@id": "nginx:noCommonCipher", "@type": "xsd:integer" },
+        "handshake_timeout": { "@id": "nginx:handshakeTimeout", "@type": "xsd:integer" },
+        "peer_rejected_cert": { "@id": "nginx:peerRejectedCert", "@type": "xsd:integer" },
+        "verify_failures": { "@id": "nginx:verifyFailures" }
+      }
+    },
+
+    "NginxSlabZone": {
+      "@id": "nginx:NginxSlabZone",
+      "@context": {
+        "pages": { "@id": "nginx:pages" },
+        "slots": { "@id": "nginx:slots" }
+      }
+    },
+
+    "NginxSlabZoneSlot": {
+      "@id": "nginx:NginxSlabZoneSlot",
+      "@context": {
+        "used": { "@id": "nginx:used", "@type": "xsd:integer" },
+        "free": { "@id": "nginx:free", "@type": "xsd:integer" },
+        "reqs": { "@id": "nginx:reqs", "@type": "xsd:integer" },
+        "fails": { "@id": "nginx:fails", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxHTTPRequests": {
+      "@id": "nginx:NginxHTTPRequests",
+      "@context": {
+        "total": { "@id": "nginx:total", "@type": "xsd:integer" },
+        "current": { "@id": "nginx:current", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxHTTPServerZone": {
+      "@id": "nginx:NginxHTTPServerZone",
+      "@context": {
+        "processing": { "@id": "nginx:processing", "@type": "xsd:integer" },
+        "requests": { "@id": "nginx:requests", "@type": "xsd:integer" },
+        "responses": { "@id": "nginx:responses" },
+        "discarded": { "@id": "nginx:discarded", "@type": "xsd:integer" },
+        "received": { "@id": "nginx:received", "@type": "xsd:integer" },
+        "sent": { "@id": "nginx:sent", "@type": "xsd:integer" },
+        "ssl": { "@id": "nginx:ssl" }
+      }
+    },
+
+    "NginxHTTPLocationZone": {
+      "@id": "nginx:NginxHTTPLocationZone",
+      "@context": {
+        "requests": { "@id": "nginx:requests", "@type": "xsd:integer" },
+        "responses": { "@id": "nginx:responses" },
+        "discarded": { "@id": "nginx:discarded", "@type": "xsd:integer" },
+        "received": { "@id": "nginx:received", "@type": "xsd:integer" },
+        "sent": { "@id": "nginx:sent", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxHTTPCache": {
+      "@id": "nginx:NginxHTTPCache",
+      "@context": {
+        "size": { "@id": "nginx:size", "@type": "xsd:integer" },
+        "max_size": { "@id": "nginx:maxSize", "@type": "xsd:integer" },
+        "cold": { "@id": "nginx:cold", "@type": "xsd:boolean" },
+        "hit": { "@id": "nginx:hit" },
+        "stale": { "@id": "nginx:stale" },
+        "updating": { "@id": "nginx:updating" },
+        "revalidated": { "@id": "nginx:revalidated" },
+        "miss": { "@id": "nginx:miss" },
+        "expired": { "@id": "nginx:expired" },
+        "bypass": { "@id": "nginx:bypass" }
+      }
+    },
+
+    "NginxHTTPLimitConnZone": {
+      "@id": "nginx:NginxHTTPLimitConnZone",
+      "@context": {
+        "passed": { "@id": "nginx:passed", "@type": "xsd:integer" },
+        "rejected": { "@id": "nginx:rejected", "@type": "xsd:integer" },
+        "rejected_dry_run": { "@id": "nginx:rejectedDryRun", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxHTTPLimitReqZone": {
+      "@id": "nginx:NginxHTTPLimitReqZone",
+      "@context": {
+        "passed": { "@id": "nginx:passed", "@type": "xsd:integer" },
+        "delayed": { "@id": "nginx:delayed", "@type": "xsd:integer" },
+        "rejected": { "@id": "nginx:rejected", "@type": "xsd:integer" },
+        "delayed_dry_run": { "@id": "nginx:delayedDryRun", "@type": "xsd:integer" },
+        "rejected_dry_run": { "@id": "nginx:rejectedDryRun", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxHTTPUpstream": {
+      "@id": "nginx:NginxHTTPUpstream",
+      "@context": {
+        "peers": { "@id": "nginx:peers", "@container": "@list" },
+        "keepalive": { "@id": "nginx:keepalive", "@type": "xsd:integer" },
+        "zombies": { "@id": "nginx:zombies", "@type": "xsd:integer" },
+        "zone": { "@id": "nginx:zone", "@type": "xsd:string" },
+        "queue": { "@id": "nginx:queue" }
+      }
+    },
+
+    "NginxHTTPUpstreamPeer": {
+      "@id": "nginx:NginxHTTPUpstreamPeer",
+      "@context": {
+        "id": { "@id": "schema:identifier", "@type": "xsd:integer" },
+        "server": { "@id": "nginx:server", "@type": "xsd:string" },
+        "service": { "@id": "nginx:service", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "backup": { "@id": "nginx:backup", "@type": "xsd:boolean" },
+        "weight": { "@id": "nginx:weight", "@type": "xsd:integer" },
+        "state": { "@id": "nginx:state", "@type": "xsd:string" },
+        "active": { "@id": "nginx:active", "@type": "xsd:integer" },
+        "ssl": { "@id": "nginx:ssl" },
+        "max_conns": { "@id": "nginx:maxConns", "@type": "xsd:integer" },
+        "requests": { "@id": "nginx:requests", "@type": "xsd:integer" },
+        "responses": { "@id": "nginx:responses" },
+        "sent": { "@id": "nginx:sent", "@type": "xsd:integer" },
+        "received": { "@id": "nginx:received", "@type": "xsd:integer" },
+        "fails": { "@id": "nginx:fails", "@type": "xsd:integer" },
+        "unavail": { "@id": "nginx:unavail", "@type": "xsd:integer" },
+        "health_checks": { "@id": "nginx:healthChecks" },
+        "downtime": { "@id": "nginx:downtime", "@type": "xsd:integer" },
+        "downstart": { "@id": "nginx:downstart", "@type": "xsd:dateTime" },
+        "selected": { "@id": "nginx:selected", "@type": "xsd:dateTime" },
+        "header_time": { "@id": "nginx:headerTime", "@type": "xsd:integer" },
+        "response_time": { "@id": "nginx:responseTime", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxHTTPUpstreamConfServer": {
+      "@id": "nginx:NginxHTTPUpstreamConfServer",
+      "@context": {
+        "id": { "@id": "schema:identifier", "@type": "xsd:integer" },
+        "server": { "@id": "nginx:server", "@type": "xsd:string" },
+        "service": { "@id": "nginx:service", "@type": "xsd:string" },
+        "weight": { "@id": "nginx:weight", "@type": "xsd:integer" },
+        "max_conns": { "@id": "nginx:maxConns", "@type": "xsd:integer" },
+        "max_fails": { "@id": "nginx:maxFails", "@type": "xsd:integer" },
+        "fail_timeout": { "@id": "nginx:failTimeout", "@type": "xsd:string" },
+        "slow_start": { "@id": "nginx:slowStart", "@type": "xsd:string" },
+        "route": { "@id": "nginx:route", "@type": "xsd:string" },
+        "backup": { "@id": "nginx:backup", "@type": "xsd:boolean" },
+        "down": { "@id": "nginx:down", "@type": "xsd:boolean" },
+        "drain": { "@id": "nginx:drain", "@type": "xsd:boolean" },
+        "parent": { "@id": "nginx:parent", "@type": "xsd:string" },
+        "host": { "@id": "schema:hostName", "@type": "xsd:string" }
+      }
+    },
+
+    "NginxHTTPKeyvalZone": {
+      "@id": "nginx:NginxHTTPKeyvalZone"
+    },
+
+    "NginxStreamServerZone": {
+      "@id": "nginx:NginxStreamServerZone",
+      "@context": {
+        "processing": { "@id": "nginx:processing", "@type": "xsd:integer" },
+        "connections": { "@id": "nginx:connections", "@type": "xsd:integer" },
+        "sessions": { "@id": "nginx:sessions" },
+        "discarded": { "@id": "nginx:discarded", "@type": "xsd:integer" },
+        "received": { "@id": "nginx:received", "@type": "xsd:integer" },
+        "sent": { "@id": "nginx:sent", "@type": "xsd:integer" },
+        "ssl": { "@id": "nginx:ssl" }
+      }
+    },
+
+    "NginxStreamLimitConnZone": {
+      "@id": "nginx:NginxStreamLimitConnZone",
+      "@context": {
+        "passed": { "@id": "nginx:passed", "@type": "xsd:integer" },
+        "rejected": { "@id": "nginx:rejected", "@type": "xsd:integer" },
+        "rejected_dry_run": { "@id": "nginx:rejectedDryRun", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxStreamUpstream": {
+      "@id": "nginx:NginxStreamUpstream",
+      "@context": {
+        "peers": { "@id": "nginx:peers", "@container": "@list" },
+        "zombies": { "@id": "nginx:zombies", "@type": "xsd:integer" },
+        "zone": { "@id": "nginx:zone", "@type": "xsd:string" }
+      }
+    },
+
+    "NginxStreamUpstreamPeer": {
+      "@id": "nginx:NginxStreamUpstreamPeer",
+      "@context": {
+        "id": { "@id": "schema:identifier", "@type": "xsd:integer" },
+        "server": { "@id": "nginx:server", "@type": "xsd:string" },
+        "service": { "@id": "nginx:service", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "backup": { "@id": "nginx:backup", "@type": "xsd:boolean" },
+        "weight": { "@id": "nginx:weight", "@type": "xsd:integer" },
+        "state": { "@id": "nginx:state", "@type": "xsd:string" },
+        "active": { "@id": "nginx:active", "@type": "xsd:integer" },
+        "ssl": { "@id": "nginx:ssl" },
+        "max_conns": { "@id": "nginx:maxConns", "@type": "xsd:integer" },
+        "connections": { "@id": "nginx:connections", "@type": "xsd:integer" },
+        "connect_time": { "@id": "nginx:connectTime", "@type": "xsd:integer" },
+        "first_byte_time": { "@id": "nginx:firstByteTime", "@type": "xsd:integer" },
+        "response_time": { "@id": "nginx:responseTime", "@type": "xsd:integer" },
+        "sent": { "@id": "nginx:sent", "@type": "xsd:integer" },
+        "received": { "@id": "nginx:received", "@type": "xsd:integer" },
+        "fails": { "@id": "nginx:fails", "@type": "xsd:integer" },
+        "unavail": { "@id": "nginx:unavail", "@type": "xsd:integer" },
+        "health_checks": { "@id": "nginx:healthChecks" },
+        "downtime": { "@id": "nginx:downtime", "@type": "xsd:integer" },
+        "downstart": { "@id": "nginx:downstart", "@type": "xsd:dateTime" },
+        "selected": { "@id": "nginx:selected", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "NginxStreamUpstreamConfServer": {
+      "@id": "nginx:NginxStreamUpstreamConfServer",
+      "@context": {
+        "id": { "@id": "schema:identifier", "@type": "xsd:integer" },
+        "server": { "@id": "nginx:server", "@type": "xsd:string" },
+        "service": { "@id": "nginx:service", "@type": "xsd:string" },
+        "weight": { "@id": "nginx:weight", "@type": "xsd:integer" },
+        "max_conns": { "@id": "nginx:maxConns", "@type": "xsd:integer" },
+        "max_fails": { "@id": "nginx:maxFails", "@type": "xsd:integer" },
+        "fail_timeout": { "@id": "nginx:failTimeout", "@type": "xsd:string" },
+        "slow_start": { "@id": "nginx:slowStart", "@type": "xsd:string" },
+        "backup": { "@id": "nginx:backup", "@type": "xsd:boolean" },
+        "down": { "@id": "nginx:down", "@type": "xsd:boolean" },
+        "parent": { "@id": "nginx:parent", "@type": "xsd:string" },
+        "host": { "@id": "schema:hostName", "@type": "xsd:string" }
+      }
+    },
+
+    "NginxStreamKeyvalZone": {
+      "@id": "nginx:NginxStreamKeyvalZone"
+    },
+
+    "NginxStreamZoneSync": {
+      "@id": "nginx:NginxStreamZoneSync",
+      "@context": {
+        "zones": { "@id": "nginx:zones" },
+        "status": { "@id": "nginx:syncStatus" }
+      }
+    },
+
+    "NginxStreamZoneSyncZone": {
+      "@id": "nginx:NginxStreamZoneSyncZone",
+      "@context": {
+        "records_pending": { "@id": "nginx:recordsPending", "@type": "xsd:integer" },
+        "records_total": { "@id": "nginx:recordsTotal", "@type": "xsd:integer" }
+      }
+    },
+
+    "NginxResolverZone": {
+      "@id": "nginx:NginxResolverZone",
+      "@context": {
+        "requests": { "@id": "nginx:resolverRequests" },
+        "responses": { "@id": "nginx:resolverResponses" }
+      }
+    },
+
+    "NginxLicenseObject": {
+      "@id": "nginx:NginxLicenseObject",
+      "@context": {
+        "eval": { "@id": "nginx:eval", "@type": "xsd:boolean" },
+        "active_till": { "@id": "nginx:activeTill", "@type": "xsd:integer" },
+        "reporting": { "@id": "nginx:reporting" }
+      }
+    },
+
+    "NginxWorker": {
+      "@id": "nginx:NginxWorker",
+      "@context": {
+        "id": { "@id": "schema:identifier", "@type": "xsd:integer" },
+        "pid": { "@id": "nginx:pid", "@type": "xsd:integer" },
+        "connections": { "@id": "nginx:workerConnections" },
+        "http": { "@id": "nginx:workerHttp" }
+      }
+    },
+
+    "NginxError": {
+      "@id": "nginx:NginxError",
+      "@context": {
+        "error": { "@id": "nginx:error" },
+        "request_id": { "@id": "nginx:requestId", "@type": "xsd:string" },
+        "href": { "@id": "schema:url", "@type": "xsd:string" }
+      }
+    }
+  }
+}

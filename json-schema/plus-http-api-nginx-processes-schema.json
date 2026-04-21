@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-processes-schema.json",
+  "title": "Processes",
+  "description": "NginxProcesses schema from NGINX Plus REST API",
+  "type": "object",
+  "properties": {
+    "respawned": {
+      "type": "integer",
+      "description": "The total number of abnormally terminated and respawned child processes.",
+      "example": 0
+    }
+  },
+  "example": {
+    "respawned": 0
+  }
+}

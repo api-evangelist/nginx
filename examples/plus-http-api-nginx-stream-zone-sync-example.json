@@ -1,0 +1,19 @@
+{
+  "zones": {
+    "rate_limit_zone": {
+      "records_pending": 5,
+      "records_total": 12450
+    },
+    "session_zone": {
+      "records_pending": 0,
+      "records_total": 8921
+    }
+  },
+  "status": {
+    "bytes_in": 98745210,
+    "msgs_in": 45210,
+    "msgs_out": 45198,
+    "bytes_out": 97210540,
+    "nodes_online": 3
+  }
+}

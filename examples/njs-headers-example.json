@@ -1,0 +1,6 @@
+{
+  "Content-Type": "application/json",
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIs...",
+  "X-Request-ID": "req-abc-12345",
+  "Accept": "*/*"
+}

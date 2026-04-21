@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-connections-schema.json",
+  "title": "Connections",
+  "description": "The number of accepted, dropped, active, and idle connections.\n",
+  "type": "object",
+  "properties": {
+    "accepted": {
+      "type": "integer",
+      "description": "The total number of accepted client connections.",
+      "example": 4968119
+    },
+    "dropped": {
+      "type": "integer",
+      "description": "The total number of dropped client connections.",
+      "example": 0
+    },
+    "active": {
+      "type": "integer",
+      "description": "The current number of active client connections.",
+      "example": 5
+    },
+    "idle": {
+      "type": "integer",
+      "description": "The current number of idle client connections.",
+      "example": 117
+    }
+  },
+  "example": {
+    "accepted": 4968119,
+    "dropped": 0,
+    "active": 5,
+    "idle": 117
+  }
+}

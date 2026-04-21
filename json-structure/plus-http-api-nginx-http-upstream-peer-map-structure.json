@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Upstream Servers",
+  "description": "An array of HTTP\n<a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream\">upstream servers</a>.\n",
+  "type": "array",
+  "values": {
+    "$ref": "#/definitions/NginxHTTPUpstreamPeer"
+  }
+}

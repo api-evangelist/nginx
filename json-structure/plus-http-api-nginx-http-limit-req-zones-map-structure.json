@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP limit_reqs",
+  "description": "Status data for all HTTP\n<a href=\"https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone\">limit_req zones</a>.\n",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/NginxHTTPLimitReqZone"
+  }
+}

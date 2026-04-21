@@ -1,0 +1,11 @@
+[
+  "nginx",
+  "processes",
+  "connections",
+  "slabs",
+  "http",
+  "stream",
+  "ssl",
+  "resolvers",
+  "workers"
+]

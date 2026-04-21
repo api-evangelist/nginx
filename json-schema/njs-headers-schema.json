@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/njs-headers-schema.json",
+  "title": "Headers",
+  "description": "The Headers interface of the Fetch API (since 0.5.1). Represents HTTP headers and provides methods to manipulate them.",
+  "type": "object",
+  "properties": null,
+  "additionalProperties": {
+    "type": "string"
+  }
+}

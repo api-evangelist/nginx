@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Response",
+  "description": "The Response interface of the Fetch API (since 0.5.1). Returned by ngx.fetch() as a resolved Promise.",
+  "type": "object",
+  "members": {
+    "ok": {
+      "description": "True if the response status is 200-299.",
+      "type": "boolean",
+      "readOnly": true,
+      "example": true
+    },
+    "redirected": {
+      "description": "True if the response is the result of a redirect.",
+      "type": "boolean",
+      "readOnly": true,
+      "example": false
+    },
+    "status": {
+      "description": "HTTP status code of the response.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 200
+    },
+    "statusText": {
+      "description": "Status message corresponding to the status code.",
+      "type": "string",
+      "readOnly": true,
+      "example": "OK"
+    },
+    "headers": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Headers"
+        }
+      ],
+      "readOnly": true
+    },
+    "bodyUsed": {
+      "description": "True if the body has already been read.",
+      "type": "boolean",
+      "readOnly": true,
+      "example": false
+    },
+    "type": {
+      "description": "Type of the response.",
+      "type": "string",
+      "readOnly": true,
+      "example": "string"
+    },
+    "url": {
+      "description": "URL of the response.",
+      "type": "string",
+      "readOnly": true,
+      "example": "http://upstream.example.com/api"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": 0,
+  "server": "10.0.0.10:3306",
+  "service": "mysql",
+  "weight": 1,
+  "max_conns": 100,
+  "max_fails": 3,
+  "fail_timeout": "10s",
+  "slow_start": "0s",
+  "backup": false,
+  "down": false,
+  "parent": "0",
+  "host": "db1.example.com"
+}

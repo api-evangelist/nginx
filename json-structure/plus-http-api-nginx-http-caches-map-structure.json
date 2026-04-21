@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Caches",
+  "description": "Status information of all HTTP caches configured by \n<a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path\">proxy_cache_path</a>\nand other \u201c<code>*_cache_path</code>\u201d directives.\n",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/NginxHTTPCache"
+  },
+  "example": {
+    "http-cache": {
+      "size": 530915328,
+      "max_size": 536870912,
+      "cold": false,
+      "hit": {
+        "responses": 254032,
+        "bytes": 6685627875
+      },
+      "stale": {
+        "responses": 0,
+        "bytes": 0
+      },
+      "updating": {
+        "responses": 0,
+        "bytes": 0
+      },
+      "revalidated": {
+        "responses": 0,
+        "bytes": 0
+      },
+      "miss": {
+        "responses": 1619201,
+        "bytes": 53841943822
+      },
+      "expired": {
+        "responses": 45859,
+        "bytes": 1656847080,
+        "responses_written": 44992,
+        "bytes_written": 1641825173
+      },
+      "bypass": {
+        "responses": 200187,
+        "bytes": 5510647548,
+        "responses_written": 200173,
+        "bytes_written": 44992
+      }
+    },
+    "frontend-cache": {
+      "size": 530915328,
+      "max_size": 536870912,
+      "cold": false,
+      "hit": {
+        "responses": 254032,
+        "bytes": 6685627875
+      },
+      "stale": {
+        "responses": 0,
+        "bytes": 0
+      },
+      "updating": {
+        "responses": 0,
+        "bytes": 0
+      },
+      "revalidated": {
+        "responses": 0,
+        "bytes": 0
+      },
+      "miss": {
+        "responses": 1619201,
+        "bytes": 53841943822
+      },
+      "expired": {
+        "responses": 45859,
+        "bytes": 1656847080,
+        "responses_written": 44992,
+        "bytes_written": 1641825173
+      },
+      "bypass": {
+        "responses": 200187,
+        "bytes": 5510647548,
+        "responses_written": 200173,
+        "bytes_written": 44992
+      }
+    }
+  }
+}

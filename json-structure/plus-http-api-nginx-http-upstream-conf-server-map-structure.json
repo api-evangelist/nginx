@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Upstream Servers",
+  "description": "An array of HTTP upstream servers for dynamic configuration.",
+  "type": "array",
+  "values": {
+    "$ref": "#/definitions/NginxHTTPUpstreamConfServer"
+  },
+  "example": [
+    {
+      "id": 0,
+      "server": "10.0.0.1:8088",
+      "weight": 1,
+      "max_conns": 0,
+      "max_fails": 0,
+      "fail_timeout": "10s",
+      "slow_start": "10s",
+      "route": "",
+      "backup": false,
+      "down": false
+    },
+    {
+      "id": 1,
+      "server": "10.0.0.1:8089",
+      "weight": 4,
+      "max_conns": 0,
+      "max_fails": 0,
+      "fail_timeout": "10s",
+      "slow_start": "10s",
+      "route": "",
+      "backup": true,
+      "down": true
+    }
+  ]
+}

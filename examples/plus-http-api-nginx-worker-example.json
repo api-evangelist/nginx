@@ -1,0 +1,16 @@
+{
+  "id": 0,
+  "pid": 4521,
+  "connections": {
+    "accepted": 1245032,
+    "dropped": 3,
+    "active": 2,
+    "idle": 29
+  },
+  "http": {
+    "requests": {
+      "total": 2468512,
+      "current": 4
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "processing": 2,
+  "connections": 845210,
+  "sessions": {
+    "2xx": 832100,
+    "4xx": 8450,
+    "5xx": 120,
+    "total": 840670
+  },
+  "discarded": 15,
+  "received": 180157219,
+  "sent": 20183175459,
+  "ssl": {
+    "handshakes": 79572,
+    "handshakes_failed": 21025,
+    "session_reuses": 15762,
+    "no_common_protocol": 4,
+    "no_common_cipher": 2,
+    "handshake_timeout": 0,
+    "peer_rejected_cert": 0,
+    "verify_failures": {
+      "no_cert": 0,
+      "expired_cert": 2,
+      "revoked_cert": 1,
+      "other": 1
+    }
+  }
+}

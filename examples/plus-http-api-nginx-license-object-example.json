@@ -1,0 +1,10 @@
+{
+  "eval": false,
+  "active_till": 1766275200,
+  "reporting": {
+    "healthy": true,
+    "fails": 0,
+    "grace": 0,
+    "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  }
+}

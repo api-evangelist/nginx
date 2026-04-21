@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-stream-upstream-conf-server-schema.json",
+  "title": "Stream Upstream Server",
+  "description": "Dynamically configurable parameters of a stream upstream\n<a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#server\">server</a>:\n",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The ID of the stream upstream server. The ID is assigned automatically and cannot be changed.",
+      "readOnly": true,
+      "example": 0
+    },
+    "server": {
+      "type": "string",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#server\">address</a> parameter of the stream upstream server. When adding a server, it is possible to specify it as a domain name. In this case, changes of the IP addresses that correspond to a domain name will be monitored and automatically applied to the upstream configuration without the need of restarting nginx. This requires the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_core_module.html#resolver\">resolver</a> directive in the \u201c<code>stream</code>\u201d block. See also the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#resolve\">resolve</a> parameter of the stream upstream server.",
+      "example": "example-server"
+    },
+    "service": {
+      "type": "string",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#service\">service</a> parameter of the stream upstream server. This parameter cannot be changed.",
+      "readOnly": true,
+      "example": "example-service"
+    },
+    "weight": {
+      "type": "integer",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#weight\">weight</a> parameter of the stream upstream server.",
+      "example": 0
+    },
+    "max_conns": {
+      "type": "integer",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#max_conns\">max_conns</a> parameter of the stream upstream server.",
+      "example": 0
+    },
+    "max_fails": {
+      "type": "integer",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#max_fails\">max_fails</a> parameter of the stream upstream server.",
+      "example": 0
+    },
+    "fail_timeout": {
+      "type": "string",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#fail_timeout\">fail_timeout</a> parameter of the stream upstream server.",
+      "example": "example-fail_timeout"
+    },
+    "slow_start": {
+      "type": "string",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#slow_start\">slow_start</a> parameter of the stream upstream server.",
+      "example": "example-slow_start"
+    },
+    "backup": {
+      "type": "boolean",
+      "description": "When <code>true</code>, adds a <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#backup\">backup</a> server. This parameter cannot be changed.",
+      "readOnly": true,
+      "example": false
+    },
+    "down": {
+      "type": "boolean",
+      "description": "Same as the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#down\">down</a> parameter of the stream upstream server.",
+      "example": false
+    },
+    "parent": {
+      "type": "string",
+      "description": "Parent server ID of the resolved server. The ID is assigned automatically and cannot be changed.",
+      "readOnly": true,
+      "example": "example-parent"
+    },
+    "host": {
+      "type": "string",
+      "description": "Hostname of the resolved server. The hostname is assigned automatically and cannot be changed.",
+      "readOnly": true,
+      "example": "example-host"
+    }
+  },
+  "example": {
+    "id": 0,
+    "server": "10.0.0.1:12348",
+    "weight": 1,
+    "max_conns": 0,
+    "max_fails": 1,
+    "fail_timeout": "10s",
+    "slow_start": 0,
+    "backup": false,
+    "down": false
+  }
+}

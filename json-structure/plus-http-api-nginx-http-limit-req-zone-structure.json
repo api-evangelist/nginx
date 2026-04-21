@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Requests Rate Limiting",
+  "type": "object",
+  "members": {
+    "passed": {
+      "description": "The total number of requests that were neither limited nor accounted as limited.",
+      "type": "int32",
+      "example": 0
+    },
+    "delayed": {
+      "description": "The total number of requests that were delayed.",
+      "type": "int32",
+      "example": 0
+    },
+    "rejected": {
+      "description": "The total number of requests that were rejected.",
+      "type": "int32",
+      "example": 0
+    },
+    "delayed_dry_run": {
+      "description": "The total number of requests accounted as delayed in the <a href=\"https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_dry_run\">dry run</a> mode.",
+      "type": "int32",
+      "example": 0
+    },
+    "rejected_dry_run": {
+      "description": "The total number of requests accounted as rejected in the <a href=\"https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_dry_run\">dry run</a> mode.",
+      "type": "int32",
+      "example": 0
+    }
+  },
+  "example": {
+    "passed": 15,
+    "delayed": 4,
+    "rejected": 0,
+    "delayed_dry_run": 1,
+    "rejected_dry_run": 2
+  }
+}

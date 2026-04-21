@@ -1,0 +1,109 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "nginx": "https://api-evangelist.github.io/nginx/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "HttpRequest": {
+      "@id": "nginx:HttpRequest",
+      "@context": {
+        "args": { "@id": "nginx:args" },
+        "headersIn": { "@id": "nginx:headersIn" },
+        "headersOut": { "@id": "nginx:headersOut" },
+        "httpVersion": { "@id": "nginx:httpVersion", "@type": "xsd:string" },
+        "internal": { "@id": "nginx:internal", "@type": "xsd:boolean" },
+        "method": { "@id": "schema:httpMethod", "@type": "xsd:string" },
+        "remoteAddress": { "@id": "nginx:remoteAddress", "@type": "xsd:string" },
+        "requestBuffer": { "@id": "nginx:requestBuffer", "@type": "xsd:base64Binary" },
+        "requestText": { "@id": "nginx:requestText", "@type": "xsd:string" },
+        "responseBuffer": { "@id": "nginx:responseBuffer", "@type": "xsd:base64Binary" },
+        "responseText": { "@id": "nginx:responseText", "@type": "xsd:string" },
+        "rawHeadersIn": { "@id": "nginx:rawHeadersIn" },
+        "rawHeadersOut": { "@id": "nginx:rawHeadersOut" },
+        "status": { "@id": "nginx:httpStatus", "@type": "xsd:integer" },
+        "uri": { "@id": "schema:url", "@type": "xsd:string" },
+        "variables": { "@id": "nginx:variables" },
+        "rawVariables": { "@id": "nginx:rawVariables" },
+        "parent": { "@id": "nginx:parentRequest", "@type": "@id" }
+      }
+    },
+
+    "StreamSession": {
+      "@id": "nginx:StreamSession",
+      "@context": {
+        "remoteAddress": { "@id": "nginx:remoteAddress", "@type": "xsd:string" },
+        "status": { "@id": "nginx:sessionStatus", "@type": "xsd:integer" },
+        "variables": { "@id": "nginx:variables" },
+        "rawVariables": { "@id": "nginx:rawVariables" }
+      }
+    },
+
+    "PeriodicSession": {
+      "@id": "nginx:PeriodicSession",
+      "@context": {
+        "variables": { "@id": "nginx:variables" },
+        "rawVariables": { "@id": "nginx:rawVariables" }
+      }
+    },
+
+    "Headers": {
+      "@id": "nginx:Headers"
+    },
+
+    "Request": {
+      "@id": "nginx:FetchRequest",
+      "@context": {
+        "url": { "@id": "schema:url", "@type": "xsd:string" },
+        "method": { "@id": "schema:httpMethod", "@type": "xsd:string" },
+        "headers": { "@id": "nginx:headers", "@type": "@id" },
+        "body": { "@id": "nginx:body", "@type": "xsd:string" },
+        "bodyUsed": { "@id": "nginx:bodyUsed", "@type": "xsd:boolean" },
+        "cache": { "@id": "nginx:cache", "@type": "xsd:string" },
+        "credentials": { "@id": "nginx:credentials", "@type": "xsd:string" },
+        "mode": { "@id": "nginx:mode", "@type": "xsd:string" }
+      }
+    },
+
+    "Response": {
+      "@id": "nginx:FetchResponse",
+      "@context": {
+        "ok": { "@id": "nginx:ok", "@type": "xsd:boolean" },
+        "redirected": { "@id": "nginx:redirected", "@type": "xsd:boolean" },
+        "status": { "@id": "nginx:httpStatus", "@type": "xsd:integer" },
+        "statusText": { "@id": "nginx:statusText", "@type": "xsd:string" },
+        "headers": { "@id": "nginx:headers", "@type": "@id" },
+        "bodyUsed": { "@id": "nginx:bodyUsed", "@type": "xsd:boolean" },
+        "type": { "@id": "nginx:responseType", "@type": "xsd:string" },
+        "url": { "@id": "schema:url", "@type": "xsd:string" }
+      }
+    },
+
+    "Ngx": {
+      "@id": "nginx:Ngx",
+      "@context": {
+        "build": { "@id": "nginx:build", "@type": "xsd:string" },
+        "conf_file_path": { "@id": "nginx:confFilePath", "@type": "xsd:string" },
+        "conf_prefix": { "@id": "nginx:confPrefix", "@type": "xsd:string" },
+        "error_log_path": { "@id": "nginx:errorLogPath", "@type": "xsd:string" },
+        "prefix": { "@id": "nginx:prefix", "@type": "xsd:string" },
+        "version": { "@id": "schema:softwareVersion", "@type": "xsd:string" },
+        "version_number": { "@id": "nginx:versionNumber", "@type": "xsd:integer" },
+        "worker_id": { "@id": "nginx:workerId", "@type": "xsd:integer" }
+      }
+    },
+
+    "NgxShared": {
+      "@id": "nginx:NgxShared"
+    },
+
+    "SharedDict": {
+      "@id": "nginx:SharedDict",
+      "@context": {
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "type": { "@id": "nginx:dictType", "@type": "xsd:string" }
+      }
+    }
+  }
+}

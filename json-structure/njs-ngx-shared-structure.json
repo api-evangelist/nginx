@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "NgxShared",
+  "description": "The ngx.shared object provides access to shared memory zones declared with js_shared_dict_zone.",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/SharedDict"
+  }
+}

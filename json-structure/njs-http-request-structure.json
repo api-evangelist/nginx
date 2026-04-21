@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HttpRequest",
+  "description": "The HTTP request object (r) available in ngx_http_js_module handlers. Provides access to client request data and methods to produce a response.",
+  "type": "object",
+  "members": {
+    "args": {
+      "description": "Request arguments object parsed from the query string. Duplicate keys are returned as arrays.",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "values": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "readOnly": true,
+      "example": {}
+    },
+    "headersIn": {
+      "description": "Incoming request headers object.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "example": {}
+    },
+    "headersOut": {
+      "description": "Outgoing response headers object (writable before headers are sent).",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "values": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "example": {}
+    },
+    "httpVersion": {
+      "description": "HTTP version of the request.",
+      "type": "string",
+      "readOnly": true,
+      "example": "1.1"
+    },
+    "internal": {
+      "description": "True if the request is to an internal location.",
+      "type": "boolean",
+      "readOnly": true,
+      "example": false
+    },
+    "method": {
+      "description": "HTTP method (GET, POST, etc.).",
+      "type": "string",
+      "readOnly": true,
+      "example": "GET"
+    },
+    "remoteAddress": {
+      "description": "Client IP address.",
+      "type": "string",
+      "readOnly": true,
+      "example": "192.168.1.100"
+    },
+    "requestBuffer": {
+      "description": "Client request body as a Buffer (since 0.5.0).",
+      "type": "string",
+      "readOnly": true,
+      "example": "AQID"
+    },
+    "requestText": {
+      "description": "Client request body as a string.",
+      "type": "string",
+      "readOnly": true,
+      "example": "{\"action\":\"process\"}"
+    },
+    "responseBuffer": {
+      "description": "Subrequest response body as a Buffer.",
+      "type": "string",
+      "readOnly": true,
+      "example": "AQID"
+    },
+    "responseText": {
+      "description": "Subrequest response body as a string.",
+      "type": "string",
+      "readOnly": true,
+      "example": "{\"result\":\"success\"}"
+    },
+    "rawHeadersIn": {
+      "description": "Raw incoming headers as an array of [name, value] pairs.",
+      "type": "array",
+      "values": {
+        "type": "array",
+        "values": {
+          "type": "string"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "readOnly": true,
+      "example": []
+    },
+    "rawHeadersOut": {
+      "description": "Raw outgoing headers as an array of [name, value] pairs.",
+      "type": "array",
+      "values": {
+        "type": "array",
+        "values": {
+          "type": "string"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "readOnly": true,
+      "example": []
+    },
+    "status": {
+      "description": "HTTP response status code (writable).",
+      "type": "int32",
+      "example": 200
+    },
+    "uri": {
+      "description": "Current URI of the request.",
+      "type": "string",
+      "readOnly": true,
+      "example": "/api/v1/resource"
+    },
+    "variables": {
+      "description": "NGINX variables object (writable for variables declared in config).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {}
+    },
+    "rawVariables": {
+      "description": "NGINX variables as Buffers (writable, since 0.5.0).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {}
+    },
+    "parent": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/HttpRequest"
+        }
+      ],
+      "description": "Reference to the parent request object (for subrequests).",
+      "readOnly": true
+    }
+  }
+}

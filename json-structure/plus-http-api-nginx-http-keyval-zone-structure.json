@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Keyval Shared Memory Zone",
+  "description": "Contents of an HTTP keyval shared memory zone\nwhen using the GET method.\n",
+  "type": "object",
+  "example": {
+    "key1": "value1",
+    "key2": "value2",
+    "key3": "value3"
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Upstream Server",
+  "type": "object",
+  "members": {
+    "id": {
+      "description": "The ID of the server.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    },
+    "server": {
+      "description": "An  <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server\">address</a> of the server.",
+      "type": "string",
+      "example": "example-server"
+    },
+    "service": {
+      "description": "The <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#service\">service</a> parameter value of the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server\">server</a> directive.",
+      "type": "string",
+      "example": "example-service"
+    },
+    "name": {
+      "description": "The name of the server specified in the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server\">server</a> directive.",
+      "type": "string",
+      "readOnly": true,
+      "example": "my_shared_zone"
+    },
+    "backup": {
+      "description": "A boolean value indicating whether the server is a <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#backup\">backup</a> server.",
+      "type": "boolean",
+      "example": false
+    },
+    "weight": {
+      "description": "<a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#weight\">Weight</a> of the server.",
+      "type": "int32",
+      "example": 0
+    },
+    "state": {
+      "description": "Current state, which may be one of \u201c<code>up</code>\u201d, \u201c<code>draining</code>\u201d, \u201c<code>down</code>\u201d, \u201c<code>unavail</code>\u201d, \u201c<code>checking</code>\u201d, and \u201c<code>unhealthy</code>\u201d.",
+      "type": "string",
+      "enum": [
+        "up",
+        "draining",
+        "down",
+        "unavail",
+        "checking",
+        "unhealthy"
+      ],
+      "example": "example-state"
+    },
+    "active": {
+      "description": "The current number of active connections.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 5
+    },
+    "ssl": {
+      "type": "object",
+      "members": {
+        "handshakes": {
+          "description": "The total number of successful SSL handshakes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 79572
+        },
+        "handshakes_failed": {
+          "description": "The total number of failed SSL handshakes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 21025
+        },
+        "session_reuses": {
+          "description": "The total number of session reuses during SSL handshake.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 15762
+        },
+        "no_common_protocol": {
+          "description": "The number of SSL handshakes failed because of no common protocol.",
+          "type": "int32",
+          "example": 4
+        },
+        "handshake_timeout": {
+          "description": "The number of SSL handshakes failed because of a timeout.",
+          "type": "int32",
+          "example": 0
+        },
+        "peer_rejected_cert": {
+          "description": "The number of failed SSL handshakes when nginx presented the certificate to the upstream server but it was rejected with a corresponding alert message.",
+          "type": "int32",
+          "example": 0
+        },
+        "verify_failures": {
+          "description": "SSL certificate verification errors",
+          "type": "object",
+          "members": {
+            "expired_cert": {
+              "description": "An expired or not yet valid certificate was presented by an upstream server.",
+              "type": "int32",
+              "example": 2
+            },
+            "revoked_cert": {
+              "description": "A revoked certificate was presented by an upstream server.",
+              "type": "int32",
+              "example": 1
+            },
+            "hostname_mismatch": {
+              "description": "Server's certificate doesn't match the hostname.",
+              "type": "int32",
+              "example": 2
+            },
+            "other": {
+              "description": "Other SSL certificate verification errors.",
+              "type": "int32",
+              "example": 1
+            }
+          },
+          "example": {}
+        }
+      },
+      "readOnly": true,
+      "example": {}
+    },
+    "max_conns": {
+      "description": "The <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_conns\">max_conns</a> limit for the server.",
+      "type": "int32",
+      "example": 0
+    },
+    "requests": {
+      "description": "The total number of client requests forwarded to this server.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 31070465
+    },
+    "responses": {
+      "type": "object",
+      "members": {
+        "1xx": {
+          "description": "The number of responses with \u201c<code>1xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "2xx": {
+          "description": "The number of responses with \u201c<code>2xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "3xx": {
+          "description": "The number of responses with \u201c<code>3xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "4xx": {
+          "description": "The number of responses with \u201c<code>4xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "5xx": {
+          "description": "The number of responses with \u201c<code>5xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "codes": {
+          "description": "The number of responses per each status code.",
+          "type": "object",
+          "members": {
+            "codeNumber": {
+              "description": "The number of responses with this particular status code.",
+              "type": "int32",
+              "readOnly": true,
+              "example": 0
+            }
+          },
+          "readOnly": true,
+          "example": {}
+        },
+        "total": {
+          "description": "The total number of responses obtained from this server.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 98765
+        }
+      },
+      "readOnly": true,
+      "example": 1234567
+    },
+    "sent": {
+      "description": "The total number of bytes sent to this server.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 20183175459
+    },
+    "received": {
+      "description": "The total number of bytes received from this server.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 180157219
+    },
+    "fails": {
+      "description": "The total number of unsuccessful attempts to communicate with the server.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    },
+    "unavail": {
+      "description": "How many times the server became unavailable for client requests (state \u201c<code>unavail</code>\u201d) due to the number of unsuccessful attempts reaching the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_fails\">max_fails</a> threshold.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    },
+    "health_checks": {
+      "type": "object",
+      "members": {
+        "checks": {
+          "description": "The total number of <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_hc_module.html#health_check\">health check</a> requests made.",
+          "type": "int32",
+          "example": 0
+        },
+        "fails": {
+          "description": "The number of failed health checks.",
+          "type": "int32",
+          "example": 0
+        },
+        "unhealthy": {
+          "description": "How many times the server became unhealthy (state \u201c<code>unhealthy</code>\u201d).",
+          "type": "int32",
+          "example": 0
+        },
+        "last_passed": {
+          "description": "Boolean indicating if the last health check request was successful and passed <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_hc_module.html#match\">tests</a>.",
+          "type": "boolean",
+          "example": false
+        }
+      },
+      "readOnly": true,
+      "example": 0
+    },
+    "downtime": {
+      "description": "Total time the server was in the \u201c<code>unavail</code>\u201d, \u201c<code>checking</code>\u201d, and \u201c<code>unhealthy</code>\u201d states.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    },
+    "downstart": {
+      "description": "The time when the server became \u201c<code>unavail</code>\u201d, \u201c<code>checking</code>\u201d, or \u201c<code>unhealthy</code>\u201d, in the ISO 8601 format with millisecond resolution.",
+      "type": "string",
+      "readOnly": true,
+      "example": "2026-04-21T10:30:00.000Z"
+    },
+    "selected": {
+      "description": "The time when the server was last selected to process a request, in the ISO 8601 format with millisecond resolution.",
+      "type": "string",
+      "readOnly": true,
+      "example": "2026-04-21T10:30:00.000Z"
+    },
+    "header_time": {
+      "description": "The average time to get the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#var_upstream_header_time\">response header</a> from the server.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    },
+    "response_time": {
+      "description": "The average time to get the <a href=\"https://nginx.org/en/docs/http/ngx_http_upstream_module.html#var_upstream_response_time\">full response</a> from the server.",
+      "type": "int32",
+      "readOnly": true,
+      "example": 0
+    }
+  }
+}

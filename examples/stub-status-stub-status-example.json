@@ -1,0 +1,9 @@
+{
+  "active_connections": 291,
+  "accepts": 16630948,
+  "handled": 16630948,
+  "requests": 31070465,
+  "reading": 6,
+  "writing": 179,
+  "waiting": 106
+}

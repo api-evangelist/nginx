@@ -1,0 +1,13 @@
+{
+  "url": "http://upstream.example.com/api/v1/data",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer token123"
+  },
+  "body": "{\"action\":\"process\",\"id\":42}",
+  "bodyUsed": false,
+  "cache": "no-cache",
+  "credentials": "same-origin",
+  "mode": "cors"
+}

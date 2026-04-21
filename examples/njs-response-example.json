@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "redirected": false,
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Request-ID": "resp-xyz-67890"
+  },
+  "bodyUsed": false,
+  "type": "basic",
+  "url": "http://upstream.example.com/api/v1/data"
+}

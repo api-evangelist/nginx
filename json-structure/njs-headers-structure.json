@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Headers",
+  "description": "The Headers interface of the Fetch API (since 0.5.1). Represents HTTP headers and provides methods to manipulate them.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "string"
+  }
+}

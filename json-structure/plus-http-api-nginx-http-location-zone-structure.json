@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Location Zone",
+  "type": "object",
+  "members": {
+    "requests": {
+      "description": "The total number of client requests received from clients.",
+      "type": "int32",
+      "example": 31070465
+    },
+    "responses": {
+      "description": "The total number of responses sent to clients, the number of responses with status codes \u201c<code>1xx</code>\u201d, \u201c<code>2xx</code>\u201d, \u201c<code>3xx</code>\u201d, \u201c<code>4xx</code>\u201d, and \u201c<code>5xx</code>\u201d, and the number of responses per each status code.",
+      "type": "object",
+      "members": {
+        "1xx": {
+          "description": "The number of responses with \u201c<code>1xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "2xx": {
+          "description": "The number of responses with \u201c<code>2xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "3xx": {
+          "description": "The number of responses with \u201c<code>3xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "4xx": {
+          "description": "The number of responses with \u201c<code>4xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "5xx": {
+          "description": "The number of responses with \u201c<code>5xx</code>\u201d status codes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 0
+        },
+        "codes": {
+          "description": "The number of responses per each status code.",
+          "type": "object",
+          "members": {
+            "codeNumber": {
+              "description": "The number of responses with this particular status code.",
+              "type": "int32",
+              "readOnly": true,
+              "example": 0
+            }
+          },
+          "readOnly": true,
+          "example": {}
+        },
+        "total": {
+          "description": "The total number of responses sent to clients.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 98765
+        }
+      },
+      "readOnly": true,
+      "example": 1234567
+    },
+    "discarded": {
+      "description": "The total number of requests completed without sending a response.",
+      "type": "int32",
+      "example": 0
+    },
+    "received": {
+      "description": "The total number of bytes received from clients.",
+      "type": "int32",
+      "example": 180157219
+    },
+    "sent": {
+      "description": "The total number of bytes sent to clients.",
+      "type": "int32",
+      "example": 20183175459
+    }
+  },
+  "example": {
+    "requests": 706690,
+    "responses": {
+      "1xx": 0,
+      "2xx": 699482,
+      "3xx": 4522,
+      "4xx": 907,
+      "5xx": 266,
+      "codes": {
+        "200": 112674,
+        "301": 4522,
+        "404": 2504,
+        "503": 266
+      },
+      "total": 705177
+    },
+    "discarded": 1513,
+    "received": 172711587,
+    "sent": 19415530115
+  }
+}

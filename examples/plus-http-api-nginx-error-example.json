@@ -1,0 +1,9 @@
+{
+  "error": {
+    "status": 404,
+    "text": "Upstream not found",
+    "code": "UpstreamNotFound"
+  },
+  "request_id": "b3e2f1a4c5d6e7f8",
+  "href": "https://nginx.org/en/docs/http/ngx_http_api_module.html"
+}

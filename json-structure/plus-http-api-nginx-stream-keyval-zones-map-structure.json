@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream Keyval Shared Memory Zones",
+  "description": "Contents of all stream keyval shared memory zones.\n",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/NginxStreamKeyvalZone"
+  },
+  "example": {
+    "keyval_zone": {
+      "key1": "value1",
+      "key2": "value2",
+      "key3": "value3"
+    },
+    "one": {
+      "arg1": "value1",
+      "arg2": "value2",
+      "arg3": "value3"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream Upstream",
+  "type": "object",
+  "members": {
+    "peers": {
+      "$ref": "#/definitions/NginxStreamUpstreamPeerMap"
+    },
+    "zombies": {
+      "description": "The current number of servers removed from the group but still processing active client connections.",
+      "type": "int32",
+      "example": 0
+    },
+    "zone": {
+      "description": "The name of the shared memory <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#zone\">zone</a> that keeps the group\u2019s configuration and run-time state.",
+      "type": "string",
+      "example": "example-zone"
+    }
+  },
+  "example": {
+    "dns": {
+      "peers": [
+        {
+          "id": 0,
+          "server": "10.0.0.1:12347",
+          "name": "10.0.0.1:12347",
+          "backup": false,
+          "weight": 5,
+          "state": "up",
+          "active": 0,
+          "ssl": {
+            "handshakes": 200,
+            "handshakes_failed": 4,
+            "session_reuses": 189,
+            "no_common_protocol": 4,
+            "handshake_timeout": 0,
+            "peer_rejected_cert": 0,
+            "verify_failures": {
+              "expired_cert": 2,
+              "revoked_cert": 1,
+              "hostname_mismatch": 2,
+              "other": 1
+            }
+          },
+          "max_conns": 50,
+          "connections": 667231,
+          "sent": 251946292,
+          "received": 19222475454,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26214,
+            "fails": 0,
+            "unhealthy": 0,
+            "last_passed": true
+          },
+          "downtime": 0,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        },
+        {
+          "id": 1,
+          "server": "10.0.0.1:12348",
+          "name": "10.0.0.1:12348",
+          "backup": true,
+          "weight": 1,
+          "state": "unhealthy",
+          "active": 0,
+          "max_conns": 50,
+          "connections": 0,
+          "sent": 0,
+          "received": 0,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26284,
+            "fails": 26284,
+            "unhealthy": 1,
+            "last_passed": false
+          },
+          "downtime": 262925617,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        }
+      ],
+      "zombies": 0,
+      "zone": "dns"
+    }
+  }
+}

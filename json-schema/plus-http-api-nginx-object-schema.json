@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-object-schema.json",
+  "title": "nginx",
+  "description": "General information about nginx:\n",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Version of nginx.",
+      "example": "1.25.3"
+    },
+    "build": {
+      "type": "string",
+      "description": "Name of nginx build.",
+      "example": "nginx-plus-r32"
+    },
+    "address": {
+      "type": "string",
+      "description": "The address of the server that accepted status request.",
+      "example": "10.0.0.1"
+    },
+    "generation": {
+      "type": "integer",
+      "description": "The total number of configuration <a href=\"https://nginx.org/en/docs/control.html#reconfiguration\">reloads</a>.",
+      "example": 8
+    },
+    "load_timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time of the last reload of configuration, in the ISO 8601 format with millisecond resolution.",
+      "example": "2026-04-21T10:30:00.000Z"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Current time in the ISO 8601 format with millisecond resolution.",
+      "example": "2026-04-21T10:30:00.000Z"
+    },
+    "pid": {
+      "type": "integer",
+      "description": "The ID of the worker process that handled status request.",
+      "example": 4521
+    },
+    "ppid": {
+      "type": "integer",
+      "description": "The ID of the master process that started the <a href=\"https://nginx.org/en/docs/http/ngx_http_status_module.html#pid\">worker process</a>.",
+      "example": 4519
+    }
+  },
+  "example": {
+    "nginx": {
+      "version": "1.21.6",
+      "build": "nginx-plus-r27",
+      "address": "206.251.255.64",
+      "generation": 6,
+      "load_timestamp": "2022-06-28T11:15:44.467000+00:00",
+      "timestamp": "2022-06-28T09:26:07.305000+00:00",
+      "pid": 32212,
+      "ppid": 32210
+    }
+  }
+}

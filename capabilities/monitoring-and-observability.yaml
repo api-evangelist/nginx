@@ -1,0 +1,322 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "NGINX Monitoring And Observability"
+  description: >-
+    Workflow capability for monitoring NGINX instances combining Plus HTTP API
+    detailed statistics with Stub Status basic metrics. Provides comprehensive
+    observability across connections, HTTP requests, server zones, location
+    zones, caches, rate limiting, and upstream health.
+  tags:
+    - NGINX
+    - Monitoring
+    - Observability
+    - Metrics
+    - Health Checks
+  created: "2026-04-21"
+  modified: "2026-04-21"
+
+capability:
+  consumes:
+    - import: nginx-plus-api
+      location: ./shared/plus-http-api.yaml
+    - import: nginx-stub-status
+      location: ./shared/stub-status.yaml
+
+  exposes:
+    - type: rest
+      port: 8201
+      namespace: nginx-monitoring-rest
+      description: "REST API for NGINX monitoring and observability."
+      resources:
+        - path: /v1/stub-status
+          name: stub-status
+          description: "Basic NGINX status metrics from stub_status module"
+          operations:
+            - method: GET
+              name: get-stub-status
+              description: "Get basic NGINX status metrics"
+              call: "nginx-stub-status.get-stub-status"
+              outputParameters:
+                - type: string
+                  mapping: "$."
+        - path: /v1/nginx-info
+          name: nginx-info
+          description: "NGINX Plus instance information"
+          operations:
+            - method: GET
+              name: get-nginx-info
+              description: "Get NGINX Plus instance status and version"
+              call: "nginx-plus-api.get-nginx-info"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/connections
+          name: connections
+          description: "Client connection statistics"
+          operations:
+            - method: GET
+              name: get-connections
+              description: "Get client connection statistics"
+              call: "nginx-plus-api.get-connections"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-requests
+          name: http-requests
+          description: "HTTP request processing statistics"
+          operations:
+            - method: GET
+              name: get-http-requests
+              description: "Get HTTP request statistics"
+              call: "nginx-plus-api.get-http-requests"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-server-zones
+          name: http-server-zones
+          description: "HTTP server zone statistics"
+          operations:
+            - method: GET
+              name: get-http-server-zones
+              description: "Get all HTTP server zone statistics"
+              call: "nginx-plus-api.get-http-server-zones"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-server-zones/{httpServerZoneName}
+          name: http-server-zone
+          description: "Individual HTTP server zone statistics"
+          operations:
+            - method: GET
+              name: get-http-server-zone
+              description: "Get statistics for a specific HTTP server zone"
+              call: "nginx-plus-api.get-http-server-zone"
+              with:
+                httpServerZoneName: "rest.httpServerZoneName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-location-zones
+          name: http-location-zones
+          description: "HTTP location zone statistics"
+          operations:
+            - method: GET
+              name: get-http-location-zones
+              description: "Get all HTTP location zone statistics"
+              call: "nginx-plus-api.get-http-location-zones"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-caches
+          name: http-caches
+          description: "HTTP cache zone statistics"
+          operations:
+            - method: GET
+              name: get-http-caches
+              description: "Get all HTTP cache zone statistics"
+              call: "nginx-plus-api.get-http-caches"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-limit-conns
+          name: http-limit-conns
+          description: "HTTP connection limit zone statistics"
+          operations:
+            - method: GET
+              name: get-http-limit-conn-zones
+              description: "Get all HTTP connection limit zone statistics"
+              call: "nginx-plus-api.get-http-limit-conn-zones"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-limit-reqs
+          name: http-limit-reqs
+          description: "HTTP request rate limit zone statistics"
+          operations:
+            - method: GET
+              name: get-http-limit-req-zones
+              description: "Get all HTTP request rate limit zone statistics"
+              call: "nginx-plus-api.get-http-limit-req-zones"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-upstreams
+          name: http-upstreams
+          description: "HTTP upstream health and statistics"
+          operations:
+            - method: GET
+              name: get-http-upstreams
+              description: "Get health and statistics for all HTTP upstream groups"
+              call: "nginx-plus-api.get-http-upstreams"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stream-server-zones
+          name: stream-server-zones
+          description: "Stream server zone statistics"
+          operations:
+            - method: GET
+              name: get-stream-server-zones
+              description: "Get all stream server zone statistics"
+              call: "nginx-plus-api.get-stream-server-zones"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stream-upstreams
+          name: stream-upstreams
+          description: "Stream upstream health and statistics"
+          operations:
+            - method: GET
+              name: get-stream-upstreams
+              description: "Get health and statistics for all stream upstream groups"
+              call: "nginx-plus-api.get-stream-upstreams"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stream-zone-sync
+          name: stream-zone-sync
+          description: "Cluster zone synchronization status"
+          operations:
+            - method: GET
+              name: get-stream-zone-sync
+              description: "Get cluster zone synchronization status"
+              call: "nginx-plus-api.get-stream-zone-sync"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9201
+      namespace: nginx-monitoring-mcp
+      transport: http
+      description: "MCP server for AI-assisted NGINX monitoring and observability."
+      tools:
+        - name: get-stub-status
+          description: "Get basic NGINX status metrics including active connections and request counters from stub_status"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-stub-status.get-stub-status"
+          outputParameters:
+            - type: string
+              mapping: "$."
+        - name: get-nginx-info
+          description: "Get NGINX Plus instance status including version, build name, and process information"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-nginx-info"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-connections
+          description: "Get detailed client connection statistics including active, idle, accepted, and dropped counts"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-connections"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-requests
+          description: "Get HTTP request processing statistics including total and current request counts"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-server-zones
+          description: "Get statistics for all HTTP server zones including requests, responses, and traffic volume"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-server-zones"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-server-zone
+          description: "Get detailed statistics for a specific HTTP server zone"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-server-zone"
+          with:
+            httpServerZoneName: "tools.httpServerZoneName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-location-zones
+          description: "Get statistics for all HTTP location zones"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-location-zones"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-caches
+          description: "Get cache hit/miss/bypass statistics for all HTTP cache zones"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-caches"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-limit-conn-zones
+          description: "Get connection limiting statistics for all HTTP limit_conn zones"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-limit-conn-zones"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-limit-req-zones
+          description: "Get request rate limiting statistics for all HTTP limit_req zones"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-limit-req-zones"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-upstreams
+          description: "Get health status and traffic statistics for all HTTP upstream server groups"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-upstreams"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-stream-server-zones
+          description: "Get statistics for all stream (TCP/UDP) server zones"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-stream-server-zones"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-stream-upstreams
+          description: "Get health status and traffic statistics for all stream upstream groups"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-stream-upstreams"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-stream-zone-sync
+          description: "Get cluster zone synchronization status including pending records and sync traffic"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-stream-zone-sync"
+          outputParameters:
+            - type: object
+              mapping: "$."

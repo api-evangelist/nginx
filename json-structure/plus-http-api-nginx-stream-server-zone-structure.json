@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream Server Zone",
+  "type": "object",
+  "members": {
+    "processing": {
+      "description": "The number of client connections that are currently being processed.",
+      "type": "int32",
+      "example": 1
+    },
+    "connections": {
+      "description": "The total number of connections accepted from clients.",
+      "type": "int32",
+      "example": 0
+    },
+    "sessions": {
+      "description": "The total number of completed sessions, and the number of sessions completed with status codes \u201c<code>2xx</code>\u201d, \u201c<code>4xx</code>\u201d, or \u201c<code>5xx</code>\u201d.",
+      "type": "object",
+      "members": {
+        "2xx": {
+          "description": "The total number of sessions completed with <a href=\"https://nginx.org/en/docs/stream/ngx_stream_core_module.html#var_status\">status codes</a> \u201c<code>2xx</code>\u201d.",
+          "type": "int32",
+          "example": 0
+        },
+        "4xx": {
+          "description": "The total number of sessions completed with <a href=\"https://nginx.org/en/docs/stream/ngx_stream_core_module.html#var_status\">status codes</a> \u201c<code>4xx</code>\u201d.",
+          "type": "int32",
+          "example": 0
+        },
+        "5xx": {
+          "description": "The total number of sessions completed with <a href=\"https://nginx.org/en/docs/stream/ngx_stream_core_module.html#var_status\">status codes</a> \u201c<code>5xx</code>\u201d.",
+          "type": "int32",
+          "example": 0
+        },
+        "total": {
+          "description": "The total number of completed client sessions.",
+          "type": "int32",
+          "example": 98765
+        }
+      },
+      "example": {}
+    },
+    "discarded": {
+      "description": "The total number of connections completed without creating a session.",
+      "type": "int32",
+      "example": 0
+    },
+    "received": {
+      "description": "The total number of bytes received from clients.",
+      "type": "int32",
+      "example": 180157219
+    },
+    "sent": {
+      "description": "The total number of bytes sent to clients.",
+      "type": "int32",
+      "example": 20183175459
+    },
+    "ssl": {
+      "type": "object",
+      "members": {
+        "handshakes": {
+          "description": "The total number of successful SSL handshakes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 79572
+        },
+        "handshakes_failed": {
+          "description": "The total number of failed SSL handshakes.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 21025
+        },
+        "session_reuses": {
+          "description": "The total number of session reuses during SSL handshake.",
+          "type": "int32",
+          "readOnly": true,
+          "example": 15762
+        },
+        "no_common_protocol": {
+          "description": "The number of SSL handshakes failed because of no common protocol.",
+          "type": "int32",
+          "example": 4
+        },
+        "no_common_cipher": {
+          "description": "The number of SSL handshakes failed because of no shared cipher.",
+          "type": "int32",
+          "example": 2
+        },
+        "handshake_timeout": {
+          "description": "The number of SSL handshakes failed because of a timeout.",
+          "type": "int32",
+          "example": 0
+        },
+        "peer_rejected_cert": {
+          "description": "The number of failed SSL handshakes when nginx presented the certificate to the client but it was rejected with a corresponding alert message.",
+          "type": "int32",
+          "example": 0
+        },
+        "verify_failures": {
+          "description": "SSL certificate verification errors",
+          "type": "object",
+          "members": {
+            "no_cert": {
+              "description": "A client did not provide the required certificate.",
+              "type": "int32",
+              "example": 0
+            },
+            "expired_cert": {
+              "description": "An expired or not yet valid certificate was presented by a client.",
+              "type": "int32",
+              "example": 2
+            },
+            "revoked_cert": {
+              "description": "A revoked certificate was presented by a client.",
+              "type": "int32",
+              "example": 1
+            },
+            "other": {
+              "description": "Other SSL certificate verification errors.",
+              "type": "int32",
+              "example": 1
+            }
+          },
+          "example": {}
+        }
+      },
+      "readOnly": true,
+      "example": {}
+    }
+  },
+  "example": {
+    "dns": {
+      "processing": 1,
+      "connections": 155569,
+      "sessions": {
+        "2xx": 155564,
+        "4xx": 0,
+        "5xx": 0,
+        "total": 155569
+      },
+      "discarded": 0,
+      "received": 4200363,
+      "sent": 20489184,
+      "ssl": {
+        "handshakes": 76455,
+        "handshakes_failed": 432,
+        "session_reuses": 28770,
+        "no_common_protocol": 4,
+        "no_common_cipher": 2,
+        "handshake_timeout": 0,
+        "peer_rejected_cert": 0,
+        "verify_failures": {
+          "no_cert": 0,
+          "expired_cert": 2,
+          "revoked_cert": 1,
+          "other": 1
+        }
+      }
+    }
+  }
+}

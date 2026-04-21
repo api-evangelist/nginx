@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-stream-zone-sync-zone-schema.json",
+  "title": "Sync Zone",
+  "description": "Synchronization status of a shared memory zone.",
+  "type": "object",
+  "properties": {
+    "records_pending": {
+      "type": "integer",
+      "description": "The number of records that need to be sent to the cluster.",
+      "example": 0
+    },
+    "records_total": {
+      "type": "integer",
+      "description": "The total number of records stored in the shared memory zone.",
+      "example": 0
+    }
+  }
+}

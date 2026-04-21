@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Worker processes",
+  "description": "nginx worker processes object.",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/NginxWorker"
+  },
+  "example": [
+    {
+      "id": 0,
+      "pid": 32212,
+      "connections": {
+        "accepted": 1,
+        "dropped": 0,
+        "active": 1,
+        "idle": 0
+      },
+      "http": {
+        "requests": {
+          "total": 19,
+          "current": 1
+        }
+      }
+    },
+    {
+      "id": 1,
+      "pid": 32214,
+      "connections": {
+        "accepted": 1,
+        "dropped": 0,
+        "active": 1,
+        "idle": 0
+      },
+      "http": {
+        "requests": {
+          "total": 15,
+          "current": 0
+        }
+      }
+    }
+  ]
+}

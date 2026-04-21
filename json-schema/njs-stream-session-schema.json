@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/njs-stream-session-schema.json",
+  "title": "StreamSession",
+  "description": "The stream session object (s) available in ngx_stream_js_module handlers. Provides access to the TCP/UDP session and methods to control data flow.",
+  "type": "object",
+  "properties": {
+    "remoteAddress": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Client IP address.",
+      "example": "192.168.1.100"
+    },
+    "status": {
+      "type": "integer",
+      "readOnly": true,
+      "description": "Session status code (alias to $status variable, since 0.5.2).",
+      "example": 200
+    },
+    "variables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "NGINX variables object (writable, since 0.2.8).",
+      "example": {}
+    },
+    "rawVariables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "format": "binary"
+      },
+      "description": "NGINX variables as Buffers (writable, since 0.5.0).",
+      "example": {}
+    }
+  }
+}

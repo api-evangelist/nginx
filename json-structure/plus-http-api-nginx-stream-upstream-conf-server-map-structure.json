@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream Upstream Servers",
+  "description": "An array of stream upstream servers for dynamic configuration.\n",
+  "type": "array",
+  "values": {
+    "$ref": "#/definitions/NginxStreamUpstreamConfServer"
+  },
+  "example": [
+    {
+      "id": 0,
+      "server": "10.0.0.1:12348",
+      "weight": 1,
+      "max_conns": 0,
+      "max_fails": 1,
+      "fail_timeout": "10s",
+      "slow_start": 0,
+      "backup": false,
+      "down": false
+    },
+    {
+      "id": 1,
+      "server": "10.0.0.1:12349",
+      "weight": 1,
+      "max_conns": 0,
+      "max_fails": 1,
+      "fail_timeout": "10s",
+      "slow_start": 0,
+      "backup": false,
+      "down": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream limit_conns",
+  "description": "Status data for all stream\n<a href=\"https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone\">limit_conn zones</a>.\n",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/NginxStreamLimitConnZone"
+  }
+}

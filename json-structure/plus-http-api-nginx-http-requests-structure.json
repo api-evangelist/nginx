@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "HTTP Requests",
+  "type": "object",
+  "members": {
+    "total": {
+      "description": "The total number of client requests.",
+      "type": "int32",
+      "example": 98765
+    },
+    "current": {
+      "description": "The current number of client requests.",
+      "type": "int32",
+      "example": 3
+    }
+  },
+  "example": {
+    "total": 10624511,
+    "current": 4
+  }
+}

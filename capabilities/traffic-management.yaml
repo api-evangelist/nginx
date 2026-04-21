@@ -1,0 +1,355 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "NGINX Traffic Management"
+  description: >-
+    Workflow capability for managing NGINX Plus traffic routing including
+    dynamic upstream server management, load balancing configuration,
+    key-value store operations, and real-time upstream health monitoring
+    for both HTTP and stream (TCP/UDP) protocols.
+  tags:
+    - NGINX
+    - Traffic Management
+    - Load Balancing
+    - Upstream Management
+    - Dynamic Configuration
+  created: "2026-04-21"
+  modified: "2026-04-21"
+
+capability:
+  consumes:
+    - import: nginx-plus-api
+      location: ./shared/plus-http-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8200
+      namespace: nginx-traffic-management-rest
+      description: "REST API for NGINX traffic management and upstream configuration."
+      resources:
+        - path: /v1/http-upstreams
+          name: http-upstreams
+          description: "HTTP upstream server groups"
+          operations:
+            - method: GET
+              name: get-http-upstreams
+              description: "List all HTTP upstream server groups with health status"
+              call: "nginx-plus-api.get-http-upstreams"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-upstreams/{httpUpstreamName}/servers
+          name: http-upstream-servers
+          description: "Servers in an HTTP upstream group"
+          operations:
+            - method: GET
+              name: get-http-upstream-servers
+              description: "List servers in an HTTP upstream group"
+              call: "nginx-plus-api.get-http-upstream-servers"
+              with:
+                httpUpstreamName: "rest.httpUpstreamName"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+            - method: POST
+              name: add-http-upstream-server
+              description: "Add a server to an HTTP upstream group"
+              call: "nginx-plus-api.add-http-upstream-server"
+              with:
+                httpUpstreamName: "rest.httpUpstreamName"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-upstreams/{httpUpstreamName}/servers/{httpUpstreamServerId}
+          name: http-upstream-server
+          description: "Individual HTTP upstream server"
+          operations:
+            - method: GET
+              name: get-http-upstream-server
+              description: "Get configuration of a specific upstream server"
+              call: "nginx-plus-api.get-http-upstream-server"
+              with:
+                httpUpstreamName: "rest.httpUpstreamName"
+                httpUpstreamServerId: "rest.httpUpstreamServerId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: modify-http-upstream-server
+              description: "Modify an HTTP upstream server configuration"
+              call: "nginx-plus-api.modify-http-upstream-server"
+              with:
+                httpUpstreamName: "rest.httpUpstreamName"
+                httpUpstreamServerId: "rest.httpUpstreamServerId"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: remove-http-upstream-server
+              description: "Remove a server from an HTTP upstream group"
+              call: "nginx-plus-api.remove-http-upstream-server"
+              with:
+                httpUpstreamName: "rest.httpUpstreamName"
+                httpUpstreamServerId: "rest.httpUpstreamServerId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/http-keyvals/{httpKeyvalZoneName}
+          name: http-keyval-zone
+          description: "HTTP key-value store for dynamic routing rules"
+          operations:
+            - method: GET
+              name: get-http-keyval-zone
+              description: "Get key-value pairs from an HTTP keyval zone"
+              call: "nginx-plus-api.get-http-keyval-zone"
+              with:
+                httpKeyvalZoneName: "rest.httpKeyvalZoneName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: add-http-keyval
+              description: "Add a key-value pair for dynamic routing"
+              call: "nginx-plus-api.add-http-keyval"
+              with:
+                httpKeyvalZoneName: "rest.httpKeyvalZoneName"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: modify-http-keyval
+              description: "Modify a key-value pair for dynamic routing"
+              call: "nginx-plus-api.modify-http-keyval"
+              with:
+                httpKeyvalZoneName: "rest.httpKeyvalZoneName"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: empty-http-keyval-zone
+              description: "Empty all key-value pairs from an HTTP keyval zone"
+              call: "nginx-plus-api.empty-http-keyval-zone"
+              with:
+                httpKeyvalZoneName: "rest.httpKeyvalZoneName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stream-upstreams
+          name: stream-upstreams
+          description: "Stream upstream server groups"
+          operations:
+            - method: GET
+              name: get-stream-upstreams
+              description: "List all stream upstream server groups"
+              call: "nginx-plus-api.get-stream-upstreams"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stream-upstreams/{streamUpstreamName}/servers
+          name: stream-upstream-servers
+          description: "Servers in a stream upstream group"
+          operations:
+            - method: GET
+              name: get-stream-upstream-servers
+              description: "List servers in a stream upstream group"
+              call: "nginx-plus-api.get-stream-upstream-servers"
+              with:
+                streamUpstreamName: "rest.streamUpstreamName"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+            - method: POST
+              name: add-stream-upstream-server
+              description: "Add a server to a stream upstream group"
+              call: "nginx-plus-api.add-stream-upstream-server"
+              with:
+                streamUpstreamName: "rest.streamUpstreamName"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stream-upstreams/{streamUpstreamName}/servers/{streamUpstreamServerId}
+          name: stream-upstream-server
+          description: "Individual stream upstream server"
+          operations:
+            - method: GET
+              name: get-stream-upstream-server
+              description: "Get configuration of a specific stream upstream server"
+              call: "nginx-plus-api.get-stream-upstream-server"
+              with:
+                streamUpstreamName: "rest.streamUpstreamName"
+                streamUpstreamServerId: "rest.streamUpstreamServerId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: modify-stream-upstream-server
+              description: "Modify a stream upstream server configuration"
+              call: "nginx-plus-api.modify-stream-upstream-server"
+              with:
+                streamUpstreamName: "rest.streamUpstreamName"
+                streamUpstreamServerId: "rest.streamUpstreamServerId"
+                body: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: remove-stream-upstream-server
+              description: "Remove a server from a stream upstream group"
+              call: "nginx-plus-api.remove-stream-upstream-server"
+              with:
+                streamUpstreamName: "rest.streamUpstreamName"
+                streamUpstreamServerId: "rest.streamUpstreamServerId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9200
+      namespace: nginx-traffic-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted NGINX traffic management and upstream configuration."
+      tools:
+        - name: get-http-upstreams
+          description: "List all NGINX HTTP upstream server groups with health and traffic statistics"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-upstreams"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-upstream-servers
+          description: "List all servers in a specific NGINX HTTP upstream group with their configuration"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-upstream-servers"
+          with:
+            httpUpstreamName: "tools.httpUpstreamName"
+          outputParameters:
+            - type: array
+              mapping: "$."
+        - name: add-http-upstream-server
+          description: "Dynamically add a backend server to an NGINX HTTP upstream group for load balancing"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: false
+          call: "nginx-plus-api.add-http-upstream-server"
+          with:
+            httpUpstreamName: "tools.httpUpstreamName"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: modify-http-upstream-server
+          description: "Modify configuration of an HTTP upstream server (weight, max_conns, backup, down status)"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+            openWorld: false
+          call: "nginx-plus-api.modify-http-upstream-server"
+          with:
+            httpUpstreamName: "tools.httpUpstreamName"
+            httpUpstreamServerId: "tools.httpUpstreamServerId"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: remove-http-upstream-server
+          description: "Remove a backend server from an NGINX HTTP upstream group"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+            openWorld: false
+          call: "nginx-plus-api.remove-http-upstream-server"
+          with:
+            httpUpstreamName: "tools.httpUpstreamName"
+            httpUpstreamServerId: "tools.httpUpstreamServerId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-http-keyval-zone
+          description: "Get key-value pairs from an HTTP keyval zone used for dynamic routing decisions"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-http-keyval-zone"
+          with:
+            httpKeyvalZoneName: "tools.httpKeyvalZoneName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: add-http-keyval
+          description: "Add a key-value pair to an HTTP keyval zone for dynamic traffic routing"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: false
+          call: "nginx-plus-api.add-http-keyval"
+          with:
+            httpKeyvalZoneName: "tools.httpKeyvalZoneName"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: modify-http-keyval
+          description: "Modify or delete a key-value pair in an HTTP keyval zone"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+            openWorld: false
+          call: "nginx-plus-api.modify-http-keyval"
+          with:
+            httpKeyvalZoneName: "tools.httpKeyvalZoneName"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-stream-upstreams
+          description: "List all NGINX stream (TCP/UDP) upstream server groups with health statistics"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nginx-plus-api.get-stream-upstreams"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: add-stream-upstream-server
+          description: "Dynamically add a server to a stream (TCP/UDP) upstream group"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+            openWorld: false
+          call: "nginx-plus-api.add-stream-upstream-server"
+          with:
+            streamUpstreamName: "tools.streamUpstreamName"
+            body: "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: remove-stream-upstream-server
+          description: "Remove a server from a stream (TCP/UDP) upstream group"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+            openWorld: false
+          call: "nginx-plus-api.remove-stream-upstream-server"
+          with:
+            streamUpstreamName: "tools.streamUpstreamName"
+            streamUpstreamServerId: "tools.streamUpstreamServerId"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/njs-periodic-session-schema.json",
+  "title": "PeriodicSession",
+  "description": "Object provided as the first argument to js_periodic handlers for both http and stream (since 0.8.1).",
+  "type": "object",
+  "properties": {
+    "variables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "NGINX variables object (writable).",
+      "example": {}
+    },
+    "rawVariables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "format": "binary"
+      },
+      "description": "NGINX variables as Buffers (writable).",
+      "example": {}
+    }
+  }
+}

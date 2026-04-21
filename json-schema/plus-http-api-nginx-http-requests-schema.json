@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-http-requests-schema.json",
+  "title": "HTTP Requests",
+  "description": "NginxHTTPRequests schema from NGINX Plus REST API",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "description": "The total number of client requests.",
+      "example": 98765
+    },
+    "current": {
+      "type": "integer",
+      "description": "The current number of client requests.",
+      "example": 3
+    }
+  },
+  "example": {
+    "total": 10624511,
+    "current": 4
+  }
+}

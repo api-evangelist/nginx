@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-stream-limit-conn-zones-map-schema.json",
+  "title": "Stream limit_conns",
+  "description": "Status data for all stream\n<a href=\"https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone\">limit_conn zones</a>.\n",
+  "type": "object",
+  "additionalProperties": {
+    "title": "Stream Connections Limiting",
+    "type": "object",
+    "properties": {
+      "passed": {
+        "type": "integer",
+        "description": "The total number of connections that were neither limited nor accounted as limited.",
+        "example": 0
+      },
+      "rejected": {
+        "type": "integer",
+        "description": "The total number of connections that were rejected.",
+        "example": 0
+      },
+      "rejected_dry_run": {
+        "type": "integer",
+        "description": "The total number of connections accounted as rejected in the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_dry_run\">dry run</a> mode.",
+        "example": 0
+      }
+    },
+    "example": {
+      "passed": 15,
+      "rejected": 0,
+      "rejected_dry_run": 2
+    }
+  }
+}

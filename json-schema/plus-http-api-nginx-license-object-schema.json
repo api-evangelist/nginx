@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-license-object-schema.json",
+  "title": "License",
+  "description": "License and usage reporting status of NGINX Plus instance.\n",
+  "properties": {
+    "eval": {
+      "type": "boolean",
+      "description": "Indicates whether NGINX Plus license is trial.",
+      "readOnly": true,
+      "example": false
+    },
+    "active_till": {
+      "type": "integer",
+      "description": "The Unix timestamp of license expiration.",
+      "readOnly": true,
+      "example": 0
+    },
+    "reporting": {
+      "type": "object",
+      "properties": {
+        "healthy": {
+          "type": "boolean",
+          "description": "Indicates whether the reporting state is still considered healthy despite recent failed attempts.",
+          "readOnly": true,
+          "example": false
+        },
+        "fails": {
+          "type": "integer",
+          "description": "The number of failed reporting attempts, reset each time the usage report is successfully sent.",
+          "readOnly": true,
+          "example": 0
+        },
+        "grace": {
+          "type": "integer",
+          "description": "The number of seconds before traffic processing is stopped after unsuccessful report attempt.",
+          "readOnly": true,
+          "example": 0
+        },
+        "uuid": {
+          "type": "string",
+          "description": "The ID of NGINX Plus instance in the UUID format.",
+          "readOnly": true,
+          "example": "example-uuid"
+        }
+      },
+      "example": {}
+    }
+  },
+  "example": {
+    "eval": false,
+    "active_till": 1749268757,
+    "reporting": {
+      "healthy": true,
+      "fails": 2,
+      "grace": 15551961,
+      "uuid": "13754cba-29fb-53e5-c32e-a6cf57c84b01"
+    }
+  }
+}

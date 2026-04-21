@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-http-cache-schema.json",
+  "title": "HTTP Cache",
+  "description": "NginxHTTPCache schema from NGINX Plus REST API",
+  "type": "object",
+  "properties": {
+    "size": {
+      "type": "integer",
+      "description": "The current size of the cache.",
+      "example": 0
+    },
+    "max_size": {
+      "type": "integer",
+      "description": "The limit on the maximum size of the cache specified in the configuration.",
+      "example": 0
+    },
+    "cold": {
+      "type": "boolean",
+      "description": "A boolean value indicating whether the \u201ccache loader\u201d process is still loading data from disk into the cache.",
+      "example": false
+    },
+    "hit": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "integer",
+          "description": "The total number of <a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_valid\">valid</a> responses read from the cache.",
+          "example": 1234567
+        },
+        "bytes": {
+          "type": "integer",
+          "description": "The total number of bytes read from the cache.",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "stale": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "integer",
+          "description": "The total number of expired responses read from the cache (see <a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_use_stale\">proxy_cache_use_stale</a> and other \u201c<code>*_cache_use_stale</code>\u201d directives).",
+          "example": 1234567
+        },
+        "bytes": {
+          "type": "integer",
+          "description": "The total number of bytes read from the cache.",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "updating": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "integer",
+          "description": "The total number of expired responses read from the cache while responses were being updated (see <a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_use_stale_updating\">proxy_cache_use_stale</a> and other \u201c<code>*_cache_use_stale</code>\u201d directives).",
+          "example": 1234567
+        },
+        "bytes": {
+          "type": "integer",
+          "description": "The total number of bytes read from the cache.",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "revalidated": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "integer",
+          "description": "The total number of expired and revalidated responses read from the cache (see <a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_revalidate\">proxy_cache_revalidate</a> and other \u201c<code>*_cache_revalidate</code>\u201d directives.",
+          "example": 1234567
+        },
+        "bytes": {
+          "type": "integer",
+          "description": "The total number of bytes read from the cache.",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "miss": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "integer",
+          "description": "The total number of responses not found in the cache.",
+          "example": 1234567
+        },
+        "bytes": {
+          "type": "integer",
+          "description": "The total number of bytes read from the proxied server.",
+          "example": 0
+        },
+        "responses_written": {
+          "type": "integer",
+          "description": "The total number of responses written to the cache.",
+          "example": 0
+        },
+        "bytes_written": {
+          "type": "integer",
+          "description": "The total number of bytes written to the cache.",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "expired": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "integer",
+          "description": "The total number of expired responses not taken from the cache.",
+          "example": 1234567
+        },
+        "bytes": {
+          "type": "integer",
+          "description": "The total number of bytes read from the proxied server.",
+          "example": 0
+        },
+        "responses_written": {
+          "type": "integer",
+          "description": "The total number of responses written to the cache.",
+          "example": 0
+        },
+        "bytes_written": {
+          "type": "integer",
+          "description": "The total number of bytes written to the cache.",
+          "example": 0
+        }
+      },
+      "example": {}
+    },
+    "bypass": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "integer",
+          "description": "The total number of responses not looked up in the cache due to the <a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_bypass\">proxy_cache_bypass</a> and other \u201c<code>*_cache_bypass</code>\u201d directives.",
+          "example": 1234567
+        },
+        "bytes": {
+          "type": "integer",
+          "description": "The total number of bytes read from the proxied server.",
+          "example": 0
+        },
+        "responses_written": {
+          "type": "integer",
+          "description": "The total number of responses written to the cache.",
+          "example": 0
+        },
+        "bytes_written": {
+          "type": "integer",
+          "description": "The total number of bytes written to the cache.",
+          "example": 0
+        }
+      },
+      "example": {}
+    }
+  },
+  "example": {
+    "size": 530915328,
+    "max_size": 536870912,
+    "cold": false,
+    "hit": {
+      "responses": 254032,
+      "bytes": 6685627875
+    },
+    "stale": {
+      "responses": 0,
+      "bytes": 0
+    },
+    "updating": {
+      "responses": 0,
+      "bytes": 0
+    },
+    "revalidated": {
+      "responses": 0,
+      "bytes": 0
+    },
+    "miss": {
+      "responses": 1619201,
+      "bytes": 53841943822
+    },
+    "expired": {
+      "responses": 45859,
+      "bytes": 1656847080,
+      "responses_written": 44992,
+      "bytes_written": 1641825173
+    },
+    "bypass": {
+      "responses": 200187,
+      "bytes": 5510647548,
+      "responses_written": 200173,
+      "bytes_written": 44992
+    }
+  }
+}

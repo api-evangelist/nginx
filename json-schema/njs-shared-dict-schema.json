@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/njs-shared-dict-schema.json",
+  "title": "SharedDict",
+  "description": "A shared dictionary zone that can be used to share data between worker processes.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Name of the shared dictionary zone.",
+      "example": "my_shared_zone"
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Type of the shared dictionary (string or number).",
+      "example": "string"
+    }
+  }
+}

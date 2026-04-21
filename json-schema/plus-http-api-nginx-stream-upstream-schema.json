@@ -1,0 +1,323 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-stream-upstream-schema.json",
+  "title": "Stream Upstream",
+  "description": "NginxStreamUpstream schema from NGINX Plus REST API",
+  "type": "object",
+  "properties": {
+    "peers": {
+      "title": "Stream Upstream Servers",
+      "description": "Array of stream upstream servers.",
+      "type": "array",
+      "items": {
+        "title": "Stream Upstream Server",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the server.",
+            "readOnly": true,
+            "example": 0
+          },
+          "server": {
+            "type": "string",
+            "description": "An <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#server\">address</a> of the server.",
+            "example": "example-server"
+          },
+          "service": {
+            "type": "string",
+            "description": "The <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#service\">service</a> parameter value of the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#server\">server</a> directive.",
+            "example": "example-service"
+          },
+          "name": {
+            "type": "string",
+            "format": "hostname",
+            "description": "The name of the server specified in the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#server\">server</a> directive.",
+            "readOnly": true,
+            "example": "my_shared_zone"
+          },
+          "backup": {
+            "type": "boolean",
+            "description": "A boolean value indicating whether the server is a <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#backup\">backup</a> server.",
+            "example": false
+          },
+          "weight": {
+            "type": "integer",
+            "description": "<a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#weight\">Weight</a> of the server.",
+            "example": 0
+          },
+          "state": {
+            "type": "string",
+            "readOnly": true,
+            "enum": [
+              "up",
+              "down",
+              "unavail",
+              "checking",
+              "unhealthy"
+            ],
+            "description": "Current state, which may be one of \u201c<code>up</code>\u201d, \u201c<code>down</code>\u201d, \u201c<code>unavail</code>\u201d, \u201c<code>checking</code>\u201d, or \u201c<code>unhealthy</code>\u201d.",
+            "example": "example-state"
+          },
+          "active": {
+            "type": "integer",
+            "description": "The current number of connections.",
+            "readOnly": true,
+            "example": 5
+          },
+          "ssl": {
+            "type": "object",
+            "readOnly": true,
+            "properties": {
+              "handshakes": {
+                "type": "integer",
+                "description": "The total number of successful SSL handshakes.",
+                "readOnly": true,
+                "example": 79572
+              },
+              "handshakes_failed": {
+                "type": "integer",
+                "description": "The total number of failed SSL handshakes.",
+                "readOnly": true,
+                "example": 21025
+              },
+              "session_reuses": {
+                "type": "integer",
+                "description": "The total number of session reuses during SSL handshake.",
+                "readOnly": true,
+                "example": 15762
+              },
+              "no_common_protocol": {
+                "type": "integer",
+                "description": "The number of SSL handshakes failed because of no common protocol.",
+                "example": 4
+              },
+              "handshake_timeout": {
+                "type": "integer",
+                "description": "The number of SSL handshakes failed because of a timeout.",
+                "example": 0
+              },
+              "peer_rejected_cert": {
+                "type": "integer",
+                "description": "The number of failed SSL handshakes when nginx presented the certificate to the upstream server but it was rejected with a corresponding alert message.",
+                "example": 0
+              },
+              "verify_failures": {
+                "type": "object",
+                "description": "SSL certificate verification errors",
+                "properties": {
+                  "expired_cert": {
+                    "type": "integer",
+                    "description": "An expired or not yet valid certificate was presented by an upstream server.",
+                    "example": 2
+                  },
+                  "revoked_cert": {
+                    "type": "integer",
+                    "description": "A revoked certificate was presented by an upstream server.",
+                    "example": 1
+                  },
+                  "hostname_mismatch": {
+                    "type": "integer",
+                    "description": "Server's certificate doesn't match the hostname.",
+                    "example": 2
+                  },
+                  "other": {
+                    "type": "integer",
+                    "description": "Other SSL certificate verification errors.",
+                    "example": 1
+                  }
+                },
+                "example": {}
+              }
+            },
+            "example": {}
+          },
+          "max_conns": {
+            "type": "integer",
+            "description": "The <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#max_conns\">max_conns</a> limit for the server.",
+            "example": 0
+          },
+          "connections": {
+            "type": "integer",
+            "description": "The total number of client connections forwarded to this server.",
+            "readOnly": true,
+            "example": 0
+          },
+          "connect_time": {
+            "type": "integer",
+            "description": "The average time to connect to the upstream server.",
+            "readOnly": true,
+            "example": 0
+          },
+          "first_byte_time": {
+            "type": "integer",
+            "description": "The average time to receive the first byte of data.",
+            "readOnly": true,
+            "example": 0
+          },
+          "response_time": {
+            "type": "integer",
+            "description": "The average time to receive the last byte of data.",
+            "readOnly": true,
+            "example": 0
+          },
+          "sent": {
+            "type": "integer",
+            "description": "The total number of bytes sent to this server.",
+            "readOnly": true,
+            "example": 20183175459
+          },
+          "received": {
+            "type": "integer",
+            "description": "The total number of bytes received from this server.",
+            "readOnly": true,
+            "example": 180157219
+          },
+          "fails": {
+            "type": "integer",
+            "description": "The total number of unsuccessful attempts to communicate with the server.",
+            "readOnly": true,
+            "example": 0
+          },
+          "unavail": {
+            "type": "integer",
+            "description": "How many times the server became unavailable for client connections (state \u201c<code>unavail</code>\u201d) due to the number of unsuccessful attempts reaching the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#max_fails\">max_fails</a> threshold.",
+            "readOnly": true,
+            "example": 0
+          },
+          "health_checks": {
+            "type": "object",
+            "readOnly": true,
+            "properties": {
+              "checks": {
+                "type": "integer",
+                "description": "The total number of <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_hc_module.html#health_check\">health check</a> requests made.",
+                "readOnly": true,
+                "example": 0
+              },
+              "fails": {
+                "type": "integer",
+                "description": "The number of failed health checks.",
+                "readOnly": true,
+                "example": 0
+              },
+              "unhealthy": {
+                "type": "integer",
+                "description": "How many times the server became unhealthy (state \u201c<code>unhealthy</code>\u201d).",
+                "readOnly": true,
+                "example": 0
+              },
+              "last_passed": {
+                "type": "boolean",
+                "description": "Boolean indicating whether the last health check request was successful and passed <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_hc_module.html#match\">tests</a>.",
+                "readOnly": true,
+                "example": false
+              }
+            },
+            "example": 0
+          },
+          "downtime": {
+            "type": "integer",
+            "description": "Total time the server was in the \u201c<code>unavail</code>\u201d, \u201c<code>checking</code>\u201d, and \u201c<code>unhealthy</code>\u201d states.",
+            "readOnly": true,
+            "example": 0
+          },
+          "downstart": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time when the server became \u201c<code>unavail</code>\u201d, \u201c<code>checking</code>\u201d, or \u201c<code>unhealthy</code>\u201d, in the ISO 8601 format with millisecond resolution.",
+            "readOnly": true,
+            "example": "2026-04-21T10:30:00.000Z"
+          },
+          "selected": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time when the server was last selected to process a connection, in the ISO 8601 format with millisecond resolution.",
+            "readOnly": true,
+            "example": "2026-04-21T10:30:00.000Z"
+          }
+        }
+      }
+    },
+    "zombies": {
+      "type": "integer",
+      "description": "The current number of servers removed from the group but still processing active client connections.",
+      "example": 0
+    },
+    "zone": {
+      "type": "string",
+      "description": "The name of the shared memory <a href=\"https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#zone\">zone</a> that keeps the group\u2019s configuration and run-time state.",
+      "example": "example-zone"
+    }
+  },
+  "example": {
+    "dns": {
+      "peers": [
+        {
+          "id": 0,
+          "server": "10.0.0.1:12347",
+          "name": "10.0.0.1:12347",
+          "backup": false,
+          "weight": 5,
+          "state": "up",
+          "active": 0,
+          "ssl": {
+            "handshakes": 200,
+            "handshakes_failed": 4,
+            "session_reuses": 189,
+            "no_common_protocol": 4,
+            "handshake_timeout": 0,
+            "peer_rejected_cert": 0,
+            "verify_failures": {
+              "expired_cert": 2,
+              "revoked_cert": 1,
+              "hostname_mismatch": 2,
+              "other": 1
+            }
+          },
+          "max_conns": 50,
+          "connections": 667231,
+          "sent": 251946292,
+          "received": 19222475454,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26214,
+            "fails": 0,
+            "unhealthy": 0,
+            "last_passed": true
+          },
+          "downtime": 0,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        },
+        {
+          "id": 1,
+          "server": "10.0.0.1:12348",
+          "name": "10.0.0.1:12348",
+          "backup": true,
+          "weight": 1,
+          "state": "unhealthy",
+          "active": 0,
+          "max_conns": 50,
+          "connections": 0,
+          "sent": 0,
+          "received": 0,
+          "fails": 0,
+          "unavail": 0,
+          "health_checks": {
+            "checks": 26284,
+            "fails": 26284,
+            "unhealthy": 1,
+            "last_passed": false
+          },
+          "downtime": 262925617,
+          "downstart": "2022-06-28T11:09:21.602000+00:00",
+          "selected": "2022-06-28T15:01:25+00:00"
+        }
+      ],
+      "zombies": 0,
+      "zone": "dns"
+    }
+  }
+}

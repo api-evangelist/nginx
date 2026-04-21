@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream Connections Limiting",
+  "type": "object",
+  "members": {
+    "passed": {
+      "description": "The total number of connections that were neither limited nor accounted as limited.",
+      "type": "int32",
+      "example": 0
+    },
+    "rejected": {
+      "description": "The total number of connections that were rejected.",
+      "type": "int32",
+      "example": 0
+    },
+    "rejected_dry_run": {
+      "description": "The total number of connections accounted as rejected in the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_dry_run\">dry run</a> mode.",
+      "type": "int32",
+      "example": 0
+    }
+  },
+  "example": {
+    "passed": 15,
+    "rejected": 0,
+    "rejected_dry_run": 2
+  }
+}

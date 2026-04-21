@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "name": "Stream Keyval Shared Memory Zone",
+  "description": "Contents of a stream keyval shared memory zone when using the GET method.\n",
+  "type": "object",
+  "example": {
+    "key1": "value1",
+    "key2": "value2",
+    "key3": "value3"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "passed": 654321,
+  "delayed": 1234,
+  "rejected": 56,
+  "delayed_dry_run": 0,
+  "rejected_dry_run": 0
+}

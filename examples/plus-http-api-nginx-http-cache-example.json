@@ -1,0 +1,39 @@
+{
+  "size": 536870912,
+  "max_size": 1073741824,
+  "cold": false,
+  "hit": {
+    "responses": 45210,
+    "bytes": 1842567890
+  },
+  "stale": {
+    "responses": 128,
+    "bytes": 5242880
+  },
+  "updating": {
+    "responses": 3,
+    "bytes": 122880
+  },
+  "revalidated": {
+    "responses": 1024,
+    "bytes": 41943040
+  },
+  "miss": {
+    "responses": 45210,
+    "bytes": 1842567890,
+    "responses_written": 12045,
+    "bytes_written": 524891200
+  },
+  "expired": {
+    "responses": 890,
+    "bytes": 36438016,
+    "responses_written": 512,
+    "bytes_written": 20971520
+  },
+  "bypass": {
+    "responses": 24,
+    "bytes": 983040,
+    "responses_written": 0,
+    "bytes_written": 0
+  }
+}

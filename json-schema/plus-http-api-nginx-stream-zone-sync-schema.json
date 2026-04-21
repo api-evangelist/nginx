@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/json-schema/plus-http-api-nginx-stream-zone-sync-schema.json",
+  "title": "Stream Zone Sync Node",
+  "description": "NginxStreamZoneSync schema from NGINX Plus REST API",
+  "type": "object",
+  "properties": {
+    "zones": {
+      "type": "object",
+      "title": "Zone Sync Zones",
+      "description": "Synchronization information per each shared memory zone.",
+      "additionalProperties": {
+        "title": "Sync Zone",
+        "description": "Synchronization status of a shared memory zone.",
+        "type": "object",
+        "properties": {
+          "records_pending": {
+            "type": "integer",
+            "description": "The number of records that need to be sent to the cluster.",
+            "example": 0
+          },
+          "records_total": {
+            "type": "integer",
+            "description": "The total number of records stored in the shared memory zone.",
+            "example": 0
+          }
+        }
+      },
+      "example": {}
+    },
+    "status": {
+      "type": "object",
+      "description": "Synchronization information per node in a cluster.",
+      "properties": {
+        "bytes_in": {
+          "type": "integer",
+          "description": "The number of bytes received by this node.",
+          "example": 0
+        },
+        "msgs_in": {
+          "type": "integer",
+          "description": "The number of messages received by this node.",
+          "example": 0
+        },
+        "msgs_out": {
+          "type": "integer",
+          "description": "The number of messages sent by this node.",
+          "example": 0
+        },
+        "bytes_out": {
+          "type": "integer",
+          "description": "The number of bytes sent by this node.",
+          "example": 0
+        },
+        "nodes_online": {
+          "type": "integer",
+          "description": "The number of peers this node is connected to.",
+          "example": 0
+        }
+      },
+      "example": 200
+    }
+  },
+  "example": {
+    "zones": {
+      "zone1": {
+        "records_pending": 2061,
+        "records_total": 260575
+      },
+      "zone2": {
+        "records_pending": 0,
+        "records_total": 14749
+      }
+    },
+    "status": {
+      "bytes_in": 1364923761,
+      "msgs_in": 337236,
+      "msgs_out": 346717,
+      "bytes_out": 1402765472,
+      "nodes_online": 15
+    }
+  }
+}
