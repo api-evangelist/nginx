@@ -1,0 +1,13 @@
+{
+  "repo": "nginx",
+  "feeds": [
+    {
+      "source": "https://blog.nginx.org/",
+      "feed_url": "https://blog.nginx.org/feed",
+      "saved": 10,
+      "title": "NGINX Community Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:32:41Z"
+}
