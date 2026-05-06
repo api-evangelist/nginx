@@ -1,191 +1,108 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: NGINX
+providerId: nginx
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - API Gateway
+  - Load Balancer
+  - Cost Management
+notes: F5 does not publicly post per-instance prices for NGINX Plus / NGINX One / WAF. FinOps shape
+  inferred from typical instance-based subscription patterns and cloud-marketplace listings for NGINXaaS.
+  Reconcile against the customer's F5 quote or Azure / GCP marketplace billing.
+description: 'FOCUS-aligned FinOps for NGINX: open-source self-host is zero-cost; commercial F5 NGINX
+  products billed per-instance annual subscription or via cloud marketplaces (NGINXaaS for Azure / GCP)
+  with usage-based pricing.'
+sources:
+  - https://www.f5.com/products/nginx
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: NGINX
-providerId: nginx
-publisherName: NGINX
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - API Gateway
-  - Caching
-  - Cloud Native
-  - Load Balancer
-  - Open Source
-  - Reverse Proxy
-  - Web Server
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the NGINX API surface. Provides a FOCUS-aligned mapping for
-  cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: F5, Inc.
+serviceCategory: API Gateway + Load Balancer
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Subscription + Marketplace Pay-As-You-Go
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
+    - Usage
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: NGINX
-  ServiceCategory: Developer Tools / API
-  ProviderName: NGINX
-  PublisherName: NGINX
-  InvoiceIssuerName: NGINX
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceCategory: Networking
+  ServiceSubcategory: API Gateway / Load Balancer
+  ProviderName: F5
+  PublisherName: F5, Inc.
+  InvoiceIssuerName: F5, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
+  PricingCategory: Subscription
+  PricingUnit: instance-year
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: nginx_plus_instances
+    description: Annual NGINX Plus instance subscriptions.
+    unit: instance-year
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+      - environment
+  - name: nginx_one_instances
+    description: NGINX One managed instances.
+    unit: instance-month
+    aggregation: avg
     dimensions:
-      - api
       - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - cluster
+  - name: f5_waf_instances
+    description: F5 WAF for NGINX subscription instances.
+    unit: instance-year
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
+      - region
+      - environment
+  - name: nginxaas_azure_usage
+    description: NGINXaaS for Azure marketplace consumption.
+    unit: hour
+    aggregation: sum
+    dimensions:
+      - region
+      - sku
+  - name: nginxaas_gcp_usage
+    description: NGINXaaS for Google Cloud marketplace consumption.
+    unit: hour
+    aggregation: sum
+    dimensions:
+      - region
+      - sku
+  - name: support_subscription
+    description: F5 support tier subscription.
+    unit: month
+    aggregation: sum
+    dimensions:
       - tier
-apis:
-  - name: NGINX
-    baseURL: ''
-    tags:
-      - API Gateway
-      - Load Balancer
-      - Open Source
-      - Reverse Proxy
-      - Web Server
-    serviceName: NGINX
-    serviceCategory: API
-  - name: NGINX Plus HTTP API
-    baseURL: ''
-    tags:
-      - Admin
-      - Management
-      - Monitoring
-      - NGINX Plus
-      - REST API
-    serviceName: NGINX Plus HTTP API
-    serviceCategory: API
-  - name: NGINX Stub Status API
-    baseURL: ''
-    tags:
-      - Metrics
-      - Monitoring
-      - Open Source
-      - Status
-    serviceName: NGINX Stub Status API
-    serviceCategory: API
-  - name: NGINX njs Scripting API
-    baseURL: ''
-    tags:
-      - Extensibility
-      - JavaScript
-      - Modules
-      - Scripting
-    serviceName: NGINX njs Scripting API
-    serviceCategory: API
-  - name: NGINX Ingress Controller
-    baseURL: ''
-    tags:
-      - Cloud Native
-      - Ingress
-      - Kubernetes
-      - Traffic Management
-    serviceName: NGINX Ingress Controller
-    serviceCategory: API
-  - name: NGINX Gateway Fabric
-    baseURL: ''
-    tags:
-      - Cloud Native
-      - Gateway API
-      - Kubernetes
-      - Routing
-    serviceName: NGINX Gateway Fabric
-    serviceCategory: API
-  - name: NGINX Agent
-    baseURL: ''
-    tags:
-      - Agent
-      - Management
-      - Monitoring
-      - Remote Administration
-    serviceName: NGINX Agent
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+principles:
+  - name: Visibility
+    description: Use NGINX One Console for fleet inventory; F5 Customer Support portal for license tracking;
+      cloud-marketplace billing exports for NGINXaaS consumption.
+  - name: Allocation
+    description: Tag NGINX instances at the cloud / Kubernetes layer with team and application labels;
+      use NGINX One projects to map to cost centers.
+  - name: Optimization
+    description: Run NGINX Open Source for non-mission-critical paths; reserve NGINX Plus for endpoints
+      needing active health checks, JWT validation, and live monitoring; consolidate redundant gateways
+      with multi-tenant configuration.
+  - name: Accountability
+    description: Set per-environment Plus / One license budgets; review unused or idle instances quarterly;
+      validate that marketplace usage aligns with capacity-planning forecasts.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

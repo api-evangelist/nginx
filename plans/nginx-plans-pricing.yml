@@ -4,158 +4,144 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: NGINX
 providerId: nginx
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - API Gateway
-  - Caching
-  - Cloud Native
   - Load Balancer
   - Open Source
   - Reverse Proxy
   - Web Server
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+notes: NGINX Open Source is free under the 2-clause BSD license. F5 (which owns NGINX) does not publish
+  per-instance subscription pricing for NGINX Plus, NGINX One, NGINX App Protect, or F5 WAF for NGINX
+  on its public site — pricing is contact-sales or via cloud marketplaces (NGINXaaS for Azure / Google
+  Cloud). Reconcile via Azure Marketplace or Google Cloud Marketplace listings, or F5 sales quotes.
+description: NGINX is open source under the 2-clause BSD license; the project is free to use and self-host.
+  Commercial offerings from F5 include NGINX Plus (subscription per instance), NGINX One (the SaaS-managed
+  data plane with observability/security), F5 WAF for NGINX, and NGINXaaS distributed via Azure and Google
+  Cloud marketplaces. Public per-instance pricing is not posted on f5.com; customers obtain quotes via
+  sales or marketplace listings.
+sources:
+  - https://www.f5.com/products/nginx
+  - https://nginx.org/
 plans:
-  - id: nginx-free
-    name: Free
+  - id: nginx-open-source
+    name: NGINX Open Source
     type: freemium
-    description: Free entry tier for the NGINX API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Self-hosted open-source NGINX server, reverse proxy, load balancer.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Self-hosted OSS
+        name: oss_self_hosted
+        type: flat
+        metric: month
+        limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: NGINX
-      - name: NGINX Plus HTTP API
-      - name: NGINX Stub Status API
-      - name: NGINX njs Scripting API
-      - name: NGINX Ingress Controller
-      - name: NGINX Gateway Fabric
-      - name: NGINX Agent
-  - id: nginx-pro
-    name: Professional
-    type: paid
-    description: Production tier for NGINX. Provides higher quotas, priority support, and access to the
-      broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: 2-clause BSD license
+      - name: Web server, reverse proxy, load balancer
+      - name: Community support
+      - name: Available via nginx.org and GitHub
+  - id: nginx-plus
+    name: NGINX Plus
+    type: subscription
+    description: All-in-one cloud-native load balancer, reverse proxy, web server, content cache, and
+      API gateway with commercial support and advanced features.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
+      - label: Plus subscription
+        name: nginx_plus_subscription
+        type: subscription
+        metric: instance
+        limit: -1
+        timeFrame: year
         geo: global
-        domains: []
         unit: 1
-        price: TBD
+        price: contact F5 sales
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
+    elements:
+      - name: Active health checks
+      - name: Session persistence
+      - name: JWT authentication
+      - name: Live activity monitoring
+      - name: Commercial support
+  - id: nginx-one
+    name: NGINX One
+    type: subscription
+    description: NGINX data plane plus SaaS-based observability, management, and security.
+    entries:
+      - label: NGINX One subscription
+        name: nginx_one_subscription
+        type: subscription
+        metric: instance
+        limit: -1
+        timeFrame: year
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
+        price: contact F5 sales
         userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+    elements:
+      - name: SaaS observability
+      - name: Centralized management console
+      - name: Configuration drift detection
+      - name: Trial available
+  - id: nginx-app-protect
+    name: F5 WAF for NGINX
+    type: subscription
+    description: WAF security solution for NGINX protecting apps and APIs from layer 7 attacks.
+    entries:
+      - label: WAF subscription
+        name: waf_subscription
+        type: subscription
+        metric: instance
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact F5 sales
+        userMultiplied: false
+    elements:
+      - name: Layer 7 protection
+      - name: Bot defense
+      - name: API security
+  - id: nginxaas-azure
+    name: NGINXaaS for Azure
+    type: usage-based
+    description: Managed NGINX delivered via Azure Marketplace.
+    entries:
+      - label: Azure marketplace
+        name: nginxaas_azure
         type: metered
-        metric: requests
+        metric: varies
         limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: see Azure Marketplace listing
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: NGINX
-      - name: NGINX Plus HTTP API
-      - name: NGINX Stub Status API
-      - name: NGINX njs Scripting API
-      - name: NGINX Ingress Controller
-      - name: NGINX Gateway Fabric
-      - name: NGINX Agent
-  - id: nginx-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for NGINX. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+      - name: Marketplace billing
+      - name: Managed by F5
+  - id: nginxaas-gcp
+    name: NGINXaaS for Google Cloud
+    type: usage-based
+    description: Managed NGINX delivered via Google Cloud Marketplace.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: GCP marketplace
+        name: nginxaas_gcp
+        type: metered
+        metric: varies
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains: []
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
+        price: see Google Cloud Marketplace listing
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: NGINX
-      - name: NGINX Plus HTTP API
-      - name: NGINX Stub Status API
-      - name: NGINX njs Scripting API
-      - name: NGINX Ingress Controller
-      - name: NGINX Gateway Fabric
-      - name: NGINX Agent
+      - name: Marketplace billing
+      - name: Managed by F5
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
