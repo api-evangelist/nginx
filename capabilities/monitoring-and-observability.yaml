@@ -1,322 +1,1358 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "NGINX Monitoring And Observability"
-  description: >-
-    Workflow capability for monitoring NGINX instances combining Plus HTTP API
-    detailed statistics with Stub Status basic metrics. Provides comprehensive
-    observability across connections, HTTP requests, server zones, location
-    zones, caches, rate limiting, and upstream health.
+  label: NGINX Monitoring And Observability
+  description: Workflow capability for monitoring NGINX instances combining Plus HTTP API detailed statistics with Stub Status
+    basic metrics. Provides comprehensive observability across connections, HTTP requests, server zones, location zones, caches,
+    rate limiting, and upstream health.
   tags:
-    - NGINX
-    - Monitoring
-    - Observability
-    - Metrics
-    - Health Checks
-  created: "2026-04-21"
-  modified: "2026-04-21"
-
+  - NGINX
+  - Monitoring
+  - Observability
+  - Metrics
+  - Health Checks
+  created: '2026-04-21'
+  modified: '2026-05-06'
 capability:
   consumes:
-    - import: nginx-plus-api
-      location: ./shared/plus-http-api.yaml
-    - import: nginx-stub-status
-      location: ./shared/stub-status.yaml
-
+  - type: http
+    namespace: nginx-plus-api
+    baseUri: http://localhost/api/9
+    description: NGINX Plus REST API v9 for dynamic configuration and monitoring.
+    resources:
+    - name: general
+      path: /
+      description: General instance information and root endpoints
+      operations:
+      - name: get-api-endpoints
+        method: GET
+        description: Return list of root API endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+    - name: nginx-info
+      path: /nginx
+      description: NGINX instance status and version information
+      operations:
+      - name: get-nginx-info
+        method: GET
+        description: Return status of the running NGINX instance including version, build, and process IDs
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: processes
+      path: /processes
+      description: Child process statistics
+      operations:
+      - name: get-processes
+        method: GET
+        description: Return number of abnormally terminated and respawned child processes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-processes
+        method: DELETE
+        description: Reset counters of abnormally terminated and respawned child processes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: connections
+      path: /connections
+      description: Client connection statistics
+      operations:
+      - name: get-connections
+        method: GET
+        description: Return client connections statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-connections
+        method: DELETE
+        description: Reset client connections statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: slabs
+      path: /slabs
+      description: Shared memory slab allocator statistics
+      operations:
+      - name: get-slabs
+        method: GET
+        description: Return status of all shared memory slab zones
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: slab-zone
+      path: /slabs/{slabZoneName}
+      description: Individual slab zone statistics
+      operations:
+      - name: get-slab-zone
+        method: GET
+        description: Return status of a specific slab zone
+        inputParameters:
+        - name: slabZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the slab zone
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-slab-zone
+        method: DELETE
+        description: Reset statistics for a slab zone
+        inputParameters:
+        - name: slabZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the slab zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http
+      path: /http
+      description: HTTP subsystem endpoints
+      operations:
+      - name: get-http-endpoints
+        method: GET
+        description: Return list of HTTP-related endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+    - name: http-requests
+      path: /http/requests
+      description: HTTP request statistics
+      operations:
+      - name: get-http-requests
+        method: GET
+        description: Return HTTP request statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-http-requests
+        method: DELETE
+        description: Reset HTTP request statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-server-zones
+      path: /http/server_zones
+      description: HTTP server zone statistics
+      operations:
+      - name: get-http-server-zones
+        method: GET
+        description: Return status of all HTTP server zones
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-server-zone
+      path: /http/server_zones/{httpServerZoneName}
+      description: Individual HTTP server zone statistics
+      operations:
+      - name: get-http-server-zone
+        method: GET
+        description: Return status of a specific HTTP server zone
+        inputParameters:
+        - name: httpServerZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP server zone
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-http-server-zone
+        method: DELETE
+        description: Reset statistics for an HTTP server zone
+        inputParameters:
+        - name: httpServerZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP server zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-location-zones
+      path: /http/location_zones
+      description: HTTP location zone statistics
+      operations:
+      - name: get-http-location-zones
+        method: GET
+        description: Return status of all HTTP location zones
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-location-zone
+      path: /http/location_zones/{httpLocationZoneName}
+      description: Individual HTTP location zone statistics
+      operations:
+      - name: get-http-location-zone
+        method: GET
+        description: Return status of a specific HTTP location zone
+        inputParameters:
+        - name: httpLocationZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP location zone
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-http-location-zone
+        method: DELETE
+        description: Reset statistics for an HTTP location zone
+        inputParameters:
+        - name: httpLocationZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP location zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-caches
+      path: /http/caches
+      description: HTTP cache zone statistics
+      operations:
+      - name: get-http-caches
+        method: GET
+        description: Return status of all HTTP cache zones
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-cache-zone
+      path: /http/caches/{httpCacheZoneName}
+      description: Individual HTTP cache zone statistics
+      operations:
+      - name: get-http-cache-zone
+        method: GET
+        description: Return status of a specific HTTP cache zone
+        inputParameters:
+        - name: httpCacheZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP cache zone
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-http-cache-zone
+        method: DELETE
+        description: Reset statistics for an HTTP cache zone
+        inputParameters:
+        - name: httpCacheZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP cache zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-limit-conns
+      path: /http/limit_conns
+      description: HTTP connection limit zone statistics
+      operations:
+      - name: get-http-limit-conn-zones
+        method: GET
+        description: Return status of all HTTP limit_conn zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-limit-conn-zone
+      path: /http/limit_conns/{httpLimitConnZoneName}
+      description: Individual HTTP connection limit zone statistics
+      operations:
+      - name: get-http-limit-conn-zone
+        method: GET
+        description: Return status of a specific HTTP limit_conn zone
+        inputParameters:
+        - name: httpLimitConnZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP limit_conn zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-http-limit-conn-zone
+        method: DELETE
+        description: Reset statistics for an HTTP limit_conn zone
+        inputParameters:
+        - name: httpLimitConnZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP limit_conn zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-limit-reqs
+      path: /http/limit_reqs
+      description: HTTP request rate limit zone statistics
+      operations:
+      - name: get-http-limit-req-zones
+        method: GET
+        description: Return status of all HTTP limit_req zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-limit-req-zone
+      path: /http/limit_reqs/{httpLimitReqZoneName}
+      description: Individual HTTP request rate limit zone statistics
+      operations:
+      - name: get-http-limit-req-zone
+        method: GET
+        description: Return status of a specific HTTP limit_req zone
+        inputParameters:
+        - name: httpLimitReqZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP limit_req zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-http-limit-req-zone
+        method: DELETE
+        description: Reset statistics for an HTTP limit_req zone
+        inputParameters:
+        - name: httpLimitReqZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP limit_req zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-upstreams
+      path: /http/upstreams
+      description: HTTP upstream server group statistics
+      operations:
+      - name: get-http-upstreams
+        method: GET
+        description: Return status of all HTTP upstream server groups
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-upstream
+      path: /http/upstreams/{httpUpstreamName}
+      description: Individual HTTP upstream server group
+      operations:
+      - name: get-http-upstream
+        method: GET
+        description: Return status of a specific HTTP upstream server group
+        inputParameters:
+        - name: httpUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the upstream server group
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-http-upstream
+        method: DELETE
+        description: Reset statistics of an HTTP upstream server group
+        inputParameters:
+        - name: httpUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the upstream server group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-upstream-servers
+      path: /http/upstreams/{httpUpstreamName}/servers
+      description: Servers within an HTTP upstream group
+      operations:
+      - name: get-http-upstream-servers
+        method: GET
+        description: Return configuration of all servers in an HTTP upstream server group
+        inputParameters:
+        - name: httpUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the upstream server group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+      - name: add-http-upstream-server
+        method: POST
+        description: Add a server to an HTTP upstream server group
+        inputParameters:
+        - name: httpUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the upstream server group
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Server configuration object
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-upstream-server
+      path: /http/upstreams/{httpUpstreamName}/servers/{httpUpstreamServerId}
+      description: Individual server within an HTTP upstream group
+      operations:
+      - name: get-http-upstream-server
+        method: GET
+        description: Return configuration of a specific server in an HTTP upstream server group
+        inputParameters:
+        - name: httpUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the upstream server group
+        - name: httpUpstreamServerId
+          in: path
+          type: string
+          required: true
+          description: ID of the server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modify-http-upstream-server
+        method: PATCH
+        description: Modify a server in an HTTP upstream server group
+        inputParameters:
+        - name: httpUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the upstream server group
+        - name: httpUpstreamServerId
+          in: path
+          type: string
+          required: true
+          description: ID of the server
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Server configuration fields to update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: remove-http-upstream-server
+        method: DELETE
+        description: Remove a server from an HTTP upstream server group
+        inputParameters:
+        - name: httpUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the upstream server group
+        - name: httpUpstreamServerId
+          in: path
+          type: string
+          required: true
+          description: ID of the server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-keyvals
+      path: /http/keyvals
+      description: HTTP key-value store zones
+      operations:
+      - name: get-http-keyval-zones
+        method: GET
+        description: Return key-value pairs from all HTTP keyval zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-keyval-zone
+      path: /http/keyvals/{httpKeyvalZoneName}
+      description: Individual HTTP key-value store zone
+      operations:
+      - name: get-http-keyval-zone
+        method: GET
+        description: Return key-value pairs from a specific HTTP keyval zone
+        inputParameters:
+        - name: httpKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP keyval zone
+        - name: key
+          in: query
+          type: string
+          required: false
+          description: Key to look up in the zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add-http-keyval
+        method: POST
+        description: Add a key-value pair to an HTTP keyval zone
+        inputParameters:
+        - name: httpKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP keyval zone
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Key-value pair to add
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modify-http-keyval
+        method: PATCH
+        description: Modify a key-value pair or delete a key in an HTTP keyval zone
+        inputParameters:
+        - name: httpKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP keyval zone
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Key-value updates (set value to null to delete)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: empty-http-keyval-zone
+        method: DELETE
+        description: Empty all key-value pairs from an HTTP keyval zone
+        inputParameters:
+        - name: httpKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the HTTP keyval zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream
+      path: /stream
+      description: Stream (TCP/UDP) subsystem endpoints
+      operations:
+      - name: get-stream-endpoints
+        method: GET
+        description: Return list of stream-related endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+    - name: stream-server-zones
+      path: /stream/server_zones
+      description: Stream server zone statistics
+      operations:
+      - name: get-stream-server-zones
+        method: GET
+        description: Return status of all stream server zones
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-server-zone
+      path: /stream/server_zones/{streamServerZoneName}
+      description: Individual stream server zone statistics
+      operations:
+      - name: get-stream-server-zone
+        method: GET
+        description: Return status of a specific stream server zone
+        inputParameters:
+        - name: streamServerZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream server zone
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-stream-server-zone
+        method: DELETE
+        description: Reset statistics for a stream server zone
+        inputParameters:
+        - name: streamServerZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream server zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-limit-conns
+      path: /stream/limit_conns
+      description: Stream connection limit zone statistics
+      operations:
+      - name: get-stream-limit-conn-zones
+        method: GET
+        description: Return status of all stream limit_conn zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-limit-conn-zone
+      path: /stream/limit_conns/{streamLimitConnZoneName}
+      description: Individual stream connection limit zone statistics
+      operations:
+      - name: get-stream-limit-conn-zone
+        method: GET
+        description: Return status of a specific stream limit_conn zone
+        inputParameters:
+        - name: streamLimitConnZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream limit_conn zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-stream-limit-conn-zone
+        method: DELETE
+        description: Reset statistics for a stream limit_conn zone
+        inputParameters:
+        - name: streamLimitConnZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream limit_conn zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-upstreams
+      path: /stream/upstreams
+      description: Stream upstream server group statistics
+      operations:
+      - name: get-stream-upstreams
+        method: GET
+        description: Return status of all stream upstream server groups
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-upstream
+      path: /stream/upstreams/{streamUpstreamName}
+      description: Individual stream upstream server group
+      operations:
+      - name: get-stream-upstream
+        method: GET
+        description: Return status of a specific stream upstream server group
+        inputParameters:
+        - name: streamUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream upstream server group
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Comma-separated list of fields to return
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: reset-stream-upstream
+        method: DELETE
+        description: Reset statistics of a stream upstream server group
+        inputParameters:
+        - name: streamUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream upstream server group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-upstream-servers
+      path: /stream/upstreams/{streamUpstreamName}/servers
+      description: Servers within a stream upstream group
+      operations:
+      - name: get-stream-upstream-servers
+        method: GET
+        description: Return configuration of all servers in a stream upstream server group
+        inputParameters:
+        - name: streamUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream upstream server group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: array
+          value: $.
+      - name: add-stream-upstream-server
+        method: POST
+        description: Add a server to a stream upstream server group
+        inputParameters:
+        - name: streamUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream upstream server group
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Server configuration object
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-upstream-server
+      path: /stream/upstreams/{streamUpstreamName}/servers/{streamUpstreamServerId}
+      description: Individual server within a stream upstream group
+      operations:
+      - name: get-stream-upstream-server
+        method: GET
+        description: Return configuration of a specific server in a stream upstream server group
+        inputParameters:
+        - name: streamUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream upstream server group
+        - name: streamUpstreamServerId
+          in: path
+          type: string
+          required: true
+          description: ID of the server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modify-stream-upstream-server
+        method: PATCH
+        description: Modify a server in a stream upstream server group
+        inputParameters:
+        - name: streamUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream upstream server group
+        - name: streamUpstreamServerId
+          in: path
+          type: string
+          required: true
+          description: ID of the server
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Server configuration fields to update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: remove-stream-upstream-server
+        method: DELETE
+        description: Remove a server from a stream upstream server group
+        inputParameters:
+        - name: streamUpstreamName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream upstream server group
+        - name: streamUpstreamServerId
+          in: path
+          type: string
+          required: true
+          description: ID of the server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-keyvals
+      path: /stream/keyvals
+      description: Stream key-value store zones
+      operations:
+      - name: get-stream-keyval-zones
+        method: GET
+        description: Return key-value pairs from all stream keyval zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-keyval-zone
+      path: /stream/keyvals/{streamKeyvalZoneName}
+      description: Individual stream key-value store zone
+      operations:
+      - name: get-stream-keyval-zone
+        method: GET
+        description: Return key-value pairs from a specific stream keyval zone
+        inputParameters:
+        - name: streamKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream keyval zone
+        - name: key
+          in: query
+          type: string
+          required: false
+          description: Key to look up in the zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add-stream-keyval
+        method: POST
+        description: Add a key-value pair to a stream keyval zone
+        inputParameters:
+        - name: streamKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream keyval zone
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Key-value pair to add
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modify-stream-keyval
+        method: PATCH
+        description: Modify a key-value pair or delete a key in a stream keyval zone
+        inputParameters:
+        - name: streamKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream keyval zone
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Key-value updates (set value to null to delete)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: empty-stream-keyval-zone
+        method: DELETE
+        description: Empty all key-value pairs from a stream keyval zone
+        inputParameters:
+        - name: streamKeyvalZoneName
+          in: path
+          type: string
+          required: true
+          description: Name of the stream keyval zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-zone-sync
+      path: /stream/zone_sync
+      description: Cluster zone synchronization status
+      operations:
+      - name: get-stream-zone-sync
+        method: GET
+        description: Return synchronization status of a cluster node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: nginx-stub-status
+    baseUri: http://localhost
+    description: NGINX stub status endpoint for basic server metrics.
+    resources:
+    - name: stub-status
+      path: /stub_status
+      description: Basic NGINX status metrics
+      operations:
+      - name: get-stub-status
+        method: GET
+        description: Retrieve plain-text stub status metrics including active connections, accepts, handled, requests, and
+          reading/writing/waiting counts
+        outputRawFormat: text
+        outputParameters:
+        - name: result
+          type: string
+          value: $.
   exposes:
-    - type: rest
-      port: 8201
-      namespace: nginx-monitoring-rest
-      description: "REST API for NGINX monitoring and observability."
-      resources:
-        - path: /v1/stub-status
-          name: stub-status
-          description: "Basic NGINX status metrics from stub_status module"
-          operations:
-            - method: GET
-              name: get-stub-status
-              description: "Get basic NGINX status metrics"
-              call: "nginx-stub-status.get-stub-status"
-              outputParameters:
-                - type: string
-                  mapping: "$."
-        - path: /v1/nginx-info
-          name: nginx-info
-          description: "NGINX Plus instance information"
-          operations:
-            - method: GET
-              name: get-nginx-info
-              description: "Get NGINX Plus instance status and version"
-              call: "nginx-plus-api.get-nginx-info"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/connections
-          name: connections
-          description: "Client connection statistics"
-          operations:
-            - method: GET
-              name: get-connections
-              description: "Get client connection statistics"
-              call: "nginx-plus-api.get-connections"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-requests
-          name: http-requests
-          description: "HTTP request processing statistics"
-          operations:
-            - method: GET
-              name: get-http-requests
-              description: "Get HTTP request statistics"
-              call: "nginx-plus-api.get-http-requests"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-server-zones
-          name: http-server-zones
-          description: "HTTP server zone statistics"
-          operations:
-            - method: GET
-              name: get-http-server-zones
-              description: "Get all HTTP server zone statistics"
-              call: "nginx-plus-api.get-http-server-zones"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-server-zones/{httpServerZoneName}
-          name: http-server-zone
-          description: "Individual HTTP server zone statistics"
-          operations:
-            - method: GET
-              name: get-http-server-zone
-              description: "Get statistics for a specific HTTP server zone"
-              call: "nginx-plus-api.get-http-server-zone"
-              with:
-                httpServerZoneName: "rest.httpServerZoneName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-location-zones
-          name: http-location-zones
-          description: "HTTP location zone statistics"
-          operations:
-            - method: GET
-              name: get-http-location-zones
-              description: "Get all HTTP location zone statistics"
-              call: "nginx-plus-api.get-http-location-zones"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-caches
-          name: http-caches
-          description: "HTTP cache zone statistics"
-          operations:
-            - method: GET
-              name: get-http-caches
-              description: "Get all HTTP cache zone statistics"
-              call: "nginx-plus-api.get-http-caches"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-limit-conns
-          name: http-limit-conns
-          description: "HTTP connection limit zone statistics"
-          operations:
-            - method: GET
-              name: get-http-limit-conn-zones
-              description: "Get all HTTP connection limit zone statistics"
-              call: "nginx-plus-api.get-http-limit-conn-zones"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-limit-reqs
-          name: http-limit-reqs
-          description: "HTTP request rate limit zone statistics"
-          operations:
-            - method: GET
-              name: get-http-limit-req-zones
-              description: "Get all HTTP request rate limit zone statistics"
-              call: "nginx-plus-api.get-http-limit-req-zones"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/http-upstreams
-          name: http-upstreams
-          description: "HTTP upstream health and statistics"
-          operations:
-            - method: GET
-              name: get-http-upstreams
-              description: "Get health and statistics for all HTTP upstream groups"
-              call: "nginx-plus-api.get-http-upstreams"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/stream-server-zones
-          name: stream-server-zones
-          description: "Stream server zone statistics"
-          operations:
-            - method: GET
-              name: get-stream-server-zones
-              description: "Get all stream server zone statistics"
-              call: "nginx-plus-api.get-stream-server-zones"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/stream-upstreams
-          name: stream-upstreams
-          description: "Stream upstream health and statistics"
-          operations:
-            - method: GET
-              name: get-stream-upstreams
-              description: "Get health and statistics for all stream upstream groups"
-              call: "nginx-plus-api.get-stream-upstreams"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/stream-zone-sync
-          name: stream-zone-sync
-          description: "Cluster zone synchronization status"
-          operations:
-            - method: GET
-              name: get-stream-zone-sync
-              description: "Get cluster zone synchronization status"
-              call: "nginx-plus-api.get-stream-zone-sync"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9201
-      namespace: nginx-monitoring-mcp
-      transport: http
-      description: "MCP server for AI-assisted NGINX monitoring and observability."
-      tools:
-        - name: get-stub-status
-          description: "Get basic NGINX status metrics including active connections and request counters from stub_status"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-stub-status.get-stub-status"
-          outputParameters:
-            - type: string
-              mapping: "$."
-        - name: get-nginx-info
-          description: "Get NGINX Plus instance status including version, build name, and process information"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-nginx-info"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-connections
-          description: "Get detailed client connection statistics including active, idle, accepted, and dropped counts"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-connections"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-requests
-          description: "Get HTTP request processing statistics including total and current request counts"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-requests"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-server-zones
-          description: "Get statistics for all HTTP server zones including requests, responses, and traffic volume"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-server-zones"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-server-zone
-          description: "Get detailed statistics for a specific HTTP server zone"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-server-zone"
-          with:
-            httpServerZoneName: "tools.httpServerZoneName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-location-zones
-          description: "Get statistics for all HTTP location zones"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-location-zones"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-caches
-          description: "Get cache hit/miss/bypass statistics for all HTTP cache zones"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-caches"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-limit-conn-zones
-          description: "Get connection limiting statistics for all HTTP limit_conn zones"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-limit-conn-zones"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-limit-req-zones
-          description: "Get request rate limiting statistics for all HTTP limit_req zones"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-limit-req-zones"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-http-upstreams
-          description: "Get health status and traffic statistics for all HTTP upstream server groups"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-http-upstreams"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-stream-server-zones
-          description: "Get statistics for all stream (TCP/UDP) server zones"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-stream-server-zones"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-stream-upstreams
-          description: "Get health status and traffic statistics for all stream upstream groups"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-stream-upstreams"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-stream-zone-sync
-          description: "Get cluster zone synchronization status including pending records and sync traffic"
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "nginx-plus-api.get-stream-zone-sync"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8201
+    namespace: nginx-monitoring-rest
+    description: REST API for NGINX monitoring and observability.
+    resources:
+    - path: /v1/stub-status
+      name: stub-status
+      description: Basic NGINX status metrics from stub_status module
+      operations:
+      - method: GET
+        name: get-stub-status
+        description: Get basic NGINX status metrics
+        call: nginx-stub-status.get-stub-status
+        outputParameters:
+        - type: string
+          mapping: $.
+    - path: /v1/nginx-info
+      name: nginx-info
+      description: NGINX Plus instance information
+      operations:
+      - method: GET
+        name: get-nginx-info
+        description: Get NGINX Plus instance status and version
+        call: nginx-plus-api.get-nginx-info
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connections
+      name: connections
+      description: Client connection statistics
+      operations:
+      - method: GET
+        name: get-connections
+        description: Get client connection statistics
+        call: nginx-plus-api.get-connections
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-requests
+      name: http-requests
+      description: HTTP request processing statistics
+      operations:
+      - method: GET
+        name: get-http-requests
+        description: Get HTTP request statistics
+        call: nginx-plus-api.get-http-requests
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-server-zones
+      name: http-server-zones
+      description: HTTP server zone statistics
+      operations:
+      - method: GET
+        name: get-http-server-zones
+        description: Get all HTTP server zone statistics
+        call: nginx-plus-api.get-http-server-zones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-server-zones/{httpServerZoneName}
+      name: http-server-zone
+      description: Individual HTTP server zone statistics
+      operations:
+      - method: GET
+        name: get-http-server-zone
+        description: Get statistics for a specific HTTP server zone
+        call: nginx-plus-api.get-http-server-zone
+        with:
+          httpServerZoneName: rest.httpServerZoneName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-location-zones
+      name: http-location-zones
+      description: HTTP location zone statistics
+      operations:
+      - method: GET
+        name: get-http-location-zones
+        description: Get all HTTP location zone statistics
+        call: nginx-plus-api.get-http-location-zones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-caches
+      name: http-caches
+      description: HTTP cache zone statistics
+      operations:
+      - method: GET
+        name: get-http-caches
+        description: Get all HTTP cache zone statistics
+        call: nginx-plus-api.get-http-caches
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-limit-conns
+      name: http-limit-conns
+      description: HTTP connection limit zone statistics
+      operations:
+      - method: GET
+        name: get-http-limit-conn-zones
+        description: Get all HTTP connection limit zone statistics
+        call: nginx-plus-api.get-http-limit-conn-zones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-limit-reqs
+      name: http-limit-reqs
+      description: HTTP request rate limit zone statistics
+      operations:
+      - method: GET
+        name: get-http-limit-req-zones
+        description: Get all HTTP request rate limit zone statistics
+        call: nginx-plus-api.get-http-limit-req-zones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http-upstreams
+      name: http-upstreams
+      description: HTTP upstream health and statistics
+      operations:
+      - method: GET
+        name: get-http-upstreams
+        description: Get health and statistics for all HTTP upstream groups
+        call: nginx-plus-api.get-http-upstreams
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream-server-zones
+      name: stream-server-zones
+      description: Stream server zone statistics
+      operations:
+      - method: GET
+        name: get-stream-server-zones
+        description: Get all stream server zone statistics
+        call: nginx-plus-api.get-stream-server-zones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream-upstreams
+      name: stream-upstreams
+      description: Stream upstream health and statistics
+      operations:
+      - method: GET
+        name: get-stream-upstreams
+        description: Get health and statistics for all stream upstream groups
+        call: nginx-plus-api.get-stream-upstreams
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream-zone-sync
+      name: stream-zone-sync
+      description: Cluster zone synchronization status
+      operations:
+      - method: GET
+        name: get-stream-zone-sync
+        description: Get cluster zone synchronization status
+        call: nginx-plus-api.get-stream-zone-sync
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9201
+    namespace: nginx-monitoring-mcp
+    transport: http
+    description: MCP server for AI-assisted NGINX monitoring and observability.
+    tools:
+    - name: get-stub-status
+      description: Get basic NGINX status metrics including active connections and request counters from stub_status
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-stub-status.get-stub-status
+      outputParameters:
+      - type: string
+        mapping: $.
+    - name: get-nginx-info
+      description: Get NGINX Plus instance status including version, build name, and process information
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-nginx-info
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connections
+      description: Get detailed client connection statistics including active, idle, accepted, and dropped counts
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-connections
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-requests
+      description: Get HTTP request processing statistics including total and current request counts
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-requests
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-server-zones
+      description: Get statistics for all HTTP server zones including requests, responses, and traffic volume
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-server-zones
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-server-zone
+      description: Get detailed statistics for a specific HTTP server zone
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-server-zone
+      with:
+        httpServerZoneName: tools.httpServerZoneName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-location-zones
+      description: Get statistics for all HTTP location zones
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-location-zones
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-caches
+      description: Get cache hit/miss/bypass statistics for all HTTP cache zones
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-caches
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-limit-conn-zones
+      description: Get connection limiting statistics for all HTTP limit_conn zones
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-limit-conn-zones
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-limit-req-zones
+      description: Get request rate limiting statistics for all HTTP limit_req zones
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-limit-req-zones
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-upstreams
+      description: Get health status and traffic statistics for all HTTP upstream server groups
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-http-upstreams
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-stream-server-zones
+      description: Get statistics for all stream (TCP/UDP) server zones
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-stream-server-zones
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-stream-upstreams
+      description: Get health status and traffic statistics for all stream upstream groups
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-stream-upstreams
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-stream-zone-sync
+      description: Get cluster zone synchronization status including pending records and sync traffic
+      hints:
+        readOnly: true
+        openWorld: false
+      call: nginx-plus-api.get-stream-zone-sync
+      outputParameters:
+      - type: object
+        mapping: $.
