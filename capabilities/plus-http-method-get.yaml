@@ -1,0 +1,1648 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — Method GET
+  description: 'NGINX Plus REST API — Method GET. 41 operations. Lead operation: NGINX Return List of Root Endpoints. Self-contained
+    Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - Method GET
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-method-get
+    baseUri: ''
+    description: NGINX Plus REST API — Method GET business capability. Self-contained, no shared references.
+    resources:
+    - name: root
+      path: /
+      operations:
+      - name: getapiendpoints
+        method: GET
+        description: NGINX Return List of Root Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: connections
+      path: /connections
+      operations:
+      - name: getconnections
+        method: GET
+        description: NGINX Return Client Connections Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the connections statistics will be output.
+    - name: http
+      path: /http/
+      operations:
+      - name: gethttp
+        method: GET
+        description: NGINX Return List of HTTP-Related Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-caches
+      path: /http/caches/
+      operations:
+      - name: gethttpcaches
+        method: GET
+        description: NGINX Return Status of All Caches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of cache zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only names of cache zones will be output.
+    - name: http-caches-httpCacheZoneName
+      path: /http/caches/{httpCacheZoneName}
+      operations:
+      - name: gethttpcachezone
+        method: GET
+        description: NGINX Return Status of a Cache
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the cache zone will be output.
+    - name: http-keyvals
+      path: /http/keyvals/
+      operations:
+      - name: gethttpkeyvalzones
+        method: GET
+        description: NGINX Return Key-Value Pairs from All HTTP Keyval Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: If the “<literal>fields</literal>” value is empty, then only HTTP keyval zone names will be output.
+    - name: http-keyvals-httpKeyvalZoneName
+      path: /http/keyvals/{httpKeyvalZoneName}
+      operations:
+      - name: gethttpkeyvalzonekeysvalues
+        method: GET
+        description: NGINX Return Key-Value Pairs from an HTTP Keyval Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: query
+          type: string
+          description: Get a particular key-value pair from the HTTP keyval zone.
+    - name: http-limit_conns
+      path: /http/limit_conns/
+      operations:
+      - name: gethttplimitconnzones
+        method: GET
+        description: NGINX Return Status of All HTTP Limit_conn Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is
+            empty, then only zone names will be output.
+    - name: http-limit_conns-httpLimitConnZoneName
+      path: /http/limit_conns/{httpLimitConnZoneName}
+      operations:
+      - name: gethttplimitconnzone
+        method: GET
+        description: NGINX Return Status of an HTTP Limit_conn Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)
+            will be output.
+    - name: http-limit_reqs
+      path: /http/limit_reqs/
+      operations:
+      - name: gethttplimitreqzones
+        method: GET
+        description: NGINX Return Status of All HTTP Limit_req Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of limit_req zones will be output. If the “<literal>fields</literal>” value is
+            empty, then only zone names will be output.
+    - name: http-limit_reqs-httpLimitReqZoneName
+      path: /http/limit_reqs/{httpLimitReqZoneName}
+      operations:
+      - name: gethttplimitreqzone
+        method: GET
+        description: NGINX Return Status of an HTTP Limit_req Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)
+            will be output.
+    - name: http-location_zones
+      path: /http/location_zones/
+      operations:
+      - name: gethttplocationzones
+        method: GET
+        description: NGINX Return Status of All HTTP Location Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of location zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only zone names will be output.
+    - name: http-location_zones-httpLocationZoneName
+      path: /http/location_zones/{httpLocationZoneName}
+      operations:
+      - name: gethttplocationzone
+        method: GET
+        description: NGINX Return Status of an HTTP Location Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the location zone will be output.
+    - name: http-requests
+      path: /http/requests
+      operations:
+      - name: gethttprequests
+        method: GET
+        description: NGINX Return HTTP Requests Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of client HTTP requests statistics will be output.
+    - name: http-server_zones
+      path: /http/server_zones/
+      operations:
+      - name: gethttpserverzones
+        method: GET
+        description: NGINX Return Status of All HTTP Server Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only server zone names will be output.
+    - name: http-server_zones-httpServerZoneName
+      path: /http/server_zones/{httpServerZoneName}
+      operations:
+      - name: gethttpserverzone
+        method: GET
+        description: NGINX Return Status of an HTTP Server Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the server zone will be output.
+    - name: http-upstreams
+      path: /http/upstreams/
+      operations:
+      - name: gethttpupstreams
+        method: GET
+        description: NGINX Return Status of All HTTP Upstream Server Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value
+            is empty, only names of upstreams will be output.
+    - name: http-upstreams-httpUpstreamName
+      path: /http/upstreams/{httpUpstreamName}/
+      operations:
+      - name: gethttpupstreamname
+        method: GET
+        description: NGINX Return Status of an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the upstream server group will be output.
+    - name: http-upstreams-httpUpstreamName-servers
+      path: /http/upstreams/{httpUpstreamName}/servers/
+      operations:
+      - name: gethttpupstreamservers
+        method: GET
+        description: NGINX Return Configuration of All Servers in an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-upstreams-httpUpstreamName-servers-httpUpstreamServerId
+      path: /http/upstreams/{httpUpstreamName}/servers/{httpUpstreamServerId}
+      operations:
+      - name: gethttpupstreampeer
+        method: GET
+        description: NGINX Return Configuration of a Server in an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: license
+      path: /license
+      operations:
+      - name: getlicense
+        method: GET
+        description: NGINX Return License Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: nginx
+      path: /nginx
+      operations:
+      - name: getnginx
+        method: GET
+        description: NGINX Return Status of NGINX Running Instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of nginx running instance will be output.
+    - name: processes
+      path: /processes
+      operations:
+      - name: getprocesses
+        method: GET
+        description: NGINX Return NGINX Processes Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: resolvers
+      path: /resolvers/
+      operations:
+      - name: getresolverzones
+        method: GET
+        description: NGINX Return Status for All Resolver Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of resolvers statistics will be output.
+    - name: resolvers-resolverZoneName
+      path: /resolvers/{resolverZoneName}
+      operations:
+      - name: getresolverzone
+        method: GET
+        description: NGINX Return Statistics of a Resolver Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the resolver zone will be output (requests, responses, or both).
+    - name: slabs
+      path: /slabs/
+      operations:
+      - name: getslabs
+        method: GET
+        description: NGINX Return Status of All Slabs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of slab zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only zone names will be output.
+    - name: slabs-slabZoneName
+      path: /slabs/{slabZoneName}
+      operations:
+      - name: getslabzone
+        method: GET
+        description: NGINX Return Status of a Slab
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the slab zone will be output.
+    - name: ssl
+      path: /ssl
+      operations:
+      - name: getssl
+        method: GET
+        description: NGINX Return SSL Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of SSL statistics will be output.
+    - name: stream-keyvals
+      path: /stream/keyvals/
+      operations:
+      - name: getstreamkeyvalzones
+        method: GET
+        description: NGINX Return Key-Value Pairs from All Stream Keyval Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: If the “<literal>fields</literal>” value is empty, then only stream keyval zone names will be output.
+    - name: stream-keyvals-streamKeyvalZoneName
+      path: /stream/keyvals/{streamKeyvalZoneName}
+      operations:
+      - name: getstreamkeyvalzonekeysvalues
+        method: GET
+        description: NGINX Return Key-Value Pairs from a Stream Keyval Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: query
+          type: string
+          description: Get a particular key-value pair from the stream keyval zone.
+    - name: stream-limit_conns
+      path: /stream/limit_conns/
+      operations:
+      - name: getstreamlimitconnzones
+        method: GET
+        description: NGINX Return Status of All Stream Limit_conn Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is
+            empty, then only zone names will be output.
+    - name: stream-limit_conns-streamLimitConnZoneName
+      path: /stream/limit_conns/{streamLimitConnZoneName}
+      operations:
+      - name: getstreamlimitconnzone
+        method: GET
+        description: NGINX Return Status of an Stream Limit_conn Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)
+            will be output.
+    - name: stream-server_zones
+      path: /stream/server_zones/
+      operations:
+      - name: getstreamserverzones
+        method: GET
+        description: NGINX Return Status of All Stream Server Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only server zone names will be output.
+    - name: stream-server_zones-streamServerZoneName
+      path: /stream/server_zones/{streamServerZoneName}
+      operations:
+      - name: getstreamserverzone
+        method: GET
+        description: NGINX Return Status of a Stream Server Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the server zone will be output.
+    - name: stream-upstreams
+      path: /stream/upstreams/
+      operations:
+      - name: getstreamupstreams
+        method: GET
+        description: NGINX Return Status of All Stream Upstream Server Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value
+            is empty, only names of upstreams will be output.
+    - name: stream-upstreams-streamUpstreamName
+      path: /stream/upstreams/{streamUpstreamName}/
+      operations:
+      - name: getstreamupstream
+        method: GET
+        description: NGINX Return Status of a Stream Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the upstream server group will be output.
+    - name: stream-upstreams-streamUpstreamName-servers
+      path: /stream/upstreams/{streamUpstreamName}/servers/
+      operations:
+      - name: getstreamupstreamservers
+        method: GET
+        description: NGINX Return Configuration of All Servers in a Stream Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-upstreams-streamUpstreamName-servers-streamUpstreamServerId
+      path: /stream/upstreams/{streamUpstreamName}/servers/{streamUpstreamServerId}
+      operations:
+      - name: getstreamupstreamserver
+        method: GET
+        description: NGINX Return Configuration of a Server in a Stream Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stream-zone_sync
+      path: /stream/zone_sync/
+      operations:
+      - name: getstreamzonesync
+        method: GET
+        description: NGINX Return Sync Status of a Node
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: workers
+      path: /workers/
+      operations:
+      - name: getworkers
+        method: GET
+        description: NGINX Return Statistics for All Worker Processes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of worker process statistics will be output.
+    - name: workers-workerId
+      path: /workers/{workerId}
+      operations:
+      - name: getworker
+        method: GET
+        description: NGINX Return Status of a Worker Process
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of worker process statistics will be output.
+  exposes:
+  - type: rest
+    namespace: plus-http-method-get-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — Method GET. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1
+      name: root
+      description: REST surface for root.
+      operations:
+      - method: GET
+        name: getapiendpoints
+        description: NGINX Return List of Root Endpoints
+        call: plus-http-method-get.getapiendpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connections
+      name: connections
+      description: REST surface for connections.
+      operations:
+      - method: GET
+        name: getconnections
+        description: NGINX Return Client Connections Statistics
+        call: plus-http-method-get.getconnections
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http
+      name: http
+      description: REST surface for http.
+      operations:
+      - method: GET
+        name: gethttp
+        description: NGINX Return List of HTTP-Related Endpoints
+        call: plus-http-method-get.gethttp
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/caches
+      name: http-caches
+      description: REST surface for http-caches.
+      operations:
+      - method: GET
+        name: gethttpcaches
+        description: NGINX Return Status of All Caches
+        call: plus-http-method-get.gethttpcaches
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/caches/{httpcachezonename}
+      name: http-caches-httpcachezonename
+      description: REST surface for http-caches-httpCacheZoneName.
+      operations:
+      - method: GET
+        name: gethttpcachezone
+        description: NGINX Return Status of a Cache
+        call: plus-http-method-get.gethttpcachezone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/keyvals
+      name: http-keyvals
+      description: REST surface for http-keyvals.
+      operations:
+      - method: GET
+        name: gethttpkeyvalzones
+        description: NGINX Return Key-Value Pairs from All HTTP Keyval Zones
+        call: plus-http-method-get.gethttpkeyvalzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/keyvals/{httpkeyvalzonename}
+      name: http-keyvals-httpkeyvalzonename
+      description: REST surface for http-keyvals-httpKeyvalZoneName.
+      operations:
+      - method: GET
+        name: gethttpkeyvalzonekeysvalues
+        description: NGINX Return Key-Value Pairs from an HTTP Keyval Zone
+        call: plus-http-method-get.gethttpkeyvalzonekeysvalues
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/limit-conns
+      name: http-limit-conns
+      description: REST surface for http-limit_conns.
+      operations:
+      - method: GET
+        name: gethttplimitconnzones
+        description: NGINX Return Status of All HTTP Limit_conn Zones
+        call: plus-http-method-get.gethttplimitconnzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/limit-conns/{httplimitconnzonename}
+      name: http-limit-conns-httplimitconnzonename
+      description: REST surface for http-limit_conns-httpLimitConnZoneName.
+      operations:
+      - method: GET
+        name: gethttplimitconnzone
+        description: NGINX Return Status of an HTTP Limit_conn Zone
+        call: plus-http-method-get.gethttplimitconnzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/limit-reqs
+      name: http-limit-reqs
+      description: REST surface for http-limit_reqs.
+      operations:
+      - method: GET
+        name: gethttplimitreqzones
+        description: NGINX Return Status of All HTTP Limit_req Zones
+        call: plus-http-method-get.gethttplimitreqzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/limit-reqs/{httplimitreqzonename}
+      name: http-limit-reqs-httplimitreqzonename
+      description: REST surface for http-limit_reqs-httpLimitReqZoneName.
+      operations:
+      - method: GET
+        name: gethttplimitreqzone
+        description: NGINX Return Status of an HTTP Limit_req Zone
+        call: plus-http-method-get.gethttplimitreqzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/location-zones
+      name: http-location-zones
+      description: REST surface for http-location_zones.
+      operations:
+      - method: GET
+        name: gethttplocationzones
+        description: NGINX Return Status of All HTTP Location Zones
+        call: plus-http-method-get.gethttplocationzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/location-zones/{httplocationzonename}
+      name: http-location-zones-httplocationzonename
+      description: REST surface for http-location_zones-httpLocationZoneName.
+      operations:
+      - method: GET
+        name: gethttplocationzone
+        description: NGINX Return Status of an HTTP Location Zone
+        call: plus-http-method-get.gethttplocationzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/requests
+      name: http-requests
+      description: REST surface for http-requests.
+      operations:
+      - method: GET
+        name: gethttprequests
+        description: NGINX Return HTTP Requests Statistics
+        call: plus-http-method-get.gethttprequests
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/server-zones
+      name: http-server-zones
+      description: REST surface for http-server_zones.
+      operations:
+      - method: GET
+        name: gethttpserverzones
+        description: NGINX Return Status of All HTTP Server Zones
+        call: plus-http-method-get.gethttpserverzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/server-zones/{httpserverzonename}
+      name: http-server-zones-httpserverzonename
+      description: REST surface for http-server_zones-httpServerZoneName.
+      operations:
+      - method: GET
+        name: gethttpserverzone
+        description: NGINX Return Status of an HTTP Server Zone
+        call: plus-http-method-get.gethttpserverzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/upstreams
+      name: http-upstreams
+      description: REST surface for http-upstreams.
+      operations:
+      - method: GET
+        name: gethttpupstreams
+        description: NGINX Return Status of All HTTP Upstream Server Groups
+        call: plus-http-method-get.gethttpupstreams
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/upstreams/{httpupstreamname}
+      name: http-upstreams-httpupstreamname
+      description: REST surface for http-upstreams-httpUpstreamName.
+      operations:
+      - method: GET
+        name: gethttpupstreamname
+        description: NGINX Return Status of an HTTP Upstream Server Group
+        call: plus-http-method-get.gethttpupstreamname
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/upstreams/{httpupstreamname}/servers
+      name: http-upstreams-httpupstreamname-servers
+      description: REST surface for http-upstreams-httpUpstreamName-servers.
+      operations:
+      - method: GET
+        name: gethttpupstreamservers
+        description: NGINX Return Configuration of All Servers in an HTTP Upstream Server Group
+        call: plus-http-method-get.gethttpupstreamservers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/upstreams/{httpupstreamname}/servers/{httpupstreamserverid}
+      name: http-upstreams-httpupstreamname-servers-httpupstreamserverid
+      description: REST surface for http-upstreams-httpUpstreamName-servers-httpUpstreamServerId.
+      operations:
+      - method: GET
+        name: gethttpupstreampeer
+        description: NGINX Return Configuration of a Server in an HTTP Upstream Server Group
+        call: plus-http-method-get.gethttpupstreampeer
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/license
+      name: license
+      description: REST surface for license.
+      operations:
+      - method: GET
+        name: getlicense
+        description: NGINX Return License Info
+        call: plus-http-method-get.getlicense
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/nginx
+      name: nginx
+      description: REST surface for nginx.
+      operations:
+      - method: GET
+        name: getnginx
+        description: NGINX Return Status of NGINX Running Instance
+        call: plus-http-method-get.getnginx
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/processes
+      name: processes
+      description: REST surface for processes.
+      operations:
+      - method: GET
+        name: getprocesses
+        description: NGINX Return NGINX Processes Status
+        call: plus-http-method-get.getprocesses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/resolvers
+      name: resolvers
+      description: REST surface for resolvers.
+      operations:
+      - method: GET
+        name: getresolverzones
+        description: NGINX Return Status for All Resolver Zones
+        call: plus-http-method-get.getresolverzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/resolvers/{resolverzonename}
+      name: resolvers-resolverzonename
+      description: REST surface for resolvers-resolverZoneName.
+      operations:
+      - method: GET
+        name: getresolverzone
+        description: NGINX Return Statistics of a Resolver Zone
+        call: plus-http-method-get.getresolverzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/slabs
+      name: slabs
+      description: REST surface for slabs.
+      operations:
+      - method: GET
+        name: getslabs
+        description: NGINX Return Status of All Slabs
+        call: plus-http-method-get.getslabs
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/slabs/{slabzonename}
+      name: slabs-slabzonename
+      description: REST surface for slabs-slabZoneName.
+      operations:
+      - method: GET
+        name: getslabzone
+        description: NGINX Return Status of a Slab
+        call: plus-http-method-get.getslabzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ssl
+      name: ssl
+      description: REST surface for ssl.
+      operations:
+      - method: GET
+        name: getssl
+        description: NGINX Return SSL Statistics
+        call: plus-http-method-get.getssl
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/keyvals
+      name: stream-keyvals
+      description: REST surface for stream-keyvals.
+      operations:
+      - method: GET
+        name: getstreamkeyvalzones
+        description: NGINX Return Key-Value Pairs from All Stream Keyval Zones
+        call: plus-http-method-get.getstreamkeyvalzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/keyvals/{streamkeyvalzonename}
+      name: stream-keyvals-streamkeyvalzonename
+      description: REST surface for stream-keyvals-streamKeyvalZoneName.
+      operations:
+      - method: GET
+        name: getstreamkeyvalzonekeysvalues
+        description: NGINX Return Key-Value Pairs from a Stream Keyval Zone
+        call: plus-http-method-get.getstreamkeyvalzonekeysvalues
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/limit-conns
+      name: stream-limit-conns
+      description: REST surface for stream-limit_conns.
+      operations:
+      - method: GET
+        name: getstreamlimitconnzones
+        description: NGINX Return Status of All Stream Limit_conn Zones
+        call: plus-http-method-get.getstreamlimitconnzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/limit-conns/{streamlimitconnzonename}
+      name: stream-limit-conns-streamlimitconnzonename
+      description: REST surface for stream-limit_conns-streamLimitConnZoneName.
+      operations:
+      - method: GET
+        name: getstreamlimitconnzone
+        description: NGINX Return Status of an Stream Limit_conn Zone
+        call: plus-http-method-get.getstreamlimitconnzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/server-zones
+      name: stream-server-zones
+      description: REST surface for stream-server_zones.
+      operations:
+      - method: GET
+        name: getstreamserverzones
+        description: NGINX Return Status of All Stream Server Zones
+        call: plus-http-method-get.getstreamserverzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/server-zones/{streamserverzonename}
+      name: stream-server-zones-streamserverzonename
+      description: REST surface for stream-server_zones-streamServerZoneName.
+      operations:
+      - method: GET
+        name: getstreamserverzone
+        description: NGINX Return Status of a Stream Server Zone
+        call: plus-http-method-get.getstreamserverzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/upstreams
+      name: stream-upstreams
+      description: REST surface for stream-upstreams.
+      operations:
+      - method: GET
+        name: getstreamupstreams
+        description: NGINX Return Status of All Stream Upstream Server Groups
+        call: plus-http-method-get.getstreamupstreams
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/upstreams/{streamupstreamname}
+      name: stream-upstreams-streamupstreamname
+      description: REST surface for stream-upstreams-streamUpstreamName.
+      operations:
+      - method: GET
+        name: getstreamupstream
+        description: NGINX Return Status of a Stream Upstream Server Group
+        call: plus-http-method-get.getstreamupstream
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/upstreams/{streamupstreamname}/servers
+      name: stream-upstreams-streamupstreamname-servers
+      description: REST surface for stream-upstreams-streamUpstreamName-servers.
+      operations:
+      - method: GET
+        name: getstreamupstreamservers
+        description: NGINX Return Configuration of All Servers in a Stream Upstream Server Group
+        call: plus-http-method-get.getstreamupstreamservers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/upstreams/{streamupstreamname}/servers/{streamupstreamserverid}
+      name: stream-upstreams-streamupstreamname-servers-streamupstreamserverid
+      description: REST surface for stream-upstreams-streamUpstreamName-servers-streamUpstreamServerId.
+      operations:
+      - method: GET
+        name: getstreamupstreamserver
+        description: NGINX Return Configuration of a Server in a Stream Upstream Server Group
+        call: plus-http-method-get.getstreamupstreamserver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/zone-sync
+      name: stream-zone-sync
+      description: REST surface for stream-zone_sync.
+      operations:
+      - method: GET
+        name: getstreamzonesync
+        description: NGINX Return Sync Status of a Node
+        call: plus-http-method-get.getstreamzonesync
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workers
+      name: workers
+      description: REST surface for workers.
+      operations:
+      - method: GET
+        name: getworkers
+        description: NGINX Return Statistics for All Worker Processes
+        call: plus-http-method-get.getworkers
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workers/{workerid}
+      name: workers-workerid
+      description: REST surface for workers-workerId.
+      operations:
+      - method: GET
+        name: getworker
+        description: NGINX Return Status of a Worker Process
+        call: plus-http-method-get.getworker
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-method-get-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — Method GET. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: nginx-return-list-root-endpoints
+      description: NGINX Return List of Root Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getapiendpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-client-connections-statistics
+      description: NGINX Return Client Connections Statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getconnections
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-list-http-related
+      description: NGINX Return List of HTTP-Related Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-caches
+      description: NGINX Return Status of All Caches
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpcaches
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-cache
+      description: NGINX Return Status of a Cache
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpcachezone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-key-value-pairs
+      description: NGINX Return Key-Value Pairs from All HTTP Keyval Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpkeyvalzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-key-value-pairs-2
+      description: NGINX Return Key-Value Pairs from an HTTP Keyval Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpkeyvalzonekeysvalues
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-http
+      description: NGINX Return Status of All HTTP Limit_conn Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttplimitconnzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-limit
+      description: NGINX Return Status of an HTTP Limit_conn Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttplimitconnzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-http-2
+      description: NGINX Return Status of All HTTP Limit_req Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttplimitreqzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-limit-2
+      description: NGINX Return Status of an HTTP Limit_req Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttplimitreqzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-http-3
+      description: NGINX Return Status of All HTTP Location Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttplocationzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-location
+      description: NGINX Return Status of an HTTP Location Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttplocationzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-http-requests-statistics
+      description: NGINX Return HTTP Requests Statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttprequests
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-http-4
+      description: NGINX Return Status of All HTTP Server Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpserverzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-server
+      description: NGINX Return Status of an HTTP Server Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpserverzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-http-5
+      description: NGINX Return Status of All HTTP Upstream Server Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpupstreams
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-upstream
+      description: NGINX Return Status of an HTTP Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpupstreamname
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-configuration-all-servers
+      description: NGINX Return Configuration of All Servers in an HTTP Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpupstreamservers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-configuration-server-http
+      description: NGINX Return Configuration of a Server in an HTTP Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.gethttpupstreampeer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-license-info
+      description: NGINX Return License Info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getlicense
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-nginx-running
+      description: NGINX Return Status of NGINX Running Instance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getnginx
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-nginx-processes-status
+      description: NGINX Return NGINX Processes Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getprocesses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-resolver
+      description: NGINX Return Status for All Resolver Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getresolverzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-statistics-resolver-zone
+      description: NGINX Return Statistics of a Resolver Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getresolverzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-slabs
+      description: NGINX Return Status of All Slabs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getslabs
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-slab
+      description: NGINX Return Status of a Slab
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getslabzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-ssl-statistics
+      description: NGINX Return SSL Statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getssl
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-key-value-pairs-3
+      description: NGINX Return Key-Value Pairs from All Stream Keyval Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamkeyvalzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-key-value-pairs-4
+      description: NGINX Return Key-Value Pairs from a Stream Keyval Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamkeyvalzonekeysvalues
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-stream
+      description: NGINX Return Status of All Stream Limit_conn Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamlimitconnzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-stream-limit
+      description: NGINX Return Status of an Stream Limit_conn Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamlimitconnzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-stream-2
+      description: NGINX Return Status of All Stream Server Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamserverzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-stream-server
+      description: NGINX Return Status of a Stream Server Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamserverzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-all-stream-3
+      description: NGINX Return Status of All Stream Upstream Server Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamupstreams
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-stream-upstream
+      description: NGINX Return Status of a Stream Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamupstream
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-configuration-all-servers-2
+      description: NGINX Return Configuration of All Servers in a Stream Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamupstreamservers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-configuration-server-stream
+      description: NGINX Return Configuration of a Server in a Stream Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamupstreamserver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-sync-status-node
+      description: NGINX Return Sync Status of a Node
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getstreamzonesync
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-statistics-all-worker
+      description: NGINX Return Statistics for All Worker Processes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getworkers
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-worker-process
+      description: NGINX Return Status of a Worker Process
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-method-get.getworker
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — HTTP Limit Conns
+  description: 'NGINX Plus REST API — HTTP Limit Conns. 3 operations. Lead operation: NGINX Return Status of All HTTP Limit_conn
+    Zones. Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - HTTP Limit Conns
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-http-limit-conns
+    baseUri: ''
+    description: NGINX Plus REST API — HTTP Limit Conns business capability. Self-contained, no shared references.
+    resources:
+    - name: http-limit_conns
+      path: /http/limit_conns/
+      operations:
+      - name: gethttplimitconnzones
+        method: GET
+        description: NGINX Return Status of All HTTP Limit_conn Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is
+            empty, then only zone names will be output.
+    - name: http-limit_conns-httpLimitConnZoneName
+      path: /http/limit_conns/{httpLimitConnZoneName}
+      operations:
+      - name: gethttplimitconnzone
+        method: GET
+        description: NGINX Return Status of an HTTP Limit_conn Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)
+            will be output.
+      - name: deletehttplimitconnzonestat
+        method: DELETE
+        description: NGINX Reset Statistics for an HTTP Limit_conn Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-http-limit-conns-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — HTTP Limit Conns. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/http/limit-conns
+      name: http-limit-conns
+      description: REST surface for http-limit_conns.
+      operations:
+      - method: GET
+        name: gethttplimitconnzones
+        description: NGINX Return Status of All HTTP Limit_conn Zones
+        call: plus-http-http-limit-conns.gethttplimitconnzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/limit-conns/{httplimitconnzonename}
+      name: http-limit-conns-httplimitconnzonename
+      description: REST surface for http-limit_conns-httpLimitConnZoneName.
+      operations:
+      - method: GET
+        name: gethttplimitconnzone
+        description: NGINX Return Status of an HTTP Limit_conn Zone
+        call: plus-http-http-limit-conns.gethttplimitconnzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletehttplimitconnzonestat
+        description: NGINX Reset Statistics for an HTTP Limit_conn Zone
+        call: plus-http-http-limit-conns.deletehttplimitconnzonestat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-http-limit-conns-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — HTTP Limit Conns. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-http
+      description: NGINX Return Status of All HTTP Limit_conn Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-limit-conns.gethttplimitconnzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-limit
+      description: NGINX Return Status of an HTTP Limit_conn Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-limit-conns.gethttplimitconnzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-statistics-http-limit
+      description: NGINX Reset Statistics for an HTTP Limit_conn Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-http-limit-conns.deletehttplimitconnzonestat
+      outputParameters:
+      - type: object
+        mapping: $.

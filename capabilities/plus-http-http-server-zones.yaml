@@ -1,0 +1,143 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — HTTP Server Zones
+  description: 'NGINX Plus REST API — HTTP Server Zones. 3 operations. Lead operation: NGINX Return Status of All HTTP Server
+    Zones. Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - HTTP Server Zones
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-http-server-zones
+    baseUri: ''
+    description: NGINX Plus REST API — HTTP Server Zones business capability. Self-contained, no shared references.
+    resources:
+    - name: http-server_zones
+      path: /http/server_zones/
+      operations:
+      - name: gethttpserverzones
+        method: GET
+        description: NGINX Return Status of All HTTP Server Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only server zone names will be output.
+    - name: http-server_zones-httpServerZoneName
+      path: /http/server_zones/{httpServerZoneName}
+      operations:
+      - name: gethttpserverzone
+        method: GET
+        description: NGINX Return Status of an HTTP Server Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the server zone will be output.
+      - name: deletehttpserverzonestat
+        method: DELETE
+        description: NGINX Reset Statistics for an HTTP Server Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-http-server-zones-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — HTTP Server Zones. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/http/server-zones
+      name: http-server-zones
+      description: REST surface for http-server_zones.
+      operations:
+      - method: GET
+        name: gethttpserverzones
+        description: NGINX Return Status of All HTTP Server Zones
+        call: plus-http-http-server-zones.gethttpserverzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/server-zones/{httpserverzonename}
+      name: http-server-zones-httpserverzonename
+      description: REST surface for http-server_zones-httpServerZoneName.
+      operations:
+      - method: GET
+        name: gethttpserverzone
+        description: NGINX Return Status of an HTTP Server Zone
+        call: plus-http-http-server-zones.gethttpserverzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletehttpserverzonestat
+        description: NGINX Reset Statistics for an HTTP Server Zone
+        call: plus-http-http-server-zones.deletehttpserverzonestat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-http-server-zones-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — HTTP Server Zones. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-http
+      description: NGINX Return Status of All HTTP Server Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-server-zones.gethttpserverzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-server
+      description: NGINX Return Status of an HTTP Server Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-server-zones.gethttpserverzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-statistics-http-server
+      description: NGINX Reset Statistics for an HTTP Server Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-http-server-zones.deletehttpserverzonestat
+      outputParameters:
+      - type: object
+        mapping: $.

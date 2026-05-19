@@ -1,0 +1,143 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — Stream Server Zones
+  description: 'NGINX Plus REST API — Stream Server Zones. 3 operations. Lead operation: NGINX Return Status of All Stream
+    Server Zones. Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - Stream Server Zones
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-stream-server-zones
+    baseUri: ''
+    description: NGINX Plus REST API — Stream Server Zones business capability. Self-contained, no shared references.
+    resources:
+    - name: stream-server_zones
+      path: /stream/server_zones/
+      operations:
+      - name: getstreamserverzones
+        method: GET
+        description: NGINX Return Status of All Stream Server Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only server zone names will be output.
+    - name: stream-server_zones-streamServerZoneName
+      path: /stream/server_zones/{streamServerZoneName}
+      operations:
+      - name: getstreamserverzone
+        method: GET
+        description: NGINX Return Status of a Stream Server Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the server zone will be output.
+      - name: deletestreamserverzonestat
+        method: DELETE
+        description: NGINX Reset Statistics for a Stream Server Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-stream-server-zones-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — Stream Server Zones. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/stream/server-zones
+      name: stream-server-zones
+      description: REST surface for stream-server_zones.
+      operations:
+      - method: GET
+        name: getstreamserverzones
+        description: NGINX Return Status of All Stream Server Zones
+        call: plus-http-stream-server-zones.getstreamserverzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/server-zones/{streamserverzonename}
+      name: stream-server-zones-streamserverzonename
+      description: REST surface for stream-server_zones-streamServerZoneName.
+      operations:
+      - method: GET
+        name: getstreamserverzone
+        description: NGINX Return Status of a Stream Server Zone
+        call: plus-http-stream-server-zones.getstreamserverzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletestreamserverzonestat
+        description: NGINX Reset Statistics for a Stream Server Zone
+        call: plus-http-stream-server-zones.deletestreamserverzonestat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-stream-server-zones-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — Stream Server Zones. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-stream
+      description: NGINX Return Status of All Stream Server Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-stream-server-zones.getstreamserverzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-stream-server
+      description: NGINX Return Status of a Stream Server Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-stream-server-zones.getstreamserverzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-statistics-stream-server
+      description: NGINX Reset Statistics for a Stream Server Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-stream-server-zones.deletestreamserverzonestat
+      outputParameters:
+      - type: object
+        mapping: $.

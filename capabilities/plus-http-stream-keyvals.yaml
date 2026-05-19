@@ -1,0 +1,213 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — Stream Keyvals
+  description: 'NGINX Plus REST API — Stream Keyvals. 5 operations. Lead operation: NGINX Return Key-Value Pairs from All
+    Stream Keyval Zones. Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - Stream Keyvals
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-stream-keyvals
+    baseUri: ''
+    description: NGINX Plus REST API — Stream Keyvals business capability. Self-contained, no shared references.
+    resources:
+    - name: stream-keyvals
+      path: /stream/keyvals/
+      operations:
+      - name: getstreamkeyvalzones
+        method: GET
+        description: NGINX Return Key-Value Pairs from All Stream Keyval Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: If the “<literal>fields</literal>” value is empty, then only stream keyval zone names will be output.
+    - name: stream-keyvals-streamKeyvalZoneName
+      path: /stream/keyvals/{streamKeyvalZoneName}
+      operations:
+      - name: getstreamkeyvalzonekeysvalues
+        method: GET
+        description: NGINX Return Key-Value Pairs from a Stream Keyval Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: query
+          type: string
+          description: Get a particular key-value pair from the stream keyval zone.
+      - name: poststreamkeyvalzonedata
+        method: POST
+        description: NGINX Add a Key-Value Pair to the Stream Keyval Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Key-value
+          in: body
+          type: string
+          description: A key-value pair is specified in the JSON format. Several key-value pairs can be entered if the stream
+            keyval shared memory zone is empty. Expiration time in mi
+          required: true
+      - name: patchstreamkeyvalzonekeyvalue
+        method: PATCH
+        description: NGINX Modify a Key-Value or Delete a Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: streamKeyvalZoneKeyValue
+          in: body
+          type: string
+          description: A new value for the key is specified in the JSON format.
+          required: true
+      - name: deletestreamkeyvalzonedata
+        method: DELETE
+        description: NGINX Empty the Stream Keyval Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-stream-keyvals-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — Stream Keyvals. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/stream/keyvals
+      name: stream-keyvals
+      description: REST surface for stream-keyvals.
+      operations:
+      - method: GET
+        name: getstreamkeyvalzones
+        description: NGINX Return Key-Value Pairs from All Stream Keyval Zones
+        call: plus-http-stream-keyvals.getstreamkeyvalzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/keyvals/{streamkeyvalzonename}
+      name: stream-keyvals-streamkeyvalzonename
+      description: REST surface for stream-keyvals-streamKeyvalZoneName.
+      operations:
+      - method: GET
+        name: getstreamkeyvalzonekeysvalues
+        description: NGINX Return Key-Value Pairs from a Stream Keyval Zone
+        call: plus-http-stream-keyvals.getstreamkeyvalzonekeysvalues
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: poststreamkeyvalzonedata
+        description: NGINX Add a Key-Value Pair to the Stream Keyval Zone
+        call: plus-http-stream-keyvals.poststreamkeyvalzonedata
+        with:
+          Key-value: rest.Key-value
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchstreamkeyvalzonekeyvalue
+        description: NGINX Modify a Key-Value or Delete a Key
+        call: plus-http-stream-keyvals.patchstreamkeyvalzonekeyvalue
+        with:
+          streamKeyvalZoneKeyValue: rest.streamKeyvalZoneKeyValue
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletestreamkeyvalzonedata
+        description: NGINX Empty the Stream Keyval Zone
+        call: plus-http-stream-keyvals.deletestreamkeyvalzonedata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-stream-keyvals-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — Stream Keyvals. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: nginx-return-key-value-pairs
+      description: NGINX Return Key-Value Pairs from All Stream Keyval Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-stream-keyvals.getstreamkeyvalzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-key-value-pairs-2
+      description: NGINX Return Key-Value Pairs from a Stream Keyval Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-stream-keyvals.getstreamkeyvalzonekeysvalues
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-add-key-value-pair
+      description: NGINX Add a Key-Value Pair to the Stream Keyval Zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: plus-http-stream-keyvals.poststreamkeyvalzonedata
+      with:
+        Key-value: tools.Key-value
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-modify-key-value-delete
+      description: NGINX Modify a Key-Value or Delete a Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: plus-http-stream-keyvals.patchstreamkeyvalzonekeyvalue
+      with:
+        streamKeyvalZoneKeyValue: tools.streamKeyvalZoneKeyValue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-empty-stream-keyval-zone
+      description: NGINX Empty the Stream Keyval Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-stream-keyvals.deletestreamkeyvalzonedata
+      outputParameters:
+      - type: object
+        mapping: $.

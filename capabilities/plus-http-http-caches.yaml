@@ -1,0 +1,143 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — HTTP Caches
+  description: 'NGINX Plus REST API — HTTP Caches. 3 operations. Lead operation: NGINX Return Status of All Caches. Self-contained
+    Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - HTTP Caches
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-http-caches
+    baseUri: ''
+    description: NGINX Plus REST API — HTTP Caches business capability. Self-contained, no shared references.
+    resources:
+    - name: http-caches
+      path: /http/caches/
+      operations:
+      - name: gethttpcaches
+        method: GET
+        description: NGINX Return Status of All Caches
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of cache zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only names of cache zones will be output.
+    - name: http-caches-httpCacheZoneName
+      path: /http/caches/{httpCacheZoneName}
+      operations:
+      - name: gethttpcachezone
+        method: GET
+        description: NGINX Return Status of a Cache
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the cache zone will be output.
+      - name: deletehttpcachezonestat
+        method: DELETE
+        description: NGINX Reset Cache Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-http-caches-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — HTTP Caches. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/http/caches
+      name: http-caches
+      description: REST surface for http-caches.
+      operations:
+      - method: GET
+        name: gethttpcaches
+        description: NGINX Return Status of All Caches
+        call: plus-http-http-caches.gethttpcaches
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/caches/{httpcachezonename}
+      name: http-caches-httpcachezonename
+      description: REST surface for http-caches-httpCacheZoneName.
+      operations:
+      - method: GET
+        name: gethttpcachezone
+        description: NGINX Return Status of a Cache
+        call: plus-http-http-caches.gethttpcachezone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletehttpcachezonestat
+        description: NGINX Reset Cache Statistics
+        call: plus-http-http-caches.deletehttpcachezonestat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-http-caches-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — HTTP Caches. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-caches
+      description: NGINX Return Status of All Caches
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-caches.gethttpcaches
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-cache
+      description: NGINX Return Status of a Cache
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-caches.gethttpcachezone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-cache-statistics
+      description: NGINX Reset Cache Statistics
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-http-caches.deletehttpcachezonestat
+      outputParameters:
+      - type: object
+        mapping: $.

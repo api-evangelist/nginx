@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — Stream Limit Conns
+  description: 'NGINX Plus REST API — Stream Limit Conns. 3 operations. Lead operation: NGINX Return Status of All Stream
+    Limit_conn Zones. Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - Stream Limit Conns
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-stream-limit-conns
+    baseUri: ''
+    description: NGINX Plus REST API — Stream Limit Conns business capability. Self-contained, no shared references.
+    resources:
+    - name: stream-limit_conns
+      path: /stream/limit_conns/
+      operations:
+      - name: getstreamlimitconnzones
+        method: GET
+        description: NGINX Return Status of All Stream Limit_conn Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is
+            empty, then only zone names will be output.
+    - name: stream-limit_conns-streamLimitConnZoneName
+      path: /stream/limit_conns/{streamLimitConnZoneName}
+      operations:
+      - name: getstreamlimitconnzone
+        method: GET
+        description: NGINX Return Status of an Stream Limit_conn Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)
+            will be output.
+      - name: deletestreamlimitconnzonestat
+        method: DELETE
+        description: NGINX Reset Statistics for a Stream Limit_conn Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-stream-limit-conns-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — Stream Limit Conns. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/stream/limit-conns
+      name: stream-limit-conns
+      description: REST surface for stream-limit_conns.
+      operations:
+      - method: GET
+        name: getstreamlimitconnzones
+        description: NGINX Return Status of All Stream Limit_conn Zones
+        call: plus-http-stream-limit-conns.getstreamlimitconnzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stream/limit-conns/{streamlimitconnzonename}
+      name: stream-limit-conns-streamlimitconnzonename
+      description: REST surface for stream-limit_conns-streamLimitConnZoneName.
+      operations:
+      - method: GET
+        name: getstreamlimitconnzone
+        description: NGINX Return Status of an Stream Limit_conn Zone
+        call: plus-http-stream-limit-conns.getstreamlimitconnzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletestreamlimitconnzonestat
+        description: NGINX Reset Statistics for a Stream Limit_conn Zone
+        call: plus-http-stream-limit-conns.deletestreamlimitconnzonestat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-stream-limit-conns-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — Stream Limit Conns. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-stream
+      description: NGINX Return Status of All Stream Limit_conn Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-stream-limit-conns.getstreamlimitconnzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-stream-limit
+      description: NGINX Return Status of an Stream Limit_conn Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-stream-limit-conns.getstreamlimitconnzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-statistics-stream-limit
+      description: NGINX Reset Statistics for a Stream Limit_conn Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-stream-limit-conns.deletestreamlimitconnzonestat
+      outputParameters:
+      - type: object
+        mapping: $.

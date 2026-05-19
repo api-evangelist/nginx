@@ -1,0 +1,142 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — Resolvers
+  description: 'NGINX Plus REST API — Resolvers. 3 operations. Lead operation: NGINX Return Status for All Resolver Zones.
+    Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - Resolvers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-resolvers
+    baseUri: ''
+    description: NGINX Plus REST API — Resolvers business capability. Self-contained, no shared references.
+    resources:
+    - name: resolvers
+      path: /resolvers/
+      operations:
+      - name: getresolverzones
+        method: GET
+        description: NGINX Return Status for All Resolver Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of resolvers statistics will be output.
+    - name: resolvers-resolverZoneName
+      path: /resolvers/{resolverZoneName}
+      operations:
+      - name: getresolverzone
+        method: GET
+        description: NGINX Return Statistics of a Resolver Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the resolver zone will be output (requests, responses, or both).
+      - name: deleteresolverzonestat
+        method: DELETE
+        description: NGINX Reset Statistics for a Resolver Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-resolvers-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — Resolvers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/resolvers
+      name: resolvers
+      description: REST surface for resolvers.
+      operations:
+      - method: GET
+        name: getresolverzones
+        description: NGINX Return Status for All Resolver Zones
+        call: plus-http-resolvers.getresolverzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/resolvers/{resolverzonename}
+      name: resolvers-resolverzonename
+      description: REST surface for resolvers-resolverZoneName.
+      operations:
+      - method: GET
+        name: getresolverzone
+        description: NGINX Return Statistics of a Resolver Zone
+        call: plus-http-resolvers.getresolverzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteresolverzonestat
+        description: NGINX Reset Statistics for a Resolver Zone
+        call: plus-http-resolvers.deleteresolverzonestat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-resolvers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — Resolvers. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-resolver
+      description: NGINX Return Status for All Resolver Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-resolvers.getresolverzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-statistics-resolver-zone
+      description: NGINX Return Statistics of a Resolver Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-resolvers.getresolverzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-statistics-resolver-zone
+      description: NGINX Reset Statistics for a Resolver Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-resolvers.deleteresolverzonestat
+      outputParameters:
+      - type: object
+        mapping: $.

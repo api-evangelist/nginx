@@ -1,0 +1,143 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — HTTP Location Zones
+  description: 'NGINX Plus REST API — HTTP Location Zones. 3 operations. Lead operation: NGINX Return Status of All HTTP Location
+    Zones. Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - HTTP Location Zones
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-http-location-zones
+    baseUri: ''
+    description: NGINX Plus REST API — HTTP Location Zones business capability. Self-contained, no shared references.
+    resources:
+    - name: http-location_zones
+      path: /http/location_zones/
+      operations:
+      - name: gethttplocationzones
+        method: GET
+        description: NGINX Return Status of All HTTP Location Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of location zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only zone names will be output.
+    - name: http-location_zones-httpLocationZoneName
+      path: /http/location_zones/{httpLocationZoneName}
+      operations:
+      - name: gethttplocationzone
+        method: GET
+        description: NGINX Return Status of an HTTP Location Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the location zone will be output.
+      - name: deletehttplocationzonestat
+        method: DELETE
+        description: NGINX Reset Statistics for a Location Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-http-location-zones-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — HTTP Location Zones. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/http/location-zones
+      name: http-location-zones
+      description: REST surface for http-location_zones.
+      operations:
+      - method: GET
+        name: gethttplocationzones
+        description: NGINX Return Status of All HTTP Location Zones
+        call: plus-http-http-location-zones.gethttplocationzones
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/location-zones/{httplocationzonename}
+      name: http-location-zones-httplocationzonename
+      description: REST surface for http-location_zones-httpLocationZoneName.
+      operations:
+      - method: GET
+        name: gethttplocationzone
+        description: NGINX Return Status of an HTTP Location Zone
+        call: plus-http-http-location-zones.gethttplocationzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletehttplocationzonestat
+        description: NGINX Reset Statistics for a Location Zone
+        call: plus-http-http-location-zones.deletehttplocationzonestat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-http-location-zones-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — HTTP Location Zones. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-http
+      description: NGINX Return Status of All HTTP Location Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-location-zones.gethttplocationzones
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-location
+      description: NGINX Return Status of an HTTP Location Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-location-zones.gethttplocationzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-statistics-location-zone
+      description: NGINX Reset Statistics for a Location Zone
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-http-location-zones.deletehttplocationzonestat
+      outputParameters:
+      - type: object
+        mapping: $.

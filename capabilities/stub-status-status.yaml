@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Stub Status API — Status
+  description: 'NGINX Stub Status API — Status. 1 operations. Lead operation: NGINX Retrieve Stub Status Metrics. Self-contained
+    Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - Status
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stub-status-status
+    baseUri: http://localhost
+    description: NGINX Stub Status API — Status business capability. Self-contained, no shared references.
+    resources:
+    - name: stub_status
+      path: /stub_status
+      operations:
+      - name: getstubstatus
+        method: GET
+        description: NGINX Retrieve Stub Status Metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: stub-status-status-rest
+    port: 8080
+    description: REST adapter for NGINX Stub Status API — Status. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/stub-status
+      name: stub-status
+      description: REST surface for stub_status.
+      operations:
+      - method: GET
+        name: getstubstatus
+        description: NGINX Retrieve Stub Status Metrics
+        call: stub-status-status.getstubstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stub-status-status-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Stub Status API — Status. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: nginx-retrieve-stub-status-metrics
+      description: NGINX Retrieve Stub Status Metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stub-status-status.getstubstatus
+      outputParameters:
+      - type: object
+        mapping: $.

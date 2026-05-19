@@ -1,0 +1,143 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — Slabs
+  description: 'NGINX Plus REST API — Slabs. 3 operations. Lead operation: NGINX Return Status of All Slabs. Self-contained
+    Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - Slabs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-slabs
+    baseUri: ''
+    description: NGINX Plus REST API — Slabs business capability. Self-contained, no shared references.
+    resources:
+    - name: slabs
+      path: /slabs/
+      operations:
+      - name: getslabs
+        method: GET
+        description: NGINX Return Status of All Slabs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of slab zones will be output. If the “<literal>fields</literal>” value is empty,
+            then only zone names will be output.
+    - name: slabs-slabZoneName
+      path: /slabs/{slabZoneName}
+      operations:
+      - name: getslabzone
+        method: GET
+        description: NGINX Return Status of a Slab
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the slab zone will be output.
+      - name: deleteslabzonestats
+        method: DELETE
+        description: NGINX Reset Slab Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-slabs-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — Slabs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/slabs
+      name: slabs
+      description: REST surface for slabs.
+      operations:
+      - method: GET
+        name: getslabs
+        description: NGINX Return Status of All Slabs
+        call: plus-http-slabs.getslabs
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/slabs/{slabzonename}
+      name: slabs-slabzonename
+      description: REST surface for slabs-slabZoneName.
+      operations:
+      - method: GET
+        name: getslabzone
+        description: NGINX Return Status of a Slab
+        call: plus-http-slabs.getslabzone
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteslabzonestats
+        description: NGINX Reset Slab Statistics
+        call: plus-http-slabs.deleteslabzonestats
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-slabs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — Slabs. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-slabs
+      description: NGINX Return Status of All Slabs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-slabs.getslabs
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-slab
+      description: NGINX Return Status of a Slab
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-slabs.getslabzone
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-slab-statistics
+      description: NGINX Reset Slab Statistics
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-slabs.deleteslabzonestats
+      outputParameters:
+      - type: object
+        mapping: $.

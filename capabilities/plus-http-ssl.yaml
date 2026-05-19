@@ -1,0 +1,101 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — SSL
+  description: 'NGINX Plus REST API — SSL. 2 operations. Lead operation: NGINX Return SSL Statistics. Self-contained Naftiko
+    capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - SSL
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-ssl
+    baseUri: ''
+    description: NGINX Plus REST API — SSL business capability. Self-contained, no shared references.
+    resources:
+    - name: ssl
+      path: /ssl
+      operations:
+      - name: getssl
+        method: GET
+        description: NGINX Return SSL Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of SSL statistics will be output.
+      - name: deletesslstat
+        method: DELETE
+        description: NGINX Reset SSL Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-ssl-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — SSL. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/ssl
+      name: ssl
+      description: REST surface for ssl.
+      operations:
+      - method: GET
+        name: getssl
+        description: NGINX Return SSL Statistics
+        call: plus-http-ssl.getssl
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesslstat
+        description: NGINX Reset SSL Statistics
+        call: plus-http-ssl.deletesslstat
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-ssl-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — SSL. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: nginx-return-ssl-statistics
+      description: NGINX Return SSL Statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-ssl.getssl
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-ssl-statistics
+      description: NGINX Reset SSL Statistics
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-ssl.deletesslstat
+      outputParameters:
+      - type: object
+        mapping: $.

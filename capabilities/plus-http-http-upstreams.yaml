@@ -1,0 +1,304 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — HTTP Upstreams
+  description: 'NGINX Plus REST API — HTTP Upstreams. 8 operations. Lead operation: NGINX Return Status of All HTTP Upstream
+    Server Groups. Self-contained Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - HTTP Upstreams
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-http-upstreams
+    baseUri: ''
+    description: NGINX Plus REST API — HTTP Upstreams business capability. Self-contained, no shared references.
+    resources:
+    - name: http-upstreams
+      path: /http/upstreams/
+      operations:
+      - name: gethttpupstreams
+        method: GET
+        description: NGINX Return Status of All HTTP Upstream Server Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value
+            is empty, only names of upstreams will be output.
+    - name: http-upstreams-httpUpstreamName
+      path: /http/upstreams/{httpUpstreamName}/
+      operations:
+      - name: gethttpupstreamname
+        method: GET
+        description: NGINX Return Status of an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Limits which fields of the upstream server group will be output.
+      - name: deletehttpupstreamstat
+        method: DELETE
+        description: NGINX Reset Statistics of an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: http-upstreams-httpUpstreamName-servers
+      path: /http/upstreams/{httpUpstreamName}/servers/
+      operations:
+      - name: gethttpupstreamservers
+        method: GET
+        description: NGINX Return Configuration of All Servers in an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: posthttpupstreamserver
+        method: POST
+        description: NGINX Add a Server to an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: postHttpUpstreamServer
+          in: body
+          type: string
+          description: Address of a new server and other optional parameters in the JSON format. The “*ID*”, “*backup*”, and
+            “*service*” parameters cannot be changed.
+          required: true
+    - name: http-upstreams-httpUpstreamName-servers-httpUpstreamServerId
+      path: /http/upstreams/{httpUpstreamName}/servers/{httpUpstreamServerId}
+      operations:
+      - name: gethttpupstreampeer
+        method: GET
+        description: NGINX Return Configuration of a Server in an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patchhttpupstreampeer
+        method: PATCH
+        description: NGINX Modify a Server in an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: patchHttpUpstreamServer
+          in: body
+          type: string
+          description: Server parameters, specified in the JSON format. The “*ID*”, “*backup*”, and “*service*” parameters
+            cannot be changed.
+          required: true
+      - name: deletehttpupstreamserver
+        method: DELETE
+        description: NGINX Remove a Server from an HTTP Upstream Server Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-http-upstreams-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — HTTP Upstreams. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/http/upstreams
+      name: http-upstreams
+      description: REST surface for http-upstreams.
+      operations:
+      - method: GET
+        name: gethttpupstreams
+        description: NGINX Return Status of All HTTP Upstream Server Groups
+        call: plus-http-http-upstreams.gethttpupstreams
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/upstreams/{httpupstreamname}
+      name: http-upstreams-httpupstreamname
+      description: REST surface for http-upstreams-httpUpstreamName.
+      operations:
+      - method: GET
+        name: gethttpupstreamname
+        description: NGINX Return Status of an HTTP Upstream Server Group
+        call: plus-http-http-upstreams.gethttpupstreamname
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletehttpupstreamstat
+        description: NGINX Reset Statistics of an HTTP Upstream Server Group
+        call: plus-http-http-upstreams.deletehttpupstreamstat
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/upstreams/{httpupstreamname}/servers
+      name: http-upstreams-httpupstreamname-servers
+      description: REST surface for http-upstreams-httpUpstreamName-servers.
+      operations:
+      - method: GET
+        name: gethttpupstreamservers
+        description: NGINX Return Configuration of All Servers in an HTTP Upstream Server Group
+        call: plus-http-http-upstreams.gethttpupstreamservers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: posthttpupstreamserver
+        description: NGINX Add a Server to an HTTP Upstream Server Group
+        call: plus-http-http-upstreams.posthttpupstreamserver
+        with:
+          postHttpUpstreamServer: rest.postHttpUpstreamServer
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/http/upstreams/{httpupstreamname}/servers/{httpupstreamserverid}
+      name: http-upstreams-httpupstreamname-servers-httpupstreamserverid
+      description: REST surface for http-upstreams-httpUpstreamName-servers-httpUpstreamServerId.
+      operations:
+      - method: GET
+        name: gethttpupstreampeer
+        description: NGINX Return Configuration of a Server in an HTTP Upstream Server Group
+        call: plus-http-http-upstreams.gethttpupstreampeer
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchhttpupstreampeer
+        description: NGINX Modify a Server in an HTTP Upstream Server Group
+        call: plus-http-http-upstreams.patchhttpupstreampeer
+        with:
+          patchHttpUpstreamServer: rest.patchHttpUpstreamServer
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletehttpupstreamserver
+        description: NGINX Remove a Server from an HTTP Upstream Server Group
+        call: plus-http-http-upstreams.deletehttpupstreamserver
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-http-upstreams-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — HTTP Upstreams. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: nginx-return-status-all-http
+      description: NGINX Return Status of All HTTP Upstream Server Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-upstreams.gethttpupstreams
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-status-http-upstream
+      description: NGINX Return Status of an HTTP Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-upstreams.gethttpupstreamname
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-reset-statistics-http-upstream
+      description: NGINX Reset Statistics of an HTTP Upstream Server Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-http-upstreams.deletehttpupstreamstat
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-configuration-all-servers
+      description: NGINX Return Configuration of All Servers in an HTTP Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-upstreams.gethttpupstreamservers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-add-server-http-upstream
+      description: NGINX Add a Server to an HTTP Upstream Server Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: plus-http-http-upstreams.posthttpupstreamserver
+      with:
+        postHttpUpstreamServer: tools.postHttpUpstreamServer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-return-configuration-server-http
+      description: NGINX Return Configuration of a Server in an HTTP Upstream Server Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http-upstreams.gethttpupstreampeer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-modify-server-http-upstream
+      description: NGINX Modify a Server in an HTTP Upstream Server Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: plus-http-http-upstreams.patchhttpupstreampeer
+      with:
+        patchHttpUpstreamServer: tools.patchHttpUpstreamServer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: nginx-remove-server-http-upstream
+      description: NGINX Remove a Server from an HTTP Upstream Server Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: plus-http-http-upstreams.deletehttpupstreamserver
+      outputParameters:
+      - type: object
+        mapping: $.

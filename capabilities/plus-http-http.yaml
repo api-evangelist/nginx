@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NGINX Plus REST API — HTTP
+  description: 'NGINX Plus REST API — HTTP. 1 operations. Lead operation: NGINX Return List of HTTP-Related Endpoints. Self-contained
+    Naftiko capability covering one Nginx business surface.'
+  tags:
+  - Nginx
+  - HTTP
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGINX_API_KEY: NGINX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: plus-http-http
+    baseUri: ''
+    description: NGINX Plus REST API — HTTP business capability. Self-contained, no shared references.
+    resources:
+    - name: http
+      path: /http/
+      operations:
+      - name: gethttp
+        method: GET
+        description: NGINX Return List of HTTP-Related Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: plus-http-http-rest
+    port: 8080
+    description: REST adapter for NGINX Plus REST API — HTTP. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/http
+      name: http
+      description: REST surface for http.
+      operations:
+      - method: GET
+        name: gethttp
+        description: NGINX Return List of HTTP-Related Endpoints
+        call: plus-http-http.gethttp
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: plus-http-http-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NGINX Plus REST API — HTTP. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: nginx-return-list-http-related
+      description: NGINX Return List of HTTP-Related Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: plus-http-http.gethttp
+      outputParameters:
+      - type: object
+        mapping: $.
