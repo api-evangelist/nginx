@@ -319,6 +319,8 @@ common:
 - name: MCP Server
   url: https://github.com/nginx/nginx-mcp-js
   type: MCPServer
+- type: LLMsTxt
+  url: https://docs.nginx.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
