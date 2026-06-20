@@ -5,7 +5,7 @@ description: NGINX is a high-performance open-source web server, reverse proxy, 
   under the 2-clause BSD license, NGINX powers a significant portion of the world's web traffic. Enterprise support and commercial
   features are available from F5, Inc.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - API Gateway
 - Caching
