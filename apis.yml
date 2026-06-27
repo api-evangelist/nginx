@@ -63,62 +63,62 @@ apis:
     url: openapi/nginx-plus-http-api-openapi.yaml
   - type: JSONLD
     url: json-ld/nginx-plus-http-api-context.jsonld
-  - type: SDK
+  - type: SDKs
     url: https://github.com/nginx/nginx-plus-go-client
     title: Go SDK
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-connections.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-general-info.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-caches.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-keyvals.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-limit-conns.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-limit-reqs.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-location-zones.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-requests.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-server-zones.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-http-upstreams.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-license.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-method-delete.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-method-get.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-method-patch.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-method-post.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-processes.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-resolvers.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-ssl.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-slabs.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-stream.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-stream-keyvals.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-stream-limit-conns.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-stream-server-zones.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-stream-upstreams.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-stream-zone-sync.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/plus-http-workers.yaml
 - aid: nginx:nginx-stub-status
   name: NGINX Stub Status API
@@ -136,7 +136,7 @@ apis:
     url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
   - type: OpenAPI
     url: openapi/nginx-stub-status-openapi.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/stub-status-status.yaml
 - aid: nginx:nginx-njs
   name: NGINX njs Scripting API
@@ -244,10 +244,10 @@ common:
 - type: CLI
   url: https://github.com/nginx/nginx-prometheus-exporter
   title: Prometheus Exporter
-- type: SDK
+- type: SDKs
   url: https://www.npmjs.com/package/@nginx/reference-lib
   title: Directive Reference Library (npm)
-- type: SDK
+- type: SDKs
   url: https://crates.io/crates/ngx
   title: Rust Bindings (crates.io)
 - type: CodeExamples
@@ -319,7 +319,7 @@ common:
 - name: MCP Server
   url: https://github.com/nginx/nginx-mcp-js
   type: MCPServer
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.nginx.com/llms.txt
 maintainers:
 - FN: Kin Lane
