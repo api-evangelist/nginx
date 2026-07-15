@@ -213,6 +213,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/nginx/agent
 common:
+- type: AgenticAccess
+  url: agentic-access/nginx-agentic-access.yml
 - type: DomainSecurity
   url: security/nginx-domain-security.yml
 - type: LinkedIn
