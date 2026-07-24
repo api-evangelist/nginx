@@ -1,0 +1,445 @@
+openapi: 3.0.3
+info:
+  title: NGINX njs Scripting Connections Stream Keyvals API
+  version: '0.8'
+  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  x-generated-from: documentation
+  contact:
+    name: NGINX
+    url: https://nginx.org/en/docs/njs/reference.html
+  license:
+    name: BSD-2-Clause
+    url: https://nginx.org/LICENSE
+tags:
+- name: Stream Keyvals
+paths:
+  /stream/keyvals/:
+    get:
+      tags:
+      - Stream Keyvals
+      summary: NGINX Return Key-Value Pairs from All Stream Keyval Zones
+      description: Returns key-value pairs for each stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone).
+      operationId: getStreamKeyvalZones
+      produces:
+      - application/json
+      parameters:
+      - name: fields
+        in: query
+        type: string
+        description: If the “<literal>fields</literal>” value is empty, then only stream keyval zone names will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxStreamKeyvalZonesMap'
+          examples:
+            application/json:
+              keyval_zone:
+                key1: value1
+                key2: value2
+                key3: value3
+              one:
+                arg1: value1
+                arg2: value2
+                arg3: value3
+          x-microcks-refs:
+          - name: getStreamKeyvalZones200Example
+            x-microcks-default: true
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getStreamKeyvalZones404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /stream/keyvals/{streamKeyvalZoneName}:
+    parameters:
+    - name: streamKeyvalZoneName
+      in: path
+      description: The name of a stream keyval shared memory zone.
+      required: true
+      type: string
+      x-example: example_streamKeyvalZoneName
+    get:
+      tags:
+      - Stream Keyvals
+      summary: NGINX Return Key-Value Pairs from a Stream Keyval Zone
+      description: Returns key-value pairs stored in a particular stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone).
+      operationId: getStreamKeyvalZoneKeysValues
+      produces:
+      - application/json
+      parameters:
+      - name: key
+        in: query
+        type: string
+        description: Get a particular key-value pair from the stream keyval zone.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxStreamKeyvalZone'
+          examples:
+            application/json:
+              key1: value1
+              key2: value2
+              key3: value3
+          x-microcks-refs:
+          - name: getStreamKeyvalZoneKeysValues200Example
+            x-microcks-default: true
+        '404':
+          description: 'Keyval not found (*KeyvalNotFound*),
+
+            keyval key not found (*KeyvalKeyNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getStreamKeyvalZoneKeysValues404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      tags:
+      - Stream Keyvals
+      summary: NGINX Add a Key-Value Pair to the Stream Keyval Zone
+      description: Adds a new key-value pair to the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the stream keyval shared memory zone is empty.
+      operationId: postStreamKeyvalZoneData
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Key-value
+        description: A key-value pair is specified in the JSON format. Several key-value pairs can be entered if the stream keyval shared memory zone is empty. Expiration time in milliseconds can be specified for a key-value pair with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_timeout) parameter of the <a href="https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone">keyval_zone</a> directive.
+        required: true
+        schema:
+          $ref: '#/definitions/NginxStreamKeyvalZonePostPatch'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: 'Invalid JSON (*KeyvalFormatError*),
+
+            invalid key format (*KeyvalFormatError*),
+
+            key required (*KeyvalFormatError*),
+
+            keyval timeout is not enabled (*KeyvalFormatError*),
+
+            only one key can be added (*KeyvalFormatError*),
+
+            reading request body failed *BodyReadError*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id001 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: postStreamKeyvalZoneData400Example
+            x-microcks-default: true
+        '404':
+          description: 'Keyval not found (*KeyvalNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: postStreamKeyvalZoneData404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: postStreamKeyvalZoneData405Example
+            x-microcks-default: true
+        '409':
+          description: 'Entry exists (*EntryExists*),
+
+            key already exists (*KeyvalKeyExists*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: postStreamKeyvalZoneData409Example
+            x-microcks-default: true
+        '413':
+          description: Request Entity Too Large
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: postStreamKeyvalZoneData413Example
+            x-microcks-default: true
+        '415':
+          description: JSON error (*JsonError*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: postStreamKeyvalZoneData415Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      tags:
+      - Stream Keyvals
+      summary: NGINX Modify a Key-Value or Delete a Key
+      description: Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to <literal>null</literal>, changes expiration time of a key-value pair. If <a href="https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync">synchronization</a> of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time is specified in milliseconds with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_timeout) parameter of the <a href="https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone">keyval_zone</a> directive.
+      operationId: patchStreamKeyvalZoneKeyValue
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: streamKeyvalZoneKeyValue
+        description: A new value for the key is specified in the JSON format.
+        required: true
+        schema:
+          $ref: '#/definitions/NginxStreamKeyvalZonePostPatch'
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: 'Invalid JSON (*KeyvalFormatError*),
+
+            key required (*KeyvalFormatError*),
+
+            keyval timeout is not enabled (*KeyvalFormatError*),
+
+            only one key can be updated (*KeyvalFormatError*),
+
+            reading request body failed *BodyReadError*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id002 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: patchStreamKeyvalZoneKeyValue400Example
+            x-microcks-default: true
+        '404':
+          description: 'Keyval not found (*KeyvalNotFound*),
+
+            keyval key not found (*KeyvalKeyNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id002
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: patchStreamKeyvalZoneKeyValue404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id002
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: patchStreamKeyvalZoneKeyValue405Example
+            x-microcks-default: true
+        '413':
+          description: Request Entity Too Large
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id002
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: patchStreamKeyvalZoneKeyValue413Example
+            x-microcks-default: true
+        '415':
+          description: JSON error (*JsonError*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id002
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: patchStreamKeyvalZoneKeyValue415Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - Stream Keyvals
+      summary: NGINX Empty the Stream Keyval Zone
+      description: Deletes all key-value pairs from the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). If <a href="https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node.
+      operationId: deleteStreamKeyvalZoneData
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: 'Keyval not found (*KeyvalNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id003 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteStreamKeyvalZoneData404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id003
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteStreamKeyvalZoneData405Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  NginxStreamKeyvalZone:
+    title: Stream Keyval Shared Memory Zone
+    description: 'Contents of a stream keyval shared memory zone when using the GET method.
+
+      '
+    type: object
+    example:
+      key1: value1
+      key2: value2
+      key3: value3
+  NginxStreamKeyvalZonesMap:
+    title: Stream Keyval Shared Memory Zones
+    description: 'Contents of all stream keyval shared memory zones.
+
+      '
+    type: object
+    additionalProperties:
+      $ref: '#/definitions/NginxStreamKeyvalZone'
+    example:
+      keyval_zone:
+        key1: value1
+        key2: value2
+        key3: value3
+      one:
+        arg1: value1
+        arg2: value2
+        arg3: value3
+  NginxStreamKeyvalZonePostPatch:
+    title: Stream Keyval Shared Memory Zone
+    description: 'Contents of a stream keyval shared memory zone
+
+      when using the POST or PATCH methods.
+
+      '
+    type: object
+    example:
+      key1: value1
+      key2: value2
+      key3:
+        value: value3
+        expire: 30000
+  NginxError:
+    title: Error
+    description: 'nginx error object.
+
+      '
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: HTTP error code.
+            example: 200
+          text:
+            type: string
+            description: Error description.
+            example: example-text
+          code:
+            type: string
+            description: Internal nginx error code.
+            example: 200
+        example: {}
+      request_id:
+        type: string
+        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+        example: example-request_id
+      href:
+        type: string
+        description: Link to reference documentation.
+        example: example-href
+externalDocs:
+  description: NGINX njs Reference
+  url: https://nginx.org/en/docs/njs/reference.html

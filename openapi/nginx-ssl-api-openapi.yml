@@ -1,0 +1,210 @@
+openapi: 3.0.3
+info:
+  title: NGINX njs Scripting Connections SSL API
+  version: '0.8'
+  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  x-generated-from: documentation
+  contact:
+    name: NGINX
+    url: https://nginx.org/en/docs/njs/reference.html
+  license:
+    name: BSD-2-Clause
+    url: https://nginx.org/LICENSE
+tags:
+- name: SSL
+paths:
+  /ssl:
+    get:
+      tags:
+      - SSL
+      summary: NGINX Return SSL Statistics
+      description: Returns SSL statistics.
+      operationId: getSsl
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxSSLObject'
+          examples:
+            application/json:
+              handshakes: 79572
+              handshakes_failed: 21025
+              session_reuses: 15762
+              no_common_protocol: 4
+              no_common_cipher: 2
+              handshake_timeout: 0
+              peer_rejected_cert: 0
+              verify_failures:
+                no_cert: 0
+                expired_cert: 2
+                revoked_cert: 1
+                hostname_mismatch: 2
+                other: 1
+          x-microcks-refs:
+          - name: getSsl200Example
+            x-microcks-default: true
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getSsl404Example
+            x-microcks-default: true
+      parameters:
+      - in: query
+        name: fields
+        type: string
+        description: Limits which fields of SSL statistics will be output.
+        x-example: ''
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - SSL
+      summary: NGINX Reset SSL Statistics
+      description: Resets counters of SSL handshakes and session reuses.
+      operationId: deleteSslStat
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id001 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteSslStat404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteSslStat405Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  NginxSSLObject:
+    title: SSL
+    type: object
+    properties:
+      handshakes:
+        type: integer
+        description: The total number of successful SSL handshakes.
+        example: 79572
+      handshakes_failed:
+        type: integer
+        description: The total number of failed SSL handshakes.
+        example: 21025
+      session_reuses:
+        type: integer
+        description: The total number of session reuses during SSL handshake.
+        example: 15762
+      no_common_protocol:
+        type: integer
+        description: The number of SSL handshakes failed because of no common protocol.
+        example: 4
+      no_common_cipher:
+        type: integer
+        description: The number of SSL handshakes failed because of no shared cipher.
+        example: 2
+      handshake_timeout:
+        type: integer
+        description: The number of SSL handshakes failed because of a timeout.
+        example: 0
+      peer_rejected_cert:
+        type: integer
+        description: The number of failed SSL handshakes when nginx presented the certificate to the client but it was rejected with a corresponding alert message.
+        example: 0
+      verify_failures:
+        type: object
+        description: SSL certificate verification errors
+        properties:
+          no_cert:
+            type: integer
+            description: A client did not provide the required certificate.
+            example: 0
+          expired_cert:
+            type: integer
+            description: An expired or not yet valid certificate was presented by a client.
+            example: 2
+          revoked_cert:
+            type: integer
+            description: A revoked certificate was presented by a client.
+            example: 1
+          hostname_mismatch:
+            type: integer
+            description: Server's certificate doesn't match the hostname.
+            example: 2
+          other:
+            type: integer
+            description: Other SSL certificate verification errors.
+            example: 1
+        example: {}
+    example:
+      handshakes: 79572
+      handshakes_failed: 21025
+      session_reuses: 15762
+      no_common_protocol: 4
+      no_common_cipher: 2
+      handshake_timeout: 0
+      peer_rejected_cert: 0
+      verify_failures:
+        no_cert: 0
+        expired_cert: 2
+        revoked_cert: 1
+        hostname_mismatch: 2
+        other: 1
+  NginxError:
+    title: Error
+    description: 'nginx error object.
+
+      '
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: HTTP error code.
+            example: 200
+          text:
+            type: string
+            description: Error description.
+            example: example-text
+          code:
+            type: string
+            description: Internal nginx error code.
+            example: 200
+        example: {}
+      request_id:
+        type: string
+        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+        example: example-request_id
+      href:
+        type: string
+        description: Link to reference documentation.
+        example: example-href
+externalDocs:
+  description: NGINX njs Reference
+  url: https://nginx.org/en/docs/njs/reference.html

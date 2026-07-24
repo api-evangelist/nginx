@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  title: NGINX njs Scripting Connections License API
+  version: '0.8'
+  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  x-generated-from: documentation
+  contact:
+    name: NGINX
+    url: https://nginx.org/en/docs/njs/reference.html
+  license:
+    name: BSD-2-Clause
+    url: https://nginx.org/LICENSE
+tags:
+- name: License
+paths:
+  /license:
+    get:
+      tags:
+      - License
+      summary: NGINX Return License Info
+      operationId: getLicense
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxLicenseObject'
+          examples:
+            application/json:
+              eval: false
+              active_till: 1749268757
+              reporting:
+                healthy: true
+                fails: 2
+                grace: 15551961
+                uuid: 13754cba-29fb-53e5-c32e-a6cf57c84b01
+          x-microcks-refs:
+          - name: getLicense200Example
+            x-microcks-default: true
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getLicense404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  NginxLicenseObject:
+    title: License
+    description: 'License and usage reporting status of NGINX Plus instance.
+
+      '
+    properties:
+      eval:
+        type: boolean
+        description: Indicates whether NGINX Plus license is trial.
+        readOnly: true
+        example: false
+      active_till:
+        type: integer
+        description: The Unix timestamp of license expiration.
+        readOnly: true
+        example: 0
+      reporting:
+        type: object
+        properties:
+          healthy:
+            type: boolean
+            description: Indicates whether the reporting state is still considered healthy despite recent failed attempts.
+            readOnly: true
+            example: false
+          fails:
+            type: integer
+            description: The number of failed reporting attempts, reset each time the usage report is successfully sent.
+            readOnly: true
+            example: 0
+          grace:
+            type: integer
+            description: The number of seconds before traffic processing is stopped after unsuccessful report attempt.
+            readOnly: true
+            example: 0
+          uuid:
+            type: string
+            description: The ID of NGINX Plus instance in the UUID format.
+            readOnly: true
+            example: example-uuid
+        example: {}
+    example:
+      eval: false
+      active_till: 1749268757
+      reporting:
+        healthy: true
+        fails: 2
+        grace: 15551961
+        uuid: 13754cba-29fb-53e5-c32e-a6cf57c84b01
+  NginxError:
+    title: Error
+    description: 'nginx error object.
+
+      '
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: HTTP error code.
+            example: 200
+          text:
+            type: string
+            description: Error description.
+            example: example-text
+          code:
+            type: string
+            description: Internal nginx error code.
+            example: 200
+        example: {}
+      request_id:
+        type: string
+        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+        example: example-request_id
+      href:
+        type: string
+        description: Link to reference documentation.
+        example: example-href
+externalDocs:
+  description: NGINX njs Reference
+  url: https://nginx.org/en/docs/njs/reference.html

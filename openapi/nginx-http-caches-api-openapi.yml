@@ -1,0 +1,485 @@
+openapi: 3.0.3
+info:
+  title: NGINX njs Scripting Connections HTTP Caches API
+  version: '0.8'
+  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  x-generated-from: documentation
+  contact:
+    name: NGINX
+    url: https://nginx.org/en/docs/njs/reference.html
+  license:
+    name: BSD-2-Clause
+    url: https://nginx.org/LICENSE
+tags:
+- name: HTTP Caches
+paths:
+  /http/caches/:
+    get:
+      tags:
+      - HTTP Caches
+      summary: NGINX Return Status of All Caches
+      description: Returns status of each cache configured by [proxy_cache_path](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path) and other “<literal>*_cache_path</literal>” directives.
+      operationId: getHttpCaches
+      produces:
+      - application/json
+      parameters:
+      - name: fields
+        in: query
+        type: string
+        description: Limits which fields of cache zones will be output. If the “<literal>fields</literal>” value is empty, then only names of cache zones will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxHTTPCachesMap'
+          examples:
+            application/json:
+              http-cache:
+                size: 530915328
+                max_size: 536870912
+                cold: false
+                hit:
+                  responses: 254032
+                  bytes: 6685627875
+                stale:
+                  responses: 0
+                  bytes: 0
+                updating:
+                  responses: 0
+                  bytes: 0
+                revalidated:
+                  responses: 0
+                  bytes: 0
+                miss:
+                  responses: 1619201
+                  bytes: 53841943822
+                expired:
+                  responses: 45859
+                  bytes: 1656847080
+                  responses_written: 44992
+                  bytes_written: 1641825173
+                bypass:
+                  responses: 200187
+                  bytes: 5510647548
+                  responses_written: 200173
+                  bytes_written: 44992
+              frontend-cache:
+                size: 530915328
+                max_size: 536870912
+                cold: false
+                hit:
+                  responses: 254032
+                  bytes: 6685627875
+                stale:
+                  responses: 0
+                  bytes: 0
+                updating:
+                  responses: 0
+                  bytes: 0
+                revalidated:
+                  responses: 0
+                  bytes: 0
+                miss:
+                  responses: 1619201
+                  bytes: 53841943822
+                expired:
+                  responses: 45859
+                  bytes: 1656847080
+                  responses_written: 44992
+                  bytes_written: 1641825173
+                bypass:
+                  responses: 200187
+                  bytes: 5510647548
+                  responses_written: 200173
+                  bytes_written: 44992
+          x-microcks-refs:
+          - name: getHttpCaches200Example
+            x-microcks-default: true
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getHttpCaches404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /http/caches/{httpCacheZoneName}:
+    parameters:
+    - name: httpCacheZoneName
+      in: path
+      description: The name of the cache zone.
+      type: string
+      required: true
+      x-example: example_httpCacheZoneName
+    get:
+      tags:
+      - HTTP Caches
+      summary: NGINX Return Status of a Cache
+      description: Returns status of a particular cache.
+      operationId: getHttpCacheZone
+      produces:
+      - application/json
+      parameters:
+      - name: fields
+        in: query
+        type: string
+        description: Limits which fields of the cache zone will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxHTTPCache'
+          examples:
+            application/json:
+              size: 530915328
+              max_size: 536870912
+              cold: false
+              hit:
+                responses: 254032
+                bytes: 6685627875
+              stale:
+                responses: 0
+                bytes: 0
+              updating:
+                responses: 0
+                bytes: 0
+              revalidated:
+                responses: 0
+                bytes: 0
+              miss:
+                responses: 1619201
+                bytes: 53841943822
+              expired:
+                responses: 45859
+                bytes: 1656847080
+                responses_written: 44992
+                bytes_written: 1641825173
+              bypass:
+                responses: 200187
+                bytes: 5510647548
+                responses_written: 200173
+                bytes_written: 44992
+          x-microcks-refs:
+          - name: getHttpCacheZone200Example
+            x-microcks-default: true
+        '404':
+          description: 'Cache not found (*CacheNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getHttpCacheZone404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - HTTP Caches
+      summary: NGINX Reset Cache Statistics
+      description: Resets statistics of cache hits/misses in a particular cache zone.
+      operationId: deleteHttpCacheZoneStat
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: 'Cache not found (*CacheNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id001 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteHttpCacheZoneStat404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteHttpCacheZoneStat405Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  NginxHTTPCache:
+    title: HTTP Cache
+    type: object
+    properties:
+      size:
+        type: integer
+        description: The current size of the cache.
+        example: 0
+      max_size:
+        type: integer
+        description: The limit on the maximum size of the cache specified in the configuration.
+        example: 0
+      cold:
+        type: boolean
+        description: A boolean value indicating whether the “cache loader” process is still loading data from disk into the cache.
+        example: false
+      hit:
+        type: object
+        properties:
+          responses:
+            type: integer
+            description: The total number of <a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_valid">valid</a> responses read from the cache.
+            example: 1234567
+          bytes:
+            type: integer
+            description: The total number of bytes read from the cache.
+            example: 0
+        example: {}
+      stale:
+        type: object
+        properties:
+          responses:
+            type: integer
+            description: The total number of expired responses read from the cache (see <a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_use_stale">proxy_cache_use_stale</a> and other “<code>*_cache_use_stale</code>” directives).
+            example: 1234567
+          bytes:
+            type: integer
+            description: The total number of bytes read from the cache.
+            example: 0
+        example: {}
+      updating:
+        type: object
+        properties:
+          responses:
+            type: integer
+            description: The total number of expired responses read from the cache while responses were being updated (see <a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_use_stale_updating">proxy_cache_use_stale</a> and other “<code>*_cache_use_stale</code>” directives).
+            example: 1234567
+          bytes:
+            type: integer
+            description: The total number of bytes read from the cache.
+            example: 0
+        example: {}
+      revalidated:
+        type: object
+        properties:
+          responses:
+            type: integer
+            description: The total number of expired and revalidated responses read from the cache (see <a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_revalidate">proxy_cache_revalidate</a> and other “<code>*_cache_revalidate</code>” directives.
+            example: 1234567
+          bytes:
+            type: integer
+            description: The total number of bytes read from the cache.
+            example: 0
+        example: {}
+      miss:
+        type: object
+        properties:
+          responses:
+            type: integer
+            description: The total number of responses not found in the cache.
+            example: 1234567
+          bytes:
+            type: integer
+            description: The total number of bytes read from the proxied server.
+            example: 0
+          responses_written:
+            type: integer
+            description: The total number of responses written to the cache.
+            example: 0
+          bytes_written:
+            type: integer
+            description: The total number of bytes written to the cache.
+            example: 0
+        example: {}
+      expired:
+        type: object
+        properties:
+          responses:
+            type: integer
+            description: The total number of expired responses not taken from the cache.
+            example: 1234567
+          bytes:
+            type: integer
+            description: The total number of bytes read from the proxied server.
+            example: 0
+          responses_written:
+            type: integer
+            description: The total number of responses written to the cache.
+            example: 0
+          bytes_written:
+            type: integer
+            description: The total number of bytes written to the cache.
+            example: 0
+        example: {}
+      bypass:
+        type: object
+        properties:
+          responses:
+            type: integer
+            description: The total number of responses not looked up in the cache due to the <a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_bypass">proxy_cache_bypass</a> and other “<code>*_cache_bypass</code>” directives.
+            example: 1234567
+          bytes:
+            type: integer
+            description: The total number of bytes read from the proxied server.
+            example: 0
+          responses_written:
+            type: integer
+            description: The total number of responses written to the cache.
+            example: 0
+          bytes_written:
+            type: integer
+            description: The total number of bytes written to the cache.
+            example: 0
+        example: {}
+    example:
+      size: 530915328
+      max_size: 536870912
+      cold: false
+      hit:
+        responses: 254032
+        bytes: 6685627875
+      stale:
+        responses: 0
+        bytes: 0
+      updating:
+        responses: 0
+        bytes: 0
+      revalidated:
+        responses: 0
+        bytes: 0
+      miss:
+        responses: 1619201
+        bytes: 53841943822
+      expired:
+        responses: 45859
+        bytes: 1656847080
+        responses_written: 44992
+        bytes_written: 1641825173
+      bypass:
+        responses: 200187
+        bytes: 5510647548
+        responses_written: 200173
+        bytes_written: 44992
+  NginxError:
+    title: Error
+    description: 'nginx error object.
+
+      '
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: HTTP error code.
+            example: 200
+          text:
+            type: string
+            description: Error description.
+            example: example-text
+          code:
+            type: string
+            description: Internal nginx error code.
+            example: 200
+        example: {}
+      request_id:
+        type: string
+        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+        example: example-request_id
+      href:
+        type: string
+        description: Link to reference documentation.
+        example: example-href
+  NginxHTTPCachesMap:
+    title: HTTP Caches
+    description: "Status information of all HTTP caches configured by \n<a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path\">proxy_cache_path</a>\nand other “<code>*_cache_path</code>” directives.\n"
+    type: object
+    additionalProperties:
+      $ref: '#/definitions/NginxHTTPCache'
+    example:
+      http-cache:
+        size: 530915328
+        max_size: 536870912
+        cold: false
+        hit:
+          responses: 254032
+          bytes: 6685627875
+        stale:
+          responses: 0
+          bytes: 0
+        updating:
+          responses: 0
+          bytes: 0
+        revalidated:
+          responses: 0
+          bytes: 0
+        miss:
+          responses: 1619201
+          bytes: 53841943822
+        expired:
+          responses: 45859
+          bytes: 1656847080
+          responses_written: 44992
+          bytes_written: 1641825173
+        bypass:
+          responses: 200187
+          bytes: 5510647548
+          responses_written: 200173
+          bytes_written: 44992
+      frontend-cache:
+        size: 530915328
+        max_size: 536870912
+        cold: false
+        hit:
+          responses: 254032
+          bytes: 6685627875
+        stale:
+          responses: 0
+          bytes: 0
+        updating:
+          responses: 0
+          bytes: 0
+        revalidated:
+          responses: 0
+          bytes: 0
+        miss:
+          responses: 1619201
+          bytes: 53841943822
+        expired:
+          responses: 45859
+          bytes: 1656847080
+          responses_written: 44992
+          bytes_written: 1641825173
+        bypass:
+          responses: 200187
+          bytes: 5510647548
+          responses_written: 200173
+          bytes_written: 44992
+externalDocs:
+  description: NGINX njs Reference
+  url: https://nginx.org/en/docs/njs/reference.html

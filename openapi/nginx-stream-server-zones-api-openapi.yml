@@ -1,0 +1,439 @@
+openapi: 3.0.3
+info:
+  title: NGINX njs Scripting Connections Stream Server Zones API
+  version: '0.8'
+  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  x-generated-from: documentation
+  contact:
+    name: NGINX
+    url: https://nginx.org/en/docs/njs/reference.html
+  license:
+    name: BSD-2-Clause
+    url: https://nginx.org/LICENSE
+tags:
+- name: Stream Server Zones
+paths:
+  /stream/server_zones/:
+    get:
+      tags:
+      - Stream Server Zones
+      summary: NGINX Return Status of All Stream Server Zones
+      description: Returns status information for each stream [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone).
+      operationId: getStreamServerZones
+      produces:
+      - application/json
+      parameters:
+      - name: fields
+        in: query
+        type: string
+        description: Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxStreamServerZonesMap'
+          examples:
+            application/json:
+              mysql-frontend:
+                processing: 2
+                connections: 270925
+                sessions:
+                  2xx: 155564
+                  4xx: 0
+                  5xx: 0
+                  total: 270925
+                discarded: 0
+                received: 28988975
+                sent: 3879346317
+                ssl:
+                  handshakes: 76455
+                  handshakes_failed: 432
+                  session_reuses: 28770
+                  no_common_protocol: 4
+                  no_common_cipher: 2
+                  handshake_timeout: 0
+                  peer_rejected_cert: 0
+                  verify_failures:
+                    no_cert: 0
+                    expired_cert: 2
+                    revoked_cert: 1
+                    other: 1
+              dns:
+                processing: 1
+                connections: 155569
+                sessions:
+                  2xx: 155564
+                  4xx: 0
+                  5xx: 0
+                  total: 155569
+                discarded: 0
+                received: 4200363
+                sent: 20489184
+                ssl:
+                  handshakes: 2040
+                  handshakes_failed: 23
+                  session_reuses: 65
+                  no_common_protocol: 4
+                  no_common_cipher: 2
+                  handshake_timeout: 0
+                  peer_rejected_cert: 0
+                  verify_failures:
+                    no_cert: 0
+                    expired_cert: 2
+                    revoked_cert: 1
+                    other: 1
+          x-microcks-refs:
+          - name: getStreamServerZones200Example
+            x-microcks-default: true
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getStreamServerZones404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /stream/server_zones/{streamServerZoneName}:
+    parameters:
+    - name: streamServerZoneName
+      in: path
+      description: The name of a stream server zone.
+      type: string
+      required: true
+      x-example: example_streamServerZoneName
+    get:
+      tags:
+      - Stream Server Zones
+      summary: NGINX Return Status of a Stream Server Zone
+      description: Returns status of a particular stream server zone.
+      operationId: getStreamServerZone
+      produces:
+      - application/json
+      parameters:
+      - name: fields
+        in: query
+        type: string
+        description: Limits which fields of the server zone will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxStreamServerZone'
+          examples:
+            application/json:
+              dns:
+                processing: 1
+                connections: 155569
+                sessions:
+                  2xx: 155564
+                  4xx: 0
+                  5xx: 0
+                  total: 155569
+                discarded: 0
+                received: 4200363
+                sent: 20489184
+                ssl:
+                  handshakes: 76455
+                  handshakes_failed: 432
+                  session_reuses: 28770
+                  no_common_protocol: 4
+                  no_common_cipher: 2
+                  handshake_timeout: 0
+                  peer_rejected_cert: 0
+                  verify_failures:
+                    no_cert: 0
+                    expired_cert: 2
+                    revoked_cert: 1
+                    other: 1
+          x-microcks-refs:
+          - name: getStreamServerZone200Example
+            x-microcks-default: true
+        '404':
+          description: 'Server zone not found (*ServerZoneNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getStreamServerZone404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - Stream Server Zones
+      summary: NGINX Reset Statistics for a Stream Server Zone
+      description: Resets statistics of accepted and discarded connections, sessions, received and sent bytes, counters of SSL handshakes and session reuses in a particular stream server zone.
+      operationId: deleteStreamServerZoneStat
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: 'Server zone not found (*ServerZoneNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id001 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteStreamServerZoneStat404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteStreamServerZoneStat405Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  NginxStreamServerZone:
+    title: Stream Server Zone
+    type: object
+    properties:
+      processing:
+        type: integer
+        description: The number of client connections that are currently being processed.
+        example: 1
+      connections:
+        type: integer
+        description: The total number of connections accepted from clients.
+        example: 0
+      sessions:
+        type: object
+        description: The total number of completed sessions, and the number of sessions completed with status codes “<code>2xx</code>”, “<code>4xx</code>”, or “<code>5xx</code>”.
+        properties:
+          2xx:
+            type: integer
+            description: The total number of sessions completed with <a href="https://nginx.org/en/docs/stream/ngx_stream_core_module.html#var_status">status codes</a> “<code>2xx</code>”.
+            example: 0
+          4xx:
+            type: integer
+            description: The total number of sessions completed with <a href="https://nginx.org/en/docs/stream/ngx_stream_core_module.html#var_status">status codes</a> “<code>4xx</code>”.
+            example: 0
+          5xx:
+            type: integer
+            description: The total number of sessions completed with <a href="https://nginx.org/en/docs/stream/ngx_stream_core_module.html#var_status">status codes</a> “<code>5xx</code>”.
+            example: 0
+          total:
+            type: integer
+            description: The total number of completed client sessions.
+            example: 98765
+        example: {}
+      discarded:
+        type: integer
+        description: The total number of connections completed without creating a session.
+        example: 0
+      received:
+        type: integer
+        description: The total number of bytes received from clients.
+        example: 180157219
+      sent:
+        type: integer
+        description: The total number of bytes sent to clients.
+        example: 20183175459
+      ssl:
+        type: object
+        readOnly: true
+        properties:
+          handshakes:
+            type: integer
+            description: The total number of successful SSL handshakes.
+            readOnly: true
+            example: 79572
+          handshakes_failed:
+            type: integer
+            description: The total number of failed SSL handshakes.
+            readOnly: true
+            example: 21025
+          session_reuses:
+            type: integer
+            description: The total number of session reuses during SSL handshake.
+            readOnly: true
+            example: 15762
+          no_common_protocol:
+            type: integer
+            description: The number of SSL handshakes failed because of no common protocol.
+            example: 4
+          no_common_cipher:
+            type: integer
+            description: The number of SSL handshakes failed because of no shared cipher.
+            example: 2
+          handshake_timeout:
+            type: integer
+            description: The number of SSL handshakes failed because of a timeout.
+            example: 0
+          peer_rejected_cert:
+            type: integer
+            description: The number of failed SSL handshakes when nginx presented the certificate to the client but it was rejected with a corresponding alert message.
+            example: 0
+          verify_failures:
+            type: object
+            description: SSL certificate verification errors
+            properties:
+              no_cert:
+                type: integer
+                description: A client did not provide the required certificate.
+                example: 0
+              expired_cert:
+                type: integer
+                description: An expired or not yet valid certificate was presented by a client.
+                example: 2
+              revoked_cert:
+                type: integer
+                description: A revoked certificate was presented by a client.
+                example: 1
+              other:
+                type: integer
+                description: Other SSL certificate verification errors.
+                example: 1
+            example: {}
+        example: {}
+    example:
+      dns:
+        processing: 1
+        connections: 155569
+        sessions:
+          2xx: 155564
+          4xx: 0
+          5xx: 0
+          total: 155569
+        discarded: 0
+        received: 4200363
+        sent: 20489184
+        ssl:
+          handshakes: 76455
+          handshakes_failed: 432
+          session_reuses: 28770
+          no_common_protocol: 4
+          no_common_cipher: 2
+          handshake_timeout: 0
+          peer_rejected_cert: 0
+          verify_failures:
+            no_cert: 0
+            expired_cert: 2
+            revoked_cert: 1
+            other: 1
+  NginxError:
+    title: Error
+    description: 'nginx error object.
+
+      '
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: HTTP error code.
+            example: 200
+          text:
+            type: string
+            description: Error description.
+            example: example-text
+          code:
+            type: string
+            description: Internal nginx error code.
+            example: 200
+        example: {}
+      request_id:
+        type: string
+        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+        example: example-request_id
+      href:
+        type: string
+        description: Link to reference documentation.
+        example: example-href
+  NginxStreamServerZonesMap:
+    title: Stream Server Zones
+    description: 'Status information for all stream
+
+      <a href="https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone">status zones</a>.
+
+      '
+    type: object
+    additionalProperties:
+      $ref: '#/definitions/NginxStreamServerZone'
+    example:
+      mysql-frontend:
+        processing: 2
+        connections: 270925
+        sessions:
+          2xx: 155564
+          4xx: 0
+          5xx: 0
+          total: 270925
+        discarded: 0
+        received: 28988975
+        sent: 3879346317
+        ssl:
+          handshakes: 76455
+          handshakes_failed: 432
+          session_reuses: 28770
+          no_common_protocol: 4
+          no_common_cipher: 2
+          handshake_timeout: 0
+          peer_rejected_cert: 0
+          verify_failures:
+            no_cert: 0
+            expired_cert: 2
+            revoked_cert: 1
+            other: 1
+      dns:
+        processing: 1
+        connections: 155569
+        sessions:
+          2xx: 155564
+          4xx: 0
+          5xx: 0
+          total: 155569
+        discarded: 0
+        received: 4200363
+        sent: 20489184
+        ssl:
+          handshakes: 2040
+          handshakes_failed: 23
+          session_reuses: 65
+          no_common_protocol: 4
+          no_common_cipher: 2
+          handshake_timeout: 0
+          peer_rejected_cert: 0
+          verify_failures:
+            no_cert: 0
+            expired_cert: 2
+            revoked_cert: 1
+            other: 1
+externalDocs:
+  description: NGINX njs Reference
+  url: https://nginx.org/en/docs/njs/reference.html

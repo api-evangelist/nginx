@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: NGINX njs Scripting Connections HTTP Limit Conns API
+  version: '0.8'
+  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  x-generated-from: documentation
+  contact:
+    name: NGINX
+    url: https://nginx.org/en/docs/njs/reference.html
+  license:
+    name: BSD-2-Clause
+    url: https://nginx.org/LICENSE
+tags:
+- name: HTTP Limit Conns
+paths:
+  /http/limit_conns/:
+    get:
+      tags:
+      - HTTP Limit Conns
+      summary: NGINX Return Status of All HTTP Limit_conn Zones
+      description: Returns status information for each HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone).
+      operationId: getHttpLimitConnZones
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: fields
+        type: string
+        description: Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxHTTPLimitConnZonesMap'
+          examples:
+            application/json: example
+          x-microcks-refs:
+          - name: getHttpLimitConnZones200Example
+            x-microcks-default: true
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getHttpLimitConnZones404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /http/limit_conns/{httpLimitConnZoneName}:
+    parameters:
+    - name: httpLimitConnZoneName
+      in: path
+      description: The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone).
+      type: string
+      required: true
+      x-example: example_httpLimitConnZoneName
+    get:
+      tags:
+      - HTTP Limit Conns
+      summary: NGINX Return Status of an HTTP Limit_conn Zone
+      description: Returns status of a particular HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone).
+      operationId: getHttpLimitConnZone
+      produces:
+      - application/json
+      parameters:
+      - name: fields
+        in: query
+        type: string
+        description: Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone) will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxHTTPLimitConnZone'
+          examples:
+            application/json:
+              passed: 15
+              rejected: 0
+              rejected_dry_run: 2
+          x-microcks-refs:
+          - name: getHttpLimitConnZone200Example
+            x-microcks-default: true
+        '404':
+          description: 'limit_conn not found (*LimitConnNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getHttpLimitConnZone404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - HTTP Limit Conns
+      summary: NGINX Reset Statistics for an HTTP Limit_conn Zone
+      description: Resets the connection limiting statistics.
+      operationId: deleteHttpLimitConnZoneStat
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: 'limit_conn not found (*LimitConnNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id001 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteHttpLimitConnZoneStat404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteHttpLimitConnZoneStat405Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  NginxHTTPLimitConnZone:
+    title: HTTP Connections Limiting
+    type: object
+    properties:
+      passed:
+        type: integer
+        description: The total number of connections that were neither limited nor accounted as limited.
+        example: 0
+      rejected:
+        type: integer
+        description: The total number of connections that were rejected.
+        example: 0
+      rejected_dry_run:
+        type: integer
+        description: The total number of connections accounted as rejected in the <a href="https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_dry_run">dry run</a> mode.
+        example: 0
+    example:
+      passed: 15
+      rejected: 0
+      rejected_dry_run: 2
+  NginxHTTPLimitConnZonesMap:
+    title: HTTP limit_conns
+    description: 'Status data for all HTTP
+
+      <a href="https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone">limit_conn zones</a>.
+
+      '
+    type: object
+    additionalProperties:
+      $ref: '#/definitions/NginxHTTPLimitConnZone'
+  NginxError:
+    title: Error
+    description: 'nginx error object.
+
+      '
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: HTTP error code.
+            example: 200
+          text:
+            type: string
+            description: Error description.
+            example: example-text
+          code:
+            type: string
+            description: Internal nginx error code.
+            example: 200
+        example: {}
+      request_id:
+        type: string
+        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+        example: example-request_id
+      href:
+        type: string
+        description: Link to reference documentation.
+        example: example-href
+externalDocs:
+  description: NGINX njs Reference
+  url: https://nginx.org/en/docs/njs/reference.html

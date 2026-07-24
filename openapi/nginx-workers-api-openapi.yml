@@ -1,0 +1,383 @@
+openapi: 3.0.3
+info:
+  title: NGINX njs Scripting Connections Workers API
+  version: '0.8'
+  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  x-generated-from: documentation
+  contact:
+    name: NGINX
+    url: https://nginx.org/en/docs/njs/reference.html
+  license:
+    name: BSD-2-Clause
+    url: https://nginx.org/LICENSE
+tags:
+- name: Workers
+paths:
+  /workers/:
+    get:
+      tags:
+      - Workers
+      summary: NGINX Return Statistics for All Worker Processes
+      description: Returns statistics for all worker processes such as accepted, dropped, active, idle connections, total and current requests.
+      operationId: getWorkers
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: fields
+        type: string
+        description: Limits which fields of worker process statistics will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxWorkersMap'
+          examples:
+            application/json:
+            - id: 0
+              pid: 32212
+              connections:
+                accepted: 1
+                dropped: 0
+                active: 1
+                idle: 0
+              http:
+                requests:
+                  total: 19
+                  current: 1
+            - id: 1
+              pid: 32214
+              connections:
+                accepted: 1
+                dropped: 0
+                active: 1
+                idle: 0
+              http:
+                requests:
+                  total: 15
+                  current: 0
+          x-microcks-refs:
+          - name: getWorkers200Example
+            x-microcks-default: true
+        '404':
+          description: 'Worker not found (*WorkerNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getWorkers404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - Workers
+      summary: NGINX Reset Statistics for All Worker Processes
+      description: 'Resets statistics for all worker processes such as
+
+        accepted, dropped, active, idle connections, total and current requests.
+
+        '
+      operationId: deleteWorkersStat
+      produces:
+      - application/json
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: 'Worker not found (*WorkerNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id001 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteWorkersStat404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id001
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteWorkersStat405Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /workers/{workerId}:
+    parameters:
+    - name: workerId
+      in: path
+      description: The ID of the worker process.
+      required: true
+      type: string
+      x-example: example_workerId
+    get:
+      tags:
+      - Workers
+      summary: NGINX Return Status of a Worker Process
+      description: Returns status of a particular worker process.
+      operationId: getWorker
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: fields
+        type: string
+        description: Limits which fields of worker process statistics will be output.
+        x-example: ''
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/NginxWorker'
+          examples:
+            application/json:
+              id: 0
+              pid: 32212
+              connections:
+                accepted: 1
+                dropped: 0
+                active: 1
+                idle: 0
+              http:
+                requests:
+                  total: 15
+                  current: 1
+          x-microcks-refs:
+          - name: getWorker200Example
+            x-microcks-default: true
+        '404':
+          description: 'Worker not found (*WorkerNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: getWorker404Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - Workers
+      summary: NGINX Reset Statistics for a Worker Process
+      description: 'Resets statistics of accepted, dropped, active, idle connections,
+
+        as well as total and current requests.
+
+        '
+      operationId: deleteWorkerStat
+      produces:
+      - application/json
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: 'Worker not found (*WorkerNotFound*),
+
+            unknown version (*UnknownVersion*)
+
+            '
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: &id002 {}
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteWorkerStat404Example
+            x-microcks-default: true
+        '405':
+          description: Method disabled (*MethodDisabled*)
+          schema:
+            $ref: '#/definitions/NginxError'
+          examples:
+            application/json:
+              error: *id002
+              request_id: example-request_id
+              href: example-href
+          x-microcks-refs:
+          - name: deleteWorkerStat405Example
+            x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  NginxWorkersMap:
+    title: Worker processes
+    description: nginx worker processes object.
+    type: object
+    additionalProperties:
+      $ref: '#/definitions/NginxWorker'
+    example:
+    - id: 0
+      pid: 32212
+      connections:
+        accepted: 1
+        dropped: 0
+        active: 1
+        idle: 0
+      http:
+        requests:
+          total: 19
+          current: 1
+    - id: 1
+      pid: 32214
+      connections:
+        accepted: 1
+        dropped: 0
+        active: 1
+        idle: 0
+      http:
+        requests:
+          total: 15
+          current: 0
+  NginxWorker:
+    title: Worker process
+    description: 'Statistics per each worker process.
+
+      '
+    properties:
+      id:
+        type: integer
+        description: The ID of the worker process.
+        example: 0
+      pid:
+        type: integer
+        description: The PID identifier of the worker process used by the operating system.
+        example: 4521
+      connections:
+        type: object
+        description: 'The number of accepted, dropped, active, and idle connections
+
+          per worker process.
+
+          '
+        properties:
+          accepted:
+            type: integer
+            description: 'The total number of client connections
+
+              accepted by the worker process.
+
+              '
+            example: 4968119
+          dropped:
+            type: integer
+            description: 'The total number of client connections
+
+              dropped by the worker process.
+
+              '
+            example: 0
+          active:
+            type: integer
+            description: 'The current number of active client connections
+
+              that are currently being handled by the worker process.
+
+              '
+            example: 5
+          idle:
+            type: integer
+            description: 'The number of idle client connections
+
+              that are currently being handled by the worker process.
+
+              '
+            example: 117
+        example: {}
+      http:
+        type: object
+        properties:
+          requests:
+            type: object
+            description: The total number of client requests handled by the worker process.
+            properties:
+              total:
+                type: integer
+                description: The total number of client requests received by the worker process.
+                example: 98765
+              current:
+                type: integer
+                description: The current number of client requests that are currently being processed by the worker process.
+                example: 3
+            example: 31070465
+        example: {}
+    example:
+      id: 0
+      pid: 32212
+      connections:
+        accepted: 1
+        dropped: 0
+        active: 1
+        idle: 0
+      http:
+        requests:
+          total: 15
+          current: 1
+  NginxError:
+    title: Error
+    description: 'nginx error object.
+
+      '
+    type: object
+    properties:
+      error:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: HTTP error code.
+            example: 200
+          text:
+            type: string
+            description: Error description.
+            example: example-text
+          code:
+            type: string
+            description: Internal nginx error code.
+            example: 200
+        example: {}
+      request_id:
+        type: string
+        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+        example: example-request_id
+      href:
+        type: string
+        description: Link to reference documentation.
+        example: example-href
+externalDocs:
+  description: NGINX njs Reference
+  url: https://nginx.org/en/docs/njs/reference.html
