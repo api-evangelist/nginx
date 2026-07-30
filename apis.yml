@@ -5,7 +5,19 @@ description: NGINX is a high-performance open-source web server, reverse proxy, 
   under the 2-clause BSD license, NGINX powers a significant portion of the world's web traffic. Enterprise support and commercial
   features are available from F5, Inc.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nginx.png
 tags:
 - API Gateway
 - Caching
@@ -21,9 +33,10 @@ specificationVersion: '0.19'
 apis:
 - aid: nginx:nginx
   name: NGINX
-  description: NGINX is a versatile open-source software for web serving, reverse proxying, caching, load balancing, media
-    streaming, and API gateway functionality powering a significant portion of the world's web traffic. Licensed under the
-    2-clause BSD license and governed by F5, Inc.
+  description: >-
+    NGINX is a versatile open-source software for web serving, reverse proxying, caching, load balancing,
+    media streaming, and API gateway functionality powering a significant portion of the world's web traffic.
+    Licensed under the 2-clause BSD license and governed by F5, Inc.
   humanURL: https://nginx.org/
   tags:
   - API Gateway
@@ -42,30 +55,76 @@ apis:
     url: https://nginx.org/en/CHANGES
   - type: GitHubRepository
     url: https://github.com/nginx/nginx
-- aid: nginx:nginx-http-api
-  name: NGINX Plus HTTP API
-  description: The NGINX Plus HTTP API provides a RESTful interface for dynamic configuration and real-time monitoring of
-    a running NGINX Plus instance. It supports managing upstream servers, key-value pairs, and retrieving connection, cache,
-    and rate-limiting statistics without requiring configuration reloads. Available as part of the NGINX commercial subscription.
-  humanURL: https://nginx.org/en/docs/http/ngx_http_api_module.html
+- aid: nginx:nginx-ingress-controller
+  name: NGINX Ingress Controller
+  description: >-
+    The NGINX Ingress Controller is a Kubernetes-native ingress controller built on NGINX that manages
+    external access to services in a Kubernetes cluster. It supports TLS termination, path-based routing,
+    rate limiting, and advanced traffic management through annotations and custom resources.
+  humanURL: https://github.com/nginx/kubernetes-ingress
   tags:
-  - Admin
+  - Cloud Native
+  - Ingress
+  - Kubernetes
+  - Traffic Management
+  properties:
+  - type: Documentation
+    url: https://docs.nginx.com/nginx-ingress-controller/
+  - type: GettingStarted
+    url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/
+  - type: GitHubRepository
+    url: https://github.com/nginx/kubernetes-ingress
+- aid: nginx:nginx-gateway-fabric
+  name: NGINX Gateway Fabric
+  description: >-
+    NGINX Gateway Fabric is a Kubernetes Gateway API implementation using NGINX as the data plane. It
+    provides standards-based traffic management through Gateway API resources including Gateway, HTTPRoute,
+    GRPCRoute, and TLSRoute, enabling fine-grained control over ingress and routing in Kubernetes environments.
+  humanURL: https://github.com/nginx/nginx-gateway-fabric
+  tags:
+  - Cloud Native
+  - Gateway API
+  - Kubernetes
+  - Routing
+  properties:
+  - type: Documentation
+    url: https://docs.nginx.com/nginx-gateway-fabric/
+  - type: GitHubRepository
+    url: https://github.com/nginx/nginx-gateway-fabric
+- aid: nginx:nginx-agent
+  name: NGINX Agent
+  description: >-
+    NGINX Agent provides an administrative entry point to remotely manage, configure, and collect metrics
+    and events from NGINX instances. It enables centralized management of distributed NGINX deployments
+    through a gRPC-based control plane interface.
+  humanURL: https://github.com/nginx/agent
+  tags:
+  - Agent
   - Management
   - Monitoring
-  - NGINX Plus
-  - REST API
+  - Remote Administration
   properties:
+  - type: Documentation
+    url: https://github.com/nginx/agent
+  - type: GitHubRepository
+    url: https://github.com/nginx/agent
+- aid: nginx:nginx-connections-api
+  name: NGINX Connections API
+  description: The Connections API from NGINX — 1 operation(s) for connections.
+  humanURL: https://nginx.org/
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-connections-api-openapi.yml
   - type: Documentation
     url: https://nginx.org/en/docs/http/ngx_http_api_module.html
   - type: APIReference
     url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
-  - type: OpenAPI
-    url: openapi/nginx-plus-http-api-openapi.yaml
   - type: JSONLD
     url: json-ld/nginx-plus-http-api-context.jsonld
   - type: SDKs
     url: https://github.com/nginx/nginx-plus-go-client
-    title: Go SDK
   - type: X-NaftikoCapability
     url: capabilities/plus-http-connections.yaml
   - type: X-NaftikoCapability
@@ -120,98 +179,2315 @@ apis:
     url: capabilities/plus-http-stream-zone-sync.yaml
   - type: X-NaftikoCapability
     url: capabilities/plus-http-workers.yaml
-- aid: nginx:nginx-stub-status
-  name: NGINX Stub Status API
-  description: The NGINX Stub Status module exposes a simple HTTP endpoint providing basic server performance metrics including
-    active connections, total accepts, handled connections, and request counts. It is available in open-source NGINX and must
-    be enabled at compile time with the --with-http_stub_status_module flag.
-  humanURL: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
-  tags:
-  - Metrics
-  - Monitoring
-  - Open Source
-  - Status
-  properties:
   - type: Documentation
     url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
-  - type: OpenAPI
-    url: openapi/nginx-stub-status-openapi.yaml
   - type: X-NaftikoCapability
     url: capabilities/stub-status-status.yaml
-- aid: nginx:nginx-njs
-  name: NGINX njs Scripting API
-  description: The NGINX njs module embeds a JavaScript (ECMAScript 5.1+) runtime into NGINX, allowing developers to write
-    custom request/response handlers, access control logic, and content filters. It provides HTTP and stream request objects,
-    a Fetch-compatible web API, cryptographic functions, and built-in modules for file system, XML, and query string operations.
-  humanURL: https://nginx.org/en/docs/njs/
-  tags:
-  - Extensibility
-  - JavaScript
-  - Modules
-  - Scripting
-  properties:
   - type: Documentation
     url: https://nginx.org/en/docs/njs/
   - type: APIReference
     url: https://nginx.org/en/docs/njs/reference.html
   - type: GettingStarted
     url: https://nginx.org/en/docs/njs/install.html
-  - type: OpenAPI
-    url: openapi/nginx-njs-openapi.yaml
   - type: JSONLD
     url: json-ld/nginx-context.jsonld
   - type: GitHubRepository
     url: https://github.com/nginx/njs
-- aid: nginx:nginx-ingress-controller
-  name: NGINX Ingress Controller
-  description: The NGINX Ingress Controller is a Kubernetes-native ingress controller built on NGINX that manages external
-    access to services in a Kubernetes cluster. It supports TLS termination, path-based routing, rate limiting, and advanced
-    traffic management through annotations and custom resources.
-  humanURL: https://github.com/nginx/kubernetes-ingress
+- aid: nginx:nginx-general-info-api
+  name: NGINX General Info API
+  description: The General Info API from NGINX — 2 operation(s) for general info.
+  humanURL: https://nginx.org/
   tags:
-  - Cloud Native
-  - Ingress
-  - Kubernetes
-  - Traffic Management
+  - General Info
   properties:
+  - type: OpenAPI
+    url: openapi/nginx-general-info-api-openapi.yml
   - type: Documentation
-    url: https://docs.nginx.com/nginx-ingress-controller/
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
   - type: GettingStarted
-    url: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
   - type: GitHubRepository
-    url: https://github.com/nginx/kubernetes-ingress
-- aid: nginx:nginx-gateway-fabric
-  name: NGINX Gateway Fabric
-  description: NGINX Gateway Fabric is a Kubernetes Gateway API implementation using NGINX as the data plane. It provides
-    standards-based traffic management through Gateway API resources including Gateway, HTTPRoute, GRPCRoute, and TLSRoute,
-    enabling fine-grained control over ingress and routing in Kubernetes environments.
-  humanURL: https://github.com/nginx/nginx-gateway-fabric
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-api
+  name: NGINX HTTP API
+  description: The HTTP API from NGINX — 1 operation(s) for http.
+  humanURL: https://nginx.org/
   tags:
-  - Cloud Native
-  - Gateway API
-  - Kubernetes
-  - Routing
+  - HTTP
   properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-api-openapi.yml
   - type: Documentation
-    url: https://docs.nginx.com/nginx-gateway-fabric/
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
   - type: GitHubRepository
-    url: https://github.com/nginx/nginx-gateway-fabric
-- aid: nginx:nginx-agent
-  name: NGINX Agent
-  description: NGINX Agent provides an administrative entry point to remotely manage, configure, and collect metrics and events
-    from NGINX instances. It enables centralized management of distributed NGINX deployments through a gRPC-based control
-    plane interface.
-  humanURL: https://github.com/nginx/agent
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-caches-api
+  name: NGINX HTTP Caches API
+  description: The HTTP Caches API from NGINX — 2 operation(s) for http caches.
+  humanURL: https://nginx.org/
   tags:
-  - Agent
-  - Management
-  - Monitoring
-  - Remote Administration
+  - HTTP Caches
   properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-caches-api-openapi.yml
   - type: Documentation
-    url: https://github.com/nginx/agent
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
   - type: GitHubRepository
-    url: https://github.com/nginx/agent
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-keyvals-api
+  name: NGINX HTTP Keyvals API
+  description: The HTTP Keyvals API from NGINX — 2 operation(s) for http keyvals.
+  humanURL: https://nginx.org/
+  tags:
+  - HTTP Keyvals
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-keyvals-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-limit-conns-api
+  name: NGINX HTTP Limit Conns API
+  description: The HTTP Limit Conns API from NGINX — 2 operation(s) for http limit conns.
+  humanURL: https://nginx.org/
+  tags:
+  - HTTP Limit Conns
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-limit-conns-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-limit-reqs-api
+  name: NGINX HTTP Limit Reqs API
+  description: The HTTP Limit Reqs API from NGINX — 2 operation(s) for http limit reqs.
+  humanURL: https://nginx.org/
+  tags:
+  - HTTP Limit Reqs
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-limit-reqs-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-location-zones-api
+  name: NGINX HTTP Location Zones API
+  description: The HTTP Location Zones API from NGINX — 2 operation(s) for http location zones.
+  humanURL: https://nginx.org/
+  tags:
+  - HTTP Location Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-location-zones-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-requests-api
+  name: NGINX HTTP Requests API
+  description: The HTTP Requests API from NGINX — 1 operation(s) for http requests.
+  humanURL: https://nginx.org/
+  tags:
+  - HTTP Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-requests-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-server-zones-api
+  name: NGINX HTTP Server Zones API
+  description: The HTTP Server Zones API from NGINX — 2 operation(s) for http server zones.
+  humanURL: https://nginx.org/
+  tags:
+  - HTTP Server Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-server-zones-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-http-upstreams-api
+  name: NGINX HTTP Upstreams API
+  description: The HTTP Upstreams API from NGINX — 4 operation(s) for http upstreams.
+  humanURL: https://nginx.org/
+  tags:
+  - HTTP Upstreams
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-http-upstreams-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-license-api
+  name: NGINX License API
+  description: The License API from NGINX — 1 operation(s) for license.
+  humanURL: https://nginx.org/
+  tags:
+  - License
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-license-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-method-delete-api
+  name: NGINX Method DELETE API
+  description: The Method DELETE API from NGINX — 21 operation(s) for method delete.
+  humanURL: https://nginx.org/
+  tags:
+  - Method DELETE
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-method-delete-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-method-get-api
+  name: NGINX Method GET API
+  description: The Method GET API from NGINX — 41 operation(s) for method get.
+  humanURL: https://nginx.org/
+  tags:
+  - Method GET
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-method-get-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-method-patch-api
+  name: NGINX Method PATCH API
+  description: The Method PATCH API from NGINX — 4 operation(s) for method patch.
+  humanURL: https://nginx.org/
+  tags:
+  - Method PATCH
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-method-patch-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-method-post-api
+  name: NGINX Method POST API
+  description: The Method POST API from NGINX — 4 operation(s) for method post.
+  humanURL: https://nginx.org/
+  tags:
+  - Method POST
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-method-post-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-processes-api
+  name: NGINX Processes API
+  description: The Processes API from NGINX — 1 operation(s) for processes.
+  humanURL: https://nginx.org/
+  tags:
+  - Processes
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-processes-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-resolvers-api
+  name: NGINX Resolvers API
+  description: The Resolvers API from NGINX — 2 operation(s) for resolvers.
+  humanURL: https://nginx.org/
+  tags:
+  - Resolvers
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-resolvers-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-slabs-api
+  name: NGINX Slabs API
+  description: The Slabs API from NGINX — 2 operation(s) for slabs.
+  humanURL: https://nginx.org/
+  tags:
+  - Slabs
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-slabs-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-ssl-api
+  name: NGINX SSL API
+  description: The SSL API from NGINX — 1 operation(s) for ssl.
+  humanURL: https://nginx.org/
+  tags:
+  - SSL
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-ssl-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-status-api
+  name: NGINX Status API
+  description: The Status API from NGINX — 1 operation(s) for status.
+  humanURL: https://nginx.org/
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-status-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-stream-api
+  name: NGINX Stream API
+  description: The Stream API from NGINX — 1 operation(s) for stream.
+  humanURL: https://nginx.org/
+  tags:
+  - Stream
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-stream-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-stream-keyvals-api
+  name: NGINX Stream Keyvals API
+  description: The Stream Keyvals API from NGINX — 2 operation(s) for stream keyvals.
+  humanURL: https://nginx.org/
+  tags:
+  - Stream Keyvals
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-stream-keyvals-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-stream-limit-conns-api
+  name: NGINX Stream Limit Conns API
+  description: The Stream Limit Conns API from NGINX — 2 operation(s) for stream limit conns.
+  humanURL: https://nginx.org/
+  tags:
+  - Stream Limit Conns
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-stream-limit-conns-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-stream-server-zones-api
+  name: NGINX Stream Server Zones API
+  description: The Stream Server Zones API from NGINX — 2 operation(s) for stream server zones.
+  humanURL: https://nginx.org/
+  tags:
+  - Stream Server Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-stream-server-zones-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-stream-upstreams-api
+  name: NGINX Stream Upstreams API
+  description: The Stream Upstreams API from NGINX — 4 operation(s) for stream upstreams.
+  humanURL: https://nginx.org/
+  tags:
+  - Stream Upstreams
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-stream-upstreams-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-stream-zone-sync-api
+  name: NGINX Stream Zone Sync API
+  description: The Stream Zone Sync API from NGINX — 1 operation(s) for stream zone sync.
+  humanURL: https://nginx.org/
+  tags:
+  - Stream Zone Sync
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-stream-zone-sync-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
+- aid: nginx:nginx-workers-api
+  name: NGINX Workers API
+  description: The Workers API from NGINX — 2 operation(s) for workers.
+  humanURL: https://nginx.org/
+  tags:
+  - Workers
+  properties:
+  - type: OpenAPI
+    url: openapi/nginx-workers-api-openapi.yml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html
+  - type: APIReference
+    url: https://nginx.org/en/docs/http/ngx_http_api_module.html#api
+  - type: JSONLD
+    url: json-ld/nginx-plus-http-api-context.jsonld
+  - type: SDKs
+    url: https://github.com/nginx/nginx-plus-go-client
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-connections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-general-info.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-caches.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-limit-reqs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-location-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-requests.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-http-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-license.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-delete.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-get.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-patch.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-method-post.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-processes.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-resolvers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-ssl.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-slabs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-keyvals.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-limit-conns.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-server-zones.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-upstreams.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-stream-zone-sync.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/plus-http-workers.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+  - type: X-NaftikoCapability
+    url: capabilities/stub-status-status.yaml
+  - type: Documentation
+    url: https://nginx.org/en/docs/njs/
+  - type: APIReference
+    url: https://nginx.org/en/docs/njs/reference.html
+  - type: GettingStarted
+    url: https://nginx.org/en/docs/njs/install.html
+  - type: JSONLD
+    url: json-ld/nginx-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/nginx/njs
 common:
 - type: AgenticAccess
   url: agentic-access/nginx-agentic-access.yml
