@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: NGINX Stub Status API
+  description: >-
+    Provides access to basic NGINX status information via the
+    ngx_http_stub_status_module. The module must be compiled with
+    --with-http_stub_status_module and enabled in the server or location
+    context with the stub_status directive.
+  version: "1.0"
+  x-generated-from: documentation
+servers:
+- url: http://localhost
+  description: Local NGINX instance
+paths:
+  /stub_status:
+    get:
+      operationId: getStubStatus
+      summary: NGINX Retrieve Stub Status Metrics
+      description: >-
+        Returns plain-text status information including active connections,
+        cumulative accepts/handled/requests counters, and current
+        reading/writing/waiting connection counts.
+      tags:
+      - Status
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      responses:
+        "200":
+          description: Plain-text status output
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: >-
+                  Multi-line plain text. Line 1: "Active connections: <n>".
+                  Line 2: header "server accepts handled requests".
+                  Line 3: three space-separated integers (accepts, handled,
+                  requests). Line 4: "Reading: <n> Writing: <n> Waiting: <n>".
+                example: |-
+                  Active connections: 291
+                  server accepts handled requests
+                   16630948 16630948 31070465
+                  Reading: 6 Writing: 179 Waiting: 106
+              examples:
+                getStubStatus200Example:
+                  value: |-
+                    Active connections: 291
+                    server accepts handled requests
+                     16630948 16630948 31070465
+                    Reading: 6 Writing: 179 Waiting: 106
+                  x-microcks-default: true
