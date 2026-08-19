@@ -1,0 +1,853 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Method GET API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Method GET",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return List of Root Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/"
+          },
+          "docs": "Returns a list of root endpoints."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of NGINX Running Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nginx",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of nginx running instance will be output."
+              }
+            ]
+          },
+          "docs": "Returns nginx version, build name, address, number of configuration reloads, IDs of master and worker processes."
+        },
+        {
+          "info": {
+            "name": "NGINX Return NGINX Processes Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/processes"
+          },
+          "docs": "Returns the number of abnormally terminated and respawned child processes."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Client Connections Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/connections",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the connections statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns statistics of client connections."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All Slabs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/slabs/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of slab zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of slabs for each shared memory zone with slab allocator."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Slab",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/slabs/:slabZoneName",
+            "params": [
+              {
+                "name": "slabZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the shared memory zone with slab allocator."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the slab zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of slabs for a particular shared memory zone with slab allocator."
+        },
+        {
+          "info": {
+            "name": "NGINX Return List of HTTP-Related Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/"
+          },
+          "docs": "Returns a list of first level HTTP endpoints."
+        },
+        {
+          "info": {
+            "name": "NGINX Return HTTP Requests Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/requests",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of client HTTP requests statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of client HTTP requests."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Server Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/server_zones/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each HTTP [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+            "params": [
+              {
+                "name": "httpServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP server zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the server zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP server zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Location Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/location_zones/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of location zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Location Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+            "params": [
+              {
+                "name": "httpLocationZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the location zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All Caches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/caches/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of cache zones will be output. If the “<literal>fields</literal>” value is empty, then only names of cache zones will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of each cache configured by [proxy_cache_path](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path) and other “<literal>*_cache_path</literal>” directives."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+            "params": [
+              {
+                "name": "httpCacheZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the cache zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the cache zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular cache."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Limit_conn Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/limit_conns/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Limit_conn Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/limit_conns/:httpLimitConnZoneName",
+            "params": [
+              {
+                "name": "httpLimitConnZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone) will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Limit_req Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/limit_reqs/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of limit_req zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Limit_req Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/limit_reqs/:httpLimitReqZoneName",
+            "params": [
+              {
+                "name": "httpLimitReqZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone) will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Upstream Server Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of each HTTP upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP upstream server group."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the upstream server group will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of All Servers in an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Returns configuration of each server in a particular HTTP upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of a Server in an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "httpUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Returns configuration of a particular server in the HTTP upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Key-Value Pairs from All HTTP Keyval Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/keyvals/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "If the “<literal>fields</literal>” value is empty, then only HTTP keyval zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns key-value pairs for each HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Key-Value Pairs from an HTTP Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/keyvals/:httpKeyvalZoneName",
+            "params": [
+              {
+                "name": "httpKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP keyval shared memory zone."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Get a particular key-value pair from the HTTP keyval zone."
+              }
+            ]
+          },
+          "docs": "Returns key-value pairs stored in a particular HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All Stream Server Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/server_zones/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each stream [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Stream Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+            "params": [
+              {
+                "name": "streamServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream server zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the server zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular stream server zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All Stream Limit_conn Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/limit_conns/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an Stream Limit_conn Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+            "params": [
+              {
+                "name": "streamLimitConnZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone) will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of All Stream Upstream Server Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of each stream upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream upstream server group."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the upstream server group will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular stream upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of All Servers in a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Returns configuration of each server in a particular stream upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of a Server in a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/:streamUpstreamServerId",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "streamUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Returns configuration of a particular server in the stream upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Key-Value Pairs from All Stream Keyval Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/keyvals/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "If the “<literal>fields</literal>” value is empty, then only stream keyval zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns key-value pairs for each stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Key-Value Pairs from a Stream Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Get a particular key-value pair from the stream keyval zone."
+              }
+            ]
+          },
+          "docs": "Returns key-value pairs stored in a particular stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Sync Status of a Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/zone_sync/"
+          },
+          "docs": "Returns synchronization status of a cluster node."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status for All Resolver Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/resolvers/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of resolvers statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each [resolver zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Statistics of a Resolver Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/resolvers/:resolverZoneName",
+            "params": [
+              {
+                "name": "resolverZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a resolver zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the resolver zone will be output (requests, responses, or both)."
+              }
+            ]
+          },
+          "docs": "Returns statistics stored in a particular resolver [zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return SSL Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ssl",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of SSL statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns SSL statistics."
+        },
+        {
+          "info": {
+            "name": "NGINX Return License Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/license"
+          },
+          "docs": "NGINX Return License Info"
+        },
+        {
+          "info": {
+            "name": "NGINX Return Statistics for All Worker Processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workers/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of worker process statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns statistics for all worker processes such as accepted, dropped, active, idle connections, total and current requests."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Worker Process",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workers/:workerId",
+            "params": [
+              {
+                "name": "workerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the worker process."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of worker process statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular worker process."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

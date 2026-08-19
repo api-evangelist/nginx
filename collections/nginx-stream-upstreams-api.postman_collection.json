@@ -1,0 +1,1699 @@
+{
+  "item": [
+    {
+      "id": "a85fa1f7-3b87-444c-9355-c2b532b127ad",
+      "name": "Stream Upstreams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3af1d573-bded-43d5-823f-b60d923f53ed",
+          "name": "NGINX Return Status of All Stream Upstream Server Groups",
+          "request": {
+            "name": "NGINX Return Status of All Stream Upstream Server Groups",
+            "description": {
+              "content": "Returns status of each stream upstream server group and its servers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7047a46-6f1d-4d71-ac1f-cfe1bdb68ef9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bc7cfc7-5613-4b9c-86e4-435dee205ecb",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38873c87-9413-4609-97f3-6566f40514a8",
+          "name": "NGINX Return Status of a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Status of a Stream Upstream Server Group",
+            "description": {
+              "content": "Returns status of a particular stream upstream server group and its servers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the upstream server group will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of a stream upstream server group."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83c09ffc-1013-4007-9cf4-a20ceef5f049",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ead1bf4f-a7c1-49ff-a3e1-416c637921be",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "278fb742-0d0b-4be9-b1c1-277a8b348008",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15192dad-2e37-46a5-9435-f846f8e330d9",
+          "name": "NGINX Reset Statistics of a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Reset Statistics of a Stream Upstream Server Group",
+            "description": {
+              "content": "Resets the statistics for each upstream server in an upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of a stream upstream server group."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84a4a243-b209-4af2-9160-359c87b8043a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ede297b3-07f6-4a8d-a07b-30cad36e20f4",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42e3d27a-74ae-4b8b-acd8-c8410436f255",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d1af624-8729-46f1-a027-847cad5f5b44",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad41eb77-dca3-4e60-a1ac-0bf9717514c6",
+          "name": "NGINX Return Configuration of All Servers in a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Configuration of All Servers in a Stream Upstream Server Group",
+            "description": {
+              "content": "Returns configuration of each server in a particular stream upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of an upstream server group."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a42340a-efe1-4e07-ae36-2f6206226d90",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4e31aa2-9a0c-4df8-8d8e-9a9d85b83f61",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10633ea9-926c-45f8-83ee-c447ee146cea",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c56c089d-5c3c-4412-9d99-08ac0ccb1ca1",
+          "name": "NGINX Add a Server to a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Add a Server to a Stream Upstream Server Group",
+            "description": {
+              "content": "Adds a new server to a stream upstream server group. Server parameters are specified in the JSON format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of an upstream server group."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "083e5fc3-655f-4cbc-be9d-a0e91548463e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9120fe7d-9bbc-49f2-abb7-b898ed8b5f1c",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid “**parameter**” value (*UpstreamConfFormatError*),\nmissing “*server*” argument (*UpstreamConfFormatError*),\nunknown parameter “**name**” (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormatError*),\n“*error*” while parsing (*UpstreamBadAddress*),\nno port in server “*host*” (*UpstreamBadAddress*),\nservice upstream “*host*” may not have port (*UpstreamBadAddress*),\nservice upstream “*host*” requires domain name (*UpstreamBadAddress*),\ninvalid “*weight*” (*UpstreamBadWeight*),\ninvalid “*max_conns*” (*UpstreamBadMaxConns*),\ninvalid “*max_fails*” (*UpstreamBadMaxFails*),\ninvalid “*fail_timeout*” (*UpstreamBadFailTimeout*),\ninvalid “*slow_start*” (*UpstreamBadSlowStart*),\n“*service*” is empty (*UpstreamBadService*),\nno resolver defined to resolve (*UpstreamConfNoResolver*),\nupstream “**name**” has no backup (*UpstreamNoBackup*),\nupstream “**name**” memory exhausted (*UpstreamOutOfMemory*),\nreading request body failed *BodyReadError*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "518b1f54-d97b-4e72-8ee5-67dd16de5329",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bd92cca-8129-4c85-b141-b23e03002a7c",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fed26af-d08b-415d-b3d7-ec5df915ec53",
+              "name": "Entry exists (*EntryExists*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6beae627-19e0-473b-99f6-be2d2dbd1891",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50e019c3-c4c1-4ece-8d1d-65b6ac4d91e9",
+          "name": "NGINX Return Configuration of a Server in a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Configuration of a Server in a Stream Upstream Server Group",
+            "description": {
+              "content": "Returns configuration of a particular server in the stream upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ":streamUpstreamServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of the upstream server group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamServerId",
+                  "description": "(Required) The ID of the server."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b7a580f-40a4-40e5-a311-acc111ddb48f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9133bb10-7f47-4419-a3a7-db807fb6434b",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8375ba2c-28f2-43d4-9b08-e12ad1718863",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*),\nserver with ID “**id**” does not exist (*UpstreamServerNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dec2c718-8271-46f1-90bc-a402ca093a33",
+          "name": "NGINX Modify a Server in a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Modify a Server in a Stream Upstream Server Group",
+            "description": {
+              "content": "Modifies settings of a particular server in a stream upstream server group. Server parameters are specified in the JSON format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ":streamUpstreamServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of the upstream server group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamServerId",
+                  "description": "(Required) The ID of the server."
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b783e563-0933-4605-be6d-6b45738bab79",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17f6b76d-c093-418a-baf5-f5eeda4f3b18",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid “**parameter**” value (*UpstreamConfFormatError*),\nunknown parameter “**name**” (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormatError*),\n“*error*” while parsing (*UpstreamBadAddress*),\ninvalid “*server*” argument (*UpstreamBadAddress*),\nno port in server “*host*” (*UpstreamBadAddress*),\ninvalid server ID (*UpstreamBadServerId*),\ninvalid “*weight*” (*UpstreamBadWeight*),\ninvalid “*max_conns*” (*UpstreamBadMaxConns*),\ninvalid “*max_fails*” (*UpstreamBadMaxFails*),\ninvalid “*fail_timeout*” (*UpstreamBadFailTimeout*),\ninvalid “*slow_start*” (*UpstreamBadSlowStart*),\nreading request body failed *BodyReadError*),\n“*service*” is empty (*UpstreamBadService*),\nserver “**ID**” address is immutable (*UpstreamServerImmutable*),\nserver “**ID**” weight is immutable (*UpstreamServerWeightImmutable*),\nupstream “*name*” memory exhausted (*UpstreamOutOfMemory*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20a21c2f-2e13-48a2-b175-724a076f5935",
+              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9d83ed9-e1e0-4946-8a4a-c44b37968945",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fac0b5cc-1504-477e-a61b-f3b7321e9ddb",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0babf066-7ff9-44ab-81f7-4b8f58b862d8",
+          "name": "NGINX Remove a Server from a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Remove a Server from a Stream Upstream Server Group",
+            "description": {
+              "content": "Removes a server from a stream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ":streamUpstreamServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of the upstream server group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamServerId",
+                  "description": "(Required) The ID of the server."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99e1574a-bb90-49f8-8f1c-6a2572b232a2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "900acc36-c44e-48e9-9276-d2c9f280d169",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*),\nserver “**id**” not removable (*UpstreamServerImmutable*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93f14de0-14c1-46f0-bdc0-65a4b3ee8e55",
+              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90c8ee62-9c6d-452f-9e1e-0ab9716ea436",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "633b827a-c529-45d9-ab47-e088f04b4411",
+    "name": "NGINX njs Scripting Connections Stream Upstreams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

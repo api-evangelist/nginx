@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Stream Keyvals API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stream Keyvals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Key-Value Pairs from All Stream Keyval Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/keyvals/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "If the “<literal>fields</literal>” value is empty, then only stream keyval zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns key-value pairs for each stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Key-Value Pairs from a Stream Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Get a particular key-value pair from the stream keyval zone."
+              }
+            ]
+          },
+          "docs": "Returns key-value pairs stored in a particular stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Add a Key-Value Pair to the Stream Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Adds a new key-value pair to the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the stream keyval shared memory zone is empty."
+        },
+        {
+          "info": {
+            "name": "NGINX Modify a Key-Value or Delete a Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to <literal>null</literal>, changes expiration time of a key-value pair. If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time is specified in milliseconds with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/s"
+        },
+        {
+          "info": {
+            "name": "NGINX Empty the Stream Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Deletes all key-value pairs from the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

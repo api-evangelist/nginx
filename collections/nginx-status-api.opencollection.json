@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Status API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Retrieve Stub Status Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stub_status"
+          },
+          "docs": "Returns plain-text status information including active connections, cumulative accepts/handled/requests counters, and current reading/writing/waiting connection counts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

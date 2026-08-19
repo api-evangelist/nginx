@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Workers API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Statistics for All Worker Processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workers/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of worker process statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns statistics for all worker processes such as accepted, dropped, active, idle connections, total and current requests."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for All Worker Processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/workers/"
+          },
+          "docs": "Resets statistics for all worker processes such as\naccepted, dropped, active, idle connections, total and current requests.\n"
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Worker Process",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workers/:workerId",
+            "params": [
+              {
+                "name": "workerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the worker process."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of worker process statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular worker process."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Worker Process",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/workers/:workerId",
+            "params": [
+              {
+                "name": "workerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the worker process."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted, dropped, active, idle connections,\nas well as total and current requests.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

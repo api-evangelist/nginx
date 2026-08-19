@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "b388a9ff-35ef-40c4-8f76-e885440450d4",
+      "name": "Status",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7839d5ed-60cc-48a7-bbe0-3cc9c8a2fa07",
+          "name": "NGINX Retrieve Stub Status Metrics",
+          "request": {
+            "name": "NGINX Retrieve Stub Status Metrics",
+            "description": {
+              "content": "Returns plain-text status information including active connections, cumulative accepts/handled/requests counters, and current reading/writing/waiting connection counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stub_status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "443758f7-02dc-4632-af11-a517ff07611f",
+              "name": "Plain-text status output",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stub_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Active connections: 291\nserver accepts handled requests\n 16630948 16630948 31070465\nReading: 6 Writing: 179 Waiting: 106",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2c8cc4b2-ce22-497a-84ef-c36b94c0081c",
+    "name": "NGINX njs Scripting Connections Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

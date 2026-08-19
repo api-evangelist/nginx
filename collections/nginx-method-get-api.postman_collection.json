@@ -1,0 +1,5162 @@
+{
+  "item": [
+    {
+      "id": "8a4d4c8c-2851-4f0b-be52-468ef5e69de5",
+      "name": "Method GET",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fbd84c2e-b662-4d46-a882-2358f3f8c41d",
+          "name": "NGINX Return List of Root Endpoints",
+          "request": {
+            "name": "NGINX Return List of Root Endpoints",
+            "description": {
+              "content": "Returns a list of root endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d157a74e-e818-45b7-b389-03805697922e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f48f6b9-a8ad-46fd-a3ab-bfc8382d2da8",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d74029f2-4870-420c-9525-e5fe35f061fc",
+          "name": "NGINX Return Status of NGINX Running Instance",
+          "request": {
+            "name": "NGINX Return Status of NGINX Running Instance",
+            "description": {
+              "content": "Returns nginx version, build name, address, number of configuration reloads, IDs of master and worker processes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nginx"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of nginx running instance will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8590a139-0581-429b-b42d-40d6bdf80bc5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nginx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "01d2adde-1558-47a3-b849-7b8bf282c264",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nginx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a12889c6-d8e2-4612-a53a-9cbd18b3d870",
+          "name": "NGINX Return NGINX Processes Status",
+          "request": {
+            "name": "NGINX Return NGINX Processes Status",
+            "description": {
+              "content": "Returns the number of abnormally terminated and respawned child processes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f628e01b-f461-47d2-93f2-6c2dd5467dc6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56ff80d3-4209-4f78-bcbb-626e9a733e36",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec7078b6-0456-4abc-a8e9-bd00a1ffc9c3",
+          "name": "NGINX Return Client Connections Statistics",
+          "request": {
+            "name": "NGINX Return Client Connections Statistics",
+            "description": {
+              "content": "Returns statistics of client connections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the connections statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a645340e-4a78-4863-accf-d894fcdb28a2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae78c85a-aead-4e7a-8dab-c7e205ac1748",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d82dabe-829e-4f54-993f-7f6d80b1caa5",
+          "name": "NGINX Return Status of All Slabs",
+          "request": {
+            "name": "NGINX Return Status of All Slabs",
+            "description": {
+              "content": "Returns status of slabs for each shared memory zone with slab allocator.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "slabs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of slab zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "981cc5f0-d7cc-48b7-b7ea-bef5449fd1b4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slabs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afe99d9a-06e2-4e74-acb6-d47b26914bde",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slabs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1eb11ffb-30c6-429e-aadb-0b6f2dd2f9d4",
+          "name": "NGINX Return Status of a Slab",
+          "request": {
+            "name": "NGINX Return Status of a Slab",
+            "description": {
+              "content": "Returns status of slabs for a particular shared memory zone with slab allocator.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "slabs",
+                ":slabZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the slab zone will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "slabZoneName",
+                  "description": "(Required) The name of the shared memory zone with slab allocator."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc1305cf-db51-46a1-a3be-b4d209cca4ba",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slabs",
+                    ":slabZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "slabZoneName",
+                      "description": "(Required) The name of the shared memory zone with slab allocator."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8760f922-4ce3-4700-9545-43f7bd562334",
+              "name": "Slab not found (*SlabNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slabs",
+                    ":slabZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "slabZoneName",
+                      "description": "(Required) The name of the shared memory zone with slab allocator."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5268172f-dfb3-4620-8ec1-10a5e7bf746b",
+          "name": "NGINX Return List of HTTP-Related Endpoints",
+          "request": {
+            "name": "NGINX Return List of HTTP-Related Endpoints",
+            "description": {
+              "content": "Returns a list of first level HTTP endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b85f9af-fc53-4a43-962d-4fc25c076fa2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8756a3e1-4191-4886-8eea-4ea4876d9721",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b935640-acd0-4737-9400-f53899812df0",
+          "name": "NGINX Return HTTP Requests Statistics",
+          "request": {
+            "name": "NGINX Return HTTP Requests Statistics",
+            "description": {
+              "content": "Returns status of client HTTP requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of client HTTP requests statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5dda555a-4f5f-4faf-b042-e9c88211dcda",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cb3920a-3f03-4f69-afca-2a467a3e4a96",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a25cac67-a4ee-4726-af1d-1363777ad081",
+          "name": "NGINX Return Status of All HTTP Server Zones",
+          "request": {
+            "name": "NGINX Return Status of All HTTP Server Zones",
+            "description": {
+              "content": "Returns status information for each HTTP [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "server_zones",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb1e49b7-601e-470c-8405-8a108f9561c8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "server_zones",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff33a725-3499-458c-97e9-89a067182624",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "server_zones",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "573e2219-5bdd-4460-bbf2-f95f81ba4a06",
+          "name": "NGINX Return Status of an HTTP Server Zone",
+          "request": {
+            "name": "NGINX Return Status of an HTTP Server Zone",
+            "description": {
+              "content": "Returns status of a particular HTTP server zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "server_zones",
+                ":httpServerZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the server zone will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpServerZoneName",
+                  "description": "(Required) The name of an HTTP server zone."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7285860b-d1f2-4ba4-a4b7-c8257735c522",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "server_zones",
+                    ":httpServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpServerZoneName",
+                      "description": "(Required) The name of an HTTP server zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18e0c9b7-f6f0-46a0-af5e-bb6b73a88d63",
+              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "server_zones",
+                    ":httpServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpServerZoneName",
+                      "description": "(Required) The name of an HTTP server zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bb3b068-552f-4bdd-b182-f43e1f165788",
+          "name": "NGINX Return Status of All HTTP Location Zones",
+          "request": {
+            "name": "NGINX Return Status of All HTTP Location Zones",
+            "description": {
+              "content": "Returns status information for each HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "location_zones",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of location zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94f2cb00-2762-4557-8407-0e412dd2ad3c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "location_zones",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e0026ea-7efe-4653-a58b-06746fbb5721",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "location_zones",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63e39657-bee2-456e-8c58-2988cbfaad2b",
+          "name": "NGINX Return Status of an HTTP Location Zone",
+          "request": {
+            "name": "NGINX Return Status of an HTTP Location Zone",
+            "description": {
+              "content": "Returns status of a particular HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "location_zones",
+                ":httpLocationZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the location zone will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpLocationZoneName",
+                  "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a84b0e1-bbfd-40f3-9c1c-581fac84f9aa",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "location_zones",
+                    ":httpLocationZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLocationZoneName",
+                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "78a3ca45-2d7c-405f-909f-b8c86f713a80",
+              "name": "Location zone not found (*LocationZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "location_zones",
+                    ":httpLocationZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLocationZoneName",
+                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "138e0c06-3673-4750-850f-846a1bb05493",
+          "name": "NGINX Return Status of All Caches",
+          "request": {
+            "name": "NGINX Return Status of All Caches",
+            "description": {
+              "content": "Returns status of each cache configured by [proxy_cache_path](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path) and other “<literal>*_cache_path</literal>” directives.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "caches",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of cache zones will be output. If the “<literal>fields</literal>” value is empty, then only names of cache zones will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64843e22-4984-4693-904e-2c93a0349647",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "caches",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "734f2ada-bd63-4ed1-b830-fb6b0a132d1f",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "caches",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b418ab7-3ab1-4090-9f7a-4af670419b0c",
+          "name": "NGINX Return Status of a Cache",
+          "request": {
+            "name": "NGINX Return Status of a Cache",
+            "description": {
+              "content": "Returns status of a particular cache.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "caches",
+                ":httpCacheZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the cache zone will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpCacheZoneName",
+                  "description": "(Required) The name of the cache zone."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d107308-9267-4e4c-8a7c-5389487a53f0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "caches",
+                    ":httpCacheZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpCacheZoneName",
+                      "description": "(Required) The name of the cache zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "042e2563-d664-4c1f-ad86-e614f2e1a552",
+              "name": "Cache not found (*CacheNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "caches",
+                    ":httpCacheZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpCacheZoneName",
+                      "description": "(Required) The name of the cache zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ede1c1bf-aabf-42d3-8361-1c0673b95334",
+          "name": "NGINX Return Status of All HTTP Limit_conn Zones",
+          "request": {
+            "name": "NGINX Return Status of All HTTP Limit_conn Zones",
+            "description": {
+              "content": "Returns status information for each HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "limit_conns",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b913565e-c14c-497c-9d5d-35f4504f6819",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_conns",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63889532-a0e9-45f6-ac39-bde003987ec3",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_conns",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5983b0d3-e17b-47d9-83c6-e27b31852167",
+          "name": "NGINX Return Status of an HTTP Limit_conn Zone",
+          "request": {
+            "name": "NGINX Return Status of an HTTP Limit_conn Zone",
+            "description": {
+              "content": "Returns status of a particular HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "limit_conns",
+                ":httpLimitConnZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone) will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpLimitConnZoneName",
+                  "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e71b4a4b-8a05-4ea6-91c6-a10df3baecab",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_conns",
+                    ":httpLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6d0e86e-99cd-4735-a867-31fed185b7ea",
+              "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_conns",
+                    ":httpLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85fad909-68eb-408d-afe1-7e982fbd594d",
+          "name": "NGINX Return Status of All HTTP Limit_req Zones",
+          "request": {
+            "name": "NGINX Return Status of All HTTP Limit_req Zones",
+            "description": {
+              "content": "Returns status information for each HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "limit_reqs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of limit_req zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4a32057-b8c2-47b8-ac5b-793ee6fd5338",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_reqs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbec33a0-1fa6-413e-96fd-b8845e66a5d4",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_reqs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b72fc62-a196-4ed2-aabe-528fea43c6fc",
+          "name": "NGINX Return Status of an HTTP Limit_req Zone",
+          "request": {
+            "name": "NGINX Return Status of an HTTP Limit_req Zone",
+            "description": {
+              "content": "Returns status of a particular HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "limit_reqs",
+                ":httpLimitReqZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone) will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpLimitReqZoneName",
+                  "description": "(Required) The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05b33b68-b62b-4f94-9253-01a0f1b9eaad",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_reqs",
+                    ":httpLimitReqZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitReqZoneName",
+                      "description": "(Required) The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24615d4c-b441-4083-bf41-4248cdbed28f",
+              "name": "limit_req not found (*LimitReqNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_reqs",
+                    ":httpLimitReqZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitReqZoneName",
+                      "description": "(Required) The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46f116e0-0e46-4b55-a61d-3f445fe574ef",
+          "name": "NGINX Return Status of All HTTP Upstream Server Groups",
+          "request": {
+            "name": "NGINX Return Status of All HTTP Upstream Server Groups",
+            "description": {
+              "content": "Returns status of each HTTP upstream server group and its servers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "upstreams",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7c1a807-8ba4-4055-8f49-0300e77d1d64",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e75daebc-8db6-450a-92af-bc810bc96e17",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7554e4a-46ba-4306-b1a4-a1e35d234f22",
+          "name": "NGINX Return Status of an HTTP Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Status of an HTTP Upstream Server Group",
+            "description": {
+              "content": "Returns status of a particular HTTP upstream server group and its servers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "upstreams",
+                ":httpUpstreamName",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the upstream server group will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamName",
+                  "description": "(Required) The name of an HTTP upstream server group."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "433ead50-231c-4d81-bab2-a75b02d1b92c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an HTTP upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6cf0e7d6-66e1-47b0-82e2-d338c2fe8f35",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an HTTP upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a33bdb6-ffed-4205-84e5-0024affc45d5",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an HTTP upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7b06222-af45-4ee0-b7af-20278af225da",
+          "name": "NGINX Return Configuration of All Servers in an HTTP Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Configuration of All Servers in an HTTP Upstream Server Group",
+            "description": {
+              "content": "Returns configuration of each server in a particular HTTP upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "upstreams",
+                ":httpUpstreamName",
+                "servers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamName",
+                  "description": "(Required) The name of an upstream server group."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cb03160-cb75-4eca-ba92-e2b45d77ecec",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e77f346-d23c-470d-8361-e0a25c2f4933",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca97c373-251d-49dc-920c-fb8b7905801d",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cae3947-4db9-4231-b306-4d4da4a91a1f",
+          "name": "NGINX Return Configuration of a Server in an HTTP Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Configuration of a Server in an HTTP Upstream Server Group",
+            "description": {
+              "content": "Returns configuration of a particular server in the HTTP upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "upstreams",
+                ":httpUpstreamName",
+                "servers",
+                ":httpUpstreamServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamName",
+                  "description": "(Required) The name of the upstream server group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamServerId",
+                  "description": "(Required) The ID of the server."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a43aa55-b00d-481f-87d1-b067822e4f49",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ":httpUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bdaf52a-8544-4ffc-8b04-05403f048eee",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ":httpUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "576dc452-81a7-49f0-891d-9bd12a13ef4f",
+              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ":httpUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9df0a324-3daf-470a-9f6e-f1c06f4a67ec",
+          "name": "NGINX Return Key-Value Pairs from All HTTP Keyval Zones",
+          "request": {
+            "name": "NGINX Return Key-Value Pairs from All HTTP Keyval Zones",
+            "description": {
+              "content": "Returns key-value pairs for each HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "keyvals",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "If the “<literal>fields</literal>” value is empty, then only HTTP keyval zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9163e163-4771-434f-a5ae-77d38a768b09",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "777ef394-3600-43ca-8ff1-67478f32dfb3",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57c7ba0f-a189-4ada-aae7-41194ae56fca",
+          "name": "NGINX Return Key-Value Pairs from an HTTP Keyval Zone",
+          "request": {
+            "name": "NGINX Return Key-Value Pairs from an HTTP Keyval Zone",
+            "description": {
+              "content": "Returns key-value pairs stored in a particular HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "keyvals",
+                ":httpKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Get a particular key-value pair from the HTTP keyval zone.",
+                    "type": "text/plain"
+                  },
+                  "key": "key",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpKeyvalZoneName",
+                  "description": "(Required) The name of an HTTP keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8656e81f-3dda-4a4f-ac1c-7345abf6f51b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "228bccb9-8531-4246-825d-74ef3d648c2b",
+              "name": "Keyval not found (*KeyvalNotFound*),\nkeyval key not found (*KeyvalKeyNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fb5765b-905b-4308-833f-d1e690250962",
+          "name": "NGINX Return Status of All Stream Server Zones",
+          "request": {
+            "name": "NGINX Return Status of All Stream Server Zones",
+            "description": {
+              "content": "Returns status information for each stream [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "server_zones",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d61cc166-e667-4438-b9d5-38f194d4ab7c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "server_zones",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a426ac25-b4c7-4c1b-81a7-15a97053e1f2",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "server_zones",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e67dcb2-bda0-4317-87ec-1d3f804d2e5c",
+          "name": "NGINX Return Status of a Stream Server Zone",
+          "request": {
+            "name": "NGINX Return Status of a Stream Server Zone",
+            "description": {
+              "content": "Returns status of a particular stream server zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "server_zones",
+                ":streamServerZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the server zone will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamServerZoneName",
+                  "description": "(Required) The name of a stream server zone."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e968421-5a03-4432-9ec6-e689a272f511",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "server_zones",
+                    ":streamServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamServerZoneName",
+                      "description": "(Required) The name of a stream server zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffdd2d33-0ac4-4f81-a2c2-1461b99ff673",
+              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "server_zones",
+                    ":streamServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamServerZoneName",
+                      "description": "(Required) The name of a stream server zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e3700e8-8fc0-479c-86f6-e9578e2f035f",
+          "name": "NGINX Return Status of All Stream Limit_conn Zones",
+          "request": {
+            "name": "NGINX Return Status of All Stream Limit_conn Zones",
+            "description": {
+              "content": "Returns status information for each stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "limit_conns",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e85783a6-ea98-4149-ad02-4c3dc4775137",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "limit_conns",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da59e511-a1e9-4765-bee7-8bb6392f3eb2",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "limit_conns",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49373595-5f82-45cc-84b5-42d942b1f951",
+          "name": "NGINX Return Status of an Stream Limit_conn Zone",
+          "request": {
+            "name": "NGINX Return Status of an Stream Limit_conn Zone",
+            "description": {
+              "content": "Returns status of a particular stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "limit_conns",
+                ":streamLimitConnZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone) will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamLimitConnZoneName",
+                  "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3e61c7c-1e7d-4203-ba41-262581963844",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "limit_conns",
+                    ":streamLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbc9e2f5-01d3-49b0-bc21-c867537b7576",
+              "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "limit_conns",
+                    ":streamLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ca9a4b4-f37a-4611-b5e9-ca478b74ccbe",
+          "name": "NGINX Return Status of All Stream Upstream Server Groups",
+          "request": {
+            "name": "NGINX Return Status of All Stream Upstream Server Groups",
+            "description": {
+              "content": "Returns status of each stream upstream server group and its servers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54292b82-a755-44b0-bdea-cd7a1c6a4780",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "655fe2ea-1f48-4d1d-b36c-2b81689742f5",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd9f3d40-1124-42f6-90f0-52aa5ae1f83f",
+          "name": "NGINX Return Status of a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Status of a Stream Upstream Server Group",
+            "description": {
+              "content": "Returns status of a particular stream upstream server group and its servers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the upstream server group will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of a stream upstream server group."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e53a929a-003f-472d-a8af-b4b152b95f97",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4cab7dae-cfc9-4612-a57a-6480930d5a69",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4181ce8-c856-4483-9990-139c85e7d868",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3a91f47-eddb-4e7f-b908-b0b5f5ec6899",
+          "name": "NGINX Return Configuration of All Servers in a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Configuration of All Servers in a Stream Upstream Server Group",
+            "description": {
+              "content": "Returns configuration of each server in a particular stream upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of an upstream server group."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e807fbf-62c6-435c-98ce-bac555700656",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "52eb39b7-d456-4ef1-8bc9-53eefca54401",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efb39f6b-c841-4eba-9b8b-00072023620c",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32c43702-1f1b-46ea-9087-322032c26121",
+          "name": "NGINX Return Configuration of a Server in a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Return Configuration of a Server in a Stream Upstream Server Group",
+            "description": {
+              "content": "Returns configuration of a particular server in the stream upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ":streamUpstreamServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of the upstream server group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamServerId",
+                  "description": "(Required) The ID of the server."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba911168-9105-4bfb-90c7-cca7e6f6084d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c2cc483-45af-41c5-a3dd-be991a7c7cb9",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82caf096-398d-4713-9c61-a28807fbef38",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*),\nserver with ID “**id**” does not exist (*UpstreamServerNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ccc3387-5728-45cd-8c27-a9c655fa567d",
+          "name": "NGINX Return Key-Value Pairs from All Stream Keyval Zones",
+          "request": {
+            "name": "NGINX Return Key-Value Pairs from All Stream Keyval Zones",
+            "description": {
+              "content": "Returns key-value pairs for each stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "If the “<literal>fields</literal>” value is empty, then only stream keyval zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecf49993-06d6-4660-81fb-6f444f580ed6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e4d5818-8268-45de-8861-20d70d1c9fb5",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0823a546-a4fa-4181-a3eb-da6e39fc9edc",
+          "name": "NGINX Return Key-Value Pairs from a Stream Keyval Zone",
+          "request": {
+            "name": "NGINX Return Key-Value Pairs from a Stream Keyval Zone",
+            "description": {
+              "content": "Returns key-value pairs stored in a particular stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ":streamKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Get a particular key-value pair from the stream keyval zone.",
+                    "type": "text/plain"
+                  },
+                  "key": "key",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamKeyvalZoneName",
+                  "description": "(Required) The name of a stream keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e689852-61a1-4f84-99a3-d961686653bd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "442fae58-f640-447d-aca4-9a97d871b99d",
+              "name": "Keyval not found (*KeyvalNotFound*),\nkeyval key not found (*KeyvalKeyNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0965833-1b88-4283-9935-fbdb5db8d55b",
+          "name": "NGINX Return Sync Status of a Node",
+          "request": {
+            "name": "NGINX Return Sync Status of a Node",
+            "description": {
+              "content": "Returns synchronization status of a cluster node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "zone_sync",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f222179d-9036-4114-8413-f64998b1f03a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "zone_sync",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5002bf44-5025-49b3-9320-fb4f3f957f58",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "zone_sync",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dc20a4f-0370-4331-b650-be31fc51c231",
+          "name": "NGINX Return Status for All Resolver Zones",
+          "request": {
+            "name": "NGINX Return Status for All Resolver Zones",
+            "description": {
+              "content": "Returns status information for each [resolver zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resolvers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of resolvers statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "625b10e3-d671-494e-84c1-9fe757f69816",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resolvers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1bccf9a-701e-4bbd-ad5d-2ae67eee9b03",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resolvers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1850f74-6d2b-48f9-8f7b-3f5f1515ea52",
+          "name": "NGINX Return Statistics of a Resolver Zone",
+          "request": {
+            "name": "NGINX Return Statistics of a Resolver Zone",
+            "description": {
+              "content": "Returns statistics stored in a particular resolver [zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resolvers",
+                ":resolverZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of the resolver zone will be output (requests, responses, or both).",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "resolverZoneName",
+                  "description": "(Required) The name of a resolver zone."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f75d6f7-2141-4e5d-975f-13be5783fb83",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resolvers",
+                    ":resolverZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "resolverZoneName",
+                      "description": "(Required) The name of a resolver zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10c1ad18-4e55-416d-b36b-9f85007f7ed0",
+              "name": "Resolver zone not found (*ResolverZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resolvers",
+                    ":resolverZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "resolverZoneName",
+                      "description": "(Required) The name of a resolver zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ba4156a-7ee4-4ce9-bbe9-6b7b14599d64",
+          "name": "NGINX Return SSL Statistics",
+          "request": {
+            "name": "NGINX Return SSL Statistics",
+            "description": {
+              "content": "Returns SSL statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of SSL statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5f1c784-dc66-4b62-8caf-ca73f470d28c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "180560f3-9afc-449b-b69c-21cf73a81e53",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed21366b-5268-48a6-887e-54c56ae1f423",
+          "name": "NGINX Return License Info",
+          "request": {
+            "name": "NGINX Return License Info",
+            "description": {},
+            "url": {
+              "path": [
+                "license"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05528564-2d5f-431d-b1da-741d708bd743",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "license"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "504afa91-ccd8-475f-b323-98d19ccda769",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "license"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0f0bd38-cd59-4701-9af2-bfca98448afe",
+          "name": "NGINX Return Statistics for All Worker Processes",
+          "request": {
+            "name": "NGINX Return Statistics for All Worker Processes",
+            "description": {
+              "content": "Returns statistics for all worker processes such as accepted, dropped, active, idle connections, total and current requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of worker process statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca7b15bb-f7dd-475d-87c1-f67393179f96",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1dc056ae-11c4-48c9-8124-90d98329b0b0",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3046e71-db6e-4655-bce0-490ae5c4fee5",
+          "name": "NGINX Return Status of a Worker Process",
+          "request": {
+            "name": "NGINX Return Status of a Worker Process",
+            "description": {
+              "content": "Returns status of a particular worker process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ":workerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of worker process statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "workerId",
+                  "description": "(Required) The ID of the worker process."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecf74bcf-9ebf-4791-87e9-293c9e10f725",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "506454eb-c1d6-4701-9311-865b84f0986a",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "62b35643-272e-4b0d-8864-1f067ab553da",
+    "name": "NGINX njs Scripting Connections Method GET API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

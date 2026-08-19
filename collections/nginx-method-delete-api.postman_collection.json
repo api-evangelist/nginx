@@ -1,0 +1,3360 @@
+{
+  "item": [
+    {
+      "id": "a647a5f7-7757-42d4-87e4-9f18c4be4236",
+      "name": "Method DELETE",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1421a9a1-6d7b-43ea-b6d9-69c8a4a544bc",
+          "name": "NGINX Reset NGINX Processes Statistics",
+          "request": {
+            "name": "NGINX Reset NGINX Processes Statistics",
+            "description": {
+              "content": "Resets counters of abnormally terminated and respawned child processes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "processes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36967692-15cf-4845-98e1-51aaf1c5fcde",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "976b49c5-6300-400b-ac40-10244d6b89ec",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb4525a0-a747-478a-8df9-11d1b1cb27a9",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "processes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0bb15b6-5073-4d0d-b5df-d54c1d096142",
+          "name": "NGINX Reset Client Connections Statistics",
+          "request": {
+            "name": "NGINX Reset Client Connections Statistics",
+            "description": {
+              "content": "Resets statistics of accepted and dropped client connections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4d64e60-802c-4805-8d40-238e9ed59c6f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "00f2e344-18a9-4c5b-82e8-d699bbab055e",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7efdddb4-5476-4654-88ab-376ed3065ee4",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0880f9fe-6ca4-4c68-8359-18083543c438",
+          "name": "NGINX Reset Slab Statistics",
+          "request": {
+            "name": "NGINX Reset Slab Statistics",
+            "description": {
+              "content": "Resets the “<literal>reqs</literal>” and “<literal>fails</literal>” metrics for each memory slot.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "slabs",
+                ":slabZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "slabZoneName",
+                  "description": "(Required) The name of the shared memory zone with slab allocator."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8701d184-701b-49c7-93d4-78b55f37ca9b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slabs",
+                    ":slabZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "slabZoneName",
+                      "description": "(Required) The name of the shared memory zone with slab allocator."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1e2612f-c8db-47a3-8f7a-4048ea81348d",
+              "name": "Slab not found (*SlabNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slabs",
+                    ":slabZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "slabZoneName",
+                      "description": "(Required) The name of the shared memory zone with slab allocator."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "471debad-d718-4e04-a920-71d8e30edb17",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slabs",
+                    ":slabZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "slabZoneName",
+                      "description": "(Required) The name of the shared memory zone with slab allocator."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "facbc297-812c-46ba-854f-385b886efc91",
+          "name": "NGINX Reset HTTP Requests Statistics",
+          "request": {
+            "name": "NGINX Reset HTTP Requests Statistics",
+            "description": {
+              "content": "Resets the number of total client HTTP requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "886115cf-27d3-4fce-b0d4-104a22b9fe52",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70054903-d928-42ec-b4c8-ae84a92109d9",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b795560-2906-493c-8ac8-bd578192f368",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4da57939-2d00-4214-b1a2-87993e3101ed",
+          "name": "NGINX Reset Statistics for an HTTP Server Zone",
+          "request": {
+            "name": "NGINX Reset Statistics for an HTTP Server Zone",
+            "description": {
+              "content": "Resets statistics of accepted and discarded requests, responses, received and sent bytes, counters of SSL handshakes and session reuses in a particular HTTP server zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "server_zones",
+                ":httpServerZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpServerZoneName",
+                  "description": "(Required) The name of an HTTP server zone."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a05966d6-461a-4762-b1d7-2c4130d2732b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "server_zones",
+                    ":httpServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpServerZoneName",
+                      "description": "(Required) The name of an HTTP server zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7ee0c9a-6cba-46f0-afdb-4e72f4f586d5",
+              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "server_zones",
+                    ":httpServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpServerZoneName",
+                      "description": "(Required) The name of an HTTP server zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "009728ee-252c-4c69-a8bd-5764ddd6a00a",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "server_zones",
+                    ":httpServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpServerZoneName",
+                      "description": "(Required) The name of an HTTP server zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1933f957-96b2-4ae0-9701-6aac6a7aa2c3",
+          "name": "NGINX Reset Statistics for a Location Zone",
+          "request": {
+            "name": "NGINX Reset Statistics for a Location Zone",
+            "description": {
+              "content": "Resets statistics of accepted and discarded requests, responses, received and sent bytes in a particular location zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "location_zones",
+                ":httpLocationZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpLocationZoneName",
+                  "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5276aafd-2134-4ffb-be7f-0e75aaed18d2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "location_zones",
+                    ":httpLocationZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLocationZoneName",
+                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3d07b15-74a3-4ef4-a0a8-ade51088ae52",
+              "name": "Location zone not found (*LocationZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "location_zones",
+                    ":httpLocationZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLocationZoneName",
+                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "753cf538-f0f4-4a89-9031-ff7696c6823f",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "location_zones",
+                    ":httpLocationZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLocationZoneName",
+                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83c69a67-87cf-4154-b98a-4d1c19bbd309",
+          "name": "NGINX Reset Cache Statistics",
+          "request": {
+            "name": "NGINX Reset Cache Statistics",
+            "description": {
+              "content": "Resets statistics of cache hits/misses in a particular cache zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "caches",
+                ":httpCacheZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpCacheZoneName",
+                  "description": "(Required) The name of the cache zone."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d35f07cd-f4b3-4c98-9da5-f63bc4067371",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "caches",
+                    ":httpCacheZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpCacheZoneName",
+                      "description": "(Required) The name of the cache zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a58781db-b252-472a-a898-e67425def3ea",
+              "name": "Cache not found (*CacheNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "caches",
+                    ":httpCacheZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpCacheZoneName",
+                      "description": "(Required) The name of the cache zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61fa28bc-cf8c-47b9-9517-08ef66c5cef1",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "caches",
+                    ":httpCacheZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpCacheZoneName",
+                      "description": "(Required) The name of the cache zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bf3aa35-08ba-4ed8-a4ca-59584dda702b",
+          "name": "NGINX Reset Statistics for an HTTP Limit_conn Zone",
+          "request": {
+            "name": "NGINX Reset Statistics for an HTTP Limit_conn Zone",
+            "description": {
+              "content": "Resets the connection limiting statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "limit_conns",
+                ":httpLimitConnZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpLimitConnZoneName",
+                  "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8925e260-24f0-43c1-a382-63deccb5048d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_conns",
+                    ":httpLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99999344-de90-4343-b991-22a11ed6ec60",
+              "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_conns",
+                    ":httpLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2eb082cb-dafc-40d0-be15-083ee09cc702",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_conns",
+                    ":httpLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdc201bd-0dd2-470f-b18a-7ef447233fad",
+          "name": "NGINX Reset Statistics for an HTTP Limit_req Zone",
+          "request": {
+            "name": "NGINX Reset Statistics for an HTTP Limit_req Zone",
+            "description": {
+              "content": "Resets the requests limiting statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "limit_reqs",
+                ":httpLimitReqZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpLimitReqZoneName",
+                  "description": "(Required) The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "afbe8d05-4cdc-4d1a-948c-f0ab74aade6c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_reqs",
+                    ":httpLimitReqZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitReqZoneName",
+                      "description": "(Required) The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eaf692c6-f681-40f9-8613-af6486636de1",
+              "name": "limit_req not found (*LimitReqNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_reqs",
+                    ":httpLimitReqZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitReqZoneName",
+                      "description": "(Required) The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "184b2e3b-95cf-4fbb-b8e5-f7a1321c7bd1",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "limit_reqs",
+                    ":httpLimitReqZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpLimitReqZoneName",
+                      "description": "(Required) The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5640438-a4a7-4881-8179-64ea13648b33",
+          "name": "NGINX Reset Statistics of an HTTP Upstream Server Group",
+          "request": {
+            "name": "NGINX Reset Statistics of an HTTP Upstream Server Group",
+            "description": {
+              "content": "Resets the statistics for each upstream server in an upstream server group and queue statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "upstreams",
+                ":httpUpstreamName",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamName",
+                  "description": "(Required) The name of an HTTP upstream server group."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "195f00eb-d4a0-430f-aca1-21f8955fe611",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an HTTP upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51a2be54-932a-4a11-99d6-c30c8cbc751d",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an HTTP upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb402455-a3c7-4648-ba02-cfd85478fbe2",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an HTTP upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d88d7d0-2d65-457a-b0a1-a007f5c9e776",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an HTTP upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab3396bd-c136-4966-b6d4-ed61e096f5e2",
+          "name": "NGINX Remove a Server from an HTTP Upstream Server Group",
+          "request": {
+            "name": "NGINX Remove a Server from an HTTP Upstream Server Group",
+            "description": {
+              "content": "Removes a server from an HTTP upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "upstreams",
+                ":httpUpstreamName",
+                "servers",
+                ":httpUpstreamServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamName",
+                  "description": "(Required) The name of the upstream server group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamServerId",
+                  "description": "(Required) The ID of the server."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "842d50a1-23d6-48f4-a377-3bf81f034ac9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ":httpUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d6f06930-a76a-423e-b7fe-c7f571e49dc7",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*),\nserver “**id**” not removable (*UpstreamServerImmutable*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ":httpUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a47e6cf-9db2-4564-bdde-3f5337c396bb",
+              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ":httpUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28732d87-5367-43be-9c5d-d85be2cf4322",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ":httpUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9de86247-8eb4-433b-8b2c-dec446581d07",
+          "name": "NGINX Empty the HTTP Keyval Zone",
+          "request": {
+            "name": "NGINX Empty the HTTP Keyval Zone",
+            "description": {
+              "content": "Deletes all key-value pairs from the HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone). If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "keyvals",
+                ":httpKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpKeyvalZoneName",
+                  "description": "(Required) The name of an HTTP keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a43c6e16-cd34-432d-a360-aba19d8fea7f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76fdc150-5444-471f-9b9c-53b4db4b208b",
+              "name": "Keyval not found (*KeyvalNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2d12eb2-8ce5-46f0-8144-0e8e4829ccf4",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dbc6a24-d85c-4506-8dfe-fe701bf2e000",
+          "name": "NGINX Reset Statistics for a Stream Server Zone",
+          "request": {
+            "name": "NGINX Reset Statistics for a Stream Server Zone",
+            "description": {
+              "content": "Resets statistics of accepted and discarded connections, sessions, received and sent bytes, counters of SSL handshakes and session reuses in a particular stream server zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "server_zones",
+                ":streamServerZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamServerZoneName",
+                  "description": "(Required) The name of a stream server zone."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41ab6eb7-72c7-4f34-a93a-73574a52f4f2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "server_zones",
+                    ":streamServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamServerZoneName",
+                      "description": "(Required) The name of a stream server zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1f41189-58e4-4c59-b39a-602cb0a6d892",
+              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "server_zones",
+                    ":streamServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamServerZoneName",
+                      "description": "(Required) The name of a stream server zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73e45e7e-6566-47e7-8d8a-dfaaeec1cbfc",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "server_zones",
+                    ":streamServerZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamServerZoneName",
+                      "description": "(Required) The name of a stream server zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99b5f946-5982-4a8f-813b-986af2c2c67e",
+          "name": "NGINX Reset Statistics for a Stream Limit_conn Zone",
+          "request": {
+            "name": "NGINX Reset Statistics for a Stream Limit_conn Zone",
+            "description": {
+              "content": "Resets the connection limiting statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "limit_conns",
+                ":streamLimitConnZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamLimitConnZoneName",
+                  "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69d21a18-c302-46f4-af08-dd20a549afbe",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "limit_conns",
+                    ":streamLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95ab18eb-cbe2-43a7-bd49-1e3aa042ebda",
+              "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "limit_conns",
+                    ":streamLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d5d3ea3-64c7-4d3d-af5c-26cf3a83bcff",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "limit_conns",
+                    ":streamLimitConnZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamLimitConnZoneName",
+                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a27d9276-111b-4076-be8b-c84949e8e30f",
+          "name": "NGINX Reset Statistics of a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Reset Statistics of a Stream Upstream Server Group",
+            "description": {
+              "content": "Resets the statistics for each upstream server in an upstream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of a stream upstream server group."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eec79311-7e91-436c-b8ee-7a1bcd0549b7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c933536-aadd-41aa-b72e-73724636bc81",
+              "name": "Upstream is static (*UpstreamStatic*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef9860f1-630b-419e-b06f-652aa3702708",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d630f3be-247d-447f-ae83-8edcf2f22401",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of a stream upstream server group."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa685116-9d6e-487f-a62c-23bc6cd407d5",
+          "name": "NGINX Remove a Server from a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Remove a Server from a Stream Upstream Server Group",
+            "description": {
+              "content": "Removes a server from a stream server group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ":streamUpstreamServerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of the upstream server group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamServerId",
+                  "description": "(Required) The ID of the server."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3aabc81-56e5-4973-947d-073d22230ad7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b321e643-37d4-4c3d-8810-2ccba9237b67",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*),\nserver “**id**” not removable (*UpstreamServerImmutable*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5567087f-ce2a-42da-8ca5-2591ecf26cbf",
+              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe63c3e0-1b01-4af7-90a6-047eda834be6",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ":streamUpstreamServerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of the upstream server group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamServerId",
+                      "description": "(Required) The ID of the server."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f5e1cf4-e313-4c0b-9f22-d3dbbe18f363",
+          "name": "NGINX Empty the Stream Keyval Zone",
+          "request": {
+            "name": "NGINX Empty the Stream Keyval Zone",
+            "description": {
+              "content": "Deletes all key-value pairs from the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ":streamKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamKeyvalZoneName",
+                  "description": "(Required) The name of a stream keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26260f45-6234-406a-87b2-709a432942d0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7fe5fa2-acd9-4438-87b4-be131c35e074",
+              "name": "Keyval not found (*KeyvalNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3ca3da9-6724-446a-8811-56a63086b145",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77050126-1e0f-4ede-aed3-12c5db283d1c",
+          "name": "NGINX Reset Statistics for a Resolver Zone",
+          "request": {
+            "name": "NGINX Reset Statistics for a Resolver Zone",
+            "description": {
+              "content": "Resets statistics in a particular resolver zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resolvers",
+                ":resolverZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "resolverZoneName",
+                  "description": "(Required) The name of a resolver zone."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38753b2f-dd66-4589-9280-f0ff0024b1d6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resolvers",
+                    ":resolverZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "resolverZoneName",
+                      "description": "(Required) The name of a resolver zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63350e9e-999a-4841-b760-281072e05634",
+              "name": "Resolver zone not found (*ResolverZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resolvers",
+                    ":resolverZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "resolverZoneName",
+                      "description": "(Required) The name of a resolver zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffd91b2b-7a7e-4187-bf34-71761111646e",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resolvers",
+                    ":resolverZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "resolverZoneName",
+                      "description": "(Required) The name of a resolver zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db6b9cf1-9364-4e0b-9b7a-e25bf442c44f",
+          "name": "NGINX Reset SSL Statistics",
+          "request": {
+            "name": "NGINX Reset SSL Statistics",
+            "description": {
+              "content": "Resets counters of SSL handshakes and session reuses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "038604bb-82be-4686-a712-12805c4e4399",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0512db0c-aed3-49db-9f7c-b42aaa9544c3",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49157a44-3776-430b-b08e-b64b621d619f",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "174f7454-4f36-4f12-bdc3-ac814953667d",
+          "name": "NGINX Reset Statistics for All Worker Processes",
+          "request": {
+            "name": "NGINX Reset Statistics for All Worker Processes",
+            "description": {
+              "content": "Resets statistics for all worker processes such as\naccepted, dropped, active, idle connections, total and current requests.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dcdd473e-5d42-45b7-953e-03f66c5c1881",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2cad5981-306b-4786-9a37-a995bc544fbc",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b534175d-52a5-4f7e-a378-2913f500aa8d",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bf63a05-c2ce-4dd9-b216-666bc636d5f3",
+          "name": "NGINX Reset Statistics for a Worker Process",
+          "request": {
+            "name": "NGINX Reset Statistics for a Worker Process",
+            "description": {
+              "content": "Resets statistics of accepted, dropped, active, idle connections,\nas well as total and current requests.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ":workerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "workerId",
+                  "description": "(Required) The ID of the worker process."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0162e2f7-6bee-460f-a107-07e742aa8838",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca89b1a3-0c56-4ae0-bf69-f04539ee47f2",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be3ab65d-cd2b-47fe-91d4-dc02cda8e2a5",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0392f7c5-4761-4a3e-a44a-2fe06a9833b6",
+    "name": "NGINX njs Scripting Connections Method DELETE API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

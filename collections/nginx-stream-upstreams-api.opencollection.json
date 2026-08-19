@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Stream Upstreams API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stream Upstreams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All Stream Upstream Server Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of each stream upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream upstream server group."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the upstream server group will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular stream upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics of a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream upstream server group."
+              }
+            ]
+          },
+          "docs": "Resets the statistics for each upstream server in an upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of All Servers in a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Returns configuration of each server in a particular stream upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Add a Server to a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Adds a new server to a stream upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of a Server in a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/:streamUpstreamServerId",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "streamUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Returns configuration of a particular server in the stream upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Modify a Server in a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/:streamUpstreamServerId",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "streamUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Modifies settings of a particular server in a stream upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Remove a Server from a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/:streamUpstreamServerId",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "streamUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Removes a server from a stream server group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

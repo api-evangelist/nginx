@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Processes API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Processes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return NGINX Processes Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/processes"
+          },
+          "docs": "Returns the number of abnormally terminated and respawned child processes."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset NGINX Processes Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/processes"
+          },
+          "docs": "Resets counters of abnormally terminated and respawned child processes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

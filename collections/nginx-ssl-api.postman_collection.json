@@ -1,0 +1,254 @@
+{
+  "item": [
+    {
+      "id": "4253ecae-0e8d-46ac-8451-d025f6722fae",
+      "name": "SSL",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58cd95e2-81ef-462a-8dd5-3e224e3962b3",
+          "name": "NGINX Return SSL Statistics",
+          "request": {
+            "name": "NGINX Return SSL Statistics",
+            "description": {
+              "content": "Returns SSL statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of SSL statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d8694f3-e075-496b-9d2f-63b7775cec45",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d53d7a9-6b3b-417d-bc34-0052e66246a6",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a8e9d71-deaa-43f3-8ba2-e839d4dc64a0",
+          "name": "NGINX Reset SSL Statistics",
+          "request": {
+            "name": "NGINX Reset SSL Statistics",
+            "description": {
+              "content": "Resets counters of SSL handshakes and session reuses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "605e0d2e-2b8e-48e8-97bb-c67c08d8b60a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e23cbdc1-327d-49e4-9602-64afa7e559a0",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be042f0f-5c70-4e6c-9d78-87df2f420a62",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9cce45a7-da36-4fae-a083-500791631c25",
+    "name": "NGINX njs Scripting Connections SSL API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

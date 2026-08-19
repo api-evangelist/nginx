@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Client Connections Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/connections",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the connections statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns statistics of client connections."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Client Connections Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/connections"
+          },
+          "docs": "Resets statistics of accepted and dropped client connections."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,546 @@
+{
+  "item": [
+    {
+      "id": "6f1ee84b-9adb-40a9-9576-b79249daa240",
+      "name": "Workers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61d3b606-4c23-43ac-abd5-f952a12eed8f",
+          "name": "NGINX Return Statistics for All Worker Processes",
+          "request": {
+            "name": "NGINX Return Statistics for All Worker Processes",
+            "description": {
+              "content": "Returns statistics for all worker processes such as accepted, dropped, active, idle connections, total and current requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of worker process statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53d0a854-dae8-4695-b802-1c7a2555ddcf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c337b7fa-80e8-49f6-b3aa-d6a323029f7f",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebaf50b4-38ab-4e80-a4c8-aa4b98185c0e",
+          "name": "NGINX Reset Statistics for All Worker Processes",
+          "request": {
+            "name": "NGINX Reset Statistics for All Worker Processes",
+            "description": {
+              "content": "Resets statistics for all worker processes such as\naccepted, dropped, active, idle connections, total and current requests.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80607fc3-e0a9-41b9-a025-77e4d50b1efc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "174553c6-2d38-497a-8acc-1cd5269fcf75",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c84c5a7b-8cf7-44e6-b378-651927676f87",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc283431-70c2-48d8-9310-efd6898c8780",
+          "name": "NGINX Return Status of a Worker Process",
+          "request": {
+            "name": "NGINX Return Status of a Worker Process",
+            "description": {
+              "content": "Returns status of a particular worker process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ":workerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Limits which fields of worker process statistics will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "workerId",
+                  "description": "(Required) The ID of the worker process."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ccc88cc-eae3-438d-b269-a203b0829e19",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65637ac7-10d6-491a-aad1-1f513eaa794f",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd843588-c5cc-4523-bbe4-1bad56fda661",
+          "name": "NGINX Reset Statistics for a Worker Process",
+          "request": {
+            "name": "NGINX Reset Statistics for a Worker Process",
+            "description": {
+              "content": "Resets statistics of accepted, dropped, active, idle connections,\nas well as total and current requests.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workers",
+                ":workerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "workerId",
+                  "description": "(Required) The ID of the worker process."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50f9f089-9493-4846-a0a0-2f9101f10df0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3df57433-42aa-44bb-8ca6-a535db0c0c12",
+              "name": "Worker not found (*WorkerNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4be91ff-c7bc-4ffb-ab3f-e50ccdfd56f1",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workers",
+                    ":workerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "workerId",
+                      "description": "(Required) The ID of the worker process."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fdcff0b1-8570-4c8d-99f3-3e46cd852ed5",
+    "name": "NGINX njs Scripting Connections Workers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

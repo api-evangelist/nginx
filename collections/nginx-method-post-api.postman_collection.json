@@ -1,0 +1,1230 @@
+{
+  "item": [
+    {
+      "id": "bb637f2f-1ae7-4ed3-b5c6-995dcd31161d",
+      "name": "Method POST",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61956547-29b7-4bd2-bc44-3007a8804e38",
+          "name": "NGINX Add a Server to an HTTP Upstream Server Group",
+          "request": {
+            "name": "NGINX Add a Server to an HTTP Upstream Server Group",
+            "description": {
+              "content": "Adds a new server to an HTTP upstream server group. Server parameters are specified in the JSON format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "upstreams",
+                ":httpUpstreamName",
+                "servers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpUpstreamName",
+                  "description": "(Required) The name of an upstream server group."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0b66487-15c8-4322-b5c7-cef30b3f13fe",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8410553-848b-4f95-882f-82bfcbdaaa25",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid “**parameter**” value (*UpstreamConfFormatError*),\nmissing “*server*” argument (*UpstreamConfFormatError*),\nunknown parameter “**name**” (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormatError*),\n“*error*” while parsing (*UpstreamBadAddress*),\nservice upstream “*host*” may not have port (*UpstreamBadAddress*),\nservice upstream “*host*” requires domain name (*UpstreamBadAddress*),\ninvalid “*weight*” (*UpstreamBadWeight*),\ninvalid “*max_conns*” (*UpstreamBadMaxConns*),\ninvalid “*max_fails*” (*UpstreamBadMaxFails*),\ninvalid “*fail_timeout*” (*UpstreamBadFailTimeout*),\ninvalid “*slow_start*” (*UpstreamBadSlowStart*),\nreading request body failed *BodyReadError*),\nroute is too long (*UpstreamBadRoute*),\n“*service*” is empty (*UpstreamBadService*),\nno resolver defined to resolve (*UpstreamConfNoResolver*),\nupstream “**name**” has no backup (*UpstreamNoBackup*),\nupstream “**name**” memory exhausted (*UpstreamOutOfMemory*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9538b9d3-3687-41fd-90de-cdc6d8e927fe",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75ee9c9d-2bb1-41a9-a4a3-e4b7cdf6d31f",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15df3d03-d8cb-42aa-8834-9c1962bf7123",
+              "name": "Entry exists (*EntryExists*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6993aef5-8fac-450c-af40-738de2407887",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "upstreams",
+                    ":httpUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60d1772a-fa7e-46bf-9ca2-321e524b6e83",
+          "name": "NGINX Add a Key-Value Pair to the HTTP Keyval Zone",
+          "request": {
+            "name": "NGINX Add a Key-Value Pair to the HTTP Keyval Zone",
+            "description": {
+              "content": "Adds a new key-value pair to the HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the HTTP keyval shared memory zone is empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "http",
+                "keyvals",
+                ":httpKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "httpKeyvalZoneName",
+                  "description": "(Required) The name of an HTTP keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2447560a-fff6-49d6-9295-8e4af475095a",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "828b71aa-79a1-47fc-a925-5f06cce26f87",
+              "name": "Invalid JSON (*KeyvalFormatError*),\ninvalid key format (*KeyvalFormatError*),\nkey required (*KeyvalFormatError*),\nkeyval timeout is not enabled (*KeyvalFormatError*),\nonly one key can be added (*KeyvalFormatError*),\nreading request body failed *BodyReadError*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3ce9977-aba7-44ba-838b-67c4df81b460",
+              "name": "Keyval not found (*KeyvalNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75dbaed1-98a6-4140-b459-82c0b735d466",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0123592b-ad59-4ade-806c-dc9159b50599",
+              "name": "Entry exists (*EntryExists*),\nkey already exists (*KeyvalKeyExists*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ff30d75-1e61-4de4-8f97-50b0bacb9550",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efc4d96f-9943-4ce5-a1e7-efa8e1a5c4f6",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "http",
+                    "keyvals",
+                    ":httpKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "httpKeyvalZoneName",
+                      "description": "(Required) The name of an HTTP keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6b0ed9a-448d-443c-ab00-c01ec914cc5b",
+          "name": "NGINX Add a Server to a Stream Upstream Server Group",
+          "request": {
+            "name": "NGINX Add a Server to a Stream Upstream Server Group",
+            "description": {
+              "content": "Adds a new server to a stream upstream server group. Server parameters are specified in the JSON format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "upstreams",
+                ":streamUpstreamName",
+                "servers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamUpstreamName",
+                  "description": "(Required) The name of an upstream server group."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1be4a1ef-7b04-439b-a65f-ad79cc71c10f",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d43f81ad-5fb8-4093-be33-701c16d2345f",
+              "name": "Upstream is static (*UpstreamStatic*),\ninvalid “**parameter**” value (*UpstreamConfFormatError*),\nmissing “*server*” argument (*UpstreamConfFormatError*),\nunknown parameter “**name**” (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormatError*),\n“*error*” while parsing (*UpstreamBadAddress*),\nno port in server “*host*” (*UpstreamBadAddress*),\nservice upstream “*host*” may not have port (*UpstreamBadAddress*),\nservice upstream “*host*” requires domain name (*UpstreamBadAddress*),\ninvalid “*weight*” (*UpstreamBadWeight*),\ninvalid “*max_conns*” (*UpstreamBadMaxConns*),\ninvalid “*max_fails*” (*UpstreamBadMaxFails*),\ninvalid “*fail_timeout*” (*UpstreamBadFailTimeout*),\ninvalid “*slow_start*” (*UpstreamBadSlowStart*),\n“*service*” is empty (*UpstreamBadService*),\nno resolver defined to resolve (*UpstreamConfNoResolver*),\nupstream “**name**” has no backup (*UpstreamNoBackup*),\nupstream “**name**” memory exhausted (*UpstreamOutOfMemory*),\nreading request body failed *BodyReadError*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04327a21-9c5c-435c-8f00-726762e55a5d",
+              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b914ab17-ac77-4c0b-89bb-f67315c581e9",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11db9cb1-a686-4eab-9cae-f27d342bebcb",
+              "name": "Entry exists (*EntryExists*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b25cb9a-20aa-4599-a1c6-4623cc0477ed",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "upstreams",
+                    ":streamUpstreamName",
+                    "servers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamUpstreamName",
+                      "description": "(Required) The name of an upstream server group."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50acdb45-efda-4656-97a3-6762c3fd666f",
+          "name": "NGINX Add a Key-Value Pair to the Stream Keyval Zone",
+          "request": {
+            "name": "NGINX Add a Key-Value Pair to the Stream Keyval Zone",
+            "description": {
+              "content": "Adds a new key-value pair to the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the stream keyval shared memory zone is empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ":streamKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamKeyvalZoneName",
+                  "description": "(Required) The name of a stream keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6c31619-dfbf-42cc-b5d5-4c299413d2d4",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a37d714e-49f5-40f8-914a-f3689c0e0b6f",
+              "name": "Invalid JSON (*KeyvalFormatError*),\ninvalid key format (*KeyvalFormatError*),\nkey required (*KeyvalFormatError*),\nkeyval timeout is not enabled (*KeyvalFormatError*),\nonly one key can be added (*KeyvalFormatError*),\nreading request body failed *BodyReadError*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12212755-15ce-4fd5-abef-80929bf55bbd",
+              "name": "Keyval not found (*KeyvalNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02a68048-6545-4b2b-94fc-da62b711c9c3",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53d2a554-543c-495b-b2be-25fd01950996",
+              "name": "Entry exists (*EntryExists*),\nkey already exists (*KeyvalKeyExists*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "34fcf68b-216a-4fdb-a82c-22a49dcd82ac",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4645a3d0-6753-49a8-8a21-9e66d5fd9835",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4810b2ce-6b56-4255-b799-47f6232b49cd",
+    "name": "NGINX njs Scripting Connections Method POST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

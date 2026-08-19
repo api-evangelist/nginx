@@ -1,0 +1,389 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Method DELETE API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Method DELETE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Reset NGINX Processes Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/processes"
+          },
+          "docs": "Resets counters of abnormally terminated and respawned child processes."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Client Connections Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/connections"
+          },
+          "docs": "Resets statistics of accepted and dropped client connections."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Slab Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/slabs/:slabZoneName",
+            "params": [
+              {
+                "name": "slabZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the shared memory zone with slab allocator."
+              }
+            ]
+          },
+          "docs": "Resets the “<literal>reqs</literal>” and “<literal>fails</literal>” metrics for each memory slot."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset HTTP Requests Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/requests"
+          },
+          "docs": "Resets the number of total client HTTP requests."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for an HTTP Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+            "params": [
+              {
+                "name": "httpServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP server zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted and discarded requests, responses, received and sent bytes, counters of SSL handshakes and session reuses in a particular HTTP server zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Location Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+            "params": [
+              {
+                "name": "httpLocationZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted and discarded requests, responses, received and sent bytes in a particular location zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Cache Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+            "params": [
+              {
+                "name": "httpCacheZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the cache zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics of cache hits/misses in a particular cache zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for an HTTP Limit_conn Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/limit_conns/:httpLimitConnZoneName",
+            "params": [
+              {
+                "name": "httpLimitConnZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone)."
+              }
+            ]
+          },
+          "docs": "Resets the connection limiting statistics."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for an HTTP Limit_req Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/limit_reqs/:httpLimitReqZoneName",
+            "params": [
+              {
+                "name": "httpLimitReqZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+              }
+            ]
+          },
+          "docs": "Resets the requests limiting statistics."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics of an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP upstream server group."
+              }
+            ]
+          },
+          "docs": "Resets the statistics for each upstream server in an upstream server group and queue statistics."
+        },
+        {
+          "info": {
+            "name": "NGINX Remove a Server from an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "httpUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Removes a server from an HTTP upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Empty the HTTP Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/keyvals/:httpKeyvalZoneName",
+            "params": [
+              {
+                "name": "httpKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Deletes all key-value pairs from the HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone). If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Stream Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+            "params": [
+              {
+                "name": "streamServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream server zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted and discarded connections, sessions, received and sent bytes, counters of SSL handshakes and session reuses in a particular stream server zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Stream Limit_conn Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+            "params": [
+              {
+                "name": "streamLimitConnZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+              }
+            ]
+          },
+          "docs": "Resets the connection limiting statistics."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics of a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream upstream server group."
+              }
+            ]
+          },
+          "docs": "Resets the statistics for each upstream server in an upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Remove a Server from a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/:streamUpstreamServerId",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "streamUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Removes a server from a stream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Empty the Stream Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Deletes all key-value pairs from the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Resolver Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/resolvers/:resolverZoneName",
+            "params": [
+              {
+                "name": "resolverZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a resolver zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics in a particular resolver zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset SSL Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ssl"
+          },
+          "docs": "Resets counters of SSL handshakes and session reuses."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for All Worker Processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/workers/"
+          },
+          "docs": "Resets statistics for all worker processes such as\naccepted, dropped, active, idle connections, total and current requests.\n"
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Worker Process",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/workers/:workerId",
+            "params": [
+              {
+                "name": "workerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the worker process."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted, dropped, active, idle connections,\nas well as total and current requests.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

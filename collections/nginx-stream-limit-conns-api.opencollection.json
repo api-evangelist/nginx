@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Stream Limit Conns API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stream Limit Conns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All Stream Limit_conn Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/limit_conns/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an Stream Limit_conn Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+            "params": [
+              {
+                "name": "streamLimitConnZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone) will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Stream Limit_conn Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+            "params": [
+              {
+                "name": "streamLimitConnZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+              }
+            ]
+          },
+          "docs": "Resets the connection limiting statistics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

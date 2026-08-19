@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Method PATCH API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Method PATCH",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Modify a Server in an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "httpUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Modifies settings of a particular server in an HTTP upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Modify a Key-Value or Delete a Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/http/keyvals/:httpKeyvalZoneName",
+            "params": [
+              {
+                "name": "httpKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to <literal>null</literal>, changes expiration time of a key-value pair. If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time in milliseconds can be specified for a key-value pair with the *expire* parameter which overrides the [*timeout*](ht"
+        },
+        {
+          "info": {
+            "name": "NGINX Modify a Server in a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/:streamUpstreamServerId",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "streamUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Modifies settings of a particular server in a stream upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Modify a Key-Value or Delete a Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to <literal>null</literal>, changes expiration time of a key-value pair. If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time is specified in milliseconds with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/s"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

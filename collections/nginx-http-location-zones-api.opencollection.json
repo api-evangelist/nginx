@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections HTTP Location Zones API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP Location Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Location Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/location_zones/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of location zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Location Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+            "params": [
+              {
+                "name": "httpLocationZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the location zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Location Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+            "params": [
+              {
+                "name": "httpLocationZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted and discarded requests, responses, received and sent bytes in a particular location zone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

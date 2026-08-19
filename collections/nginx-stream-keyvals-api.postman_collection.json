@@ -1,0 +1,1021 @@
+{
+  "item": [
+    {
+      "id": "4f5f68c0-c5aa-4905-89aa-80429a6f0f8e",
+      "name": "Stream Keyvals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "117e1fe5-cb9d-4d27-b470-ed9e5ef2465d",
+          "name": "NGINX Return Key-Value Pairs from All Stream Keyval Zones",
+          "request": {
+            "name": "NGINX Return Key-Value Pairs from All Stream Keyval Zones",
+            "description": {
+              "content": "Returns key-value pairs for each stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "If the “<literal>fields</literal>” value is empty, then only stream keyval zone names will be output.",
+                    "type": "text/plain"
+                  },
+                  "key": "fields",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f714b48-659e-4da3-84f3-f9cdac39c587",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7211d09a-2709-4df4-9240-04e37a96dbd4",
+              "name": "Unknown version (*UnknownVersion*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f30c248d-dbb8-404f-9f51-aeb7b826f186",
+          "name": "NGINX Return Key-Value Pairs from a Stream Keyval Zone",
+          "request": {
+            "name": "NGINX Return Key-Value Pairs from a Stream Keyval Zone",
+            "description": {
+              "content": "Returns key-value pairs stored in a particular stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ":streamKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Get a particular key-value pair from the stream keyval zone.",
+                    "type": "text/plain"
+                  },
+                  "key": "key",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamKeyvalZoneName",
+                  "description": "(Required) The name of a stream keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e21de870-9adb-4d5f-a481-99446faba769",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2843147-1933-4ba4-8d3e-bec0c8be1212",
+              "name": "Keyval not found (*KeyvalNotFound*),\nkeyval key not found (*KeyvalKeyNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d007409b-b6bd-4c78-badc-b8dc2913ead5",
+          "name": "NGINX Add a Key-Value Pair to the Stream Keyval Zone",
+          "request": {
+            "name": "NGINX Add a Key-Value Pair to the Stream Keyval Zone",
+            "description": {
+              "content": "Adds a new key-value pair to the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the stream keyval shared memory zone is empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ":streamKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamKeyvalZoneName",
+                  "description": "(Required) The name of a stream keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8582a458-4b7e-402b-ab83-b74dd4636b48",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e0497f4-77d3-45f0-9160-bb6a987ee0ca",
+              "name": "Invalid JSON (*KeyvalFormatError*),\ninvalid key format (*KeyvalFormatError*),\nkey required (*KeyvalFormatError*),\nkeyval timeout is not enabled (*KeyvalFormatError*),\nonly one key can be added (*KeyvalFormatError*),\nreading request body failed *BodyReadError*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95165f3c-5517-4b90-82a3-070abfb1b89b",
+              "name": "Keyval not found (*KeyvalNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "993010b8-b505-4bee-b3c5-a49667d2a7be",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21624bbc-cd8d-4508-a820-4f8617e2554d",
+              "name": "Entry exists (*EntryExists*),\nkey already exists (*KeyvalKeyExists*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d809e1d8-04ea-4049-ab19-dbb41c4de005",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c3ade7f-4ac2-431a-bf85-1d6fddae7c13",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b581c3d-25c5-4f80-a3ef-4c400cec2230",
+          "name": "NGINX Modify a Key-Value or Delete a Key",
+          "request": {
+            "name": "NGINX Modify a Key-Value or Delete a Key",
+            "description": {
+              "content": "Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to <literal>null</literal>, changes expiration time of a key-value pair. If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time is specified in milliseconds with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_timeout) parameter of the <a href=\"https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone\">keyval_zone</a> directive.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ":streamKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamKeyvalZoneName",
+                  "description": "(Required) The name of a stream keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a6f73a1-0deb-4d6e-a485-30768efdf8db",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a52facff-4d97-45c5-a6b8-3fd17bac5b0d",
+              "name": "Invalid JSON (*KeyvalFormatError*),\nkey required (*KeyvalFormatError*),\nkeyval timeout is not enabled (*KeyvalFormatError*),\nonly one key can be updated (*KeyvalFormatError*),\nreading request body failed *BodyReadError*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "caed0652-3729-404a-b9d3-6ea0574a36d8",
+              "name": "Keyval not found (*KeyvalNotFound*),\nkeyval key not found (*KeyvalKeyNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f3bf86d1-b17f-4227-ad98-ea0be8c278db",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e29ed987-18a3-4f25-a09b-9852c54c08ee",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d70c4008-ae16-4511-a49b-0cdf475b7f80",
+              "name": "JSON error (*JsonError*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72efc51c-f348-48a6-b6ba-5909c23b6f27",
+          "name": "NGINX Empty the Stream Keyval Zone",
+          "request": {
+            "name": "NGINX Empty the Stream Keyval Zone",
+            "description": {
+              "content": "Deletes all key-value pairs from the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). If <a href=\"https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync\">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stream",
+                "keyvals",
+                ":streamKeyvalZoneName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "streamKeyvalZoneName",
+                  "description": "(Required) The name of a stream keyval shared memory zone."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0f2544e-9668-457d-bc9e-5bcc42c794e3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cabe01ec-4905-433f-a095-467e4db6d081",
+              "name": "Keyval not found (*KeyvalNotFound*),\nunknown version (*UnknownVersion*)\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3378bfd6-a1d2-4749-9b83-991b3a5b881f",
+              "name": "Method disabled (*MethodDisabled*)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "keyvals",
+                    ":streamKeyvalZoneName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "streamKeyvalZoneName",
+                      "description": "(Required) The name of a stream keyval shared memory zone."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "46f34753-235f-4130-9be4-3cdb11e1494d",
+    "name": "NGINX njs Scripting Connections Stream Keyvals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
+      "type": "text/plain"
+    }
+  }
+}

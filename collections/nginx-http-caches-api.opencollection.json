@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections HTTP Caches API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP Caches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All Caches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/caches/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of cache zones will be output. If the “<literal>fields</literal>” value is empty, then only names of cache zones will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of each cache configured by [proxy_cache_path](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path) and other “<literal>*_cache_path</literal>” directives."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+            "params": [
+              {
+                "name": "httpCacheZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the cache zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the cache zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular cache."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Cache Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+            "params": [
+              {
+                "name": "httpCacheZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the cache zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics of cache hits/misses in a particular cache zone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

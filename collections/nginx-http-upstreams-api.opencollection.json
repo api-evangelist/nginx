@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections HTTP Upstreams API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP Upstreams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Upstream Server Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of each HTTP upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP upstream server group."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the upstream server group will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP upstream server group and its servers."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics of an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP upstream server group."
+              }
+            ]
+          },
+          "docs": "Resets the statistics for each upstream server in an upstream server group and queue statistics."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of All Servers in an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Returns configuration of each server in a particular HTTP upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Add a Server to an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Adds a new server to an HTTP upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Configuration of a Server in an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "httpUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Returns configuration of a particular server in the HTTP upstream server group."
+        },
+        {
+          "info": {
+            "name": "NGINX Modify a Server in an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "httpUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Modifies settings of a particular server in an HTTP upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Remove a Server from an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the upstream server group."
+              },
+              {
+                "name": "httpUpstreamServerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the server."
+              }
+            ]
+          },
+          "docs": "Removes a server from an HTTP upstream server group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

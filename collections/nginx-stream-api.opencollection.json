@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Stream API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stream",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return List of Stream-Related Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/"
+          },
+          "docs": "Returns a list of first level stream endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

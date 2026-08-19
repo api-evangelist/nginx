@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections HTTP API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return List of HTTP-Related Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/"
+          },
+          "docs": "Returns a list of first level HTTP endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

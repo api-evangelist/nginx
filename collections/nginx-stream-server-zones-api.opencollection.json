@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Stream Server Zones API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stream Server Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All Stream Server Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/server_zones/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each stream [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Stream Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+            "params": [
+              {
+                "name": "streamServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream server zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the server zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular stream server zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Stream Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+            "params": [
+              {
+                "name": "streamServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream server zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted and discarded connections, sessions, received and sent bytes, counters of SSL handshakes and session reuses in a particular stream server zone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

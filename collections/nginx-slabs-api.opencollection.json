@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Slabs API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Slabs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All Slabs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/slabs/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of slab zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of slabs for each shared memory zone with slab allocator."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of a Slab",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/slabs/:slabZoneName",
+            "params": [
+              {
+                "name": "slabZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the shared memory zone with slab allocator."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the slab zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of slabs for a particular shared memory zone with slab allocator."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Slab Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/slabs/:slabZoneName",
+            "params": [
+              {
+                "name": "slabZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the shared memory zone with slab allocator."
+              }
+            ]
+          },
+          "docs": "Resets the “<literal>reqs</literal>” and “<literal>fails</literal>” metrics for each memory slot."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

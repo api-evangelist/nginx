@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections General Info API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return List of Root Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/"
+          },
+          "docs": "Returns a list of root endpoints."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of NGINX Running Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nginx",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of nginx running instance will be output."
+              }
+            ]
+          },
+          "docs": "Returns nginx version, build name, address, number of configuration reloads, IDs of master and worker processes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

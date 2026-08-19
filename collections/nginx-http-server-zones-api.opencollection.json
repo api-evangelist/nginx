@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections HTTP Server Zones API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP Server Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Server Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/server_zones/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each HTTP [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+            "params": [
+              {
+                "name": "httpServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP server zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the server zone will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP server zone."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for an HTTP Server Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+            "params": [
+              {
+                "name": "httpServerZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP server zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics of accepted and discarded requests, responses, received and sent bytes, counters of SSL handshakes and session reuses in a particular HTTP server zone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

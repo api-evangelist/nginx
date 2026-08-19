@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections HTTP Requests API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return HTTP Requests Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/requests",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of client HTTP requests statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of client HTTP requests."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset HTTP Requests Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/requests"
+          },
+          "docs": "Resets the number of total client HTTP requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Resolvers API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resolvers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status for All Resolver Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/resolvers/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of resolvers statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each [resolver zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Statistics of a Resolver Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/resolvers/:resolverZoneName",
+            "params": [
+              {
+                "name": "resolverZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a resolver zone."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the resolver zone will be output (requests, responses, or both)."
+              }
+            ]
+          },
+          "docs": "Returns statistics stored in a particular resolver [zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for a Resolver Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/resolvers/:resolverZoneName",
+            "params": [
+              {
+                "name": "resolverZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a resolver zone."
+              }
+            ]
+          },
+          "docs": "Resets statistics in a particular resolver zone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

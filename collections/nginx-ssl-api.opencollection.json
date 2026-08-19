@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections SSL API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SSL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return SSL Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ssl",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of SSL statistics will be output."
+              }
+            ]
+          },
+          "docs": "Returns SSL statistics."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset SSL Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ssl"
+          },
+          "docs": "Resets counters of SSL handshakes and session reuses."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

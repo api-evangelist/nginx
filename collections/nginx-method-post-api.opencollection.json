@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections Method POST API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Method POST",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Add a Server to an HTTP Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+            "params": [
+              {
+                "name": "httpUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Adds a new server to an HTTP upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Add a Key-Value Pair to the HTTP Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/http/keyvals/:httpKeyvalZoneName",
+            "params": [
+              {
+                "name": "httpKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an HTTP keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Adds a new key-value pair to the HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the HTTP keyval shared memory zone is empty."
+        },
+        {
+          "info": {
+            "name": "NGINX Add a Server to a Stream Upstream Server Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stream/upstreams/:streamUpstreamName/servers/",
+            "params": [
+              {
+                "name": "streamUpstreamName",
+                "value": "",
+                "type": "path",
+                "description": "The name of an upstream server group."
+              }
+            ]
+          },
+          "docs": "Adds a new server to a stream upstream server group. Server parameters are specified in the JSON format."
+        },
+        {
+          "info": {
+            "name": "NGINX Add a Key-Value Pair to the Stream Keyval Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stream/keyvals/:streamKeyvalZoneName",
+            "params": [
+              {
+                "name": "streamKeyvalZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a stream keyval shared memory zone."
+              }
+            ]
+          },
+          "docs": "Adds a new key-value pair to the stream keyval shared memory [zone](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the stream keyval shared memory zone is empty."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

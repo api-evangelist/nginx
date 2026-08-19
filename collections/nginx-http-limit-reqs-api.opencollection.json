@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NGINX njs Scripting Connections HTTP Limit Reqs API",
+    "version": "0.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP Limit Reqs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NGINX Return Status of All HTTP Limit_req Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/limit_reqs/",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of limit_req zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output."
+              }
+            ]
+          },
+          "docs": "Returns status information for each HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Return Status of an HTTP Limit_req Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/http/limit_reqs/:httpLimitReqZoneName",
+            "params": [
+              {
+                "name": "httpLimitReqZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Limits which fields of the [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone) will be output."
+              }
+            ]
+          },
+          "docs": "Returns status of a particular HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+        },
+        {
+          "info": {
+            "name": "NGINX Reset Statistics for an HTTP Limit_req Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/http/limit_reqs/:httpLimitReqZoneName",
+            "params": [
+              {
+                "name": "httpLimitReqZoneName",
+                "value": "",
+                "type": "path",
+                "description": "The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone)."
+              }
+            ]
+          },
+          "docs": "Resets the requests limiting statistics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
