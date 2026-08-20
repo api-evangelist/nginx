@@ -34,6 +34,14 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nginx.png
 tags:
 - API Gateway
 - Caching
+- Cloud-Native
+- Load Balancer
+- Open-Source
+- Reverse Proxy
+- Web Server
+tags_raw:
+- API Gateway
+- Caching
 - Cloud Native
 - Load Balancer
 - Open Source
@@ -52,6 +60,12 @@ apis:
     Licensed under the 2-clause BSD license and governed by F5, Inc.
   humanURL: https://nginx.org/
   tags:
+  - API Gateway
+  - Load Balancer
+  - Open-Source
+  - Reverse Proxy
+  - Web Server
+  tags_raw:
   - API Gateway
   - Load Balancer
   - Open Source
@@ -76,6 +90,11 @@ apis:
     rate limiting, and advanced traffic management through annotations and custom resources.
   humanURL: https://github.com/nginx/kubernetes-ingress
   tags:
+  - Cloud-Native
+  - Ingress
+  - Kubernetes
+  - Traffic Management
+  tags_raw:
   - Cloud Native
   - Ingress
   - Kubernetes
@@ -95,6 +114,11 @@ apis:
     GRPCRoute, and TLSRoute, enabling fine-grained control over ingress and routing in Kubernetes environments.
   humanURL: https://github.com/nginx/nginx-gateway-fabric
   tags:
+  - Cloud-Native
+  - Gateway API
+  - Kubernetes
+  - Routing
+  tags_raw:
   - Cloud Native
   - Gateway API
   - Kubernetes
@@ -112,6 +136,11 @@ apis:
     through a gRPC-based control plane interface.
   humanURL: https://github.com/nginx/agent
   tags:
+  - Agents
+  - Management
+  - Monitoring
+  - Remote Administration
+  tags_raw:
   - Agent
   - Management
   - Monitoring
