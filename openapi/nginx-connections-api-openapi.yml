@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
-  x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+  version: '9.0'
+  title: NGINX Plus REST Connections API
+  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+servers:
+- url: /api/9
 tags:
 - name: Connections
 paths:
@@ -20,40 +15,41 @@ paths:
       summary: NGINX Return Client Connections Statistics
       description: Returns statistics of client connections.
       operationId: getConnections
-      produces:
-      - application/json
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxConnections'
-          examples:
-            application/json:
-              accepted: 4968119
-              dropped: 0
-              active: 5
-              idle: 117
           x-microcks-refs:
           - name: getConnections200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxConnections'
+              example:
+                accepted: 4968119
+                dropped: 0
+                active: 5
+                idle: 117
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getConnections404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       parameters:
       - in: query
         name: fields
-        type: string
         description: Limits which fields of the connections statistics will be output.
         x-example: ''
+        schema:
+          type: string
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -68,91 +64,91 @@ paths:
           description: Success
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id001 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteConnections404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteConnections405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  NginxConnections:
-    title: Connections
-    description: 'The number of accepted, dropped, active, and idle connections.
+components:
+  schemas:
+    NginxError:
+      title: Error
+      description: 'nginx error object.
 
-      '
-    type: object
-    properties:
-      accepted:
-        type: integer
-        description: The total number of accepted client connections.
-        example: 4968119
-      dropped:
-        type: integer
-        description: The total number of dropped client connections.
-        example: 0
-      active:
-        type: integer
-        description: The current number of active client connections.
-        example: 5
-      idle:
-        type: integer
-        description: The current number of idle client connections.
-        example: 117
-    example:
-      accepted: 4968119
-      dropped: 0
-      active: 5
-      idle: 117
-  NginxError:
-    title: Error
-    description: 'nginx error object.
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
+    NginxConnections:
+      title: Connections
+      description: 'The number of accepted, dropped, active, and idle connections.
 
-      '
-    type: object
-    properties:
-      error:
-        type: object
-        properties:
-          status:
-            type: integer
-            description: HTTP error code.
-            example: 200
-          text:
-            type: string
-            description: Error description.
-            example: example-text
-          code:
-            type: string
-            description: Internal nginx error code.
-            example: 200
-        example: {}
-      request_id:
-        type: string
-        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-        example: example-request_id
-      href:
-        type: string
-        description: Link to reference documentation.
-        example: example-href
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html
+        '
+      type: object
+      properties:
+        accepted:
+          type: integer
+          description: The total number of accepted client connections.
+          example: 4968119
+        dropped:
+          type: integer
+          description: The total number of dropped client connections.
+          example: 0
+        active:
+          type: integer
+          description: The current number of active client connections.
+          example: 5
+        idle:
+          type: integer
+          description: The current number of idle client connections.
+          example: 117
+      example:
+        accepted: 4968119
+        dropped: 0
+        active: 5
+        idle: 117

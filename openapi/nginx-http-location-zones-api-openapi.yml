@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections HTTP Location Zones API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
-  x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+  version: '9.0'
+  title: NGINX Plus REST HTTP Location Zones API
+  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+servers:
+- url: /api/9
 tags:
 - name: HTTP Location Zones
 paths:
@@ -20,70 +15,71 @@ paths:
       summary: NGINX Return Status of All HTTP Location Zones
       description: Returns status information for each HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location).
       operationId: getHttpLocationZones
-      produces:
-      - application/json
       parameters:
       - in: query
         name: fields
-        type: string
         description: Limits which fields of location zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPLocationZonesMap'
-          examples:
-            application/json:
-              site1:
-                requests: 736395
-                responses:
-                  1xx: 0
-                  2xx: 727290
-                  3xx: 4614
-                  4xx: 934
-                  5xx: 1535
-                  codes:
-                    200: 727290
-                    301: 4614
-                    404: 934
-                    503: 1535
-                  total: 734373
-                discarded: 2020
-                received: 180157219
-                sent: 20183175459
-              site2:
-                requests: 185307
-                responses:
-                  1xx: 0
-                  2xx: 112674
-                  3xx: 45383
-                  4xx: 2504
-                  5xx: 4419
-                  codes:
-                    200: 112674
-                    301: 45383
-                    404: 2504
-                    503: 4419
-                  total: 164980
-                discarded: 20326
-                received: 51575327
-                sent: 2983241510
           x-microcks-refs:
           - name: getHttpLocationZones200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPLocationZonesMap'
+              example:
+                site1:
+                  requests: 736395
+                  responses:
+                    1xx: 0
+                    2xx: 727290
+                    3xx: 4614
+                    4xx: 934
+                    5xx: 1535
+                    codes:
+                      200: 727290
+                      301: 4614
+                      404: 934
+                      503: 1535
+                    total: 734373
+                  discarded: 2020
+                  received: 180157219
+                  sent: 20183175459
+                site2:
+                  requests: 185307
+                  responses:
+                    1xx: 0
+                    2xx: 112674
+                    3xx: 45383
+                    4xx: 2504
+                    5xx: 4419
+                    codes:
+                      200: 112674
+                      301: 45383
+                      404: 2504
+                      503: 4419
+                    total: 164980
+                  discarded: 20326
+                  received: 51575327
+                  sent: 2983241510
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getHttpLocationZones404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -92,65 +88,67 @@ paths:
     - name: httpLocationZoneName
       in: path
       description: The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location).
-      type: string
       required: true
       x-example: example_httpLocationZoneName
+      schema:
+        type: string
     get:
       tags:
       - HTTP Location Zones
       summary: NGINX Return Status of an HTTP Location Zone
       description: Returns status of a particular HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location).
       operationId: getHttpLocationZone
-      produces:
-      - application/json
       parameters:
       - name: fields
         in: query
-        type: string
         description: Limits which fields of the location zone will be output.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPLocationZone'
-          examples:
-            application/json:
-              requests: 706690
-              responses:
-                1xx: 0
-                2xx: 699482
-                3xx: 4522
-                4xx: 907
-                5xx: 266
-                codes:
-                  200: 112674
-                  301: 4522
-                  404: 2504
-                  503: 266
-                total: 705177
-              discarded: 1513
-              received: 172711587
-              sent: 19415530115
           x-microcks-refs:
           - name: getHttpLocationZone200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPLocationZone'
+              example:
+                requests: 706690
+                responses:
+                  1xx: 0
+                  2xx: 699482
+                  3xx: 4522
+                  4xx: 907
+                  5xx: 266
+                  codes:
+                    200: 112674
+                    301: 4522
+                    404: 2504
+                    503: 266
+                  total: 705177
+                discarded: 1513
+                received: 172711587
+                sent: 19415530115
         '404':
           description: 'Location zone not found (*LocationZoneNotFound*),
 
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getHttpLocationZone404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -169,192 +167,192 @@ paths:
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id001 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpLocationZoneStat404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpLocationZoneStat405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  NginxError:
-    title: Error
-    description: 'nginx error object.
+components:
+  schemas:
+    NginxHTTPLocationZonesMap:
+      title: HTTP Location Zones
+      description: 'Status data for all HTTP
 
-      '
-    type: object
-    properties:
-      error:
-        type: object
-        properties:
-          status:
-            type: integer
-            description: HTTP error code.
-            example: 200
-          text:
-            type: string
-            description: Error description.
-            example: example-text
-          code:
-            type: string
-            description: Internal nginx error code.
-            example: 200
-        example: {}
-      request_id:
-        type: string
-        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-        example: example-request_id
-      href:
-        type: string
-        description: Link to reference documentation.
-        example: example-href
-  NginxHTTPLocationZone:
-    title: HTTP Location Zone
-    type: object
-    properties:
-      requests:
-        type: integer
-        description: The total number of client requests received from clients.
-        example: 31070465
-      responses:
-        description: The total number of responses sent to clients, the number of responses with status codes “<code>1xx</code>”, “<code>2xx</code>”, “<code>3xx</code>”, “<code>4xx</code>”, and “<code>5xx</code>”, and the number of responses per each status code.
-        type: object
-        readOnly: true
-        properties:
-          1xx:
-            type: integer
-            description: The number of responses with “<code>1xx</code>” status codes.
-            readOnly: true
-            example: 0
-          2xx:
-            type: integer
-            description: The number of responses with “<code>2xx</code>” status codes.
-            readOnly: true
-            example: 0
-          3xx:
-            type: integer
-            description: The number of responses with “<code>3xx</code>” status codes.
-            readOnly: true
-            example: 0
-          4xx:
-            type: integer
-            description: The number of responses with “<code>4xx</code>” status codes.
-            readOnly: true
-            example: 0
-          5xx:
-            type: integer
-            description: The number of responses with “<code>5xx</code>” status codes.
-            readOnly: true
-            example: 0
-          codes:
-            type: object
-            description: The number of responses per each status code.
-            readOnly: true
-            properties:
-              codeNumber:
-                type: integer
-                description: The number of responses with this particular status code.
-                readOnly: true
-                example: 0
-            example: {}
-          total:
-            type: integer
-            description: The total number of responses sent to clients.
-            readOnly: true
-            example: 98765
-        example: 1234567
-      discarded:
-        type: integer
-        description: The total number of requests completed without sending a response.
-        example: 0
-      received:
-        type: integer
-        description: The total number of bytes received from clients.
-        example: 180157219
-      sent:
-        type: integer
-        description: The total number of bytes sent to clients.
-        example: 20183175459
-    example:
-      requests: 706690
-      responses:
-        1xx: 0
-        2xx: 699482
-        3xx: 4522
-        4xx: 907
-        5xx: 266
-        codes:
-          200: 112674
-          301: 4522
-          404: 2504
-          503: 266
-        total: 705177
-      discarded: 1513
-      received: 172711587
-      sent: 19415530115
-  NginxHTTPLocationZonesMap:
-    title: HTTP Location Zones
-    description: 'Status data for all HTTP
+        <a href="https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone">location zones</a>.
 
-      <a href="https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone">location zones</a>.
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPLocationZone'
+      example:
+        site1:
+          requests: 736395
+          responses:
+            1xx: 0
+            2xx: 727290
+            3xx: 4614
+            4xx: 934
+            5xx: 1535
+            codes:
+              200: 727290
+              301: 4614
+              404: 934
+              503: 1535
+            total: 734373
+          discarded: 2020
+          received: 180157219
+          sent: 20183175459
+        site2:
+          requests: 185307
+          responses:
+            1xx: 0
+            2xx: 112674
+            3xx: 45383
+            4xx: 2504
+            5xx: 4419
+            codes:
+              200: 112674
+              301: 45383
+              404: 2504
+              503: 4419
+            total: 164980
+          discarded: 20326
+          received: 51575327
+          sent: 2983241510
+    NginxError:
+      title: Error
+      description: 'nginx error object.
 
-      '
-    type: object
-    additionalProperties:
-      $ref: '#/definitions/NginxHTTPLocationZone'
-    example:
-      site1:
-        requests: 736395
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
+    NginxHTTPLocationZone:
+      title: HTTP Location Zone
+      type: object
+      properties:
+        requests:
+          type: integer
+          description: The total number of client requests received from clients.
+          example: 31070465
+        responses:
+          description: The total number of responses sent to clients, the number of responses with status codes “<code>1xx</code>”, “<code>2xx</code>”, “<code>3xx</code>”, “<code>4xx</code>”, and “<code>5xx</code>”, and the number of responses per each status code.
+          type: object
+          readOnly: true
+          properties:
+            1xx:
+              type: integer
+              description: The number of responses with “<code>1xx</code>” status codes.
+              readOnly: true
+              example: 0
+            2xx:
+              type: integer
+              description: The number of responses with “<code>2xx</code>” status codes.
+              readOnly: true
+              example: 0
+            3xx:
+              type: integer
+              description: The number of responses with “<code>3xx</code>” status codes.
+              readOnly: true
+              example: 0
+            4xx:
+              type: integer
+              description: The number of responses with “<code>4xx</code>” status codes.
+              readOnly: true
+              example: 0
+            5xx:
+              type: integer
+              description: The number of responses with “<code>5xx</code>” status codes.
+              readOnly: true
+              example: 0
+            codes:
+              type: object
+              description: The number of responses per each status code.
+              readOnly: true
+              properties:
+                codeNumber:
+                  type: integer
+                  description: The number of responses with this particular status code.
+                  readOnly: true
+                  example: 0
+              example: {}
+            total:
+              type: integer
+              description: The total number of responses sent to clients.
+              readOnly: true
+              example: 98765
+          example: 1234567
+        discarded:
+          type: integer
+          description: The total number of requests completed without sending a response.
+          example: 0
+        received:
+          type: integer
+          description: The total number of bytes received from clients.
+          example: 180157219
+        sent:
+          type: integer
+          description: The total number of bytes sent to clients.
+          example: 20183175459
+      example:
+        requests: 706690
         responses:
           1xx: 0
-          2xx: 727290
-          3xx: 4614
-          4xx: 934
-          5xx: 1535
-          codes:
-            200: 727290
-            301: 4614
-            404: 934
-            503: 1535
-          total: 734373
-        discarded: 2020
-        received: 180157219
-        sent: 20183175459
-      site2:
-        requests: 185307
-        responses:
-          1xx: 0
-          2xx: 112674
-          3xx: 45383
-          4xx: 2504
-          5xx: 4419
+          2xx: 699482
+          3xx: 4522
+          4xx: 907
+          5xx: 266
           codes:
             200: 112674
-            301: 45383
+            301: 4522
             404: 2504
-            503: 4419
-          total: 164980
-        discarded: 20326
-        received: 51575327
-        sent: 2983241510
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html
+            503: 266
+          total: 705177
+        discarded: 1513
+        received: 172711587
+        sent: 19415530115

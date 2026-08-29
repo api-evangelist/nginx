@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections Resolvers API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
-  x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+  version: '9.0'
+  title: NGINX Plus REST Resolvers API
+  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+servers:
+- url: /api/9
 tags:
 - name: Resolvers
 paths:
@@ -20,64 +15,65 @@ paths:
       summary: NGINX Return Status for All Resolver Zones
       description: Returns status information for each [resolver zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).
       operationId: getResolverZones
-      produces:
-      - application/json
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxResolverZonesMap'
-          examples:
-            application/json:
-              resolver_zone1:
-                requests:
-                  name: 25460
-                  srv: 130
-                  addr: 2580
-                responses:
-                  noerror: 26499
-                  formerr: 0
-                  servfail: 3
-                  nxdomain: 0
-                  notimp: 0
-                  refused: 0
-                  timedout: 243
-                  unknown: 478
-              resolver_zone2:
-                requests:
-                  name: 325460
-                  srv: 1130
-                  addr: 12580
-                responses:
-                  noerror: 226499
-                  formerr: 0
-                  servfail: 283
-                  nxdomain: 0
-                  notimp: 0
-                  refused: 0
-                  timedout: 743
-                  unknown: 1478
           x-microcks-refs:
           - name: getResolverZones200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxResolverZonesMap'
+              example:
+                resolver_zone1:
+                  requests:
+                    name: 25460
+                    srv: 130
+                    addr: 2580
+                  responses:
+                    noerror: 26499
+                    formerr: 0
+                    servfail: 3
+                    nxdomain: 0
+                    notimp: 0
+                    refused: 0
+                    timedout: 243
+                    unknown: 478
+                resolver_zone2:
+                  requests:
+                    name: 325460
+                    srv: 1130
+                    addr: 12580
+                  responses:
+                    noerror: 226499
+                    formerr: 0
+                    servfail: 283
+                    nxdomain: 0
+                    notimp: 0
+                    refused: 0
+                    timedout: 743
+                    unknown: 1478
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getResolverZones404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       parameters:
       - in: query
         name: fields
-        type: string
         description: Limits which fields of resolvers statistics will be output.
         x-example: ''
+        schema:
+          type: string
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -87,62 +83,64 @@ paths:
       in: path
       description: The name of a resolver zone.
       required: true
-      type: string
       x-example: example_resolverZoneName
+      schema:
+        type: string
     get:
       tags:
       - Resolvers
       summary: NGINX Return Statistics of a Resolver Zone
       description: Returns statistics stored in a particular resolver [zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).
       operationId: getResolverZone
-      produces:
-      - application/json
       parameters:
       - name: fields
         in: query
-        type: string
         description: Limits which fields of the resolver zone will be output (requests, responses, or both).
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxResolverZone'
-          examples:
-            application/json:
-              resolver_zone1:
-                requests:
-                  name: 25460
-                  srv: 130
-                  addr: 2580
-                responses:
-                  noerror: 26499
-                  formerr: 0
-                  servfail: 3
-                  nxdomain: 0
-                  notimp: 0
-                  refused: 0
-                  timedout: 243
-                  unknown: 478
           x-microcks-refs:
           - name: getResolverZone200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxResolverZone'
+              example:
+                resolver_zone1:
+                  requests:
+                    name: 25460
+                    srv: 130
+                    addr: 2580
+                  responses:
+                    noerror: 26499
+                    formerr: 0
+                    servfail: 3
+                    nxdomain: 0
+                    notimp: 0
+                    refused: 0
+                    timedout: 243
+                    unknown: 478
         '404':
           description: 'Resolver zone not found (*ResolverZoneNotFound*),
 
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getResolverZone404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -161,191 +159,191 @@ paths:
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id001 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteResolverZoneStat404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteResolverZoneStat405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  NginxResolverZonesMap:
-    title: Resolver Zones
-    description: 'Status data for all
+components:
+  schemas:
+    NginxResolverZonesMap:
+      title: Resolver Zones
+      description: 'Status data for all
 
-      <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone">resolver zones</a>.
+        <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone">resolver zones</a>.
 
-      '
-    type: object
-    additionalProperties:
-      $ref: '#/definitions/NginxResolverZone'
-    example:
-      resolver_zone1:
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxResolverZone'
+      example:
+        resolver_zone1:
+          requests:
+            name: 25460
+            srv: 130
+            addr: 2580
+          responses:
+            noerror: 26499
+            formerr: 0
+            servfail: 3
+            nxdomain: 0
+            notimp: 0
+            refused: 0
+            timedout: 243
+            unknown: 478
+        resolver_zone2:
+          requests:
+            name: 325460
+            srv: 1130
+            addr: 12580
+          responses:
+            noerror: 226499
+            formerr: 0
+            servfail: 283
+            nxdomain: 0
+            notimp: 0
+            refused: 0
+            timedout: 743
+            unknown: 1478
+    NginxResolverZone:
+      title: Resolver Zone
+      description: 'Statistics of DNS requests and responses per particular
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone">resolver zone</a>.
+
+        '
+      type: object
+      properties:
         requests:
-          name: 25460
-          srv: 130
-          addr: 2580
+          type: object
+          readOnly: true
+          properties:
+            name:
+              type: integer
+              description: The total number of requests to resolve names to addresses.
+              readOnly: true
+              example: my_shared_zone
+            srv:
+              type: integer
+              description: The total number of requests to resolve SRV records.
+              readOnly: true
+              example: 0
+            addr:
+              type: integer
+              description: The total number of requests to resolve addresses to names.
+              readOnly: true
+              example: 0
+          example: 31070465
         responses:
-          noerror: 26499
-          formerr: 0
-          servfail: 3
-          nxdomain: 0
-          notimp: 0
-          refused: 0
-          timedout: 243
-          unknown: 478
-      resolver_zone2:
-        requests:
-          name: 325460
-          srv: 1130
-          addr: 12580
-        responses:
-          noerror: 226499
-          formerr: 0
-          servfail: 283
-          nxdomain: 0
-          notimp: 0
-          refused: 0
-          timedout: 743
-          unknown: 1478
-  NginxResolverZone:
-    title: Resolver Zone
-    description: 'Statistics of DNS requests and responses per particular
+          type: object
+          readOnly: true
+          properties:
+            noerror:
+              type: integer
+              description: The total number of successful responses.
+              readOnly: true
+              example: 0
+            formerr:
+              type: integer
+              description: The total number of FORMERR (<literal>Format error</literal>) responses.
+              readOnly: true
+              example: 0
+            servfail:
+              type: integer
+              description: The total number of SERVFAIL (<literal>Server failure</literal>) responses.
+              readOnly: true
+              example: 0
+            nxdomain:
+              type: integer
+              description: The total number of NXDOMAIN (<literal>Host not found</literal>) responses.
+              readOnly: true
+              example: 0
+            notimp:
+              type: integer
+              description: The total number of NOTIMP (<literal>Unimplemented</literal>) responses.
+              readOnly: true
+              example: 0
+            refused:
+              type: integer
+              description: The total number of REFUSED (<literal>Operation refused</literal>) responses.
+              readOnly: true
+              example: 0
+            timedout:
+              type: integer
+              description: The total number of timed out requests.
+              readOnly: true
+              example: 0
+            unknown:
+              type: integer
+              description: The total number of requests completed with an unknown error.
+              readOnly: true
+              example: 0
+          example: 1234567
+      example:
+        resolver_zone1:
+          requests:
+            name: 25460
+            srv: 130
+            addr: 2580
+          responses:
+            noerror: 26499
+            formerr: 0
+            servfail: 3
+            nxdomain: 0
+            notimp: 0
+            refused: 0
+            timedout: 243
+            unknown: 478
+    NginxError:
+      title: Error
+      description: 'nginx error object.
 
-      <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone">resolver zone</a>.
-
-      '
-    type: object
-    properties:
-      requests:
-        type: object
-        readOnly: true
-        properties:
-          name:
-            type: integer
-            description: The total number of requests to resolve names to addresses.
-            readOnly: true
-            example: my_shared_zone
-          srv:
-            type: integer
-            description: The total number of requests to resolve SRV records.
-            readOnly: true
-            example: 0
-          addr:
-            type: integer
-            description: The total number of requests to resolve addresses to names.
-            readOnly: true
-            example: 0
-        example: 31070465
-      responses:
-        type: object
-        readOnly: true
-        properties:
-          noerror:
-            type: integer
-            description: The total number of successful responses.
-            readOnly: true
-            example: 0
-          formerr:
-            type: integer
-            description: The total number of FORMERR (<literal>Format error</literal>) responses.
-            readOnly: true
-            example: 0
-          servfail:
-            type: integer
-            description: The total number of SERVFAIL (<literal>Server failure</literal>) responses.
-            readOnly: true
-            example: 0
-          nxdomain:
-            type: integer
-            description: The total number of NXDOMAIN (<literal>Host not found</literal>) responses.
-            readOnly: true
-            example: 0
-          notimp:
-            type: integer
-            description: The total number of NOTIMP (<literal>Unimplemented</literal>) responses.
-            readOnly: true
-            example: 0
-          refused:
-            type: integer
-            description: The total number of REFUSED (<literal>Operation refused</literal>) responses.
-            readOnly: true
-            example: 0
-          timedout:
-            type: integer
-            description: The total number of timed out requests.
-            readOnly: true
-            example: 0
-          unknown:
-            type: integer
-            description: The total number of requests completed with an unknown error.
-            readOnly: true
-            example: 0
-        example: 1234567
-    example:
-      resolver_zone1:
-        requests:
-          name: 25460
-          srv: 130
-          addr: 2580
-        responses:
-          noerror: 26499
-          formerr: 0
-          servfail: 3
-          nxdomain: 0
-          notimp: 0
-          refused: 0
-          timedout: 243
-          unknown: 478
-  NginxError:
-    title: Error
-    description: 'nginx error object.
-
-      '
-    type: object
-    properties:
-      error:
-        type: object
-        properties:
-          status:
-            type: integer
-            description: HTTP error code.
-            example: 200
-          text:
-            type: string
-            description: Error description.
-            example: example-text
-          code:
-            type: string
-            description: Internal nginx error code.
-            example: 200
-        example: {}
-      request_id:
-        type: string
-        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-        example: example-request_id
-      href:
-        type: string
-        description: Link to reference documentation.
-        example: example-href
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href

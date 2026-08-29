@@ -1,15 +1,12 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections Status API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
+  title: NGINX Stub Status API
+  description: Provides access to basic NGINX status information via the ngx_http_stub_status_module. The module must be compiled with --with-http_stub_status_module and enabled in the server or location context with the stub_status directive.
+  version: '1.0'
   x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+servers:
+- url: http://localhost
+  description: Local NGINX instance
 tags:
 - name: Status
 paths:
@@ -36,6 +33,3 @@ paths:
                 getStubStatus200Example:
                   value: "Active connections: 291\nserver accepts handled requests\n 16630948 16630948 31070465\nReading: 6 Writing: 179 Waiting: 106"
                   x-microcks-default: true
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html

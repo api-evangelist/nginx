@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections HTTP Server Zones API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
-  x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+  version: '9.0'
+  title: NGINX Plus REST HTTP Server Zones API
+  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+servers:
+- url: /api/9
 tags:
 - name: HTTP Server Zones
 paths:
@@ -20,71 +15,154 @@ paths:
       summary: NGINX Return Status of All HTTP Server Zones
       description: Returns status information for each HTTP [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone).
       operationId: getHttpServerZones
-      produces:
-      - application/json
       parameters:
       - in: query
         name: fields
-        type: string
         description: Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPServerZonesMap'
-          examples:
+          x-microcks-refs:
+          - name: getHttpServerZones200Example
+            x-microcks-default: true
+          content:
             application/json:
-              site1:
-                processing: 2
-                requests: 736395
-                responses:
-                  1xx: 0
-                  2xx: 727290
-                  3xx: 4614
-                  4xx: 934
-                  5xx: 1535
-                  codes:
-                    200: 727270
-                    301: 4614
-                    404: 930
-                    503: 1535
-                  total: 734373
-                discarded: 2020
-                received: 180157219
-                sent: 20183175459
-                ssl:
-                  handshakes: 65432
-                  handshakes_failed: 421
-                  session_reuses: 4645
-                  no_common_protocol: 4
-                  no_common_cipher: 2
-                  handshake_timeout: 0
-                  peer_rejected_cert: 0
-                  verify_failures:
-                    no_cert: 0
-                    expired_cert: 2
-                    revoked_cert: 1
-                    hostname_mismatch: 2
-                    other: 1
-              site2:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPServerZonesMap'
+              example:
+                site1:
+                  processing: 2
+                  requests: 736395
+                  responses:
+                    1xx: 0
+                    2xx: 727290
+                    3xx: 4614
+                    4xx: 934
+                    5xx: 1535
+                    codes:
+                      200: 727270
+                      301: 4614
+                      404: 930
+                      503: 1535
+                    total: 734373
+                  discarded: 2020
+                  received: 180157219
+                  sent: 20183175459
+                  ssl:
+                    handshakes: 65432
+                    handshakes_failed: 421
+                    session_reuses: 4645
+                    no_common_protocol: 4
+                    no_common_cipher: 2
+                    handshake_timeout: 0
+                    peer_rejected_cert: 0
+                    verify_failures:
+                      no_cert: 0
+                      expired_cert: 2
+                      revoked_cert: 1
+                      hostname_mismatch: 2
+                      other: 1
+                site2:
+                  processing: 1
+                  requests: 185307
+                  responses:
+                    1xx: 0
+                    2xx: 112674
+                    3xx: 45383
+                    4xx: 2504
+                    5xx: 4419
+                    codes:
+                      200: 112674
+                      301: 45383
+                      404: 2504
+                      503: 4419
+                    total: 164980
+                  discarded: 20326
+                  received: 51575327
+                  sent: 2983241510
+                  ssl:
+                    handshakes: 104303
+                    handshakes_failed: 1421
+                    session_reuses: 54645
+                    no_common_protocol: 4
+                    no_common_cipher: 2
+                    handshake_timeout: 0
+                    peer_rejected_cert: 0
+                    verify_failures:
+                      no_cert: 0
+                      expired_cert: 2
+                      revoked_cert: 1
+                      hostname_mismatch: 2
+                      other: 1
+        '404':
+          description: Unknown version (*UnknownVersion*)
+          x-microcks-refs:
+          - name: getHttpServerZones404Example
+            x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /http/server_zones/{httpServerZoneName}:
+    parameters:
+    - name: httpServerZoneName
+      in: path
+      description: The name of an HTTP server zone.
+      required: true
+      x-example: example_httpServerZoneName
+      schema:
+        type: string
+    get:
+      tags:
+      - HTTP Server Zones
+      summary: NGINX Return Status of an HTTP Server Zone
+      description: Returns status of a particular HTTP server zone.
+      operationId: getHttpServerZone
+      parameters:
+      - name: fields
+        in: query
+        description: Limits which fields of the server zone will be output.
+        x-example: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          x-microcks-refs:
+          - name: getHttpServerZone200Example
+            x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPServerZone'
+              example:
                 processing: 1
-                requests: 185307
+                requests: 706690
                 responses:
                   1xx: 0
-                  2xx: 112674
-                  3xx: 45383
-                  4xx: 2504
-                  5xx: 4419
+                  2xx: 699482
+                  3xx: 4522
+                  4xx: 907
+                  5xx: 266
                   codes:
-                    200: 112674
-                    301: 45383
-                    404: 2504
-                    503: 4419
-                  total: 164980
-                discarded: 20326
-                received: 51575327
-                sent: 2983241510
+                    200: 699482
+                    301: 4522
+                    404: 907
+                    503: 266
+                  total: 705177
+                discarded: 1513
+                received: 172711587
+                sent: 19415530115
                 ssl:
                   handshakes: 104303
                   handshakes_failed: 1421
@@ -97,104 +175,24 @@ paths:
                     no_cert: 0
                     expired_cert: 2
                     revoked_cert: 1
-                    hostname_mismatch: 2
                     other: 1
-          x-microcks-refs:
-          - name: getHttpServerZones200Example
-            x-microcks-default: true
-        '404':
-          description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
-          x-microcks-refs:
-          - name: getHttpServerZones404Example
-            x-microcks-default: true
-      x-microcks-operation:
-        delay: 0
-        dispatcher: FALLBACK
-  /http/server_zones/{httpServerZoneName}:
-    parameters:
-    - name: httpServerZoneName
-      in: path
-      description: The name of an HTTP server zone.
-      type: string
-      required: true
-      x-example: example_httpServerZoneName
-    get:
-      tags:
-      - HTTP Server Zones
-      summary: NGINX Return Status of an HTTP Server Zone
-      description: Returns status of a particular HTTP server zone.
-      operationId: getHttpServerZone
-      produces:
-      - application/json
-      parameters:
-      - name: fields
-        in: query
-        type: string
-        description: Limits which fields of the server zone will be output.
-        x-example: ''
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPServerZone'
-          examples:
-            application/json:
-              processing: 1
-              requests: 706690
-              responses:
-                1xx: 0
-                2xx: 699482
-                3xx: 4522
-                4xx: 907
-                5xx: 266
-                codes:
-                  200: 699482
-                  301: 4522
-                  404: 907
-                  503: 266
-                total: 705177
-              discarded: 1513
-              received: 172711587
-              sent: 19415530115
-              ssl:
-                handshakes: 104303
-                handshakes_failed: 1421
-                session_reuses: 54645
-                no_common_protocol: 4
-                no_common_cipher: 2
-                handshake_timeout: 0
-                peer_rejected_cert: 0
-                verify_failures:
-                  no_cert: 0
-                  expired_cert: 2
-                  revoked_cert: 1
-                  other: 1
-          x-microcks-refs:
-          - name: getHttpServerZone200Example
-            x-microcks-default: true
         '404':
           description: 'Server zone not found (*ServerZoneNotFound*),
 
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getHttpServerZone404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -213,252 +211,181 @@ paths:
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id001 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpServerZoneStat404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpServerZoneStat405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  NginxHTTPServerZone:
-    title: HTTP Server Zone
-    type: object
-    properties:
-      processing:
-        type: integer
-        description: The number of client requests that are currently being processed.
-        example: 1
-      requests:
-        type: integer
-        description: The total number of client requests received from clients.
-        example: 31070465
-      responses:
-        description: The total number of responses sent to clients, the number of responses with status codes “<code>1xx</code>”, “<code>2xx</code>”, “<code>3xx</code>”, “<code>4xx</code>”, and “<code>5xx</code>”, and the number of responses per each status code.
-        type: object
-        readOnly: true
-        properties:
-          1xx:
-            type: integer
-            description: The number of responses with “<code>1xx</code>” status codes.
-            readOnly: true
-            example: 0
-          2xx:
-            type: integer
-            description: The number of responses with “<code>2xx</code>” status codes.
-            readOnly: true
-            example: 0
-          3xx:
-            type: integer
-            description: The number of responses with “<code>3xx</code>” status codes.
-            readOnly: true
-            example: 0
-          4xx:
-            type: integer
-            description: The number of responses with “<code>4xx</code>” status codes.
-            readOnly: true
-            example: 0
-          5xx:
-            type: integer
-            description: The number of responses with “<code>5xx</code>” status codes.
-            readOnly: true
-            example: 0
-          codes:
-            type: object
-            description: The number of responses per each status code.
-            readOnly: true
-            properties:
-              codeNumber:
-                type: integer
-                description: The number of responses with this particular status code.
-                readOnly: true
-                example: 0
-            example: {}
-          total:
-            type: integer
-            description: The total number of responses sent to clients.
-            readOnly: true
-            example: 98765
-        example: 1234567
-      discarded:
-        type: integer
-        description: The total number of requests completed without sending a response.
-        example: 0
-      received:
-        type: integer
-        description: The total number of bytes received from clients.
-        example: 180157219
-      sent:
-        type: integer
-        description: The total number of bytes sent to clients.
-        example: 20183175459
-      ssl:
-        type: object
-        readOnly: true
-        properties:
-          handshakes:
-            type: integer
-            description: The total number of successful SSL handshakes.
-            readOnly: true
-            example: 79572
-          handshakes_failed:
-            type: integer
-            description: The total number of failed SSL handshakes.
-            readOnly: true
-            example: 21025
-          session_reuses:
-            type: integer
-            description: The total number of session reuses during SSL handshake.
-            readOnly: true
-            example: 15762
-          no_common_protocol:
-            type: integer
-            description: The number of SSL handshakes failed because of no common protocol.
-            example: 4
-          no_common_cipher:
-            type: integer
-            description: The number of SSL handshakes failed because of no shared cipher.
-            example: 2
-          handshake_timeout:
-            type: integer
-            description: The number of SSL handshakes failed because of a timeout.
-            example: 0
-          peer_rejected_cert:
-            type: integer
-            description: The number of failed SSL handshakes when nginx presented the certificate to the client but it was rejected with a corresponding alert message.
-            example: 0
-          verify_failures:
-            type: object
-            description: SSL certificate verification errors
-            properties:
-              no_cert:
-                type: integer
-                description: A client did not provide the required certificate.
-                example: 0
-              expired_cert:
-                type: integer
-                description: An expired or not yet valid certificate was presented by a client.
-                example: 2
-              revoked_cert:
-                type: integer
-                description: A revoked certificate was presented by a client.
-                example: 1
-              other:
-                type: integer
-                description: Other SSL certificate verification errors.
-                example: 1
-            example: {}
-        example: {}
-    example:
-      processing: 1
-      requests: 706690
-      responses:
-        1xx: 0
-        2xx: 699482
-        3xx: 4522
-        4xx: 907
-        5xx: 266
-        codes:
-          200: 699482
-          301: 4522
-          404: 907
-          503: 266
-        total: 705177
-      discarded: 1513
-      received: 172711587
-      sent: 19415530115
-      ssl:
-        handshakes: 104303
-        handshakes_failed: 1421
-        session_reuses: 54645
-        no_common_protocol: 4
-        no_common_cipher: 2
-        handshake_timeout: 0
-        peer_rejected_cert: 0
-        verify_failures:
-          no_cert: 0
-          expired_cert: 2
-          revoked_cert: 1
-          other: 1
-  NginxHTTPServerZonesMap:
-    title: HTTP Server Zones
-    description: 'Status data for all HTTP
-
-      <a href="https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone">status zones</a>.
-
-      '
-    type: object
-    additionalProperties:
-      $ref: '#/definitions/NginxHTTPServerZone'
-    example:
-      site1:
-        processing: 2
-        requests: 736395
+components:
+  schemas:
+    NginxHTTPServerZone:
+      title: HTTP Server Zone
+      type: object
+      properties:
+        processing:
+          type: integer
+          description: The number of client requests that are currently being processed.
+          example: 1
+        requests:
+          type: integer
+          description: The total number of client requests received from clients.
+          example: 31070465
         responses:
-          1xx: 0
-          2xx: 727290
-          3xx: 4614
-          4xx: 934
-          5xx: 1535
-          codes:
-            200: 727270
-            301: 4614
-            404: 930
-            503: 1535
-          total: 734373
-        discarded: 2020
-        received: 180157219
-        sent: 20183175459
+          description: The total number of responses sent to clients, the number of responses with status codes “<code>1xx</code>”, “<code>2xx</code>”, “<code>3xx</code>”, “<code>4xx</code>”, and “<code>5xx</code>”, and the number of responses per each status code.
+          type: object
+          readOnly: true
+          properties:
+            1xx:
+              type: integer
+              description: The number of responses with “<code>1xx</code>” status codes.
+              readOnly: true
+              example: 0
+            2xx:
+              type: integer
+              description: The number of responses with “<code>2xx</code>” status codes.
+              readOnly: true
+              example: 0
+            3xx:
+              type: integer
+              description: The number of responses with “<code>3xx</code>” status codes.
+              readOnly: true
+              example: 0
+            4xx:
+              type: integer
+              description: The number of responses with “<code>4xx</code>” status codes.
+              readOnly: true
+              example: 0
+            5xx:
+              type: integer
+              description: The number of responses with “<code>5xx</code>” status codes.
+              readOnly: true
+              example: 0
+            codes:
+              type: object
+              description: The number of responses per each status code.
+              readOnly: true
+              properties:
+                codeNumber:
+                  type: integer
+                  description: The number of responses with this particular status code.
+                  readOnly: true
+                  example: 0
+              example: {}
+            total:
+              type: integer
+              description: The total number of responses sent to clients.
+              readOnly: true
+              example: 98765
+          example: 1234567
+        discarded:
+          type: integer
+          description: The total number of requests completed without sending a response.
+          example: 0
+        received:
+          type: integer
+          description: The total number of bytes received from clients.
+          example: 180157219
+        sent:
+          type: integer
+          description: The total number of bytes sent to clients.
+          example: 20183175459
         ssl:
-          handshakes: 65432
-          handshakes_failed: 421
-          session_reuses: 4645
-          no_common_protocol: 4
-          no_common_cipher: 2
-          handshake_timeout: 0
-          peer_rejected_cert: 0
-          verify_failures:
-            no_cert: 0
-            expired_cert: 2
-            revoked_cert: 1
-            hostname_mismatch: 2
-            other: 1
-      site2:
+          type: object
+          readOnly: true
+          properties:
+            handshakes:
+              type: integer
+              description: The total number of successful SSL handshakes.
+              readOnly: true
+              example: 79572
+            handshakes_failed:
+              type: integer
+              description: The total number of failed SSL handshakes.
+              readOnly: true
+              example: 21025
+            session_reuses:
+              type: integer
+              description: The total number of session reuses during SSL handshake.
+              readOnly: true
+              example: 15762
+            no_common_protocol:
+              type: integer
+              description: The number of SSL handshakes failed because of no common protocol.
+              example: 4
+            no_common_cipher:
+              type: integer
+              description: The number of SSL handshakes failed because of no shared cipher.
+              example: 2
+            handshake_timeout:
+              type: integer
+              description: The number of SSL handshakes failed because of a timeout.
+              example: 0
+            peer_rejected_cert:
+              type: integer
+              description: The number of failed SSL handshakes when nginx presented the certificate to the client but it was rejected with a corresponding alert message.
+              example: 0
+            verify_failures:
+              type: object
+              description: SSL certificate verification errors
+              properties:
+                no_cert:
+                  type: integer
+                  description: A client did not provide the required certificate.
+                  example: 0
+                expired_cert:
+                  type: integer
+                  description: An expired or not yet valid certificate was presented by a client.
+                  example: 2
+                revoked_cert:
+                  type: integer
+                  description: A revoked certificate was presented by a client.
+                  example: 1
+                other:
+                  type: integer
+                  description: Other SSL certificate verification errors.
+                  example: 1
+              example: {}
+          example: {}
+      example:
         processing: 1
-        requests: 185307
+        requests: 706690
         responses:
           1xx: 0
-          2xx: 112674
-          3xx: 45383
-          4xx: 2504
-          5xx: 4419
+          2xx: 699482
+          3xx: 4522
+          4xx: 907
+          5xx: 266
           codes:
-            200: 112674
-            301: 45383
-            404: 2504
-            503: 4419
-          total: 164980
-        discarded: 20326
-        received: 51575327
-        sent: 2983241510
+            200: 699482
+            301: 4522
+            404: 907
+            503: 266
+          total: 705177
+        discarded: 1513
+        received: 172711587
+        sent: 19415530115
         ssl:
           handshakes: 104303
           handshakes_failed: 1421
@@ -471,39 +398,110 @@ definitions:
             no_cert: 0
             expired_cert: 2
             revoked_cert: 1
-            hostname_mismatch: 2
             other: 1
-  NginxError:
-    title: Error
-    description: 'nginx error object.
+    NginxHTTPServerZonesMap:
+      title: HTTP Server Zones
+      description: 'Status data for all HTTP
 
-      '
-    type: object
-    properties:
-      error:
-        type: object
-        properties:
-          status:
-            type: integer
-            description: HTTP error code.
-            example: 200
-          text:
-            type: string
-            description: Error description.
-            example: example-text
-          code:
-            type: string
-            description: Internal nginx error code.
-            example: 200
-        example: {}
-      request_id:
-        type: string
-        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-        example: example-request_id
-      href:
-        type: string
-        description: Link to reference documentation.
-        example: example-href
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html
+        <a href="https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone">status zones</a>.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPServerZone'
+      example:
+        site1:
+          processing: 2
+          requests: 736395
+          responses:
+            1xx: 0
+            2xx: 727290
+            3xx: 4614
+            4xx: 934
+            5xx: 1535
+            codes:
+              200: 727270
+              301: 4614
+              404: 930
+              503: 1535
+            total: 734373
+          discarded: 2020
+          received: 180157219
+          sent: 20183175459
+          ssl:
+            handshakes: 65432
+            handshakes_failed: 421
+            session_reuses: 4645
+            no_common_protocol: 4
+            no_common_cipher: 2
+            handshake_timeout: 0
+            peer_rejected_cert: 0
+            verify_failures:
+              no_cert: 0
+              expired_cert: 2
+              revoked_cert: 1
+              hostname_mismatch: 2
+              other: 1
+        site2:
+          processing: 1
+          requests: 185307
+          responses:
+            1xx: 0
+            2xx: 112674
+            3xx: 45383
+            4xx: 2504
+            5xx: 4419
+            codes:
+              200: 112674
+              301: 45383
+              404: 2504
+              503: 4419
+            total: 164980
+          discarded: 20326
+          received: 51575327
+          sent: 2983241510
+          ssl:
+            handshakes: 104303
+            handshakes_failed: 1421
+            session_reuses: 54645
+            no_common_protocol: 4
+            no_common_cipher: 2
+            handshake_timeout: 0
+            peer_rejected_cert: 0
+            verify_failures:
+              no_cert: 0
+              expired_cert: 2
+              revoked_cert: 1
+              hostname_mismatch: 2
+              other: 1
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href

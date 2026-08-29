@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections HTTP Limit Reqs API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
-  x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+  version: '9.0'
+  title: NGINX Plus REST HTTP Limit Reqs API
+  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+servers:
+- url: /api/9
 tags:
 - name: HTTP Limit Reqs
 paths:
@@ -20,36 +15,37 @@ paths:
       summary: NGINX Return Status of All HTTP Limit_req Zones
       description: Returns status information for each HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone).
       operationId: getHttpLimitReqZones
-      produces:
-      - application/json
       parameters:
       - in: query
         name: fields
-        type: string
         description: Limits which fields of limit_req zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPLimitReqZonesMap'
-          examples:
-            application/json: example
           x-microcks-refs:
           - name: getHttpLimitReqZones200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPLimitReqZonesMap'
+              example: example
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getHttpLimitReqZones404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -58,54 +54,56 @@ paths:
     - name: httpLimitReqZoneName
       in: path
       description: The name of a [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone).
-      type: string
       required: true
       x-example: example_httpLimitReqZoneName
+      schema:
+        type: string
     get:
       tags:
       - HTTP Limit Reqs
       summary: NGINX Return Status of an HTTP Limit_req Zone
       description: Returns status of a particular HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone).
       operationId: getHttpLimitReqZone
-      produces:
-      - application/json
       parameters:
       - name: fields
         in: query
-        type: string
         description: Limits which fields of the [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone) will be output.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPLimitReqZone'
-          examples:
-            application/json:
-              passed: 15
-              delayed: 4
-              rejected: 0
-              delayed_dry_run: 1
-              rejected_dry_run: 2
           x-microcks-refs:
           - name: getHttpLimitReqZone200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPLimitReqZone'
+              example:
+                passed: 15
+                delayed: 4
+                rejected: 0
+                delayed_dry_run: 1
+                rejected_dry_run: 2
         '404':
           description: 'limit_req not found (*LimitReqNotFound*),
 
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getHttpLimitReqZone404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -124,103 +122,103 @@ paths:
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id001 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpLimitReqZoneStat404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpLimitReqZoneStat405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  NginxHTTPLimitReqZonesMap:
-    title: HTTP limit_reqs
-    description: 'Status data for all HTTP
+components:
+  schemas:
+    NginxHTTPLimitReqZone:
+      title: HTTP Requests Rate Limiting
+      type: object
+      properties:
+        passed:
+          type: integer
+          description: The total number of requests that were neither limited nor accounted as limited.
+          example: 0
+        delayed:
+          type: integer
+          description: The total number of requests that were delayed.
+          example: 0
+        rejected:
+          type: integer
+          description: The total number of requests that were rejected.
+          example: 0
+        delayed_dry_run:
+          type: integer
+          description: The total number of requests accounted as delayed in the <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_dry_run">dry run</a> mode.
+          example: 0
+        rejected_dry_run:
+          type: integer
+          description: The total number of requests accounted as rejected in the <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_dry_run">dry run</a> mode.
+          example: 0
+      example:
+        passed: 15
+        delayed: 4
+        rejected: 0
+        delayed_dry_run: 1
+        rejected_dry_run: 2
+    NginxHTTPLimitReqZonesMap:
+      title: HTTP limit_reqs
+      description: 'Status data for all HTTP
 
-      <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone">limit_req zones</a>.
+        <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone">limit_req zones</a>.
 
-      '
-    type: object
-    additionalProperties:
-      $ref: '#/definitions/NginxHTTPLimitReqZone'
-  NginxError:
-    title: Error
-    description: 'nginx error object.
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPLimitReqZone'
+    NginxError:
+      title: Error
+      description: 'nginx error object.
 
-      '
-    type: object
-    properties:
-      error:
-        type: object
-        properties:
-          status:
-            type: integer
-            description: HTTP error code.
-            example: 200
-          text:
-            type: string
-            description: Error description.
-            example: example-text
-          code:
-            type: string
-            description: Internal nginx error code.
-            example: 200
-        example: {}
-      request_id:
-        type: string
-        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-        example: example-request_id
-      href:
-        type: string
-        description: Link to reference documentation.
-        example: example-href
-  NginxHTTPLimitReqZone:
-    title: HTTP Requests Rate Limiting
-    type: object
-    properties:
-      passed:
-        type: integer
-        description: The total number of requests that were neither limited nor accounted as limited.
-        example: 0
-      delayed:
-        type: integer
-        description: The total number of requests that were delayed.
-        example: 0
-      rejected:
-        type: integer
-        description: The total number of requests that were rejected.
-        example: 0
-      delayed_dry_run:
-        type: integer
-        description: The total number of requests accounted as delayed in the <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_dry_run">dry run</a> mode.
-        example: 0
-      rejected_dry_run:
-        type: integer
-        description: The total number of requests accounted as rejected in the <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_dry_run">dry run</a> mode.
-        example: 0
-    example:
-      passed: 15
-      delayed: 4
-      rejected: 0
-      delayed_dry_run: 1
-      rejected_dry_run: 2
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href

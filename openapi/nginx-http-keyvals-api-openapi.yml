@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections HTTP Keyvals API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
-  x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+  version: '9.0'
+  title: NGINX Plus REST HTTP Keyvals API
+  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+servers:
+- url: /api/9
 tags:
 - name: HTTP Keyvals
 paths:
@@ -20,44 +15,45 @@ paths:
       summary: NGINX Return Key-Value Pairs from All HTTP Keyval Zones
       description: Returns key-value pairs for each HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone).
       operationId: getHttpKeyvalZones
-      produces:
-      - application/json
       parameters:
       - name: fields
         in: query
-        type: string
         description: If the “<literal>fields</literal>” value is empty, then only HTTP keyval zone names will be output.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPKeyvalZonesMap'
-          examples:
-            application/json:
-              keyval_zone:
-                key1: value1
-                key2: value2
-                key3: value3
-              one:
-                arg1: value1
-                arg2: value2
-                arg3: value3
           x-microcks-refs:
           - name: getHttpKeyvalZones200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPKeyvalZonesMap'
+              example:
+                keyval_zone:
+                  key1: value1
+                  key2: value2
+                  key3: value3
+                one:
+                  arg1: value1
+                  arg2: value2
+                  arg3: value3
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getHttpKeyvalZones404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -67,35 +63,36 @@ paths:
       in: path
       description: The name of an HTTP keyval shared memory zone.
       required: true
-      type: string
       x-example: example_httpKeyvalZoneName
+      schema:
+        type: string
     get:
       tags:
       - HTTP Keyvals
       summary: NGINX Return Key-Value Pairs from an HTTP Keyval Zone
       description: Returns key-value pairs stored in a particular HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone).
       operationId: getHttpKeyvalZoneKeysValues
-      produces:
-      - application/json
       parameters:
       - name: key
         in: query
-        type: string
         description: Get a particular key-value pair from the HTTP keyval zone.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxHTTPKeyvalZone'
-          examples:
-            application/json:
-              key1: value1
-              key2: value2
-              key3: value3
           x-microcks-refs:
           - name: getHttpKeyvalZoneKeysValues200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxHTTPKeyvalZone'
+              example:
+                key1: value1
+                key2: value2
+                key3: value3
         '404':
           description: 'Keyval not found (*KeyvalNotFound*),
 
@@ -104,16 +101,17 @@ paths:
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getHttpKeyvalZoneKeysValues404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -123,15 +121,6 @@ paths:
       summary: NGINX Add a Key-Value Pair to the HTTP Keyval Zone
       description: Adds a new key-value pair to the HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the HTTP keyval shared memory zone is empty.
       operationId: postHttpKeyvalZoneData
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: Key-value
-        description: A key-value pair is specified in the JSON format. Several key-value pairs can be entered if the HTTP keyval shared memory zone is empty. Expiration time in milliseconds can be specified for a key-value pair with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_timeout) parameter of the <a href="https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone">keyval_zone</a> directive.
-        required: true
-        schema:
-          $ref: '#/definitions/NginxHTTPKeyvalZonePostPatch'
       responses:
         '201':
           description: Created
@@ -149,102 +138,106 @@ paths:
             reading request body failed *BodyReadError*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id001 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: postHttpKeyvalZoneData400Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '404':
           description: 'Keyval not found (*KeyvalNotFound*),
 
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: postHttpKeyvalZoneData404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: postHttpKeyvalZoneData405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '409':
           description: 'Entry exists (*EntryExists*),
 
             key already exists (*KeyvalKeyExists*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: postHttpKeyvalZoneData409Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '413':
           description: Request Entity Too Large
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: postHttpKeyvalZoneData413Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '415':
           description: JSON error (*JsonError*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id001
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: postHttpKeyvalZoneData415Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NginxHTTPKeyvalZonePostPatch'
+        description: A key-value pair is specified in the JSON format. Several key-value pairs can be entered if the HTTP keyval shared memory zone is empty. Expiration time in milliseconds can be specified for a key-value pair with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_timeout) parameter of the <a href="https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone">keyval_zone</a> directive.
+        required: true
     patch:
       tags:
       - HTTP Keyvals
       summary: NGINX Modify a Key-Value or Delete a Key
       description: Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to <literal>null</literal>, changes expiration time of a key-value pair. If <a href="https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync">synchronization</a> of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time in milliseconds can be specified for a key-value pair with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_timeout) parameter of the <a href="https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone">keyval_zone</a> directive.
       operationId: patchHttpKeyvalZoneKeyValue
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: httpKeyvalZoneKeyValue
-        description: A new value for the key is specified in the JSON format.
-        required: true
-        schema:
-          $ref: '#/definitions/NginxHTTPKeyvalZonePostPatch'
       responses:
         '204':
           description: Success
@@ -260,16 +253,17 @@ paths:
             reading request body failed *BodyReadError*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id002 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: patchHttpKeyvalZoneKeyValue400Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '404':
           description: 'Keyval not found (*KeyvalNotFound*),
 
@@ -278,55 +272,66 @@ paths:
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id002
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: patchHttpKeyvalZoneKeyValue404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id002
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: patchHttpKeyvalZoneKeyValue405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '413':
           description: Request Entity Too Large
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id002
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: patchHttpKeyvalZoneKeyValue413Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '415':
           description: JSON error (*JsonError*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id002
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: patchHttpKeyvalZoneKeyValue415Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NginxHTTPKeyvalZonePostPatch'
+        description: A new value for the key is specified in the JSON format.
+        required: true
     delete:
       tags:
       - HTTP Keyvals
@@ -342,106 +347,106 @@ paths:
             unknown version (*UnknownVersion*)
 
             '
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: &id003 {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpKeyvalZoneData404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
         '405':
           description: Method disabled (*MethodDisabled*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: *id003
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: deleteHttpKeyvalZoneData405Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  NginxHTTPKeyvalZone:
-    title: HTTP Keyval Shared Memory Zone
-    description: 'Contents of an HTTP keyval shared memory zone
+components:
+  schemas:
+    NginxHTTPKeyvalZonePostPatch:
+      title: HTTP Keyval Shared Memory Zone
+      description: 'Contents of an HTTP keyval shared memory zone
 
-      when using the GET method.
+        when using the POST or PATCH methods.
 
-      '
-    type: object
-    example:
-      key1: value1
-      key2: value2
-      key3: value3
-  NginxError:
-    title: Error
-    description: 'nginx error object.
+        '
+      type: object
+      example:
+        key1: value1
+        key2: value2
+        key3:
+          value: value3
+          expire: 30000
+    NginxHTTPKeyvalZone:
+      title: HTTP Keyval Shared Memory Zone
+      description: 'Contents of an HTTP keyval shared memory zone
 
-      '
-    type: object
-    properties:
-      error:
-        type: object
-        properties:
-          status:
-            type: integer
-            description: HTTP error code.
-            example: 200
-          text:
-            type: string
-            description: Error description.
-            example: example-text
-          code:
-            type: string
-            description: Internal nginx error code.
-            example: 200
-        example: {}
-      request_id:
-        type: string
-        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-        example: example-request_id
-      href:
-        type: string
-        description: Link to reference documentation.
-        example: example-href
-  NginxHTTPKeyvalZonePostPatch:
-    title: HTTP Keyval Shared Memory Zone
-    description: 'Contents of an HTTP keyval shared memory zone
+        when using the GET method.
 
-      when using the POST or PATCH methods.
-
-      '
-    type: object
-    example:
-      key1: value1
-      key2: value2
-      key3:
-        value: value3
-        expire: 30000
-  NginxHTTPKeyvalZonesMap:
-    title: HTTP Keyval Shared Memory Zones
-    description: 'Contents of all HTTP keyval shared memory zones.
-
-      '
-    type: object
-    additionalProperties:
-      $ref: '#/definitions/NginxHTTPKeyvalZone'
-    example:
-      keyval_zone:
+        '
+      type: object
+      example:
         key1: value1
         key2: value2
         key3: value3
-      one:
-        arg1: value1
-        arg2: value2
-        arg3: value3
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
+    NginxHTTPKeyvalZonesMap:
+      title: HTTP Keyval Shared Memory Zones
+      description: 'Contents of all HTTP keyval shared memory zones.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPKeyvalZone'
+      example:
+        keyval_zone:
+          key1: value1
+          key2: value2
+          key3: value3
+        one:
+          arg1: value1
+          arg2: value2
+          arg3: value3

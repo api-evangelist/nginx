@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NGINX njs Scripting Connections General Info API
-  version: '0.8'
-  description: The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.
-  x-generated-from: documentation
-  contact:
-    name: NGINX
-    url: https://nginx.org/en/docs/njs/reference.html
-  license:
-    name: BSD-2-Clause
-    url: https://nginx.org/LICENSE
+  version: '9.0'
+  title: NGINX Plus REST General Info API
+  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+servers:
+- url: /api/9
 tags:
 - name: General Info
 paths:
@@ -20,37 +15,37 @@ paths:
       summary: NGINX Return List of Root Endpoints
       description: Returns a list of root endpoints.
       operationId: getAPIEndpoints
-      produces:
-      - application/json
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/ArrayOfStrings'
-          examples:
-            application/json:
-            - nginx
-            - processes
-            - connections
-            - slabs
-            - http
-            - stream
-            - ssl
           x-microcks-refs:
           - name: getAPIEndpoints200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfStrings'
+              example:
+              - nginx
+              - processes
+              - connections
+              - slabs
+              - http
+              - stream
+              - ssl
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getAPIEndpoints404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -61,139 +56,138 @@ paths:
       summary: NGINX Return Status of NGINX Running Instance
       description: Returns nginx version, build name, address, number of configuration reloads, IDs of master and worker processes.
       operationId: getNginx
-      produces:
-      - application/json
       parameters:
       - in: query
         name: fields
-        type: string
         description: Limits which fields of nginx running instance will be output.
         x-example: ''
+        schema:
+          type: string
       responses:
         '200':
           description: Success
-          schema:
-            $ref: '#/definitions/NginxObject'
-          examples:
-            application/json:
-              nginx:
-                version: 1.21.6
-                build: nginx-plus-r27
-                address: 206.251.255.64
-                generation: 6
-                load_timestamp: 2022-06-28 11:15:44.467000+00:00
-                timestamp: 2022-06-28 09:26:07.305000+00:00
-                pid: 32212
-                ppid: 32210
           x-microcks-refs:
           - name: getNginx200Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxObject'
+              example:
+                nginx:
+                  version: 1.21.6
+                  build: nginx-plus-r27
+                  address: 206.251.255.64
+                  generation: 6
+                  load_timestamp: 2022-06-28 11:15:44.467000+00:00
+                  timestamp: 2022-06-28 09:26:07.305000+00:00
+                  pid: 32212
+                  ppid: 32210
         '404':
           description: Unknown version (*UnknownVersion*)
-          schema:
-            $ref: '#/definitions/NginxError'
-          examples:
-            application/json:
-              error: {}
-              request_id: example-request_id
-              href: example-href
           x-microcks-refs:
           - name: getNginx404Example
             x-microcks-default: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NginxError'
+              example:
+                error: {}
+                request_id: example-request_id
+                href: example-href
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  NginxObject:
-    title: nginx
-    description: 'General information about nginx:
+components:
+  schemas:
+    NginxObject:
+      title: nginx
+      description: 'General information about nginx:
 
-      '
-    type: object
-    properties:
-      version:
-        type: string
-        description: Version of nginx.
-        example: 1.25.3
-      build:
-        type: string
-        description: Name of nginx build.
-        example: nginx-plus-r32
-      address:
-        type: string
-        description: The address of the server that accepted status request.
-        example: 10.0.0.1
-      generation:
-        type: integer
-        description: The total number of configuration <a href="https://nginx.org/en/docs/control.html#reconfiguration">reloads</a>.
-        example: 8
-      load_timestamp:
-        type: string
-        format: date-time
-        description: Time of the last reload of configuration, in the ISO 8601 format with millisecond resolution.
-        example: '2026-04-21T10:30:00.000Z'
-      timestamp:
-        type: string
-        format: date-time
-        description: Current time in the ISO 8601 format with millisecond resolution.
-        example: '2026-04-21T10:30:00.000Z'
-      pid:
-        type: integer
-        description: The ID of the worker process that handled status request.
-        example: 4521
-      ppid:
-        type: integer
-        description: The ID of the master process that started the <a href="https://nginx.org/en/docs/http/ngx_http_status_module.html#pid">worker process</a>.
-        example: 4519
-    example:
-      nginx:
-        version: 1.21.6
-        build: nginx-plus-r27
-        address: 206.251.255.64
-        generation: 6
-        load_timestamp: 2022-06-28 11:15:44.467000+00:00
-        timestamp: 2022-06-28 09:26:07.305000+00:00
-        pid: 32212
-        ppid: 32210
-  ArrayOfStrings:
-    title: Array
-    description: 'An array of strings.
+        '
+      type: object
+      properties:
+        version:
+          type: string
+          description: Version of nginx.
+          example: 1.25.3
+        build:
+          type: string
+          description: Name of nginx build.
+          example: nginx-plus-r32
+        address:
+          type: string
+          description: The address of the server that accepted status request.
+          example: 10.0.0.1
+        generation:
+          type: integer
+          description: The total number of configuration <a href="https://nginx.org/en/docs/control.html#reconfiguration">reloads</a>.
+          example: 8
+        load_timestamp:
+          type: string
+          format: date-time
+          description: Time of the last reload of configuration, in the ISO 8601 format with millisecond resolution.
+          example: '2026-04-21T10:30:00.000Z'
+        timestamp:
+          type: string
+          format: date-time
+          description: Current time in the ISO 8601 format with millisecond resolution.
+          example: '2026-04-21T10:30:00.000Z'
+        pid:
+          type: integer
+          description: The ID of the worker process that handled status request.
+          example: 4521
+        ppid:
+          type: integer
+          description: The ID of the master process that started the <a href="https://nginx.org/en/docs/http/ngx_http_status_module.html#pid">worker process</a>.
+          example: 4519
+      example:
+        nginx:
+          version: 1.21.6
+          build: nginx-plus-r27
+          address: 206.251.255.64
+          generation: 6
+          load_timestamp: 2022-06-28 11:15:44.467000+00:00
+          timestamp: 2022-06-28 09:26:07.305000+00:00
+          pid: 32212
+          ppid: 32210
+    ArrayOfStrings:
+      title: Array
+      description: 'An array of strings.
 
-      '
-    type: array
-    items:
-      type: string
-  NginxError:
-    title: Error
-    description: 'nginx error object.
+        '
+      type: array
+      items:
+        type: string
+    NginxError:
+      title: Error
+      description: 'nginx error object.
 
-      '
-    type: object
-    properties:
-      error:
-        type: object
-        properties:
-          status:
-            type: integer
-            description: HTTP error code.
-            example: 200
-          text:
-            type: string
-            description: Error description.
-            example: example-text
-          code:
-            type: string
-            description: Internal nginx error code.
-            example: 200
-        example: {}
-      request_id:
-        type: string
-        description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-        example: example-request_id
-      href:
-        type: string
-        description: Link to reference documentation.
-        example: example-href
-externalDocs:
-  description: NGINX njs Reference
-  url: https://nginx.org/en/docs/njs/reference.html
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
