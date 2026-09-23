@@ -1,9 +1,9 @@
 {
   "provider": "nginx",
   "sources": [
-    "nginx-njs-openapi.yaml",
-    "nginx-plus-http-api-openapi.yaml",
-    "nginx-stub-status-openapi.yaml"
+    "_original/nginx-plus-http-api-openapi.yaml",
+    "_ae-authored/nginx-njs-openapi.yaml",
+    "_ae-authored/nginx-stub-status-openapi.yaml"
   ],
   "outputs": [
     "nginx-connections-api-openapi.yml",
@@ -31,20 +31,42 @@
     "nginx-workers-api-openapi.yml",
     "nginx-status-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/nginx-njs-openapi.yaml",
-    "archived openapi/nginx-plus-http-api-openapi.yaml",
-    "archived openapi/nginx-stub-status-openapi.yaml"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "nginx-njs-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "nginx-plus-http-api-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
     "nginx-plus-http-api-openapi.yaml: multi-axis tagging (27 tags, 23 first tags, 1.99x duplication over 71 operations) \u2014 split on first tag, 70 operations narrowed",
+    "nginx-njs-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "nginx-stub-status-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "nginx-stub-status-openapi.yaml: declared missing tag: Status",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "nginx-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-general-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-caches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-keyvals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-limit-conns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-limit-reqs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-location-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-server-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-http-upstreams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-license-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-processes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-resolvers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-slabs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-ssl-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-stream-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-stream-keyvals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-stream-limit-conns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-stream-server-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-stream-upstreams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-stream-zone-sync-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nginx-workers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

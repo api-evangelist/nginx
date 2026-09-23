@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST Stream Zone Sync API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -107,6 +107,19 @@ components:
           msgs_out: 346717
           bytes_out: 1402765472
           nodes_online: 15
+    NginxStreamZoneSyncZone:
+      title: Sync Zone
+      description: Synchronization status of a shared memory zone.
+      type: object
+      properties:
+        records_pending:
+          type: integer
+          description: The number of records that need to be sent to the cluster.
+          example: 0
+        records_total:
+          type: integer
+          description: The total number of records stored in the shared memory zone.
+          example: 0
     NginxError:
       title: Error
       description: 'nginx error object.
@@ -138,16 +151,3 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
-    NginxStreamZoneSyncZone:
-      title: Sync Zone
-      description: Synchronization status of a shared memory zone.
-      type: object
-      properties:
-        records_pending:
-          type: integer
-          description: The number of records that need to be sent to the cluster.
-          example: 0
-        records_total:
-          type: integer
-          description: The total number of records stored in the shared memory zone.
-          example: 0

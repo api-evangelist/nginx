@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST HTTP Limit Conns API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -13,7 +13,7 @@ paths:
       tags:
       - HTTP Limit Conns
       summary: NGINX Return Status of All HTTP Limit_conn Zones
-      description: Returns status information for each HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone).
+      description: Returns status information for each HTTP limit_conn zone.
       operationId: getHttpLimitConnZones
       parameters:
       - in: query
@@ -62,7 +62,7 @@ paths:
       tags:
       - HTTP Limit Conns
       summary: NGINX Return Status of an HTTP Limit_conn Zone
-      description: Returns status of a particular HTTP [limit_conn zone](https://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone).
+      description: Returns status of a particular HTTP limit_conn zone.
       operationId: getHttpLimitConnZone
       parameters:
       - name: fields

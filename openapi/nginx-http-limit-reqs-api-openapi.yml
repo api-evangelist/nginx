@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST HTTP Limit Reqs API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -13,7 +13,7 @@ paths:
       tags:
       - HTTP Limit Reqs
       summary: NGINX Return Status of All HTTP Limit_req Zones
-      description: Returns status information for each HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone).
+      description: Returns status information for each HTTP limit_req zone.
       operationId: getHttpLimitReqZones
       parameters:
       - in: query
@@ -62,7 +62,7 @@ paths:
       tags:
       - HTTP Limit Reqs
       summary: NGINX Return Status of an HTTP Limit_req Zone
-      description: Returns status of a particular HTTP [limit_req zone](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone).
+      description: Returns status of a particular HTTP limit_req zone.
       operationId: getHttpLimitReqZone
       parameters:
       - name: fields
@@ -151,6 +151,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    NginxHTTPLimitReqZonesMap:
+      title: HTTP limit_reqs
+      description: 'Status data for all HTTP
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone">limit_req zones</a>.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPLimitReqZone'
     NginxHTTPLimitReqZone:
       title: HTTP Requests Rate Limiting
       type: object
@@ -181,16 +191,6 @@ components:
         rejected: 0
         delayed_dry_run: 1
         rejected_dry_run: 2
-    NginxHTTPLimitReqZonesMap:
-      title: HTTP limit_reqs
-      description: 'Status data for all HTTP
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone">limit_req zones</a>.
-
-        '
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxHTTPLimitReqZone'
     NginxError:
       title: Error
       description: 'nginx error object.

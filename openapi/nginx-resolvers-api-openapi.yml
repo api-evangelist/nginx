@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST Resolvers API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -13,7 +13,7 @@ paths:
       tags:
       - Resolvers
       summary: NGINX Return Status for All Resolver Zones
-      description: Returns status information for each [resolver zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).
+      description: Returns status information for each resolver zone.
       operationId: getResolverZones
       responses:
         '200':
@@ -90,7 +90,7 @@ paths:
       tags:
       - Resolvers
       summary: NGINX Return Statistics of a Resolver Zone
-      description: Returns statistics stored in a particular resolver [zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).
+      description: Returns statistics stored in a particular resolver zone.
       operationId: getResolverZone
       parameters:
       - name: fields
@@ -188,45 +188,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxResolverZonesMap:
-      title: Resolver Zones
-      description: 'Status data for all
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone">resolver zones</a>.
+    NginxError:
+      title: Error
+      description: 'nginx error object.
 
         '
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxResolverZone'
-      example:
-        resolver_zone1:
-          requests:
-            name: 25460
-            srv: 130
-            addr: 2580
-          responses:
-            noerror: 26499
-            formerr: 0
-            servfail: 3
-            nxdomain: 0
-            notimp: 0
-            refused: 0
-            timedout: 243
-            unknown: 478
-        resolver_zone2:
-          requests:
-            name: 325460
-            srv: 1130
-            addr: 12580
-          responses:
-            noerror: 226499
-            formerr: 0
-            servfail: 283
-            nxdomain: 0
-            notimp: 0
-            refused: 0
-            timedout: 743
-            unknown: 1478
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
     NginxResolverZone:
       title: Resolver Zone
       description: 'Statistics of DNS requests and responses per particular
@@ -316,34 +308,42 @@ components:
             refused: 0
             timedout: 243
             unknown: 478
-    NginxError:
-      title: Error
-      description: 'nginx error object.
+    NginxResolverZonesMap:
+      title: Resolver Zones
+      description: 'Status data for all
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone">resolver zones</a>.
 
         '
       type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: HTTP error code.
-              example: 200
-            text:
-              type: string
-              description: Error description.
-              example: example-text
-            code:
-              type: string
-              description: Internal nginx error code.
-              example: 200
-          example: {}
-        request_id:
-          type: string
-          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-          example: example-request_id
-        href:
-          type: string
-          description: Link to reference documentation.
-          example: example-href
+      additionalProperties:
+        $ref: '#/components/schemas/NginxResolverZone'
+      example:
+        resolver_zone1:
+          requests:
+            name: 25460
+            srv: 130
+            addr: 2580
+          responses:
+            noerror: 26499
+            formerr: 0
+            servfail: 3
+            nxdomain: 0
+            notimp: 0
+            refused: 0
+            timedout: 243
+            unknown: 478
+        resolver_zone2:
+          requests:
+            name: 325460
+            srv: 1130
+            addr: 12580
+          responses:
+            noerror: 226499
+            formerr: 0
+            servfail: 283
+            nxdomain: 0
+            notimp: 0
+            refused: 0
+            timedout: 743
+            unknown: 1478

@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST HTTP Keyvals API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -13,7 +13,7 @@ paths:
       tags:
       - HTTP Keyvals
       summary: NGINX Return Key-Value Pairs from All HTTP Keyval Zones
-      description: Returns key-value pairs for each HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone).
+      description: Returns key-value pairs for each HTTP keyval shared memory zone.
       operationId: getHttpKeyvalZones
       parameters:
       - name: fields
@@ -70,7 +70,7 @@ paths:
       tags:
       - HTTP Keyvals
       summary: NGINX Return Key-Value Pairs from an HTTP Keyval Zone
-      description: Returns key-value pairs stored in a particular HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone).
+      description: Returns key-value pairs stored in a particular HTTP keyval shared memory zone.
       operationId: getHttpKeyvalZoneKeysValues
       parameters:
       - name: key
@@ -119,7 +119,7 @@ paths:
       tags:
       - HTTP Keyvals
       summary: NGINX Add a Key-Value Pair to the HTTP Keyval Zone
-      description: Adds a new key-value pair to the HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone). Several key-value pairs can be entered if the HTTP keyval shared memory zone is empty.
+      description: Adds a new key-value pair to the HTTP keyval shared memory zone. Several key-value pairs can be entered if the HTTP keyval shared memory zone is empty.
       operationId: postHttpKeyvalZoneData
       responses:
         '201':
@@ -236,7 +236,7 @@ paths:
       tags:
       - HTTP Keyvals
       summary: NGINX Modify a Key-Value or Delete a Key
-      description: Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to <literal>null</literal>, changes expiration time of a key-value pair. If <a href="https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync">synchronization</a> of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time in milliseconds can be specified for a key-value pair with the *expire* parameter which overrides the [*timeout*](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_timeout) parameter of the <a href="https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone">keyval_zone</a> directive.
+      description: Changes the value of the selected key in the key-value pair, deletes a key by setting the key value to null, changes expiration time of a key-value pair. If synchronization of keyval zones in a cluster is enabled, deletes a key only on a target cluster node. Expiration time in milliseconds can be specified for a key-value pair with the *expire* parameter which overrides the *timeout* parameter of the keyval_zone directive.
       operationId: patchHttpKeyvalZoneKeyValue
       responses:
         '204':
@@ -336,7 +336,7 @@ paths:
       tags:
       - HTTP Keyvals
       summary: NGINX Empty the HTTP Keyval Zone
-      description: Deletes all key-value pairs from the HTTP keyval shared memory [zone](https://nginx.org/en/docs/http/ngx_http_keyval_module.html#keyval_zone). If <a href="https://nginx.org/en/docs/stream/ngx_stream_zone_sync_module.html#zone_sync">synchronization</a> of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node.
+      description: Deletes all key-value pairs from the HTTP keyval shared memory zone. If synchronization of keyval zones in a cluster is enabled, empties the keyval zone only on a target cluster node.
       operationId: deleteHttpKeyvalZoneData
       responses:
         '204':
@@ -376,20 +376,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxHTTPKeyvalZonePostPatch:
-      title: HTTP Keyval Shared Memory Zone
-      description: 'Contents of an HTTP keyval shared memory zone
-
-        when using the POST or PATCH methods.
+    NginxHTTPKeyvalZonesMap:
+      title: HTTP Keyval Shared Memory Zones
+      description: 'Contents of all HTTP keyval shared memory zones.
 
         '
       type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPKeyvalZone'
       example:
-        key1: value1
-        key2: value2
-        key3:
-          value: value3
-          expire: 30000
+        keyval_zone:
+          key1: value1
+          key2: value2
+          key3: value3
+        one:
+          arg1: value1
+          arg2: value2
+          arg3: value3
     NginxHTTPKeyvalZone:
       title: HTTP Keyval Shared Memory Zone
       description: 'Contents of an HTTP keyval shared memory zone
@@ -433,20 +436,17 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
-    NginxHTTPKeyvalZonesMap:
-      title: HTTP Keyval Shared Memory Zones
-      description: 'Contents of all HTTP keyval shared memory zones.
+    NginxHTTPKeyvalZonePostPatch:
+      title: HTTP Keyval Shared Memory Zone
+      description: 'Contents of an HTTP keyval shared memory zone
+
+        when using the POST or PATCH methods.
 
         '
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxHTTPKeyvalZone'
       example:
-        keyval_zone:
-          key1: value1
-          key2: value2
-          key3: value3
-        one:
-          arg1: value1
-          arg2: value2
-          arg3: value3
+        key1: value1
+        key2: value2
+        key3:
+          value: value3
+          expire: 30000

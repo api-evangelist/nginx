@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST Stream Limit Conns API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -13,7 +13,7 @@ paths:
       tags:
       - Stream Limit Conns
       summary: NGINX Return Status of All Stream Limit_conn Zones
-      description: Returns status information for each stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone).
+      description: Returns status information for each stream limit_conn zone.
       operationId: getStreamLimitConnZones
       parameters:
       - in: query
@@ -62,7 +62,7 @@ paths:
       tags:
       - Stream Limit Conns
       summary: NGINX Return Status of an Stream Limit_conn Zone
-      description: Returns status of a particular stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone).
+      description: Returns status of a particular stream limit_conn zone.
       operationId: getStreamLimitConnZone
       parameters:
       - name: fields
@@ -149,6 +149,36 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    NginxStreamLimitConnZone:
+      title: Stream Connections Limiting
+      type: object
+      properties:
+        passed:
+          type: integer
+          description: The total number of connections that were neither limited nor accounted as limited.
+          example: 0
+        rejected:
+          type: integer
+          description: The total number of connections that were rejected.
+          example: 0
+        rejected_dry_run:
+          type: integer
+          description: The total number of connections accounted as rejected in the <a href="https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_dry_run">dry run</a> mode.
+          example: 0
+      example:
+        passed: 15
+        rejected: 0
+        rejected_dry_run: 2
+    NginxStreamLimitConnZonesMap:
+      title: Stream limit_conns
+      description: 'Status data for all stream
+
+        <a href="https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone">limit_conn zones</a>.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxStreamLimitConnZone'
     NginxError:
       title: Error
       description: 'nginx error object.
@@ -180,33 +210,3 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
-    NginxStreamLimitConnZone:
-      title: Stream Connections Limiting
-      type: object
-      properties:
-        passed:
-          type: integer
-          description: The total number of connections that were neither limited nor accounted as limited.
-          example: 0
-        rejected:
-          type: integer
-          description: The total number of connections that were rejected.
-          example: 0
-        rejected_dry_run:
-          type: integer
-          description: The total number of connections accounted as rejected in the <a href="https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_dry_run">dry run</a> mode.
-          example: 0
-      example:
-        passed: 15
-        rejected: 0
-        rejected_dry_run: 2
-    NginxStreamLimitConnZonesMap:
-      title: Stream limit_conns
-      description: 'Status data for all stream
-
-        <a href="https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone">limit_conn zones</a>.
-
-        '
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxStreamLimitConnZone'

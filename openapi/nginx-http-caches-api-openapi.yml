@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST HTTP Caches API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -13,7 +13,7 @@ paths:
       tags:
       - HTTP Caches
       summary: NGINX Return Status of All Caches
-      description: Returns status of each cache configured by [proxy_cache_path](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path) and other “<literal>*_cache_path</literal>” directives.
+      description: Returns status of each cache configured by proxy_cache_path and other “*_cache_path” directives.
       operationId: getHttpCaches
       parameters:
       - name: fields
@@ -385,6 +385,37 @@ components:
           bytes: 5510647548
           responses_written: 200173
           bytes_written: 44992
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
     NginxHTTPCachesMap:
       title: HTTP Caches
       description: "Status information of all HTTP caches configured by \n<a href=\"https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path\">proxy_cache_path</a>\nand other “<code>*_cache_path</code>” directives.\n"
@@ -450,34 +481,3 @@ components:
             bytes: 5510647548
             responses_written: 200173
             bytes_written: 44992
-    NginxError:
-      title: Error
-      description: 'nginx error object.
-
-        '
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: HTTP error code.
-              example: 200
-            text:
-              type: string
-              description: Error description.
-              example: example-text
-            code:
-              type: string
-              description: Internal nginx error code.
-              example: 200
-          example: {}
-        request_id:
-          type: string
-          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-          example: example-request_id
-        href:
-          type: string
-          description: Link to reference documentation.
-          example: example-href

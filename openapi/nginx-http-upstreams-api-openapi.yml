@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: '9.0'
   title: NGINX Plus REST HTTP Upstreams API
-  description: NGINX Plus REST [API](https://nginx.org/en/docs/http/ngx_http_api_module.html) provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for [http](https://nginx.org/en/docs/http/ngx_http_keyval_module.html) and [stream](https://nginx.org/en/docs/stream/ngx_stream_keyval_module.html).
+  description: NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.
 servers:
 - url: /api/9
 tags:
@@ -935,72 +935,20 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxHTTPUpstreamConfServerMap:
-      title: HTTP Upstream Servers
-      description: An array of HTTP upstream servers for dynamic configuration.
-      type: array
-      items:
-        $ref: '#/components/schemas/NginxHTTPUpstreamConfServer'
-      example:
-      - id: 0
-        server: 10.0.0.1:8088
-        weight: 1
-        max_conns: 0
-        max_fails: 0
-        fail_timeout: 10s
-        slow_start: 10s
-        route: ''
-        backup: false
-        down: false
-      - id: 1
-        server: 10.0.0.1:8089
-        weight: 4
-        max_conns: 0
-        max_fails: 0
-        fail_timeout: 10s
-        slow_start: 10s
-        route: ''
-        backup: true
-        down: true
-    NginxHTTPUpstream:
-      title: HTTP Upstream
-      type: object
-      properties:
-        peers:
-          $ref: '#/components/schemas/NginxHTTPUpstreamPeerMap'
-        keepalive:
-          type: integer
-          description: The current number of idle <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive">keepalive</a> connections.
-          example: 0
-        zombies:
-          type: integer
-          description: The current number of servers removed from the group but still processing active client requests.
-          example: 0
-        zone:
-          type: string
-          description: The name of the shared memory <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#zone">zone</a> that keeps the group’s configuration and run-time state.
-          example: example-zone
-        queue:
-          type: object
-          description: 'For the requests <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#queue">queue</a>, the following data are provided:
+    NginxHTTPUpstreamMap:
+      title: HTTP Upstreams
+      description: 'Status information of all HTTP
 
-            '
-          properties:
-            size:
-              type: integer
-              description: The current number of requests in the queue.
-              example: 0
-            max_size:
-              type: integer
-              description: The maximum number of requests that can be in the queue at the same time.
-              example: 0
-            overflows:
-              type: integer
-              description: The total number of requests rejected due to the queue overflow.
-              example: 0
-          example: {}
+        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#zone">dynamically configurable</a>
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">groups</a>.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPUpstream'
       example:
-        upstream_backend:
+        trac-backend:
           peers:
           - id: 0
             server: 10.0.0.1:8088
@@ -1021,7 +969,6 @@ components:
                 revoked_cert: 1
                 hostname_mismatch: 2
                 other: 1
-            max_conns: 20
             requests: 667231
             header_time: 20
             response_time: 36
@@ -1055,7 +1002,6 @@ components:
             weight: 1
             state: unhealthy
             active: 0
-            max_conns: 20
             requests: 0
             responses:
               1xx: 0
@@ -1079,98 +1025,85 @@ components:
             selected: 2022-06-28 15:01:25+00:00
           keepalive: 0
           zombies: 0
-          zone: upstream_backend
-    NginxHTTPUpstreamConfServer:
-      title: HTTP Upstream Server
-      description: 'Dynamically configurable parameters of an HTTP upstream
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">server</a>:
-
-        '
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the HTTP upstream server. The ID is assigned automatically and cannot be changed.
-          readOnly: true
-          example: 0
-        server:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">address</a> parameter of the HTTP upstream server. When adding a server, it is possible to specify it as a domain name. In this case, changes of the IP addresses that correspond to a domain name will be monitored and automatically applied to the upstream configuration without the need of restarting nginx. This requires the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver">resolver</a> directive in the “<code>http</code>” block. See also the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#resolve">resolve</a> parameter of the HTTP upstream server.
-          example: example-server
-        service:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#service">service</a> parameter of the HTTP upstream server. This parameter cannot be changed.
-          readOnly: true
-          example: example-service
-        weight:
-          type: integer
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#weight">weight</a> parameter of the HTTP upstream server.
-          example: 0
-        max_conns:
-          type: integer
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_conns">max_conns</a> parameter of the HTTP upstream server.
-          example: 0
-        max_fails:
-          type: integer
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_fails">max_fails</a> parameter of the HTTP upstream server.
-          example: 0
-        fail_timeout:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#fail_timeout">fail_timeout</a> parameter of the HTTP upstream server.
-          example: example-fail_timeout
-        slow_start:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#slow_start">slow_start</a> parameter of the HTTP upstream server.
-          example: example-slow_start
-        route:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#route">route</a> parameter of the HTTP upstream server.
-          example: example-route
-        backup:
-          type: boolean
-          description: When <code>true</code>, adds a <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#backup">backup</a> server. This parameter cannot be changed.
-          readOnly: true
-          example: false
-        down:
-          type: boolean
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#down">down</a> parameter of the HTTP upstream server.
-          example: false
-        drain:
-          type: boolean
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#drain">drain</a> parameter of the HTTP upstream server.
-          example: false
-        parent:
-          type: string
-          description: Parent server ID of the resolved server. The ID is assigned automatically and cannot be changed.
-          readOnly: true
-          example: example-parent
-        host:
-          type: string
-          description: Hostname of the resolved server. The hostname is assigned automatically and cannot be changed.
-          readOnly: true
-          example: example-host
-      example:
-        id: 1
-        server: 10.0.0.1:8089
-        weight: 4
-        max_conns: 0
-        max_fails: 0
-        fail_timeout: 10s
-        slow_start: 10s
-        route: ''
-        backup: true
-        down: true
-    NginxHTTPUpstreamPeerMap:
-      title: HTTP Upstream Servers
-      description: 'An array of HTTP
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">upstream servers</a>.
-
-        '
-      type: array
-      items:
-        $ref: '#/components/schemas/NginxHTTPUpstreamPeer'
+          zone: trac-backend
+        hg-backend:
+          peers:
+          - id: 0
+            server: 10.0.0.1:8088
+            name: 10.0.0.1:8088
+            backup: false
+            weight: 5
+            state: up
+            active: 0
+            ssl:
+              handshakes: 620311
+              handshakes_failed: 3432
+              session_reuses: 36442
+              no_common_protocol: 4
+              handshake_timeout: 0
+              peer_rejected_cert: 0
+              verify_failures:
+                expired_cert: 2
+                revoked_cert: 1
+                hostname_mismatch: 2
+                other: 1
+            requests: 667231
+            header_time: 20
+            response_time: 36
+            responses:
+              1xx: 0
+              2xx: 666310
+              3xx: 0
+              4xx: 915
+              5xx: 6
+              codes:
+                200: 666310
+                404: 915
+                503: 6
+              total: 667231
+            sent: 251946292
+            received: 19222475454
+            fails: 0
+            unavail: 0
+            health_checks:
+              checks: 26214
+              fails: 0
+              unhealthy: 0
+              last_passed: true
+            downtime: 0
+            downstart: 2022-06-28 11:09:21.602000+00:00
+            selected: 2022-06-28 15:01:25+00:00
+          - id: 1
+            server: 10.0.0.1:8089
+            name: 10.0.0.1:8089
+            backup: true
+            weight: 1
+            state: unhealthy
+            active: 0
+            requests: 0
+            responses:
+              1xx: 0
+              2xx: 0
+              3xx: 0
+              4xx: 0
+              5xx: 0
+              codes: {}
+              total: 0
+            sent: 0
+            received: 0
+            fails: 0
+            unavail: 0
+            health_checks:
+              checks: 26284
+              fails: 26284
+              unhealthy: 1
+              last_passed: false
+            downtime: 262925617
+            downstart: 2022-06-28 11:09:21.602000+00:00
+            selected: 2022-06-28 15:01:25+00:00
+          keepalive: 0
+          zombies: 0
+          zone: hg-backend
     NginxHTTPUpstreamPeer:
       title: HTTP Upstream Server
       type: object
@@ -1393,6 +1326,242 @@ components:
           readOnly: true
           description: The average time to get the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#var_upstream_response_time">full response</a> from the server.
           example: 0
+    NginxHTTPUpstreamConfServer:
+      title: HTTP Upstream Server
+      description: 'Dynamically configurable parameters of an HTTP upstream
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">server</a>:
+
+        '
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the HTTP upstream server. The ID is assigned automatically and cannot be changed.
+          readOnly: true
+          example: 0
+        server:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">address</a> parameter of the HTTP upstream server. When adding a server, it is possible to specify it as a domain name. In this case, changes of the IP addresses that correspond to a domain name will be monitored and automatically applied to the upstream configuration without the need of restarting nginx. This requires the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver">resolver</a> directive in the “<code>http</code>” block. See also the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#resolve">resolve</a> parameter of the HTTP upstream server.
+          example: example-server
+        service:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#service">service</a> parameter of the HTTP upstream server. This parameter cannot be changed.
+          readOnly: true
+          example: example-service
+        weight:
+          type: integer
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#weight">weight</a> parameter of the HTTP upstream server.
+          example: 0
+        max_conns:
+          type: integer
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_conns">max_conns</a> parameter of the HTTP upstream server.
+          example: 0
+        max_fails:
+          type: integer
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_fails">max_fails</a> parameter of the HTTP upstream server.
+          example: 0
+        fail_timeout:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#fail_timeout">fail_timeout</a> parameter of the HTTP upstream server.
+          example: example-fail_timeout
+        slow_start:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#slow_start">slow_start</a> parameter of the HTTP upstream server.
+          example: example-slow_start
+        route:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#route">route</a> parameter of the HTTP upstream server.
+          example: example-route
+        backup:
+          type: boolean
+          description: When <code>true</code>, adds a <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#backup">backup</a> server. This parameter cannot be changed.
+          readOnly: true
+          example: false
+        down:
+          type: boolean
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#down">down</a> parameter of the HTTP upstream server.
+          example: false
+        drain:
+          type: boolean
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#drain">drain</a> parameter of the HTTP upstream server.
+          example: false
+        parent:
+          type: string
+          description: Parent server ID of the resolved server. The ID is assigned automatically and cannot be changed.
+          readOnly: true
+          example: example-parent
+        host:
+          type: string
+          description: Hostname of the resolved server. The hostname is assigned automatically and cannot be changed.
+          readOnly: true
+          example: example-host
+      example:
+        id: 1
+        server: 10.0.0.1:8089
+        weight: 4
+        max_conns: 0
+        max_fails: 0
+        fail_timeout: 10s
+        slow_start: 10s
+        route: ''
+        backup: true
+        down: true
+    NginxHTTPUpstream:
+      title: HTTP Upstream
+      type: object
+      properties:
+        peers:
+          $ref: '#/components/schemas/NginxHTTPUpstreamPeerMap'
+        keepalive:
+          type: integer
+          description: The current number of idle <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive">keepalive</a> connections.
+          example: 0
+        zombies:
+          type: integer
+          description: The current number of servers removed from the group but still processing active client requests.
+          example: 0
+        zone:
+          type: string
+          description: The name of the shared memory <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#zone">zone</a> that keeps the group’s configuration and run-time state.
+          example: example-zone
+        queue:
+          type: object
+          description: 'For the requests <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#queue">queue</a>, the following data are provided:
+
+            '
+          properties:
+            size:
+              type: integer
+              description: The current number of requests in the queue.
+              example: 0
+            max_size:
+              type: integer
+              description: The maximum number of requests that can be in the queue at the same time.
+              example: 0
+            overflows:
+              type: integer
+              description: The total number of requests rejected due to the queue overflow.
+              example: 0
+          example: {}
+      example:
+        upstream_backend:
+          peers:
+          - id: 0
+            server: 10.0.0.1:8088
+            name: 10.0.0.1:8088
+            backup: false
+            weight: 5
+            state: up
+            active: 0
+            ssl:
+              handshakes: 620311
+              handshakes_failed: 3432
+              session_reuses: 36442
+              no_common_protocol: 4
+              handshake_timeout: 0
+              peer_rejected_cert: 0
+              verify_failures:
+                expired_cert: 2
+                revoked_cert: 1
+                hostname_mismatch: 2
+                other: 1
+            max_conns: 20
+            requests: 667231
+            header_time: 20
+            response_time: 36
+            responses:
+              1xx: 0
+              2xx: 666310
+              3xx: 0
+              4xx: 915
+              5xx: 6
+              codes:
+                200: 666310
+                404: 915
+                503: 6
+              total: 667231
+            sent: 251946292
+            received: 19222475454
+            fails: 0
+            unavail: 0
+            health_checks:
+              checks: 26214
+              fails: 0
+              unhealthy: 0
+              last_passed: true
+            downtime: 0
+            downstart: 2022-06-28 11:09:21.602000+00:00
+            selected: 2022-06-28 15:01:25+00:00
+          - id: 1
+            server: 10.0.0.1:8089
+            name: 10.0.0.1:8089
+            backup: true
+            weight: 1
+            state: unhealthy
+            active: 0
+            max_conns: 20
+            requests: 0
+            responses:
+              1xx: 0
+              2xx: 0
+              3xx: 0
+              4xx: 0
+              5xx: 0
+              codes: {}
+              total: 0
+            sent: 0
+            received: 0
+            fails: 0
+            unavail: 0
+            health_checks:
+              checks: 26284
+              fails: 26284
+              unhealthy: 1
+              last_passed: false
+            downtime: 262925617
+            downstart: 2022-06-28 11:09:21.602000+00:00
+            selected: 2022-06-28 15:01:25+00:00
+          keepalive: 0
+          zombies: 0
+          zone: upstream_backend
+    NginxHTTPUpstreamConfServerMap:
+      title: HTTP Upstream Servers
+      description: An array of HTTP upstream servers for dynamic configuration.
+      type: array
+      items:
+        $ref: '#/components/schemas/NginxHTTPUpstreamConfServer'
+      example:
+      - id: 0
+        server: 10.0.0.1:8088
+        weight: 1
+        max_conns: 0
+        max_fails: 0
+        fail_timeout: 10s
+        slow_start: 10s
+        route: ''
+        backup: false
+        down: false
+      - id: 1
+        server: 10.0.0.1:8089
+        weight: 4
+        max_conns: 0
+        max_fails: 0
+        fail_timeout: 10s
+        slow_start: 10s
+        route: ''
+        backup: true
+        down: true
+    NginxHTTPUpstreamPeerMap:
+      title: HTTP Upstream Servers
+      description: 'An array of HTTP
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">upstream servers</a>.
+
+        '
+      type: array
+      items:
+        $ref: '#/components/schemas/NginxHTTPUpstreamPeer'
     NginxError:
       title: Error
       description: 'nginx error object.
@@ -1424,172 +1593,3 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
-    NginxHTTPUpstreamMap:
-      title: HTTP Upstreams
-      description: 'Status information of all HTTP
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#zone">dynamically configurable</a>
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">groups</a>.
-
-        '
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxHTTPUpstream'
-      example:
-        trac-backend:
-          peers:
-          - id: 0
-            server: 10.0.0.1:8088
-            name: 10.0.0.1:8088
-            backup: false
-            weight: 5
-            state: up
-            active: 0
-            ssl:
-              handshakes: 620311
-              handshakes_failed: 3432
-              session_reuses: 36442
-              no_common_protocol: 4
-              handshake_timeout: 0
-              peer_rejected_cert: 0
-              verify_failures:
-                expired_cert: 2
-                revoked_cert: 1
-                hostname_mismatch: 2
-                other: 1
-            requests: 667231
-            header_time: 20
-            response_time: 36
-            responses:
-              1xx: 0
-              2xx: 666310
-              3xx: 0
-              4xx: 915
-              5xx: 6
-              codes:
-                200: 666310
-                404: 915
-                503: 6
-              total: 667231
-            sent: 251946292
-            received: 19222475454
-            fails: 0
-            unavail: 0
-            health_checks:
-              checks: 26214
-              fails: 0
-              unhealthy: 0
-              last_passed: true
-            downtime: 0
-            downstart: 2022-06-28 11:09:21.602000+00:00
-            selected: 2022-06-28 15:01:25+00:00
-          - id: 1
-            server: 10.0.0.1:8089
-            name: 10.0.0.1:8089
-            backup: true
-            weight: 1
-            state: unhealthy
-            active: 0
-            requests: 0
-            responses:
-              1xx: 0
-              2xx: 0
-              3xx: 0
-              4xx: 0
-              5xx: 0
-              codes: {}
-              total: 0
-            sent: 0
-            received: 0
-            fails: 0
-            unavail: 0
-            health_checks:
-              checks: 26284
-              fails: 26284
-              unhealthy: 1
-              last_passed: false
-            downtime: 262925617
-            downstart: 2022-06-28 11:09:21.602000+00:00
-            selected: 2022-06-28 15:01:25+00:00
-          keepalive: 0
-          zombies: 0
-          zone: trac-backend
-        hg-backend:
-          peers:
-          - id: 0
-            server: 10.0.0.1:8088
-            name: 10.0.0.1:8088
-            backup: false
-            weight: 5
-            state: up
-            active: 0
-            ssl:
-              handshakes: 620311
-              handshakes_failed: 3432
-              session_reuses: 36442
-              no_common_protocol: 4
-              handshake_timeout: 0
-              peer_rejected_cert: 0
-              verify_failures:
-                expired_cert: 2
-                revoked_cert: 1
-                hostname_mismatch: 2
-                other: 1
-            requests: 667231
-            header_time: 20
-            response_time: 36
-            responses:
-              1xx: 0
-              2xx: 666310
-              3xx: 0
-              4xx: 915
-              5xx: 6
-              codes:
-                200: 666310
-                404: 915
-                503: 6
-              total: 667231
-            sent: 251946292
-            received: 19222475454
-            fails: 0
-            unavail: 0
-            health_checks:
-              checks: 26214
-              fails: 0
-              unhealthy: 0
-              last_passed: true
-            downtime: 0
-            downstart: 2022-06-28 11:09:21.602000+00:00
-            selected: 2022-06-28 15:01:25+00:00
-          - id: 1
-            server: 10.0.0.1:8089
-            name: 10.0.0.1:8089
-            backup: true
-            weight: 1
-            state: unhealthy
-            active: 0
-            requests: 0
-            responses:
-              1xx: 0
-              2xx: 0
-              3xx: 0
-              4xx: 0
-              5xx: 0
-              codes: {}
-              total: 0
-            sent: 0
-            received: 0
-            fails: 0
-            unavail: 0
-            health_checks:
-              checks: 26284
-              fails: 26284
-              unhealthy: 1
-              last_passed: false
-            downtime: 262925617
-            downstart: 2022-06-28 11:09:21.602000+00:00
-            selected: 2022-06-28 15:01:25+00:00
-          keepalive: 0
-          zombies: 0
-          zone: hg-backend
