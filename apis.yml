@@ -37,7 +37,7 @@ tags:
 - Caching
 - Cloud-Native
 - Load Balancer
-- Open-Source
+- Open Source
 - Reverse Proxy
 - Web Server
 tags_raw:
@@ -49,6 +49,7 @@ tags_raw:
 - Open Source
 - Reverse Proxy
 - Web Server
+- Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/apis.yml
 created: '2026-03-18'
 modified: '2026-05-19'
@@ -64,7 +65,7 @@ apis:
   tags:
   - API Gateway
   - Load Balancer
-  - Open-Source
+  - Open Source
   - Reverse Proxy
   - Web Server
   tags_raw:
@@ -73,6 +74,7 @@ apis:
   - Open Source
   - Reverse Proxy
   - Web Server
+  - Open-Source
   properties:
   - type: Documentation
     url: https://nginx.org/en/docs/

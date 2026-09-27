@@ -151,16 +151,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxHTTPLimitReqZonesMap:
-      title: HTTP limit_reqs
-      description: 'Status data for all HTTP
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone">limit_req zones</a>.
-
-        '
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxHTTPLimitReqZone'
     NginxHTTPLimitReqZone:
       title: HTTP Requests Rate Limiting
       type: object
@@ -222,3 +212,13 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
+    NginxHTTPLimitReqZonesMap:
+      title: HTTP limit_reqs
+      description: 'Status data for all HTTP
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html#limit_req_zone">limit_req zones</a>.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPLimitReqZone'

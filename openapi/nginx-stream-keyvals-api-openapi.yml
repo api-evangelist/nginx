@@ -393,16 +393,6 @@ components:
           arg1: value1
           arg2: value2
           arg3: value3
-    NginxStreamKeyvalZone:
-      title: Stream Keyval Shared Memory Zone
-      description: 'Contents of a stream keyval shared memory zone when using the GET method.
-
-        '
-      type: object
-      example:
-        key1: value1
-        key2: value2
-        key3: value3
     NginxStreamKeyvalZonePostPatch:
       title: Stream Keyval Shared Memory Zone
       description: 'Contents of a stream keyval shared memory zone
@@ -448,3 +438,13 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
+    NginxStreamKeyvalZone:
+      title: Stream Keyval Shared Memory Zone
+      description: 'Contents of a stream keyval shared memory zone when using the GET method.
+
+        '
+      type: object
+      example:
+        key1: value1
+        key2: value2
+        key3: value3

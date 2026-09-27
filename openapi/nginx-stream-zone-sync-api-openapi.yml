@@ -57,6 +57,50 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    NginxStreamZoneSyncZone:
+      title: Sync Zone
+      description: Synchronization status of a shared memory zone.
+      type: object
+      properties:
+        records_pending:
+          type: integer
+          description: The number of records that need to be sent to the cluster.
+          example: 0
+        records_total:
+          type: integer
+          description: The total number of records stored in the shared memory zone.
+          example: 0
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
     NginxStreamZoneSync:
       title: Stream Zone Sync Node
       type: object
@@ -107,47 +151,3 @@ components:
           msgs_out: 346717
           bytes_out: 1402765472
           nodes_online: 15
-    NginxStreamZoneSyncZone:
-      title: Sync Zone
-      description: Synchronization status of a shared memory zone.
-      type: object
-      properties:
-        records_pending:
-          type: integer
-          description: The number of records that need to be sent to the cluster.
-          example: 0
-        records_total:
-          type: integer
-          description: The total number of records stored in the shared memory zone.
-          example: 0
-    NginxError:
-      title: Error
-      description: 'nginx error object.
-
-        '
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: HTTP error code.
-              example: 200
-            text:
-              type: string
-              description: Error description.
-              example: example-text
-            code:
-              type: string
-              description: Internal nginx error code.
-              example: 200
-          example: {}
-        request_id:
-          type: string
-          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-          example: example-request_id
-        href:
-          type: string
-          description: Link to reference documentation.
-          example: example-href
