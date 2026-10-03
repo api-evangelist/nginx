@@ -280,6 +280,37 @@ components:
         discarded: 1513
         received: 172711587
         sent: 19415530115
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
     NginxHTTPLocationZonesMap:
       title: HTTP Location Zones
       description: 'Status data for all HTTP
@@ -325,34 +356,3 @@ components:
           discarded: 20326
           received: 51575327
           sent: 2983241510
-    NginxError:
-      title: Error
-      description: 'nginx error object.
-
-        '
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: HTTP error code.
-              example: 200
-            text:
-              type: string
-              description: Error description.
-              example: example-text
-            code:
-              type: string
-              description: Internal nginx error code.
-              example: 200
-          example: {}
-        request_id:
-          type: string
-          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-          example: example-request_id
-        href:
-          type: string
-          description: Link to reference documentation.
-          example: example-href

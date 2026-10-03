@@ -376,35 +376,20 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxHTTPKeyvalZonesMap:
-      title: HTTP Keyval Shared Memory Zones
-      description: 'Contents of all HTTP keyval shared memory zones.
-
-        '
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxHTTPKeyvalZone'
-      example:
-        keyval_zone:
-          key1: value1
-          key2: value2
-          key3: value3
-        one:
-          arg1: value1
-          arg2: value2
-          arg3: value3
-    NginxHTTPKeyvalZone:
+    NginxHTTPKeyvalZonePostPatch:
       title: HTTP Keyval Shared Memory Zone
       description: 'Contents of an HTTP keyval shared memory zone
 
-        when using the GET method.
+        when using the POST or PATCH methods.
 
         '
       type: object
       example:
         key1: value1
         key2: value2
-        key3: value3
+        key3:
+          value: value3
+          expire: 30000
     NginxError:
       title: Error
       description: 'nginx error object.
@@ -436,17 +421,32 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
-    NginxHTTPKeyvalZonePostPatch:
+    NginxHTTPKeyvalZonesMap:
+      title: HTTP Keyval Shared Memory Zones
+      description: 'Contents of all HTTP keyval shared memory zones.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxHTTPKeyvalZone'
+      example:
+        keyval_zone:
+          key1: value1
+          key2: value2
+          key3: value3
+        one:
+          arg1: value1
+          arg2: value2
+          arg3: value3
+    NginxHTTPKeyvalZone:
       title: HTTP Keyval Shared Memory Zone
       description: 'Contents of an HTTP keyval shared memory zone
 
-        when using the POST or PATCH methods.
+        when using the GET method.
 
         '
       type: object
       example:
         key1: value1
         key2: value2
-        key3:
-          value: value3
-          expire: 30000
+        key3: value3

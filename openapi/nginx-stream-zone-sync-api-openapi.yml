@@ -57,19 +57,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxStreamZoneSyncZone:
-      title: Sync Zone
-      description: Synchronization status of a shared memory zone.
-      type: object
-      properties:
-        records_pending:
-          type: integer
-          description: The number of records that need to be sent to the cluster.
-          example: 0
-        records_total:
-          type: integer
-          description: The total number of records stored in the shared memory zone.
-          example: 0
     NginxError:
       title: Error
       description: 'nginx error object.
@@ -151,3 +138,16 @@ components:
           msgs_out: 346717
           bytes_out: 1402765472
           nodes_online: 15
+    NginxStreamZoneSyncZone:
+      title: Sync Zone
+      description: Synchronization status of a shared memory zone.
+      type: object
+      properties:
+        records_pending:
+          type: integer
+          description: The number of records that need to be sent to the cluster.
+          example: 0
+        records_total:
+          type: integer
+          description: The total number of records stored in the shared memory zone.
+          example: 0

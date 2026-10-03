@@ -866,21 +866,71 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxStreamUpstream:
-      title: Stream Upstream
+    NginxStreamUpstreamMap:
+      title: Stream Upstreams
+      description: Status information of stream upstream server groups.
       type: object
-      properties:
-        peers:
-          $ref: '#/components/schemas/NginxStreamUpstreamPeerMap'
-        zombies:
-          type: integer
-          description: The current number of servers removed from the group but still processing active client connections.
-          example: 0
-        zone:
-          type: string
-          description: The name of the shared memory <a href="https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#zone">zone</a> that keeps the group’s configuration and run-time state.
-          example: example-zone
+      additionalProperties:
+        $ref: '#/components/schemas/NginxStreamUpstream'
       example:
+        mysql_backends:
+          peers:
+          - id: 0
+            server: 10.0.0.1:12345
+            name: 10.0.0.1:12345
+            backup: false
+            weight: 5
+            state: up
+            active: 0
+            ssl:
+              handshakes: 1045
+              handshakes_failed: 89
+              session_reuses: 321
+              no_common_protocol: 4
+              handshake_timeout: 0
+              peer_rejected_cert: 0
+              verify_failures:
+                expired_cert: 2
+                revoked_cert: 1
+                hostname_mismatch: 2
+                other: 1
+            max_conns: 30
+            connecions: 1231
+            sent: 251946292
+            received: 19222475454
+            fails: 0
+            unavail: 0
+            health_checks:
+              checks: 26214
+              fails: 0
+              unhealthy: 0
+              last_passed: true
+            downtime: 0
+            downstart: 2022-06-28 11:09:21.602000+00:00
+            selected: 2022-06-28 15:01:25+00:00
+          - id: 1
+            server: 10.0.0.1:12346
+            name: 10.0.0.1:12346
+            backup: true
+            weight: 1
+            state: unhealthy
+            active: 0
+            max_conns: 30
+            connections: 0
+            sent: 0
+            received: 0
+            fails: 0
+            unavail: 0
+            health_checks:
+              checks: 26284
+              fails: 26284
+              unhealthy: 1
+              last_passed: false
+            downtime: 262925617
+            downstart: 2022-06-28 11:09:21.602000+00:00
+            selected: 2022-06-28 15:01:25+00:00
+          zombies: 0
+          zone: mysql_backends
         dns:
           peers:
           - id: 0
@@ -891,9 +941,9 @@ components:
             state: up
             active: 0
             ssl:
-              handshakes: 200
-              handshakes_failed: 4
-              session_reuses: 189
+              handshakes: 5268
+              handshakes_failed: 121
+              session_reuses: 854
               no_common_protocol: 4
               handshake_timeout: 0
               peer_rejected_cert: 0
@@ -902,7 +952,7 @@ components:
                 revoked_cert: 1
                 hostname_mismatch: 2
                 other: 1
-            max_conns: 50
+            max_conns: 30
             connections: 667231
             sent: 251946292
             received: 19222475454
@@ -923,8 +973,8 @@ components:
             weight: 1
             state: unhealthy
             active: 0
-            max_conns: 50
             connections: 0
+            max_conns: 30
             sent: 0
             received: 0
             fails: 0
@@ -939,12 +989,37 @@ components:
             selected: 2022-06-28 15:01:25+00:00
           zombies: 0
           zone: dns
-    NginxStreamUpstreamPeerMap:
-      title: Stream Upstream Servers
-      description: Array of stream upstream servers.
-      type: array
-      items:
-        $ref: '#/components/schemas/NginxStreamUpstreamPeer'
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
     NginxStreamUpstreamPeer:
       title: Stream Upstream Server
       type: object
@@ -1131,71 +1206,21 @@ components:
           description: The time when the server was last selected to process a connection, in the ISO 8601 format with millisecond resolution.
           readOnly: true
           example: '2026-04-21T10:30:00.000Z'
-    NginxStreamUpstreamMap:
-      title: Stream Upstreams
-      description: Status information of stream upstream server groups.
+    NginxStreamUpstream:
+      title: Stream Upstream
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxStreamUpstream'
+      properties:
+        peers:
+          $ref: '#/components/schemas/NginxStreamUpstreamPeerMap'
+        zombies:
+          type: integer
+          description: The current number of servers removed from the group but still processing active client connections.
+          example: 0
+        zone:
+          type: string
+          description: The name of the shared memory <a href="https://nginx.org/en/docs/stream/ngx_stream_upstream_module.html#zone">zone</a> that keeps the group’s configuration and run-time state.
+          example: example-zone
       example:
-        mysql_backends:
-          peers:
-          - id: 0
-            server: 10.0.0.1:12345
-            name: 10.0.0.1:12345
-            backup: false
-            weight: 5
-            state: up
-            active: 0
-            ssl:
-              handshakes: 1045
-              handshakes_failed: 89
-              session_reuses: 321
-              no_common_protocol: 4
-              handshake_timeout: 0
-              peer_rejected_cert: 0
-              verify_failures:
-                expired_cert: 2
-                revoked_cert: 1
-                hostname_mismatch: 2
-                other: 1
-            max_conns: 30
-            connecions: 1231
-            sent: 251946292
-            received: 19222475454
-            fails: 0
-            unavail: 0
-            health_checks:
-              checks: 26214
-              fails: 0
-              unhealthy: 0
-              last_passed: true
-            downtime: 0
-            downstart: 2022-06-28 11:09:21.602000+00:00
-            selected: 2022-06-28 15:01:25+00:00
-          - id: 1
-            server: 10.0.0.1:12346
-            name: 10.0.0.1:12346
-            backup: true
-            weight: 1
-            state: unhealthy
-            active: 0
-            max_conns: 30
-            connections: 0
-            sent: 0
-            received: 0
-            fails: 0
-            unavail: 0
-            health_checks:
-              checks: 26284
-              fails: 26284
-              unhealthy: 1
-              last_passed: false
-            downtime: 262925617
-            downstart: 2022-06-28 11:09:21.602000+00:00
-            selected: 2022-06-28 15:01:25+00:00
-          zombies: 0
-          zone: mysql_backends
         dns:
           peers:
           - id: 0
@@ -1206,9 +1231,9 @@ components:
             state: up
             active: 0
             ssl:
-              handshakes: 5268
-              handshakes_failed: 121
-              session_reuses: 854
+              handshakes: 200
+              handshakes_failed: 4
+              session_reuses: 189
               no_common_protocol: 4
               handshake_timeout: 0
               peer_rejected_cert: 0
@@ -1217,7 +1242,7 @@ components:
                 revoked_cert: 1
                 hostname_mismatch: 2
                 other: 1
-            max_conns: 30
+            max_conns: 50
             connections: 667231
             sent: 251946292
             received: 19222475454
@@ -1238,8 +1263,8 @@ components:
             weight: 1
             state: unhealthy
             active: 0
+            max_conns: 50
             connections: 0
-            max_conns: 30
             sent: 0
             received: 0
             fails: 0
@@ -1254,6 +1279,33 @@ components:
             selected: 2022-06-28 15:01:25+00:00
           zombies: 0
           zone: dns
+    NginxStreamUpstreamConfServerMap:
+      title: Stream Upstream Servers
+      description: 'An array of stream upstream servers for dynamic configuration.
+
+        '
+      type: array
+      items:
+        $ref: '#/components/schemas/NginxStreamUpstreamConfServer'
+      example:
+      - id: 0
+        server: 10.0.0.1:12348
+        weight: 1
+        max_conns: 0
+        max_fails: 1
+        fail_timeout: 10s
+        slow_start: 0
+        backup: false
+        down: false
+      - id: 1
+        server: 10.0.0.1:12349
+        weight: 1
+        max_conns: 0
+        max_fails: 1
+        fail_timeout: 10s
+        slow_start: 0
+        backup: false
+        down: false
     NginxStreamUpstreamConfServer:
       title: Stream Upstream Server
       description: 'Dynamically configurable parameters of a stream upstream
@@ -1326,61 +1378,9 @@ components:
         slow_start: 0
         backup: false
         down: false
-    NginxError:
-      title: Error
-      description: 'nginx error object.
-
-        '
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: HTTP error code.
-              example: 200
-            text:
-              type: string
-              description: Error description.
-              example: example-text
-            code:
-              type: string
-              description: Internal nginx error code.
-              example: 200
-          example: {}
-        request_id:
-          type: string
-          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-          example: example-request_id
-        href:
-          type: string
-          description: Link to reference documentation.
-          example: example-href
-    NginxStreamUpstreamConfServerMap:
+    NginxStreamUpstreamPeerMap:
       title: Stream Upstream Servers
-      description: 'An array of stream upstream servers for dynamic configuration.
-
-        '
+      description: Array of stream upstream servers.
       type: array
       items:
-        $ref: '#/components/schemas/NginxStreamUpstreamConfServer'
-      example:
-      - id: 0
-        server: 10.0.0.1:12348
-        weight: 1
-        max_conns: 0
-        max_fails: 1
-        fail_timeout: 10s
-        slow_start: 0
-        backup: false
-        down: false
-      - id: 1
-        server: 10.0.0.1:12349
-        weight: 1
-        max_conns: 0
-        max_fails: 1
-        fail_timeout: 10s
-        slow_start: 0
-        backup: false
-        down: false
+        $ref: '#/components/schemas/NginxStreamUpstreamPeer'

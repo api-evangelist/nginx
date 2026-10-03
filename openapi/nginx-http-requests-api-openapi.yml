@@ -91,21 +91,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxHTTPRequests:
-      title: HTTP Requests
-      type: object
-      properties:
-        total:
-          type: integer
-          description: The total number of client requests.
-          example: 98765
-        current:
-          type: integer
-          description: The current number of client requests.
-          example: 3
-      example:
-        total: 10624511
-        current: 4
     NginxError:
       title: Error
       description: 'nginx error object.
@@ -137,3 +122,18 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
+    NginxHTTPRequests:
+      title: HTTP Requests
+      type: object
+      properties:
+        total:
+          type: integer
+          description: The total number of client requests.
+          example: 98765
+        current:
+          type: integer
+          description: The current number of client requests.
+          example: 3
+      example:
+        total: 10624511
+        current: 4
