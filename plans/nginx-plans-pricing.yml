@@ -148,3 +148,62 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - compute
+  - negotiated
+  - period
+  plans:
+  - name: NGINX Open Source
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: NGINX Plus
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - year
+  - name: NGINX One
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - year
+  - name: F5 WAF for NGINX
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - year
+  - name: NGINXaaS for Azure
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: NGINXaaS for Google Cloud
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    periods:
+    - month
