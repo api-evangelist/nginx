@@ -50,6 +50,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
     NginxLicenseObject:
       title: License
       description: 'License and usage reporting status of NGINX Plus instance.
@@ -98,34 +129,3 @@ components:
           fails: 2
           grace: 15551961
           uuid: 13754cba-29fb-53e5-c32e-a6cf57c84b01
-    NginxError:
-      title: Error
-      description: 'nginx error object.
-
-        '
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: HTTP error code.
-              example: 200
-            text:
-              type: string
-              description: Error description.
-              example: example-text
-            code:
-              type: string
-              description: Internal nginx error code.
-              example: 200
-          example: {}
-        request_id:
-          type: string
-          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-          example: example-request_id
-        href:
-          type: string
-          description: Link to reference documentation.
-          example: example-href

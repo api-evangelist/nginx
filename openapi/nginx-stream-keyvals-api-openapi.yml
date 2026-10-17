@@ -376,6 +376,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    NginxStreamKeyvalZonesMap:
+      title: Stream Keyval Shared Memory Zones
+      description: 'Contents of all stream keyval shared memory zones.
+
+        '
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/NginxStreamKeyvalZone'
+      example:
+        keyval_zone:
+          key1: value1
+          key2: value2
+          key3: value3
+        one:
+          arg1: value1
+          arg2: value2
+          arg3: value3
     NginxStreamKeyvalZonePostPatch:
       title: Stream Keyval Shared Memory Zone
       description: 'Contents of a stream keyval shared memory zone
@@ -431,20 +448,3 @@ components:
           type: string
           description: Link to reference documentation.
           example: example-href
-    NginxStreamKeyvalZonesMap:
-      title: Stream Keyval Shared Memory Zones
-      description: 'Contents of all stream keyval shared memory zones.
-
-        '
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/NginxStreamKeyvalZone'
-      example:
-        keyval_zone:
-          key1: value1
-          key2: value2
-          key3: value3
-        one:
-          arg1: value1
-          arg2: value2
-          arg3: value3

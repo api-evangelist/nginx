@@ -935,155 +935,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NginxHTTPUpstreamConfServer:
-      title: HTTP Upstream Server
-      description: 'Dynamically configurable parameters of an HTTP upstream
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">server</a>:
-
-        '
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the HTTP upstream server. The ID is assigned automatically and cannot be changed.
-          readOnly: true
-          example: 0
-        server:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">address</a> parameter of the HTTP upstream server. When adding a server, it is possible to specify it as a domain name. In this case, changes of the IP addresses that correspond to a domain name will be monitored and automatically applied to the upstream configuration without the need of restarting nginx. This requires the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver">resolver</a> directive in the “<code>http</code>” block. See also the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#resolve">resolve</a> parameter of the HTTP upstream server.
-          example: example-server
-        service:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#service">service</a> parameter of the HTTP upstream server. This parameter cannot be changed.
-          readOnly: true
-          example: example-service
-        weight:
-          type: integer
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#weight">weight</a> parameter of the HTTP upstream server.
-          example: 0
-        max_conns:
-          type: integer
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_conns">max_conns</a> parameter of the HTTP upstream server.
-          example: 0
-        max_fails:
-          type: integer
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_fails">max_fails</a> parameter of the HTTP upstream server.
-          example: 0
-        fail_timeout:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#fail_timeout">fail_timeout</a> parameter of the HTTP upstream server.
-          example: example-fail_timeout
-        slow_start:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#slow_start">slow_start</a> parameter of the HTTP upstream server.
-          example: example-slow_start
-        route:
-          type: string
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#route">route</a> parameter of the HTTP upstream server.
-          example: example-route
-        backup:
-          type: boolean
-          description: When <code>true</code>, adds a <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#backup">backup</a> server. This parameter cannot be changed.
-          readOnly: true
-          example: false
-        down:
-          type: boolean
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#down">down</a> parameter of the HTTP upstream server.
-          example: false
-        drain:
-          type: boolean
-          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#drain">drain</a> parameter of the HTTP upstream server.
-          example: false
-        parent:
-          type: string
-          description: Parent server ID of the resolved server. The ID is assigned automatically and cannot be changed.
-          readOnly: true
-          example: example-parent
-        host:
-          type: string
-          description: Hostname of the resolved server. The hostname is assigned automatically and cannot be changed.
-          readOnly: true
-          example: example-host
-      example:
-        id: 1
-        server: 10.0.0.1:8089
-        weight: 4
-        max_conns: 0
-        max_fails: 0
-        fail_timeout: 10s
-        slow_start: 10s
-        route: ''
-        backup: true
-        down: true
-    NginxHTTPUpstreamConfServerMap:
-      title: HTTP Upstream Servers
-      description: An array of HTTP upstream servers for dynamic configuration.
-      type: array
-      items:
-        $ref: '#/components/schemas/NginxHTTPUpstreamConfServer'
-      example:
-      - id: 0
-        server: 10.0.0.1:8088
-        weight: 1
-        max_conns: 0
-        max_fails: 0
-        fail_timeout: 10s
-        slow_start: 10s
-        route: ''
-        backup: false
-        down: false
-      - id: 1
-        server: 10.0.0.1:8089
-        weight: 4
-        max_conns: 0
-        max_fails: 0
-        fail_timeout: 10s
-        slow_start: 10s
-        route: ''
-        backup: true
-        down: true
-    NginxError:
-      title: Error
-      description: 'nginx error object.
-
-        '
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: HTTP error code.
-              example: 200
-            text:
-              type: string
-              description: Error description.
-              example: example-text
-            code:
-              type: string
-              description: Internal nginx error code.
-              example: 200
-          example: {}
-        request_id:
-          type: string
-          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
-          example: example-request_id
-        href:
-          type: string
-          description: Link to reference documentation.
-          example: example-href
-    NginxHTTPUpstreamPeerMap:
-      title: HTTP Upstream Servers
-      description: 'An array of HTTP
-
-        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">upstream servers</a>.
-
-        '
-      type: array
-      items:
-        $ref: '#/components/schemas/NginxHTTPUpstreamPeer'
     NginxHTTPUpstreamPeer:
       title: HTTP Upstream Server
       type: object
@@ -1475,6 +1326,43 @@ components:
           keepalive: 0
           zombies: 0
           zone: hg-backend
+    NginxHTTPUpstreamPeerMap:
+      title: HTTP Upstream Servers
+      description: 'An array of HTTP
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">upstream servers</a>.
+
+        '
+      type: array
+      items:
+        $ref: '#/components/schemas/NginxHTTPUpstreamPeer'
+    NginxHTTPUpstreamConfServerMap:
+      title: HTTP Upstream Servers
+      description: An array of HTTP upstream servers for dynamic configuration.
+      type: array
+      items:
+        $ref: '#/components/schemas/NginxHTTPUpstreamConfServer'
+      example:
+      - id: 0
+        server: 10.0.0.1:8088
+        weight: 1
+        max_conns: 0
+        max_fails: 0
+        fail_timeout: 10s
+        slow_start: 10s
+        route: ''
+        backup: false
+        down: false
+      - id: 1
+        server: 10.0.0.1:8089
+        weight: 4
+        max_conns: 0
+        max_fails: 0
+        fail_timeout: 10s
+        slow_start: 10s
+        route: ''
+        backup: true
+        down: true
     NginxHTTPUpstream:
       title: HTTP Upstream
       type: object
@@ -1593,3 +1481,115 @@ components:
           keepalive: 0
           zombies: 0
           zone: upstream_backend
+    NginxError:
+      title: Error
+      description: 'nginx error object.
+
+        '
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP error code.
+              example: 200
+            text:
+              type: string
+              description: Error description.
+              example: example-text
+            code:
+              type: string
+              description: Internal nginx error code.
+              example: 200
+          example: {}
+        request_id:
+          type: string
+          description: The ID of the request, equals the value of the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_id">$request_id</a> variable.
+          example: example-request_id
+        href:
+          type: string
+          description: Link to reference documentation.
+          example: example-href
+    NginxHTTPUpstreamConfServer:
+      title: HTTP Upstream Server
+      description: 'Dynamically configurable parameters of an HTTP upstream
+
+        <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">server</a>:
+
+        '
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the HTTP upstream server. The ID is assigned automatically and cannot be changed.
+          readOnly: true
+          example: 0
+        server:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">address</a> parameter of the HTTP upstream server. When adding a server, it is possible to specify it as a domain name. In this case, changes of the IP addresses that correspond to a domain name will be monitored and automatically applied to the upstream configuration without the need of restarting nginx. This requires the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver">resolver</a> directive in the “<code>http</code>” block. See also the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#resolve">resolve</a> parameter of the HTTP upstream server.
+          example: example-server
+        service:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#service">service</a> parameter of the HTTP upstream server. This parameter cannot be changed.
+          readOnly: true
+          example: example-service
+        weight:
+          type: integer
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#weight">weight</a> parameter of the HTTP upstream server.
+          example: 0
+        max_conns:
+          type: integer
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_conns">max_conns</a> parameter of the HTTP upstream server.
+          example: 0
+        max_fails:
+          type: integer
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#max_fails">max_fails</a> parameter of the HTTP upstream server.
+          example: 0
+        fail_timeout:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#fail_timeout">fail_timeout</a> parameter of the HTTP upstream server.
+          example: example-fail_timeout
+        slow_start:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#slow_start">slow_start</a> parameter of the HTTP upstream server.
+          example: example-slow_start
+        route:
+          type: string
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#route">route</a> parameter of the HTTP upstream server.
+          example: example-route
+        backup:
+          type: boolean
+          description: When <code>true</code>, adds a <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#backup">backup</a> server. This parameter cannot be changed.
+          readOnly: true
+          example: false
+        down:
+          type: boolean
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#down">down</a> parameter of the HTTP upstream server.
+          example: false
+        drain:
+          type: boolean
+          description: Same as the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#drain">drain</a> parameter of the HTTP upstream server.
+          example: false
+        parent:
+          type: string
+          description: Parent server ID of the resolved server. The ID is assigned automatically and cannot be changed.
+          readOnly: true
+          example: example-parent
+        host:
+          type: string
+          description: Hostname of the resolved server. The hostname is assigned automatically and cannot be changed.
+          readOnly: true
+          example: example-host
+      example:
+        id: 1
+        server: 10.0.0.1:8089
+        weight: 4
+        max_conns: 0
+        max_fails: 0
+        fail_timeout: 10s
+        slow_start: 10s
+        route: ''
+        backup: true
+        down: true
