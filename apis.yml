@@ -851,6 +851,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/nginx/njs
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/nginx/overview
 - type: Plans
   url: plans/nginx-plans-pricing.yml
 - type: RateLimits
