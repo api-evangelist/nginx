@@ -1,225 +1,269 @@
 {
+  "info": {
+    "_postman_id": "5593eafb-cd4f-4686-b4a5-8b4553cde21a",
+    "name": "NGINX Plus REST General Info API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:49:51.000Z",
+    "updatedAt": "2026-10-21T20:49:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5593eafb-cd4f-4686-b4a5-8b4553cde21a"
+  },
   "item": [
     {
-      "id": "99b0cb61-72ea-4572-bc6e-ef4f820d61d4",
-      "name": "General Info",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "/",
       "item": [
         {
-          "id": "a77073c8-d5ca-40e4-adf2-a4adda26b499",
           "name": "NGINX Return List of Root Endpoints",
+          "id": "01bf3fad-9204-4eb8-897e-907911778ed5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "NGINX Return List of Root Endpoints",
-            "description": {
-              "content": "Returns a list of root endpoints.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                ""
-              ],
+              "raw": "{{baseUrl}}/",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                ""
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns a list of root endpoints."
           },
           "response": [
             {
-              "id": "da235cc5-d3e2-4c73-a288-832b005bb969",
+              "id": "b4a4a214-30e0-4443-845c-368f941947a7",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    ""
-                  ],
+                  "raw": "{{baseUrl}}/",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    ""
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "createdAt": "2026-10-21T20:49:52.000Z",
+              "updatedAt": "2026-10-21T20:49:52.000Z",
+              "uid": "35240-b4a4a214-30e0-4443-845c-368f941947a7"
             },
             {
-              "id": "1fbb906c-43d3-47b3-8772-b6653df60ab1",
+              "id": "29f9ef8b-6d89-4a35-962a-a2e3e1cc619d",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    ""
-                  ],
+                  "raw": "{{baseUrl}}/",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    ""
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:49:52.000Z",
+              "updatedAt": "2026-10-21T20:49:52.000Z",
+              "uid": "35240-29f9ef8b-6d89-4a35-962a-a2e3e1cc619d"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-21T20:49:52.000Z",
+          "updatedAt": "2026-10-21T20:49:52.000Z",
+          "uid": "35240-01bf3fad-9204-4eb8-897e-907911778ed5"
+        }
+      ],
+      "id": "b7aabb80-4960-4cb3-a387-1dd02331a9f2",
+      "createdAt": "2026-10-21T20:49:52.000Z",
+      "updatedAt": "2026-10-21T20:49:52.000Z",
+      "uid": "35240-b7aabb80-4960-4cb3-a387-1dd02331a9f2"
+    },
+    {
+      "name": "nginx",
+      "item": [
+        {
+          "name": "NGINX Return Status of NGINX Running Instance",
+          "id": "3119781d-5a7c-44d3-a0a0-619fa25bb5a7",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3acb6a1f-3e5f-449f-b46b-df5b54e4a9fb",
-          "name": "NGINX Return Status of NGINX Running Instance",
+          },
           "request": {
-            "name": "NGINX Return Status of NGINX Running Instance",
-            "description": {
-              "content": "Returns nginx version, build name, address, number of configuration reloads, IDs of master and worker processes.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/nginx?fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "nginx"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "description": {
-                    "content": "Limits which fields of nginx running instance will be output.",
-                    "type": "text/plain"
-                  },
+                  "description": "Limits which fields of nginx running instance will be output.",
                   "key": "fields",
-                  "value": ""
+                  "value": "<string>"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns nginx version, build name, address, number of configuration reloads, IDs of master and worker processes."
           },
           "response": [
             {
-              "id": "75ace2a3-ff45-4fce-89ef-5df3dec6e0a5",
+              "id": "847884c2-3da0-450f-b75e-95e49d65b718",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "nginx"
-                  ],
+                  "raw": "{{baseUrl}}/nginx?fields=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "nginx"
+                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of nginx running instance will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"version\": \"<string>\",\n  \"build\": \"<string>\",\n  \"address\": \"<string>\",\n  \"generation\": \"<integer>\",\n  \"load_timestamp\": \"<dateTime>\",\n  \"timestamp\": \"<dateTime>\",\n  \"pid\": \"<integer>\",\n  \"ppid\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:49:52.000Z",
+              "updatedAt": "2026-10-21T20:49:52.000Z",
+              "uid": "35240-847884c2-3da0-450f-b75e-95e49d65b718"
             },
             {
-              "id": "bb94c1ac-4282-46dd-a25f-f31e12d66ec1",
+              "id": "ed320c12-94d9-4ba2-a157-4005ee61e32a",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "nginx"
-                  ],
+                  "raw": "{{baseUrl}}/nginx?fields=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "nginx"
+                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of nginx running instance will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:49:52.000Z",
+              "updatedAt": "2026-10-21T20:49:52.000Z",
+              "uid": "35240-ed320c12-94d9-4ba2-a157-4005ee61e32a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:49:52.000Z",
+          "updatedAt": "2026-10-21T20:49:52.000Z",
+          "uid": "35240-3119781d-5a7c-44d3-a0a0-619fa25bb5a7"
         }
       ],
-      "event": []
+      "id": "77e9f121-6366-4137-b81e-d029eb0e7052",
+      "createdAt": "2026-10-21T20:49:52.000Z",
+      "updatedAt": "2026-10-21T20:49:52.000Z",
+      "uid": "35240-77e9f121-6366-4137-b81e-d029eb0e7052"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "c8afb3a1-0111-4233-9b0c-982f85388ebb",
-    "name": "NGINX njs Scripting Connections General Info API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,436 +1,492 @@
 {
+  "info": {
+    "_postman_id": "d3045884-b06d-4111-89f9-49326101946c",
+    "name": "NGINX Plus REST HTTP Location Zones API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:50:33.000Z",
+    "updatedAt": "2026-10-21T20:50:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d3045884-b06d-4111-89f9-49326101946c"
+  },
   "item": [
     {
-      "id": "f551b7d4-3e0d-4f39-bdc5-f34fa6379073",
-      "name": "HTTP Location Zones",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "http",
       "item": [
         {
-          "id": "071e8e7d-138d-4835-84ca-be61170d4bff",
-          "name": "NGINX Return Status of All HTTP Location Zones",
-          "request": {
-            "name": "NGINX Return Status of All HTTP Location Zones",
-            "description": {
-              "content": "Returns status information for each HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "location_zones",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "location_zones",
+          "item": [
+            {
+              "name": "{httpLocationZoneName}",
+              "item": [
                 {
-                  "description": {
-                    "content": "Limits which fields of location zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
-                    "type": "text/plain"
+                  "name": "NGINX Return Status of an HTTP Location Zone",
+                  "id": "389f94de-da88-4dea-9b3f-aedaf4668b4b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "fields",
-                  "value": ""
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/location_zones/:httpLocationZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "location_zones",
+                        ":httpLocationZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the location zone will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6fb9d54b-3817-4bc0-b91e-3326b6c0372a",
+                          "key": "httpLocationZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                        }
+                      ]
+                    },
+                    "description": "Returns status of a particular HTTP location zone."
+                  },
+                  "response": [
+                    {
+                      "id": "d26f82f0-6c85-410f-806e-d42a03979fd0",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/location_zones/:httpLocationZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "location_zones",
+                            ":httpLocationZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the location zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpLocationZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"requests\": \"<integer>\",\n  \"responses\": {\n    \"1xx\": \"<integer>\",\n    \"2xx\": \"<integer>\",\n    \"3xx\": \"<integer>\",\n    \"4xx\": \"<integer>\",\n    \"5xx\": \"<integer>\",\n    \"codes\": {\n      \"codeNumber\": \"<integer>\"\n    },\n    \"total\": \"<integer>\"\n  },\n  \"discarded\": \"<integer>\",\n  \"received\": \"<integer>\",\n  \"sent\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:50:34.000Z",
+                      "updatedAt": "2026-10-21T20:50:34.000Z",
+                      "uid": "35240-d26f82f0-6c85-410f-806e-d42a03979fd0"
+                    },
+                    {
+                      "id": "27419466-c8e6-458c-a323-0b5c66068fca",
+                      "name": "Location zone not found (*LocationZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/location_zones/:httpLocationZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "location_zones",
+                            ":httpLocationZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the location zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpLocationZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:34.000Z",
+                      "updatedAt": "2026-10-21T20:50:34.000Z",
+                      "uid": "35240-27419466-c8e6-458c-a323-0b5c66068fca"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:50:34.000Z",
+                  "updatedAt": "2026-10-21T20:50:34.000Z",
+                  "uid": "35240-389f94de-da88-4dea-9b3f-aedaf4668b4b"
+                },
+                {
+                  "name": "NGINX Reset Statistics for a Location Zone",
+                  "id": "96f1d34c-2037-4080-82d4-0600a9dcdca5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "location_zones",
+                        ":httpLocationZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "66d90882-47b1-4627-aee7-298734a37086",
+                          "key": "httpLocationZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
+                        }
+                      ]
+                    },
+                    "description": "Resets statistics of accepted and discarded requests, responses, received and sent bytes in a particular location zone."
+                  },
+                  "response": [
+                    {
+                      "id": "d989ac4a-12c2-47c0-b6c4-07b9216bd492",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "location_zones",
+                            ":httpLocationZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpLocationZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:50:34.000Z",
+                      "updatedAt": "2026-10-21T20:50:34.000Z",
+                      "uid": "35240-d989ac4a-12c2-47c0-b6c4-07b9216bd492"
+                    },
+                    {
+                      "id": "a838f97f-9c96-4d36-809a-916bca90bb7b",
+                      "name": "Location zone not found (*LocationZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "location_zones",
+                            ":httpLocationZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpLocationZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:34.000Z",
+                      "updatedAt": "2026-10-21T20:50:34.000Z",
+                      "uid": "35240-a838f97f-9c96-4d36-809a-916bca90bb7b"
+                    },
+                    {
+                      "id": "08170516-d74e-45fc-bb82-828457547aa0",
+                      "name": "Method disabled (*MethodDisabled*)",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/location_zones/:httpLocationZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "location_zones",
+                            ":httpLocationZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpLocationZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:34.000Z",
+                      "updatedAt": "2026-10-21T20:50:34.000Z",
+                      "uid": "35240-08170516-d74e-45fc-bb82-828457547aa0"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:50:34.000Z",
+                  "updatedAt": "2026-10-21T20:50:34.000Z",
+                  "uid": "35240-96f1d34c-2037-4080-82d4-0600a9dcdca5"
                 }
               ],
-              "variable": []
+              "id": "8f7ea49f-a530-4346-a5a4-4e0c456acaa2",
+              "createdAt": "2026-10-21T20:50:34.000Z",
+              "updatedAt": "2026-10-21T20:50:34.000Z",
+              "uid": "35240-8f7ea49f-a530-4346-a5a4-4e0c456acaa2"
             },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "479583a4-4697-406f-b172-f9e0555ea171",
-              "name": "Success",
-              "originalRequest": {
+              "name": "NGINX Return Status of All HTTP Location Zones",
+              "id": "3b7fdcda-6f47-4dce-b2d6-4709a553aaa3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/http/location_zones/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "http",
                     "location_zones",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of location zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "method": "GET",
-                "body": {}
+                "description": "Returns status information for each HTTP location zone."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ba3527b4-956b-4b9d-809b-136cf89984be",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "location_zones",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
+                  "id": "15e726aa-64e5-4273-a038-80a5720bc9ed",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/location_zones/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "location_zones",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of location zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "fcb1e2e4-3335-4ae5-be18-d1792f784fea",
-          "name": "NGINX Return Status of an HTTP Location Zone",
-          "request": {
-            "name": "NGINX Return Status of an HTTP Location Zone",
-            "description": {
-              "content": "Returns status of a particular HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "location_zones",
-                ":httpLocationZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the location zone will be output.",
-                    "type": "text/plain"
                   },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpLocationZoneName",
-                  "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "029f5241-9138-4cf2-a7d3-9ded6c3c7a0e",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "location_zones",
-                    ":httpLocationZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpLocationZoneName",
-                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"aliquipb7_\": {\n    \"requests\": \"<integer>\",\n    \"responses\": {\n      \"1xx\": \"<integer>\",\n      \"2xx\": \"<integer>\",\n      \"3xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"codes\": {\n        \"codeNumber\": \"<integer>\"\n      },\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\"\n  },\n  \"officia713\": {\n    \"requests\": \"<integer>\",\n    \"responses\": {\n      \"1xx\": \"<integer>\",\n      \"2xx\": \"<integer>\",\n      \"3xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"codes\": {\n        \"codeNumber\": \"<integer>\"\n      },\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:50:34.000Z",
+                  "updatedAt": "2026-10-21T20:50:34.000Z",
+                  "uid": "35240-15e726aa-64e5-4273-a038-80a5720bc9ed"
                 },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6882d59c-75a8-4286-9733-a115f21ad0fb",
-              "name": "Location zone not found (*LocationZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "location_zones",
-                    ":httpLocationZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "20bf5804-6962-46f0-a1da-76b76f2c95c2",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/location_zones/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "location_zones",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of location zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpLocationZoneName",
-                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:50:34.000Z",
+                  "updatedAt": "2026-10-21T20:50:34.000Z",
+                  "uid": "35240-20bf5804-6962-46f0-a1da-76b76f2c95c2"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:50:34.000Z",
+              "updatedAt": "2026-10-21T20:50:34.000Z",
+              "uid": "35240-3b7fdcda-6f47-4dce-b2d6-4709a553aaa3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "77de9098-33f2-49b4-8f58-509e3a3e9128",
-          "name": "NGINX Reset Statistics for a Location Zone",
-          "request": {
-            "name": "NGINX Reset Statistics for a Location Zone",
-            "description": {
-              "content": "Resets statistics of accepted and discarded requests, responses, received and sent bytes in a particular location zone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "location_zones",
-                ":httpLocationZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpLocationZoneName",
-                  "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "01b8273c-c2a0-4ddb-b5da-5901e3f0a215",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "location_zones",
-                    ":httpLocationZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpLocationZoneName",
-                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d65c0812-b1ad-4d8d-ac22-dd75049b7cf9",
-              "name": "Location zone not found (*LocationZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "location_zones",
-                    ":httpLocationZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpLocationZoneName",
-                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "54610b9e-7930-45ee-adcb-dbfd249a1f48",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "location_zones",
-                    ":httpLocationZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpLocationZoneName",
-                      "description": "(Required) The name of an HTTP [location zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone_location)."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "127a4172-b997-4de8-800c-b5f93af28a12",
+          "createdAt": "2026-10-21T20:50:34.000Z",
+          "updatedAt": "2026-10-21T20:50:34.000Z",
+          "uid": "35240-127a4172-b997-4de8-800c-b5f93af28a12"
         }
       ],
-      "event": []
+      "id": "4df75340-55e3-4686-8a25-4c6d008ba8c6",
+      "createdAt": "2026-10-21T20:50:34.000Z",
+      "updatedAt": "2026-10-21T20:50:34.000Z",
+      "uid": "35240-4df75340-55e3-4686-8a25-4c6d008ba8c6"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "abc0a462-1120-417b-859d-c60ca084e45c",
-    "name": "NGINX njs Scripting Connections HTTP Location Zones API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

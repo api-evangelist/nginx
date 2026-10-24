@@ -1,122 +1,137 @@
 {
+  "info": {
+    "_postman_id": "928dc169-4483-4a24-96e0-3eabc3a060e6",
+    "name": "NGINX Plus REST Stream API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:51:44.000Z",
+    "updatedAt": "2026-10-21T20:51:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-928dc169-4483-4a24-96e0-3eabc3a060e6"
+  },
   "item": [
     {
-      "id": "2efc07be-d203-448e-988d-fcef3c47aa18",
-      "name": "Stream",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "stream",
       "item": [
         {
-          "id": "6465ac2b-4fe2-41b3-88a9-a8a2269414ad",
           "name": "NGINX Return List of Stream-Related Endpoints",
+          "id": "69fc8451-d718-40bf-bccf-af38f32cb62e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "NGINX Return List of Stream-Related Endpoints",
-            "description": {
-              "content": "Returns a list of first level stream endpoints.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "stream",
-                ""
-              ],
+              "raw": "{{baseUrl}}/stream/",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "stream",
+                ""
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns a list of first level stream endpoints."
           },
           "response": [
             {
-              "id": "368b25fd-8252-4ee8-b4d3-faa0b3dfd9fd",
+              "id": "c26142f6-a07f-42f3-8880-5abe48779950",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "stream",
-                    ""
-                  ],
+                  "raw": "{{baseUrl}}/stream/",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "stream",
+                    ""
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "createdAt": "2026-10-21T20:51:45.000Z",
+              "updatedAt": "2026-10-21T20:51:45.000Z",
+              "uid": "35240-c26142f6-a07f-42f3-8880-5abe48779950"
             },
             {
-              "id": "b0ef2ad5-817d-4bee-9860-854e352adef8",
+              "id": "152dc4fa-9d68-4c84-84fd-fbd9915f8960",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "stream",
-                    ""
-                  ],
+                  "raw": "{{baseUrl}}/stream/",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "stream",
+                    ""
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:45.000Z",
+              "updatedAt": "2026-10-21T20:51:45.000Z",
+              "uid": "35240-152dc4fa-9d68-4c84-84fd-fbd9915f8960"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:51:45.000Z",
+          "updatedAt": "2026-10-21T20:51:45.000Z",
+          "uid": "35240-69fc8451-d718-40bf-bccf-af38f32cb62e"
         }
       ],
-      "event": []
+      "id": "837b22f8-4d5f-44c5-901a-4fb3d723f68b",
+      "createdAt": "2026-10-21T20:51:45.000Z",
+      "updatedAt": "2026-10-21T20:51:45.000Z",
+      "uid": "35240-837b22f8-4d5f-44c5-901a-4fb3d723f68b"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "01165b55-905e-46e8-b0b7-478ddb7847fb",
-    "name": "NGINX njs Scripting Connections Stream API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

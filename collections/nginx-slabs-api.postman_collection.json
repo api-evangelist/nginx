@@ -1,426 +1,473 @@
 {
+  "info": {
+    "_postman_id": "85aa1bb3-dc25-4f1a-a139-f639eeed7afd",
+    "name": "NGINX Plus REST Slabs API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:51:27.000Z",
+    "updatedAt": "2026-10-21T20:51:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-85aa1bb3-dc25-4f1a-a139-f639eeed7afd"
+  },
   "item": [
     {
-      "id": "6ee31d94-51a7-467f-89ee-8caab5b86008",
-      "name": "Slabs",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "slabs",
       "item": [
         {
-          "id": "452d959a-9585-4b68-8917-c90388ebe370",
-          "name": "NGINX Return Status of All Slabs",
-          "request": {
-            "name": "NGINX Return Status of All Slabs",
-            "description": {
-              "content": "Returns status of slabs for each shared memory zone with slab allocator.",
-              "type": "text/plain"
+          "name": "{slabZoneName}",
+          "item": [
+            {
+              "name": "NGINX Return Status of a Slab",
+              "id": "5c061622-3ce7-49e5-8754-9e4555f8ddc5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/slabs/:slabZoneName?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "slabs",
+                    ":slabZoneName"
+                  ],
+                  "query": [
+                    {
+                      "description": "Limits which fields of the slab zone will be output.",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "e7420d1d-b343-4e1c-aec5-5ed42616d93d",
+                      "key": "slabZoneName",
+                      "value": "<string>",
+                      "description": "(Required) The name of the shared memory zone with slab allocator."
+                    }
+                  ]
+                },
+                "description": "Returns status of slabs for a particular shared memory zone with slab allocator."
+              },
+              "response": [
+                {
+                  "id": "7552c365-7838-4e2f-97b7-3231fc54d8c0",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/slabs/:slabZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "slabs",
+                        ":slabZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the slab zone will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "slabZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"pages\": {\n    \"used\": \"<integer>\",\n    \"free\": \"<integer>\"\n  },\n  \"slots\": {\n    \"Ut__20\": {\n      \"used\": \"<integer>\",\n      \"free\": \"<integer>\",\n      \"reqs\": \"<integer>\",\n      \"fails\": \"<integer>\"\n    },\n    \"quis__8\": {\n      \"used\": \"<integer>\",\n      \"free\": \"<integer>\",\n      \"reqs\": \"<integer>\",\n      \"fails\": \"<integer>\"\n    },\n    \"reprehenderit_53\": {\n      \"used\": \"<integer>\",\n      \"free\": \"<integer>\",\n      \"reqs\": \"<integer>\",\n      \"fails\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:51:28.000Z",
+                  "updatedAt": "2026-10-21T20:51:28.000Z",
+                  "uid": "35240-7552c365-7838-4e2f-97b7-3231fc54d8c0"
+                },
+                {
+                  "id": "b9142cf7-6eb3-496a-991d-1c25c705c82d",
+                  "name": "Slab not found (*SlabNotFound*),\nunknown version (*UnknownVersion*)\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/slabs/:slabZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "slabs",
+                        ":slabZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the slab zone will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "slabZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:51:28.000Z",
+                  "updatedAt": "2026-10-21T20:51:28.000Z",
+                  "uid": "35240-b9142cf7-6eb3-496a-991d-1c25c705c82d"
+                }
+              ],
+              "createdAt": "2026-10-21T20:51:28.000Z",
+              "updatedAt": "2026-10-21T20:51:28.000Z",
+              "uid": "35240-5c061622-3ce7-49e5-8754-9e4555f8ddc5"
             },
+            {
+              "name": "NGINX Reset Slab Statistics",
+              "id": "900dbf08-2a1e-43f9-bc9c-798d71c97b69",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/slabs/:slabZoneName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "slabs",
+                    ":slabZoneName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e054c0e2-cac0-41df-b86e-b7f981a96202",
+                      "key": "slabZoneName",
+                      "value": "<string>",
+                      "description": "(Required) The name of the shared memory zone with slab allocator."
+                    }
+                  ]
+                },
+                "description": "Resets the \u201creqs\u201d and \u201cfails\u201d metrics for each memory slot."
+              },
+              "response": [
+                {
+                  "id": "285e6c59-0785-4a92-8712-ed8405a64501",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/slabs/:slabZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "slabs",
+                        ":slabZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "slabZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:51:28.000Z",
+                  "updatedAt": "2026-10-21T20:51:28.000Z",
+                  "uid": "35240-285e6c59-0785-4a92-8712-ed8405a64501"
+                },
+                {
+                  "id": "4be155f1-e49c-4620-9236-4e8002c49cee",
+                  "name": "Slab not found (*SlabNotFound*),\nunknown version (*UnknownVersion*)\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/slabs/:slabZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "slabs",
+                        ":slabZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "slabZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:51:28.000Z",
+                  "updatedAt": "2026-10-21T20:51:28.000Z",
+                  "uid": "35240-4be155f1-e49c-4620-9236-4e8002c49cee"
+                },
+                {
+                  "id": "e137b9a6-1392-481d-8753-c2e53544bab6",
+                  "name": "Method disabled (*MethodDisabled*)",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/slabs/:slabZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "slabs",
+                        ":slabZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "slabZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:51:28.000Z",
+                  "updatedAt": "2026-10-21T20:51:28.000Z",
+                  "uid": "35240-e137b9a6-1392-481d-8753-c2e53544bab6"
+                }
+              ],
+              "createdAt": "2026-10-21T20:51:28.000Z",
+              "updatedAt": "2026-10-21T20:51:28.000Z",
+              "uid": "35240-900dbf08-2a1e-43f9-bc9c-798d71c97b69"
+            }
+          ],
+          "id": "1c6a58c2-8ae5-4126-87b6-e8b0a919d46b",
+          "createdAt": "2026-10-21T20:51:28.000Z",
+          "updatedAt": "2026-10-21T20:51:28.000Z",
+          "uid": "35240-1c6a58c2-8ae5-4126-87b6-e8b0a919d46b"
+        },
+        {
+          "name": "NGINX Return Status of All Slabs",
+          "id": "3edc5b95-0ae8-4e7c-b7d8-f87df7e74805",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/slabs/?fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "slabs",
                 ""
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "description": {
-                    "content": "Limits which fields of slab zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
-                    "type": "text/plain"
-                  },
+                  "description": "Limits which fields of slab zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
                   "key": "fields",
-                  "value": ""
+                  "value": "<string>"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns status of slabs for each shared memory zone with slab allocator."
           },
           "response": [
             {
-              "id": "3a8ab730-3921-4eb3-8f16-716de3f0b0a8",
+              "id": "b49b807c-19d8-4c6c-a8ad-a61125d82565",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/slabs/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "slabs",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of slab zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"ut_1f7\": {\n    \"pages\": {\n      \"used\": \"<integer>\",\n      \"free\": \"<integer>\"\n    },\n    \"slots\": {\n      \"laborise20\": {\n        \"used\": \"<integer>\",\n        \"free\": \"<integer>\",\n        \"reqs\": \"<integer>\",\n        \"fails\": \"<integer>\"\n      },\n      \"exfa9\": {\n        \"used\": \"<integer>\",\n        \"free\": \"<integer>\",\n        \"reqs\": \"<integer>\",\n        \"fails\": \"<integer>\"\n      }\n    }\n  },\n  \"nullac50\": {\n    \"pages\": {\n      \"used\": \"<integer>\",\n      \"free\": \"<integer>\"\n    },\n    \"slots\": {\n      \"non_a81\": {\n        \"used\": \"<integer>\",\n        \"free\": \"<integer>\",\n        \"reqs\": \"<integer>\",\n        \"fails\": \"<integer>\"\n      }\n    }\n  }\n}",
+              "createdAt": "2026-10-21T20:51:28.000Z",
+              "updatedAt": "2026-10-21T20:51:28.000Z",
+              "uid": "35240-b49b807c-19d8-4c6c-a8ad-a61125d82565"
             },
             {
-              "id": "7b9b5030-bd02-4918-a2c2-f0f074805f4b",
+              "id": "4906142e-569d-4d92-a0c5-3ad1faed6002",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/slabs/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "slabs",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of slab zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:28.000Z",
+              "updatedAt": "2026-10-21T20:51:28.000Z",
+              "uid": "35240-4906142e-569d-4d92-a0c5-3ad1faed6002"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9dd53e2e-a6c9-4e2c-91d8-a8f8f07e25e2",
-          "name": "NGINX Return Status of a Slab",
-          "request": {
-            "name": "NGINX Return Status of a Slab",
-            "description": {
-              "content": "Returns status of slabs for a particular shared memory zone with slab allocator.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "slabs",
-                ":slabZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the slab zone will be output.",
-                    "type": "text/plain"
-                  },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "slabZoneName",
-                  "description": "(Required) The name of the shared memory zone with slab allocator."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7558ae1f-f991-423d-8fac-45433105906e",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "slabs",
-                    ":slabZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "slabZoneName",
-                      "description": "(Required) The name of the shared memory zone with slab allocator."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "cd696b13-5454-4926-b32e-3bd9e4b7f1a0",
-              "name": "Slab not found (*SlabNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "slabs",
-                    ":slabZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "slabZoneName",
-                      "description": "(Required) The name of the shared memory zone with slab allocator."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "661ceccc-77fd-47d6-9d76-ff32527f5d3b",
-          "name": "NGINX Reset Slab Statistics",
-          "request": {
-            "name": "NGINX Reset Slab Statistics",
-            "description": {
-              "content": "Resets the “<literal>reqs</literal>” and “<literal>fails</literal>” metrics for each memory slot.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "slabs",
-                ":slabZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "slabZoneName",
-                  "description": "(Required) The name of the shared memory zone with slab allocator."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "355da2a6-5b2b-43aa-bf38-49b8b5e7cea7",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "slabs",
-                    ":slabZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "slabZoneName",
-                      "description": "(Required) The name of the shared memory zone with slab allocator."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0cb1314e-6433-49a1-aa05-755ff129435c",
-              "name": "Slab not found (*SlabNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "slabs",
-                    ":slabZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "slabZoneName",
-                      "description": "(Required) The name of the shared memory zone with slab allocator."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "46742f4c-f05b-4139-9052-fe6a193b5ab2",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "slabs",
-                    ":slabZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "slabZoneName",
-                      "description": "(Required) The name of the shared memory zone with slab allocator."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:51:28.000Z",
+          "updatedAt": "2026-10-21T20:51:28.000Z",
+          "uid": "35240-3edc5b95-0ae8-4e7c-b7d8-f87df7e74805"
         }
       ],
-      "event": []
+      "id": "25719133-4085-42c2-94c9-d76ffb5a218e",
+      "createdAt": "2026-10-21T20:51:28.000Z",
+      "updatedAt": "2026-10-21T20:51:28.000Z",
+      "uid": "35240-25719133-4085-42c2-94c9-d76ffb5a218e"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "179818dc-fbbe-45fe-9b7a-778968a5ecda",
-    "name": "NGINX njs Scripting Connections Slabs API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

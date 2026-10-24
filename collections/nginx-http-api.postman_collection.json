@@ -1,122 +1,137 @@
 {
+  "info": {
+    "_postman_id": "08fdb975-df1a-4ab1-b43a-7d940deb41fe",
+    "name": "NGINX Plus REST HTTP API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:49:54.000Z",
+    "updatedAt": "2026-10-21T20:49:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-08fdb975-df1a-4ab1-b43a-7d940deb41fe"
+  },
   "item": [
     {
-      "id": "acefb43e-f90c-45a7-8c6a-845a4dcadedd",
-      "name": "HTTP",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "http",
       "item": [
         {
-          "id": "13622d35-3bb9-46e6-aa15-9b8a30fe5437",
           "name": "NGINX Return List of HTTP-Related Endpoints",
+          "id": "6afeb66d-4189-4e2e-952b-192029d7f1ae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "NGINX Return List of HTTP-Related Endpoints",
-            "description": {
-              "content": "Returns a list of first level HTTP endpoints.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "http",
-                ""
-              ],
+              "raw": "{{baseUrl}}/http/",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "http",
+                ""
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns a list of first level HTTP endpoints."
           },
           "response": [
             {
-              "id": "6b86871f-ff1d-44f5-9427-fd4b7289fa37",
+              "id": "7b1fb93e-281a-474b-a4d4-475564808eaf",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "http",
-                    ""
-                  ],
+                  "raw": "{{baseUrl}}/http/",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "http",
+                    ""
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "createdAt": "2026-10-21T20:49:55.000Z",
+              "updatedAt": "2026-10-21T20:49:55.000Z",
+              "uid": "35240-7b1fb93e-281a-474b-a4d4-475564808eaf"
             },
             {
-              "id": "f9c500b6-0983-41eb-97ea-a9dc752de966",
+              "id": "f3424bce-fab1-4318-9268-de4ca98acb04",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "http",
-                    ""
-                  ],
+                  "raw": "{{baseUrl}}/http/",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "http",
+                    ""
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:49:55.000Z",
+              "updatedAt": "2026-10-21T20:49:55.000Z",
+              "uid": "35240-f3424bce-fab1-4318-9268-de4ca98acb04"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:49:55.000Z",
+          "updatedAt": "2026-10-21T20:49:55.000Z",
+          "uid": "35240-6afeb66d-4189-4e2e-952b-192029d7f1ae"
         }
       ],
-      "event": []
+      "id": "a2851b43-bcb2-40e3-b244-908efe7191c8",
+      "createdAt": "2026-10-21T20:49:55.000Z",
+      "updatedAt": "2026-10-21T20:49:55.000Z",
+      "uid": "35240-a2851b43-bcb2-40e3-b244-908efe7191c8"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "94df9752-a10f-4535-8ead-5c9685e3e595",
-    "name": "NGINX njs Scripting Connections HTTP API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

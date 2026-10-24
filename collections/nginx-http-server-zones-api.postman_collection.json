@@ -1,436 +1,492 @@
 {
+  "info": {
+    "_postman_id": "2c57f759-ff29-43b6-9dc2-bda1ac97589b",
+    "name": "NGINX Plus REST HTTP Server Zones API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:50:46.000Z",
+    "updatedAt": "2026-10-21T20:50:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2c57f759-ff29-43b6-9dc2-bda1ac97589b"
+  },
   "item": [
     {
-      "id": "f4dcd953-53c3-486e-805c-6411d83b93f3",
-      "name": "HTTP Server Zones",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "http",
       "item": [
         {
-          "id": "68709219-c67b-4f10-9010-80555ead54d8",
-          "name": "NGINX Return Status of All HTTP Server Zones",
-          "request": {
-            "name": "NGINX Return Status of All HTTP Server Zones",
-            "description": {
-              "content": "Returns status information for each HTTP [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "server_zones",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "server_zones",
+          "item": [
+            {
+              "name": "{httpServerZoneName}",
+              "item": [
                 {
-                  "description": {
-                    "content": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output.",
-                    "type": "text/plain"
+                  "name": "NGINX Return Status of an HTTP Server Zone",
+                  "id": "cdb4b615-a39c-47ee-8a2c-9c6995f1e9be",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "fields",
-                  "value": ""
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/server_zones/:httpServerZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "server_zones",
+                        ":httpServerZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the server zone will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c448064b-d306-4001-8983-8e21faec3e39",
+                          "key": "httpServerZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of an HTTP server zone."
+                        }
+                      ]
+                    },
+                    "description": "Returns status of a particular HTTP server zone."
+                  },
+                  "response": [
+                    {
+                      "id": "3b0dd331-858b-48e9-8a95-e3aa38b41b29",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/server_zones/:httpServerZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "server_zones",
+                            ":httpServerZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the server zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"processing\": \"<integer>\",\n  \"requests\": \"<integer>\",\n  \"responses\": {\n    \"1xx\": \"<integer>\",\n    \"2xx\": \"<integer>\",\n    \"3xx\": \"<integer>\",\n    \"4xx\": \"<integer>\",\n    \"5xx\": \"<integer>\",\n    \"codes\": {\n      \"codeNumber\": \"<integer>\"\n    },\n    \"total\": \"<integer>\"\n  },\n  \"discarded\": \"<integer>\",\n  \"received\": \"<integer>\",\n  \"sent\": \"<integer>\",\n  \"ssl\": {\n    \"handshakes\": \"<integer>\",\n    \"handshakes_failed\": \"<integer>\",\n    \"session_reuses\": \"<integer>\",\n    \"no_common_protocol\": \"<integer>\",\n    \"no_common_cipher\": \"<integer>\",\n    \"handshake_timeout\": \"<integer>\",\n    \"peer_rejected_cert\": \"<integer>\",\n    \"verify_failures\": {\n      \"no_cert\": \"<integer>\",\n      \"expired_cert\": \"<integer>\",\n      \"revoked_cert\": \"<integer>\",\n      \"other\": \"<integer>\"\n    }\n  }\n}",
+                      "createdAt": "2026-10-21T20:50:47.000Z",
+                      "updatedAt": "2026-10-21T20:50:47.000Z",
+                      "uid": "35240-3b0dd331-858b-48e9-8a95-e3aa38b41b29"
+                    },
+                    {
+                      "id": "7184ef57-5a74-4f48-ad57-75a1aafa7a7c",
+                      "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/server_zones/:httpServerZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "server_zones",
+                            ":httpServerZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the server zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:47.000Z",
+                      "updatedAt": "2026-10-21T20:50:47.000Z",
+                      "uid": "35240-7184ef57-5a74-4f48-ad57-75a1aafa7a7c"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:50:46.000Z",
+                  "updatedAt": "2026-10-21T20:50:46.000Z",
+                  "uid": "35240-cdb4b615-a39c-47ee-8a2c-9c6995f1e9be"
+                },
+                {
+                  "name": "NGINX Reset Statistics for an HTTP Server Zone",
+                  "id": "ae03dca0-2296-41c8-a624-8111131066c1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "server_zones",
+                        ":httpServerZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "278ba6ea-089c-4a4a-83ec-3535bb82c345",
+                          "key": "httpServerZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of an HTTP server zone."
+                        }
+                      ]
+                    },
+                    "description": "Resets statistics of accepted and discarded requests, responses, received and sent bytes, counters of SSL handshakes and session reuses in a particular HTTP server zone."
+                  },
+                  "response": [
+                    {
+                      "id": "befd5c39-1c1e-4766-909f-a6da62426781",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "server_zones",
+                            ":httpServerZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:50:47.000Z",
+                      "updatedAt": "2026-10-21T20:50:47.000Z",
+                      "uid": "35240-befd5c39-1c1e-4766-909f-a6da62426781"
+                    },
+                    {
+                      "id": "a74aef5c-8b73-4005-ad2d-a4a030c03d53",
+                      "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "server_zones",
+                            ":httpServerZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:47.000Z",
+                      "updatedAt": "2026-10-21T20:50:47.000Z",
+                      "uid": "35240-a74aef5c-8b73-4005-ad2d-a4a030c03d53"
+                    },
+                    {
+                      "id": "cb8d3019-c3f0-4cb0-a627-b547863dce18",
+                      "name": "Method disabled (*MethodDisabled*)",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/server_zones/:httpServerZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "server_zones",
+                            ":httpServerZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:47.000Z",
+                      "updatedAt": "2026-10-21T20:50:47.000Z",
+                      "uid": "35240-cb8d3019-c3f0-4cb0-a627-b547863dce18"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:50:46.000Z",
+                  "updatedAt": "2026-10-21T20:50:46.000Z",
+                  "uid": "35240-ae03dca0-2296-41c8-a624-8111131066c1"
                 }
               ],
-              "variable": []
+              "id": "5bdd5e7f-b53a-463f-b2a6-73b7170d6240",
+              "createdAt": "2026-10-21T20:50:46.000Z",
+              "updatedAt": "2026-10-21T20:50:46.000Z",
+              "uid": "35240-5bdd5e7f-b53a-463f-b2a6-73b7170d6240"
             },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "eb04afbd-d77d-45bd-8255-4b949ca183a7",
-              "name": "Success",
-              "originalRequest": {
+              "name": "NGINX Return Status of All HTTP Server Zones",
+              "id": "3f8a672c-5328-40e5-a000-6e48ffd0ef02",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/http/server_zones/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "http",
                     "server_zones",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of server zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only server zone names will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "method": "GET",
-                "body": {}
+                "description": "Returns status information for each HTTP server zone."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "abdf253f-2e62-4c50-b73e-313eef548839",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "server_zones",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
+                  "id": "babed83e-d968-45b8-89c2-40bfa0b52b6a",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/server_zones/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "server_zones",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of server zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only server zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f0d57ba1-82b2-4137-aac6-349fa87f8b5f",
-          "name": "NGINX Return Status of an HTTP Server Zone",
-          "request": {
-            "name": "NGINX Return Status of an HTTP Server Zone",
-            "description": {
-              "content": "Returns status of a particular HTTP server zone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "server_zones",
-                ":httpServerZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the server zone will be output.",
-                    "type": "text/plain"
                   },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpServerZoneName",
-                  "description": "(Required) The name of an HTTP server zone."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "488685c6-705a-471e-8833-e9651acfc1c9",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "server_zones",
-                    ":httpServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpServerZoneName",
-                      "description": "(Required) The name of an HTTP server zone."
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"magna8\": {\n    \"processing\": \"<integer>\",\n    \"requests\": \"<integer>\",\n    \"responses\": {\n      \"1xx\": \"<integer>\",\n      \"2xx\": \"<integer>\",\n      \"3xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"codes\": {\n        \"codeNumber\": \"<integer>\"\n      },\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\",\n    \"ssl\": {\n      \"handshakes\": \"<integer>\",\n      \"handshakes_failed\": \"<integer>\",\n      \"session_reuses\": \"<integer>\",\n      \"no_common_protocol\": \"<integer>\",\n      \"no_common_cipher\": \"<integer>\",\n      \"handshake_timeout\": \"<integer>\",\n      \"peer_rejected_cert\": \"<integer>\",\n      \"verify_failures\": {\n        \"no_cert\": \"<integer>\",\n        \"expired_cert\": \"<integer>\",\n        \"revoked_cert\": \"<integer>\",\n        \"other\": \"<integer>\"\n      }\n    }\n  },\n  \"elit_834\": {\n    \"processing\": \"<integer>\",\n    \"requests\": \"<integer>\",\n    \"responses\": {\n      \"1xx\": \"<integer>\",\n      \"2xx\": \"<integer>\",\n      \"3xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"codes\": {\n        \"codeNumber\": \"<integer>\"\n      },\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\",\n    \"ssl\": {\n      \"handshakes\": \"<integer>\",\n      \"handshakes_failed\": \"<integer>\",\n      \"session_reuses\": \"<integer>\",\n      \"no_common_protocol\": \"<integer>\",\n      \"no_common_cipher\": \"<integer>\",\n      \"handshake_timeout\": \"<integer>\",\n      \"peer_rejected_cert\": \"<integer>\",\n      \"verify_failures\": {\n        \"no_cert\": \"<integer>\",\n        \"expired_cert\": \"<integer>\",\n        \"revoked_cert\": \"<integer>\",\n        \"other\": \"<integer>\"\n      }\n    }\n  },\n  \"adipisicing_2\": {\n    \"processing\": \"<integer>\",\n    \"requests\": \"<integer>\",\n    \"responses\": {\n      \"1xx\": \"<integer>\",\n      \"2xx\": \"<integer>\",\n      \"3xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"codes\": {\n        \"codeNumber\": \"<integer>\"\n      },\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\",\n    \"ssl\": {\n      \"handshakes\": \"<integer>\",\n      \"handshakes_failed\": \"<integer>\",\n      \"session_reuses\": \"<integer>\",\n      \"no_common_protocol\": \"<integer>\",\n      \"no_common_cipher\": \"<integer>\",\n      \"handshake_timeout\": \"<integer>\",\n      \"peer_rejected_cert\": \"<integer>\",\n      \"verify_failures\": {\n        \"no_cert\": \"<integer>\",\n        \"expired_cert\": \"<integer>\",\n        \"revoked_cert\": \"<integer>\",\n        \"other\": \"<integer>\"\n      }\n    }\n  },\n  \"enim_3\": {\n    \"processing\": \"<integer>\",\n    \"requests\": \"<integer>\",\n    \"responses\": {\n      \"1xx\": \"<integer>\",\n      \"2xx\": \"<integer>\",\n      \"3xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"codes\": {\n        \"codeNumber\": \"<integer>\"\n      },\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\",\n    \"ssl\": {\n      \"handshakes\": \"<integer>\",\n      \"handshakes_failed\": \"<integer>\",\n      \"session_reuses\": \"<integer>\",\n      \"no_common_protocol\": \"<integer>\",\n      \"no_common_cipher\": \"<integer>\",\n      \"handshake_timeout\": \"<integer>\",\n      \"peer_rejected_cert\": \"<integer>\",\n      \"verify_failures\": {\n        \"no_cert\": \"<integer>\",\n        \"expired_cert\": \"<integer>\",\n        \"revoked_cert\": \"<integer>\",\n        \"other\": \"<integer>\"\n      }\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:50:47.000Z",
+                  "updatedAt": "2026-10-21T20:50:47.000Z",
+                  "uid": "35240-babed83e-d968-45b8-89c2-40bfa0b52b6a"
                 },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8f2376a2-d1fa-42e4-b00e-8dcbc6de9b8a",
-              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "server_zones",
-                    ":httpServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "c5b5bf54-1bbd-4409-8152-1a5337281d76",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/server_zones/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "server_zones",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of server zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only server zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpServerZoneName",
-                      "description": "(Required) The name of an HTTP server zone."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:50:47.000Z",
+                  "updatedAt": "2026-10-21T20:50:47.000Z",
+                  "uid": "35240-c5b5bf54-1bbd-4409-8152-1a5337281d76"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:50:46.000Z",
+              "updatedAt": "2026-10-21T20:50:46.000Z",
+              "uid": "35240-3f8a672c-5328-40e5-a000-6e48ffd0ef02"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9ef98bd2-1b2c-4bd3-a986-a4b6b851aa89",
-          "name": "NGINX Reset Statistics for an HTTP Server Zone",
-          "request": {
-            "name": "NGINX Reset Statistics for an HTTP Server Zone",
-            "description": {
-              "content": "Resets statistics of accepted and discarded requests, responses, received and sent bytes, counters of SSL handshakes and session reuses in a particular HTTP server zone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "server_zones",
-                ":httpServerZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpServerZoneName",
-                  "description": "(Required) The name of an HTTP server zone."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "46ad1b54-e169-4ec2-9b74-cb5ebde9cba9",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "server_zones",
-                    ":httpServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpServerZoneName",
-                      "description": "(Required) The name of an HTTP server zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1000ed20-33d8-4f0e-aae7-5f5d5e7379eb",
-              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "server_zones",
-                    ":httpServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpServerZoneName",
-                      "description": "(Required) The name of an HTTP server zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "14f75a33-a44e-41a3-94fa-fe1b45324112",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "server_zones",
-                    ":httpServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpServerZoneName",
-                      "description": "(Required) The name of an HTTP server zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "eeea0158-64f6-44bd-bfb1-f7c7f2e21d5e",
+          "createdAt": "2026-10-21T20:50:46.000Z",
+          "updatedAt": "2026-10-21T20:50:46.000Z",
+          "uid": "35240-eeea0158-64f6-44bd-bfb1-f7c7f2e21d5e"
         }
       ],
-      "event": []
+      "id": "8df10b84-0090-4e92-a0b7-f94c7fc67c51",
+      "createdAt": "2026-10-21T20:50:46.000Z",
+      "updatedAt": "2026-10-21T20:50:46.000Z",
+      "uid": "35240-8df10b84-0090-4e92-a0b7-f94c7fc67c51"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "a2743afa-0cbd-4ae0-babe-6ab7f9f3aaee",
-    "name": "NGINX njs Scripting Connections HTTP Server Zones API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

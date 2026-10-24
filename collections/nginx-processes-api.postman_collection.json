@@ -1,235 +1,266 @@
 {
+  "info": {
+    "_postman_id": "c5da2aeb-57e9-4ede-bd7c-acfcacf839b8",
+    "name": "NGINX Plus REST Processes API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:51:18.000Z",
+    "updatedAt": "2026-10-21T20:51:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c5da2aeb-57e9-4ede-bd7c-acfcacf839b8"
+  },
   "item": [
     {
-      "id": "497601d4-ab7e-4f8f-937c-515114326478",
-      "name": "Processes",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "processes",
       "item": [
         {
-          "id": "efa60299-1dcc-44cf-a430-05a048a4ae27",
           "name": "NGINX Return NGINX Processes Status",
+          "id": "4f921def-074b-4858-92aa-732bcb0ca930",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "NGINX Return NGINX Processes Status",
-            "description": {
-              "content": "Returns the number of abnormally terminated and respawned child processes.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "processes"
-              ],
+              "raw": "{{baseUrl}}/processes",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "processes"
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns the number of abnormally terminated and respawned child processes."
           },
           "response": [
             {
-              "id": "b2045e3f-d20a-4aec-bbb1-877cad8166c3",
+              "id": "056036c7-059f-4feb-803c-2acf9778f532",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "processes"
-                  ],
+                  "raw": "{{baseUrl}}/processes",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "processes"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"respawned\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:51:18.000Z",
+              "updatedAt": "2026-10-21T20:51:18.000Z",
+              "uid": "35240-056036c7-059f-4feb-803c-2acf9778f532"
             },
             {
-              "id": "1ff526d6-4c0a-4ec4-9143-ddc2e6eac384",
+              "id": "58f552f0-a78d-4ec9-8c7a-1af77b5db1bd",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "processes"
-                  ],
+                  "raw": "{{baseUrl}}/processes",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  "path": [
+                    "processes"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:18.000Z",
+              "updatedAt": "2026-10-21T20:51:18.000Z",
+              "uid": "35240-58f552f0-a78d-4ec9-8c7a-1af77b5db1bd"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:51:18.000Z",
+          "updatedAt": "2026-10-21T20:51:18.000Z",
+          "uid": "35240-4f921def-074b-4858-92aa-732bcb0ca930"
         },
         {
-          "id": "351036b0-ae26-45e6-b95e-733a026188aa",
           "name": "NGINX Reset NGINX Processes Statistics",
+          "id": "6dfa375f-f321-413a-96a6-86f1ff9b64f3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "NGINX Reset NGINX Processes Statistics",
-            "description": {
-              "content": "Resets counters of abnormally terminated and respawned child processes.",
-              "type": "text/plain"
-            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "processes"
-              ],
+              "raw": "{{baseUrl}}/processes",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "processes"
+              ]
             },
-            "method": "DELETE",
-            "auth": null
+            "description": "Resets counters of abnormally terminated and respawned child processes."
           },
           "response": [
             {
-              "id": "959e8a51-39e5-4d32-97b1-697030f613fd",
+              "id": "e4ef8a51-8122-4b0f-b246-0694d4e3122b",
               "name": "Success",
               "originalRequest": {
+                "method": "DELETE",
+                "header": [],
                 "url": {
-                  "path": [
-                    "processes"
-                  ],
+                  "raw": "{{baseUrl}}/processes",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
+                  "path": [
+                    "processes"
+                  ]
+                }
               },
               "status": "No Content",
               "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:51:18.000Z",
+              "updatedAt": "2026-10-21T20:51:18.000Z",
+              "uid": "35240-e4ef8a51-8122-4b0f-b246-0694d4e3122b"
             },
             {
-              "id": "9b23d632-a7ab-4d7c-964c-f6e6c5baa519",
+              "id": "7335945b-ae29-4988-95c7-fac82d103657",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "processes"
-                  ],
+                  "raw": "{{baseUrl}}/processes",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
+                  "path": [
+                    "processes"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:18.000Z",
+              "updatedAt": "2026-10-21T20:51:18.000Z",
+              "uid": "35240-7335945b-ae29-4988-95c7-fac82d103657"
             },
             {
-              "id": "a126a0ce-b132-4fb2-a396-b8a58b784126",
+              "id": "dae1c0e2-07f3-44b8-8605-aa6f4e7485c1",
               "name": "Method disabled (*MethodDisabled*)",
               "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "processes"
-                  ],
+                  "raw": "{{baseUrl}}/processes",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
+                  "path": [
+                    "processes"
+                  ]
+                }
               },
               "status": "Method Not Allowed",
               "code": 405,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:18.000Z",
+              "updatedAt": "2026-10-21T20:51:18.000Z",
+              "uid": "35240-dae1c0e2-07f3-44b8-8605-aa6f4e7485c1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:51:18.000Z",
+          "updatedAt": "2026-10-21T20:51:18.000Z",
+          "uid": "35240-6dfa375f-f321-413a-96a6-86f1ff9b64f3"
         }
       ],
-      "event": []
+      "id": "d7b7a271-ff41-45bd-b24a-e0172dede5e9",
+      "createdAt": "2026-10-21T20:51:18.000Z",
+      "updatedAt": "2026-10-21T20:51:18.000Z",
+      "uid": "35240-d7b7a271-ff41-45bd-b24a-e0172dede5e9"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "13cbd888-8ad2-4967-951b-e7d4da0f2463",
-    "name": "NGINX njs Scripting Connections Processes API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

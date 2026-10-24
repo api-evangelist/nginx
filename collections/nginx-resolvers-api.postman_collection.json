@@ -1,426 +1,473 @@
 {
+  "info": {
+    "_postman_id": "b8de9406-e401-4a4f-b2e6-e737df2d7f96",
+    "name": "NGINX Plus REST Resolvers API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:51:22.000Z",
+    "updatedAt": "2026-10-21T20:51:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b8de9406-e401-4a4f-b2e6-e737df2d7f96"
+  },
   "item": [
     {
-      "id": "a385a825-157d-43b1-83a9-ea0153acd599",
-      "name": "Resolvers",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "resolvers",
       "item": [
         {
-          "id": "f58b0dd6-8b5a-4303-9580-7e155dae4f7a",
-          "name": "NGINX Return Status for All Resolver Zones",
-          "request": {
-            "name": "NGINX Return Status for All Resolver Zones",
-            "description": {
-              "content": "Returns status information for each [resolver zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).",
-              "type": "text/plain"
+          "name": "{resolverZoneName}",
+          "item": [
+            {
+              "name": "NGINX Return Statistics of a Resolver Zone",
+              "id": "86ef9e87-f59e-4870-9261-88b32588bdd3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resolvers/:resolverZoneName?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resolvers",
+                    ":resolverZoneName"
+                  ],
+                  "query": [
+                    {
+                      "description": "Limits which fields of the resolver zone will be output (requests, responses, or both).",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "cd9aa842-522f-44d3-8777-2c0f4fda7bcf",
+                      "key": "resolverZoneName",
+                      "value": "<string>",
+                      "description": "(Required) The name of a resolver zone."
+                    }
+                  ]
+                },
+                "description": "Returns statistics stored in a particular resolver zone."
+              },
+              "response": [
+                {
+                  "id": "edb981ca-6b6e-42ba-877a-b1acea38e9d8",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/resolvers/:resolverZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resolvers",
+                        ":resolverZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the resolver zone will be output (requests, responses, or both).",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "resolverZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"requests\": {\n    \"name\": \"<integer>\",\n    \"srv\": \"<integer>\",\n    \"addr\": \"<integer>\"\n  },\n  \"responses\": {\n    \"noerror\": \"<integer>\",\n    \"formerr\": \"<integer>\",\n    \"servfail\": \"<integer>\",\n    \"nxdomain\": \"<integer>\",\n    \"notimp\": \"<integer>\",\n    \"refused\": \"<integer>\",\n    \"timedout\": \"<integer>\",\n    \"unknown\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:51:23.000Z",
+                  "updatedAt": "2026-10-21T20:51:23.000Z",
+                  "uid": "35240-edb981ca-6b6e-42ba-877a-b1acea38e9d8"
+                },
+                {
+                  "id": "c22db66f-3e5d-4ed5-bdab-48dc858865bd",
+                  "name": "Resolver zone not found (*ResolverZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/resolvers/:resolverZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resolvers",
+                        ":resolverZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the resolver zone will be output (requests, responses, or both).",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "resolverZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:51:23.000Z",
+                  "updatedAt": "2026-10-21T20:51:23.000Z",
+                  "uid": "35240-c22db66f-3e5d-4ed5-bdab-48dc858865bd"
+                }
+              ],
+              "createdAt": "2026-10-21T20:51:23.000Z",
+              "updatedAt": "2026-10-21T20:51:23.000Z",
+              "uid": "35240-86ef9e87-f59e-4870-9261-88b32588bdd3"
             },
+            {
+              "name": "NGINX Reset Statistics for a Resolver Zone",
+              "id": "9edad6cd-0cbe-4d81-9e46-c8a0c29a4b53",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resolvers/:resolverZoneName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resolvers",
+                    ":resolverZoneName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "873e4bd1-1a12-47ff-a8f0-4d6b1f614325",
+                      "key": "resolverZoneName",
+                      "value": "<string>",
+                      "description": "(Required) The name of a resolver zone."
+                    }
+                  ]
+                },
+                "description": "Resets statistics in a particular resolver zone."
+              },
+              "response": [
+                {
+                  "id": "02a9aaba-bf00-4ec6-aca1-9b9d61a5ba8a",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/resolvers/:resolverZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resolvers",
+                        ":resolverZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resolverZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:51:23.000Z",
+                  "updatedAt": "2026-10-21T20:51:23.000Z",
+                  "uid": "35240-02a9aaba-bf00-4ec6-aca1-9b9d61a5ba8a"
+                },
+                {
+                  "id": "11b48ee9-2d73-4505-b4d7-c963b47da5fa",
+                  "name": "Resolver zone not found (*ResolverZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/resolvers/:resolverZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resolvers",
+                        ":resolverZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resolverZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:51:23.000Z",
+                  "updatedAt": "2026-10-21T20:51:23.000Z",
+                  "uid": "35240-11b48ee9-2d73-4505-b4d7-c963b47da5fa"
+                },
+                {
+                  "id": "0a87f68e-dd2a-4147-b509-800e8bf9fa9f",
+                  "name": "Method disabled (*MethodDisabled*)",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/resolvers/:resolverZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resolvers",
+                        ":resolverZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resolverZoneName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:51:23.000Z",
+                  "updatedAt": "2026-10-21T20:51:23.000Z",
+                  "uid": "35240-0a87f68e-dd2a-4147-b509-800e8bf9fa9f"
+                }
+              ],
+              "createdAt": "2026-10-21T20:51:23.000Z",
+              "updatedAt": "2026-10-21T20:51:23.000Z",
+              "uid": "35240-9edad6cd-0cbe-4d81-9e46-c8a0c29a4b53"
+            }
+          ],
+          "id": "d25f2b9e-977d-46b7-9cc8-c52efe194517",
+          "createdAt": "2026-10-21T20:51:23.000Z",
+          "updatedAt": "2026-10-21T20:51:23.000Z",
+          "uid": "35240-d25f2b9e-977d-46b7-9cc8-c52efe194517"
+        },
+        {
+          "name": "NGINX Return Status for All Resolver Zones",
+          "id": "e0b56cad-d154-4748-8019-867b492717c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/resolvers/?fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "resolvers",
                 ""
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "description": {
-                    "content": "Limits which fields of resolvers statistics will be output.",
-                    "type": "text/plain"
-                  },
+                  "description": "Limits which fields of resolvers statistics will be output.",
                   "key": "fields",
-                  "value": ""
+                  "value": "<string>"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns status information for each resolver zone."
           },
           "response": [
             {
-              "id": "1b98d322-f45c-4cc0-8bfc-899edaf05224",
+              "id": "d04ea7aa-eddf-4ac3-b8f5-929f8d922c87",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/resolvers/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "resolvers",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of resolvers statistics will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"sint_b94\": {\n    \"requests\": {\n      \"name\": \"<integer>\",\n      \"srv\": \"<integer>\",\n      \"addr\": \"<integer>\"\n    },\n    \"responses\": {\n      \"noerror\": \"<integer>\",\n      \"formerr\": \"<integer>\",\n      \"servfail\": \"<integer>\",\n      \"nxdomain\": \"<integer>\",\n      \"notimp\": \"<integer>\",\n      \"refused\": \"<integer>\",\n      \"timedout\": \"<integer>\",\n      \"unknown\": \"<integer>\"\n    }\n  },\n  \"ipsum_3\": {\n    \"requests\": {\n      \"name\": \"<integer>\",\n      \"srv\": \"<integer>\",\n      \"addr\": \"<integer>\"\n    },\n    \"responses\": {\n      \"noerror\": \"<integer>\",\n      \"formerr\": \"<integer>\",\n      \"servfail\": \"<integer>\",\n      \"nxdomain\": \"<integer>\",\n      \"notimp\": \"<integer>\",\n      \"refused\": \"<integer>\",\n      \"timedout\": \"<integer>\",\n      \"unknown\": \"<integer>\"\n    }\n  }\n}",
+              "createdAt": "2026-10-21T20:51:23.000Z",
+              "updatedAt": "2026-10-21T20:51:23.000Z",
+              "uid": "35240-d04ea7aa-eddf-4ac3-b8f5-929f8d922c87"
             },
             {
-              "id": "24f6e84f-a06f-4c96-abcd-a000d599b93e",
+              "id": "0429377f-60eb-49a2-911a-9fd418db8233",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/resolvers/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "resolvers",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of resolvers statistics will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:23.000Z",
+              "updatedAt": "2026-10-21T20:51:23.000Z",
+              "uid": "35240-0429377f-60eb-49a2-911a-9fd418db8233"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "73052371-d841-4dd6-bf03-1d215abbd642",
-          "name": "NGINX Return Statistics of a Resolver Zone",
-          "request": {
-            "name": "NGINX Return Statistics of a Resolver Zone",
-            "description": {
-              "content": "Returns statistics stored in a particular resolver [zone](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver_status_zone).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "resolvers",
-                ":resolverZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the resolver zone will be output (requests, responses, or both).",
-                    "type": "text/plain"
-                  },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "resolverZoneName",
-                  "description": "(Required) The name of a resolver zone."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b9a15b64-c3b8-4b83-be99-f36d5d3d13e0",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "resolvers",
-                    ":resolverZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "resolverZoneName",
-                      "description": "(Required) The name of a resolver zone."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c8b2062d-872f-4e88-9084-d532cdfe16d4",
-              "name": "Resolver zone not found (*ResolverZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "resolvers",
-                    ":resolverZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "resolverZoneName",
-                      "description": "(Required) The name of a resolver zone."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ab2bb347-b068-4f50-9d57-b05bf9b31b0a",
-          "name": "NGINX Reset Statistics for a Resolver Zone",
-          "request": {
-            "name": "NGINX Reset Statistics for a Resolver Zone",
-            "description": {
-              "content": "Resets statistics in a particular resolver zone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "resolvers",
-                ":resolverZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "resolverZoneName",
-                  "description": "(Required) The name of a resolver zone."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "4aca6a34-a1ea-4d92-8e8d-535deb9f80c4",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "resolvers",
-                    ":resolverZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "resolverZoneName",
-                      "description": "(Required) The name of a resolver zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "990479c9-7071-44dd-af67-a0fe513e6a1c",
-              "name": "Resolver zone not found (*ResolverZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "resolvers",
-                    ":resolverZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "resolverZoneName",
-                      "description": "(Required) The name of a resolver zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2ac6a9cf-8c28-4bcf-aad8-6f73330af863",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "resolvers",
-                    ":resolverZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "resolverZoneName",
-                      "description": "(Required) The name of a resolver zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:51:23.000Z",
+          "updatedAt": "2026-10-21T20:51:23.000Z",
+          "uid": "35240-e0b56cad-d154-4748-8019-867b492717c0"
         }
       ],
-      "event": []
+      "id": "793407ea-762e-4546-8c8f-02358e972676",
+      "createdAt": "2026-10-21T20:51:23.000Z",
+      "updatedAt": "2026-10-21T20:51:23.000Z",
+      "uid": "35240-793407ea-762e-4546-8c8f-02358e972676"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "8e4fe1bc-5af3-48ca-b4e2-1970e22390e1",
-    "name": "NGINX njs Scripting Connections Resolvers API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

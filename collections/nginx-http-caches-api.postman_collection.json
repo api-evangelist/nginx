@@ -1,436 +1,492 @@
 {
+  "info": {
+    "_postman_id": "fee3b53b-94c5-4699-91a6-d1c8b5693fba",
+    "name": "NGINX Plus REST HTTP Caches API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:50:04.000Z",
+    "updatedAt": "2026-10-21T20:50:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fee3b53b-94c5-4699-91a6-d1c8b5693fba"
+  },
   "item": [
     {
-      "id": "78e580c1-5171-4940-aba3-bb1443158d42",
-      "name": "HTTP Caches",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "http",
       "item": [
         {
-          "id": "e9569f8c-8f3f-46c0-bd7c-fd79e7bb7125",
-          "name": "NGINX Return Status of All Caches",
-          "request": {
-            "name": "NGINX Return Status of All Caches",
-            "description": {
-              "content": "Returns status of each cache configured by [proxy_cache_path](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path) and other “<literal>*_cache_path</literal>” directives.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "caches",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "caches",
+          "item": [
+            {
+              "name": "{httpCacheZoneName}",
+              "item": [
                 {
-                  "description": {
-                    "content": "Limits which fields of cache zones will be output. If the “<literal>fields</literal>” value is empty, then only names of cache zones will be output.",
-                    "type": "text/plain"
+                  "name": "NGINX Return Status of a Cache",
+                  "id": "692a8129-79e1-4cfa-8b13-8eb88c7eaefb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "fields",
-                  "value": ""
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/caches/:httpCacheZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "caches",
+                        ":httpCacheZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the cache zone will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "9b387859-c4f2-43f5-9f33-0d07a0df2e12",
+                          "key": "httpCacheZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of the cache zone."
+                        }
+                      ]
+                    },
+                    "description": "Returns status of a particular cache."
+                  },
+                  "response": [
+                    {
+                      "id": "2e32dedd-f033-400b-b82e-035756cda803",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/caches/:httpCacheZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "caches",
+                            ":httpCacheZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the cache zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpCacheZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"size\": \"<integer>\",\n  \"max_size\": \"<integer>\",\n  \"cold\": \"<boolean>\",\n  \"hit\": {\n    \"responses\": \"<integer>\",\n    \"bytes\": \"<integer>\"\n  },\n  \"stale\": {\n    \"responses\": \"<integer>\",\n    \"bytes\": \"<integer>\"\n  },\n  \"updating\": {\n    \"responses\": \"<integer>\",\n    \"bytes\": \"<integer>\"\n  },\n  \"revalidated\": {\n    \"responses\": \"<integer>\",\n    \"bytes\": \"<integer>\"\n  },\n  \"miss\": {\n    \"responses\": \"<integer>\",\n    \"bytes\": \"<integer>\",\n    \"responses_written\": \"<integer>\",\n    \"bytes_written\": \"<integer>\"\n  },\n  \"expired\": {\n    \"responses\": \"<integer>\",\n    \"bytes\": \"<integer>\",\n    \"responses_written\": \"<integer>\",\n    \"bytes_written\": \"<integer>\"\n  },\n  \"bypass\": {\n    \"responses\": \"<integer>\",\n    \"bytes\": \"<integer>\",\n    \"responses_written\": \"<integer>\",\n    \"bytes_written\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:50:04.000Z",
+                      "updatedAt": "2026-10-21T20:50:04.000Z",
+                      "uid": "35240-2e32dedd-f033-400b-b82e-035756cda803"
+                    },
+                    {
+                      "id": "61380be0-2bd6-43c6-a5a1-3307b9428825",
+                      "name": "Cache not found (*CacheNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/caches/:httpCacheZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "caches",
+                            ":httpCacheZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the cache zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpCacheZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:04.000Z",
+                      "updatedAt": "2026-10-21T20:50:04.000Z",
+                      "uid": "35240-61380be0-2bd6-43c6-a5a1-3307b9428825"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:50:04.000Z",
+                  "updatedAt": "2026-10-21T20:50:04.000Z",
+                  "uid": "35240-692a8129-79e1-4cfa-8b13-8eb88c7eaefb"
+                },
+                {
+                  "name": "NGINX Reset Cache Statistics",
+                  "id": "69e43316-9a62-4a26-9d28-6709e2a86da8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "caches",
+                        ":httpCacheZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a2c6db4f-89aa-4b9d-b47e-18e2148479b3",
+                          "key": "httpCacheZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of the cache zone."
+                        }
+                      ]
+                    },
+                    "description": "Resets statistics of cache hits/misses in a particular cache zone."
+                  },
+                  "response": [
+                    {
+                      "id": "6fd33d52-e50f-4799-87d8-0677a36aa7cb",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "caches",
+                            ":httpCacheZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpCacheZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:50:04.000Z",
+                      "updatedAt": "2026-10-21T20:50:04.000Z",
+                      "uid": "35240-6fd33d52-e50f-4799-87d8-0677a36aa7cb"
+                    },
+                    {
+                      "id": "2b9f42db-ab8f-4e2c-8ec7-cb4b80f0cfb9",
+                      "name": "Cache not found (*CacheNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "caches",
+                            ":httpCacheZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpCacheZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:04.000Z",
+                      "updatedAt": "2026-10-21T20:50:04.000Z",
+                      "uid": "35240-2b9f42db-ab8f-4e2c-8ec7-cb4b80f0cfb9"
+                    },
+                    {
+                      "id": "dcc07e18-3f3e-4db2-a8cd-0d05749b4baa",
+                      "name": "Method disabled (*MethodDisabled*)",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/caches/:httpCacheZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "caches",
+                            ":httpCacheZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpCacheZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:50:04.000Z",
+                      "updatedAt": "2026-10-21T20:50:04.000Z",
+                      "uid": "35240-dcc07e18-3f3e-4db2-a8cd-0d05749b4baa"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:50:04.000Z",
+                  "updatedAt": "2026-10-21T20:50:04.000Z",
+                  "uid": "35240-69e43316-9a62-4a26-9d28-6709e2a86da8"
                 }
               ],
-              "variable": []
+              "id": "52be3269-5855-44dd-be0c-716ebdfc3bb2",
+              "createdAt": "2026-10-21T20:50:04.000Z",
+              "updatedAt": "2026-10-21T20:50:04.000Z",
+              "uid": "35240-52be3269-5855-44dd-be0c-716ebdfc3bb2"
             },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "3073aa4c-a1e1-4466-b273-b63f40d1ff0f",
-              "name": "Success",
-              "originalRequest": {
+              "name": "NGINX Return Status of All Caches",
+              "id": "42982a78-fe86-469e-b349-b91d879aac66",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/http/caches/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "http",
                     "caches",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of cache zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only names of cache zones will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "method": "GET",
-                "body": {}
+                "description": "Returns status of each cache configured by proxy_cache_path and other \u201c*_cache_path\u201d directives."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "96ecc935-aecd-4758-863e-e69d6d80f8b8",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "caches",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
+                  "id": "874268f4-6bda-4b2f-ac71-1b03557978b6",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/caches/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "caches",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of cache zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only names of cache zones will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1812ad43-cf7b-4e56-a160-b81658aff620",
-          "name": "NGINX Return Status of a Cache",
-          "request": {
-            "name": "NGINX Return Status of a Cache",
-            "description": {
-              "content": "Returns status of a particular cache.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "caches",
-                ":httpCacheZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the cache zone will be output.",
-                    "type": "text/plain"
                   },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpCacheZoneName",
-                  "description": "(Required) The name of the cache zone."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "97305770-5f7e-431c-9b0f-4fbe6f84e855",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "caches",
-                    ":httpCacheZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpCacheZoneName",
-                      "description": "(Required) The name of the cache zone."
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sitfd\": {\n    \"size\": \"<integer>\",\n    \"max_size\": \"<integer>\",\n    \"cold\": \"<boolean>\",\n    \"hit\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"stale\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"updating\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"revalidated\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"miss\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\",\n      \"responses_written\": \"<integer>\",\n      \"bytes_written\": \"<integer>\"\n    },\n    \"expired\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\",\n      \"responses_written\": \"<integer>\",\n      \"bytes_written\": \"<integer>\"\n    },\n    \"bypass\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\",\n      \"responses_written\": \"<integer>\",\n      \"bytes_written\": \"<integer>\"\n    }\n  },\n  \"culpa4\": {\n    \"size\": \"<integer>\",\n    \"max_size\": \"<integer>\",\n    \"cold\": \"<boolean>\",\n    \"hit\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"stale\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"updating\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"revalidated\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\"\n    },\n    \"miss\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\",\n      \"responses_written\": \"<integer>\",\n      \"bytes_written\": \"<integer>\"\n    },\n    \"expired\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\",\n      \"responses_written\": \"<integer>\",\n      \"bytes_written\": \"<integer>\"\n    },\n    \"bypass\": {\n      \"responses\": \"<integer>\",\n      \"bytes\": \"<integer>\",\n      \"responses_written\": \"<integer>\",\n      \"bytes_written\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:50:04.000Z",
+                  "updatedAt": "2026-10-21T20:50:04.000Z",
+                  "uid": "35240-874268f4-6bda-4b2f-ac71-1b03557978b6"
                 },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3606dd07-dc5c-4921-8a7d-f6f6c0511fed",
-              "name": "Cache not found (*CacheNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "caches",
-                    ":httpCacheZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "65bb38d7-8f9c-4720-9531-d0ff7e45e18b",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/caches/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "caches",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of cache zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only names of cache zones will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpCacheZoneName",
-                      "description": "(Required) The name of the cache zone."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:50:04.000Z",
+                  "updatedAt": "2026-10-21T20:50:04.000Z",
+                  "uid": "35240-65bb38d7-8f9c-4720-9531-d0ff7e45e18b"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:50:04.000Z",
+              "updatedAt": "2026-10-21T20:50:04.000Z",
+              "uid": "35240-42982a78-fe86-469e-b349-b91d879aac66"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f3c15cb6-a965-40df-8af8-9fac036eb622",
-          "name": "NGINX Reset Cache Statistics",
-          "request": {
-            "name": "NGINX Reset Cache Statistics",
-            "description": {
-              "content": "Resets statistics of cache hits/misses in a particular cache zone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "caches",
-                ":httpCacheZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpCacheZoneName",
-                  "description": "(Required) The name of the cache zone."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "81bed0f2-a3e3-4682-9387-7262e9effa19",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "caches",
-                    ":httpCacheZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpCacheZoneName",
-                      "description": "(Required) The name of the cache zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "de784162-8ab8-4edb-bc5d-6b644a4ec649",
-              "name": "Cache not found (*CacheNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "caches",
-                    ":httpCacheZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpCacheZoneName",
-                      "description": "(Required) The name of the cache zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "557f4d3b-5a36-426b-b821-a6b476e1726e",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "caches",
-                    ":httpCacheZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpCacheZoneName",
-                      "description": "(Required) The name of the cache zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e3b090c0-2fc6-4e16-ae4c-8561b0ed8d5b",
+          "createdAt": "2026-10-21T20:50:04.000Z",
+          "updatedAt": "2026-10-21T20:50:04.000Z",
+          "uid": "35240-e3b090c0-2fc6-4e16-ae4c-8561b0ed8d5b"
         }
       ],
-      "event": []
+      "id": "1db6d571-dfda-46f1-a72b-1381f790961f",
+      "createdAt": "2026-10-21T20:50:04.000Z",
+      "updatedAt": "2026-10-21T20:50:04.000Z",
+      "uid": "35240-1db6d571-dfda-46f1-a72b-1381f790961f"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "83c462e3-799c-4a9c-a2c7-60fd770bb5d9",
-    "name": "NGINX njs Scripting Connections HTTP Caches API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

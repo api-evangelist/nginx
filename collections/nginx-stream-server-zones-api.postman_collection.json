@@ -1,436 +1,492 @@
 {
+  "info": {
+    "_postman_id": "c3ddeb58-0e08-4ebd-aba1-09c90234dc9d",
+    "name": "NGINX Plus REST Stream Server Zones API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:52:05.000Z",
+    "updatedAt": "2026-10-21T20:52:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c3ddeb58-0e08-4ebd-aba1-09c90234dc9d"
+  },
   "item": [
     {
-      "id": "7668f2a5-fd08-4b03-a5e0-4c48ca248e08",
-      "name": "Stream Server Zones",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "stream",
       "item": [
         {
-          "id": "b3099c5a-738b-4282-8e01-9340eaba651c",
-          "name": "NGINX Return Status of All Stream Server Zones",
-          "request": {
-            "name": "NGINX Return Status of All Stream Server Zones",
-            "description": {
-              "content": "Returns status information for each stream [server zone](https://nginx.org/en/docs/http/ngx_http_api_module.html#status_zone).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stream",
-                "server_zones",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "server_zones",
+          "item": [
+            {
+              "name": "{streamServerZoneName}",
+              "item": [
                 {
-                  "description": {
-                    "content": "Limits which fields of server zones will be output. If the “<literal>fields</literal>” value is empty, then only server zone names will be output.",
-                    "type": "text/plain"
+                  "name": "NGINX Return Status of a Stream Server Zone",
+                  "id": "f42b9c6a-99cd-484b-a155-552401ab81a4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "fields",
-                  "value": ""
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/server_zones/:streamServerZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "server_zones",
+                        ":streamServerZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the server zone will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "993d11b5-7359-4f8f-a9cf-a1bfc044fbd9",
+                          "key": "streamServerZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of a stream server zone."
+                        }
+                      ]
+                    },
+                    "description": "Returns status of a particular stream server zone."
+                  },
+                  "response": [
+                    {
+                      "id": "109736eb-4093-4737-abb1-cc3143618c41",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/server_zones/:streamServerZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "server_zones",
+                            ":streamServerZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the server zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"processing\": \"<integer>\",\n  \"connections\": \"<integer>\",\n  \"sessions\": {\n    \"2xx\": \"<integer>\",\n    \"4xx\": \"<integer>\",\n    \"5xx\": \"<integer>\",\n    \"total\": \"<integer>\"\n  },\n  \"discarded\": \"<integer>\",\n  \"received\": \"<integer>\",\n  \"sent\": \"<integer>\",\n  \"ssl\": {\n    \"handshakes\": \"<integer>\",\n    \"handshakes_failed\": \"<integer>\",\n    \"session_reuses\": \"<integer>\",\n    \"no_common_protocol\": \"<integer>\",\n    \"no_common_cipher\": \"<integer>\",\n    \"handshake_timeout\": \"<integer>\",\n    \"peer_rejected_cert\": \"<integer>\",\n    \"verify_failures\": {\n      \"no_cert\": \"<integer>\",\n      \"expired_cert\": \"<integer>\",\n      \"revoked_cert\": \"<integer>\",\n      \"other\": \"<integer>\"\n    }\n  }\n}",
+                      "createdAt": "2026-10-21T20:52:06.000Z",
+                      "updatedAt": "2026-10-21T20:52:06.000Z",
+                      "uid": "35240-109736eb-4093-4737-abb1-cc3143618c41"
+                    },
+                    {
+                      "id": "3c804a22-bede-485c-9eca-550d09f35947",
+                      "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/server_zones/:streamServerZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "server_zones",
+                            ":streamServerZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the server zone will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:52:06.000Z",
+                      "updatedAt": "2026-10-21T20:52:06.000Z",
+                      "uid": "35240-3c804a22-bede-485c-9eca-550d09f35947"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:52:06.000Z",
+                  "updatedAt": "2026-10-21T20:52:06.000Z",
+                  "uid": "35240-f42b9c6a-99cd-484b-a155-552401ab81a4"
+                },
+                {
+                  "name": "NGINX Reset Statistics for a Stream Server Zone",
+                  "id": "e3ed2502-0c9c-46da-91e6-1fb6ee294edf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "server_zones",
+                        ":streamServerZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "261a0164-85d2-40da-9e9a-06db242317f3",
+                          "key": "streamServerZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of a stream server zone."
+                        }
+                      ]
+                    },
+                    "description": "Resets statistics of accepted and discarded connections, sessions, received and sent bytes, counters of SSL handshakes and session reuses in a particular stream server zone."
+                  },
+                  "response": [
+                    {
+                      "id": "e3f73a00-2109-43dd-8185-946cd73ce1d2",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "server_zones",
+                            ":streamServerZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:52:06.000Z",
+                      "updatedAt": "2026-10-21T20:52:06.000Z",
+                      "uid": "35240-e3f73a00-2109-43dd-8185-946cd73ce1d2"
+                    },
+                    {
+                      "id": "e1be4736-4957-4901-b9ce-cd3db1b6f9be",
+                      "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "server_zones",
+                            ":streamServerZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:52:06.000Z",
+                      "updatedAt": "2026-10-21T20:52:06.000Z",
+                      "uid": "35240-e1be4736-4957-4901-b9ce-cd3db1b6f9be"
+                    },
+                    {
+                      "id": "95a4f68b-342d-49e9-a35c-d153040582d3",
+                      "name": "Method disabled (*MethodDisabled*)",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/server_zones/:streamServerZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "server_zones",
+                            ":streamServerZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamServerZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:52:06.000Z",
+                      "updatedAt": "2026-10-21T20:52:06.000Z",
+                      "uid": "35240-95a4f68b-342d-49e9-a35c-d153040582d3"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:52:06.000Z",
+                  "updatedAt": "2026-10-21T20:52:06.000Z",
+                  "uid": "35240-e3ed2502-0c9c-46da-91e6-1fb6ee294edf"
                 }
               ],
-              "variable": []
+              "id": "7c440614-adab-403f-8749-51b064ddf177",
+              "createdAt": "2026-10-21T20:52:06.000Z",
+              "updatedAt": "2026-10-21T20:52:06.000Z",
+              "uid": "35240-7c440614-adab-403f-8749-51b064ddf177"
             },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "9ccb16d3-40a6-42cb-bfb8-c2d62684bf39",
-              "name": "Success",
-              "originalRequest": {
+              "name": "NGINX Return Status of All Stream Server Zones",
+              "id": "b02cdbbb-f4a2-4c43-922a-e32b2b409d7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/stream/server_zones/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "stream",
                     "server_zones",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of server zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only server zone names will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "method": "GET",
-                "body": {}
+                "description": "Returns status information for each stream server zone."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6a667a2c-f925-4ca9-8d45-db4a12660a9a",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "server_zones",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
+                  "id": "9cc83aa3-6410-447d-b364-06be9ac008fa",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/server_zones/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "server_zones",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of server zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only server zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "df04686a-032a-4e3d-b46e-84e9d641b53e",
-          "name": "NGINX Return Status of a Stream Server Zone",
-          "request": {
-            "name": "NGINX Return Status of a Stream Server Zone",
-            "description": {
-              "content": "Returns status of a particular stream server zone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stream",
-                "server_zones",
-                ":streamServerZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the server zone will be output.",
-                    "type": "text/plain"
                   },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "streamServerZoneName",
-                  "description": "(Required) The name of a stream server zone."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c3bc0dba-96f7-4a31-8386-8ffe6994d57c",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "server_zones",
-                    ":streamServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamServerZoneName",
-                      "description": "(Required) The name of a stream server zone."
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"anim_76d\": {\n    \"processing\": \"<integer>\",\n    \"connections\": \"<integer>\",\n    \"sessions\": {\n      \"2xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\",\n    \"ssl\": {\n      \"handshakes\": \"<integer>\",\n      \"handshakes_failed\": \"<integer>\",\n      \"session_reuses\": \"<integer>\",\n      \"no_common_protocol\": \"<integer>\",\n      \"no_common_cipher\": \"<integer>\",\n      \"handshake_timeout\": \"<integer>\",\n      \"peer_rejected_cert\": \"<integer>\",\n      \"verify_failures\": {\n        \"no_cert\": \"<integer>\",\n        \"expired_cert\": \"<integer>\",\n        \"revoked_cert\": \"<integer>\",\n        \"other\": \"<integer>\"\n      }\n    }\n  },\n  \"ut_\": {\n    \"processing\": \"<integer>\",\n    \"connections\": \"<integer>\",\n    \"sessions\": {\n      \"2xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\",\n    \"ssl\": {\n      \"handshakes\": \"<integer>\",\n      \"handshakes_failed\": \"<integer>\",\n      \"session_reuses\": \"<integer>\",\n      \"no_common_protocol\": \"<integer>\",\n      \"no_common_cipher\": \"<integer>\",\n      \"handshake_timeout\": \"<integer>\",\n      \"peer_rejected_cert\": \"<integer>\",\n      \"verify_failures\": {\n        \"no_cert\": \"<integer>\",\n        \"expired_cert\": \"<integer>\",\n        \"revoked_cert\": \"<integer>\",\n        \"other\": \"<integer>\"\n      }\n    }\n  },\n  \"nostrud_2_7\": {\n    \"processing\": \"<integer>\",\n    \"connections\": \"<integer>\",\n    \"sessions\": {\n      \"2xx\": \"<integer>\",\n      \"4xx\": \"<integer>\",\n      \"5xx\": \"<integer>\",\n      \"total\": \"<integer>\"\n    },\n    \"discarded\": \"<integer>\",\n    \"received\": \"<integer>\",\n    \"sent\": \"<integer>\",\n    \"ssl\": {\n      \"handshakes\": \"<integer>\",\n      \"handshakes_failed\": \"<integer>\",\n      \"session_reuses\": \"<integer>\",\n      \"no_common_protocol\": \"<integer>\",\n      \"no_common_cipher\": \"<integer>\",\n      \"handshake_timeout\": \"<integer>\",\n      \"peer_rejected_cert\": \"<integer>\",\n      \"verify_failures\": {\n        \"no_cert\": \"<integer>\",\n        \"expired_cert\": \"<integer>\",\n        \"revoked_cert\": \"<integer>\",\n        \"other\": \"<integer>\"\n      }\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:52:06.000Z",
+                  "updatedAt": "2026-10-21T20:52:06.000Z",
+                  "uid": "35240-9cc83aa3-6410-447d-b364-06be9ac008fa"
                 },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "48f827c5-5a86-48df-a6fd-6c110e0fc26a",
-              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "server_zones",
-                    ":streamServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "ce3f3257-e16b-4bda-af20-e1314778b954",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/server_zones/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "server_zones",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of server zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only server zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamServerZoneName",
-                      "description": "(Required) The name of a stream server zone."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:52:06.000Z",
+                  "updatedAt": "2026-10-21T20:52:06.000Z",
+                  "uid": "35240-ce3f3257-e16b-4bda-af20-e1314778b954"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:52:06.000Z",
+              "updatedAt": "2026-10-21T20:52:06.000Z",
+              "uid": "35240-b02cdbbb-f4a2-4c43-922a-e32b2b409d7b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c0de2ff8-acf1-4cfa-b528-497349f1cdca",
-          "name": "NGINX Reset Statistics for a Stream Server Zone",
-          "request": {
-            "name": "NGINX Reset Statistics for a Stream Server Zone",
-            "description": {
-              "content": "Resets statistics of accepted and discarded connections, sessions, received and sent bytes, counters of SSL handshakes and session reuses in a particular stream server zone.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stream",
-                "server_zones",
-                ":streamServerZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "streamServerZoneName",
-                  "description": "(Required) The name of a stream server zone."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "27c19bef-9378-446e-aafc-8fcac9639b78",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "server_zones",
-                    ":streamServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamServerZoneName",
-                      "description": "(Required) The name of a stream server zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "471fe6f6-9e64-4eb7-ba43-659d1d669ae8",
-              "name": "Server zone not found (*ServerZoneNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "server_zones",
-                    ":streamServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamServerZoneName",
-                      "description": "(Required) The name of a stream server zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1317ed49-083c-41fc-ab62-61663d6c52f8",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "server_zones",
-                    ":streamServerZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamServerZoneName",
-                      "description": "(Required) The name of a stream server zone."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d890c89d-dae7-46a6-8bd0-4dec103801a8",
+          "createdAt": "2026-10-21T20:52:06.000Z",
+          "updatedAt": "2026-10-21T20:52:06.000Z",
+          "uid": "35240-d890c89d-dae7-46a6-8bd0-4dec103801a8"
         }
       ],
-      "event": []
+      "id": "9ab5f1b9-9ccb-4ca2-bcec-1e1d48b1c886",
+      "createdAt": "2026-10-21T20:52:06.000Z",
+      "updatedAt": "2026-10-21T20:52:06.000Z",
+      "uid": "35240-9ab5f1b9-9ccb-4ca2-bcec-1e1d48b1c886"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "2a6a718d-df29-4cb6-9270-54b6d07b3a5d",
-    "name": "NGINX njs Scripting Connections Stream Server Zones API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

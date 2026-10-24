@@ -1,1699 +1,2031 @@
 {
+  "info": {
+    "_postman_id": "70de8bcb-70f1-4c28-90ea-08855b458593",
+    "name": "NGINX Plus REST HTTP Upstreams API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:51:03.000Z",
+    "updatedAt": "2026-10-21T20:51:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-70de8bcb-70f1-4c28-90ea-08855b458593"
+  },
   "item": [
     {
-      "id": "e020e08f-a4ef-455c-8ade-37b74615526e",
-      "name": "HTTP Upstreams",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "http",
       "item": [
         {
-          "id": "33f4735f-de00-49d1-9ad0-853af9b4d9f4",
-          "name": "NGINX Return Status of All HTTP Upstream Server Groups",
-          "request": {
-            "name": "NGINX Return Status of All HTTP Upstream Server Groups",
-            "description": {
-              "content": "Returns status of each HTTP upstream server group and its servers.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "upstreams",
+          "item": [
+            {
+              "name": "{httpUpstreamName}",
+              "item": [
                 {
-                  "description": {
-                    "content": "Limits which fields of upstream server groups will be output. If the “<literal>fields</literal>” value is empty, only names of upstreams will be output.",
-                    "type": "text/plain"
+                  "name": "servers",
+                  "item": [
+                    {
+                      "name": "{httpUpstreamServerId}",
+                      "item": [
+                        {
+                          "name": "NGINX Return Configuration of a Server in an HTTP Upstream Server Group",
+                          "id": "ae51c132-7a87-447e-8b2a-2183c6c95f47",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ":httpUpstreamServerId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e4e1959d-995a-45e3-9532-450d9ddbaaa2",
+                                  "key": "httpUpstreamName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the upstream server group."
+                                },
+                                {
+                                  "id": "2370cc17-f383-45da-beac-b5ba7f452b35",
+                                  "key": "httpUpstreamServerId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the server."
+                                }
+                              ]
+                            },
+                            "description": "Returns configuration of a particular server in the HTTP upstream server group."
+                          },
+                          "response": [
+                            {
+                              "id": "b2395399-b199-4c3b-85b5-ab0f0cfc8c67",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-b2395399-b199-4c3b-85b5-ab0f0cfc8c67"
+                            },
+                            {
+                              "id": "cb678e15-5dd2-4a6c-9688-a6c6ebb61112",
+                              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*)\n",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-cb678e15-5dd2-4a6c-9688-a6c6ebb61112"
+                            },
+                            {
+                              "id": "c0a10d06-7301-4f64-ac0f-e1f35a980b6d",
+                              "name": "Server with ID \u201c**id**\u201d does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-c0a10d06-7301-4f64-ac0f-e1f35a980b6d"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-ae51c132-7a87-447e-8b2a-2183c6c95f47"
+                        },
+                        {
+                          "name": "NGINX Modify a Server in an HTTP Upstream Server Group",
+                          "id": "ec505bd5-f1dd-4394-852f-408d47aa9e43",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ":httpUpstreamServerId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7039d836-aa78-41d9-8ae6-be26951f2719",
+                                  "key": "httpUpstreamName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the upstream server group."
+                                },
+                                {
+                                  "id": "028e68af-1f98-42e4-ad61-bf3bbb4e43d1",
+                                  "key": "httpUpstreamServerId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the server."
+                                }
+                              ]
+                            },
+                            "description": "Modifies settings of a particular server in an HTTP upstream server group. Server parameters are specified in the JSON format."
+                          },
+                          "response": [
+                            {
+                              "id": "98e8ce0f-1464-439a-bd1a-919315c09b16",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-98e8ce0f-1464-439a-bd1a-919315c09b16"
+                            },
+                            {
+                              "id": "698d1fca-66c4-437f-b5d9-e18f9e18554b",
+                              "name": "Upstream is static (*UpstreamStatic*),\ninvalid \u201c**parameter**\u201d value (*UpstreamConfFormatError*),\nunknown parameter \u201c**name**\u201d (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormatError*),\n\u201c*error*\u201d while parsing (*UpstreamBadAddress*),\n",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-698d1fca-66c4-437f-b5d9-e18f9e18554b"
+                            },
+                            {
+                              "id": "fa0bb8dd-314a-4ff5-85b3-8de8b63d1cbc",
+                              "name": "Server with ID \u201c**id**\u201d does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-fa0bb8dd-314a-4ff5-85b3-8de8b63d1cbc"
+                            },
+                            {
+                              "id": "0e7b6d2b-ef9a-41e5-b0a4-3fe27bf7a57f",
+                              "name": "Method disabled (*MethodDisabled*)",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Method Not Allowed",
+                              "code": 405,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-0e7b6d2b-ef9a-41e5-b0a4-3fe27bf7a57f"
+                            },
+                            {
+                              "id": "24a34356-8e87-44b8-8c35-80c4696983c7",
+                              "name": "JSON error (*JsonError*)",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unsupported Media Type",
+                              "code": 415,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-24a34356-8e87-44b8-8c35-80c4696983c7"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-ec505bd5-f1dd-4394-852f-408d47aa9e43"
+                        },
+                        {
+                          "name": "NGINX Remove a Server from an HTTP Upstream Server Group",
+                          "id": "cd021773-bc73-4880-8d77-d688abe8293b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ":httpUpstreamServerId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d29f0c9c-914c-4413-8b60-d3d92ad93549",
+                                  "key": "httpUpstreamName",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the upstream server group."
+                                },
+                                {
+                                  "id": "e50ff11b-8123-4431-8570-9d3017ade759",
+                                  "key": "httpUpstreamServerId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the server."
+                                }
+                              ]
+                            },
+                            "description": "Removes a server from an HTTP upstream server group."
+                          },
+                          "response": [
+                            {
+                              "id": "8aa2fa09-4a66-4d69-b896-4c08af35d34d",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"server\": \"<string>\",\n    \"service\": \"<string>\",\n    \"weight\": \"<integer>\",\n    \"max_conns\": \"<integer>\",\n    \"max_fails\": \"<integer>\",\n    \"fail_timeout\": \"<string>\",\n    \"slow_start\": \"<string>\",\n    \"route\": \"<string>\",\n    \"backup\": \"<boolean>\",\n    \"down\": \"<boolean>\",\n    \"drain\": \"<boolean>\",\n    \"parent\": \"<string>\",\n    \"host\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"server\": \"<string>\",\n    \"service\": \"<string>\",\n    \"weight\": \"<integer>\",\n    \"max_conns\": \"<integer>\",\n    \"max_fails\": \"<integer>\",\n    \"fail_timeout\": \"<string>\",\n    \"slow_start\": \"<string>\",\n    \"route\": \"<string>\",\n    \"backup\": \"<boolean>\",\n    \"down\": \"<boolean>\",\n    \"drain\": \"<boolean>\",\n    \"parent\": \"<string>\",\n    \"host\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-8aa2fa09-4a66-4d69-b896-4c08af35d34d"
+                            },
+                            {
+                              "id": "0c60f441-c688-450c-8d05-b869a5391763",
+                              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*),\nserver \u201c**id**\u201d not removable (*UpstreamServerImmutable*)\n",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-0c60f441-c688-450c-8d05-b869a5391763"
+                            },
+                            {
+                              "id": "e4fce383-da6f-4089-bd2a-8189f548d5d6",
+                              "name": "Server with ID \u201c**id**\u201d does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-e4fce383-da6f-4089-bd2a-8189f548d5d6"
+                            },
+                            {
+                              "id": "d4b30bbf-1bf6-44c7-b85d-c1cfe92e88e5",
+                              "name": "Method disabled (*MethodDisabled*)",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/:httpUpstreamServerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "http",
+                                    "upstreams",
+                                    ":httpUpstreamName",
+                                    "servers",
+                                    ":httpUpstreamServerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "httpUpstreamName"
+                                    },
+                                    {
+                                      "key": "httpUpstreamServerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Method Not Allowed",
+                              "code": 405,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:51:04.000Z",
+                              "updatedAt": "2026-10-21T20:51:04.000Z",
+                              "uid": "35240-d4b30bbf-1bf6-44c7-b85d-c1cfe92e88e5"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-cd021773-bc73-4880-8d77-d688abe8293b"
+                        }
+                      ],
+                      "id": "47535356-a01f-4968-9c7a-479fd694e58a",
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-47535356-a01f-4968-9c7a-479fd694e58a"
+                    },
+                    {
+                      "name": "NGINX Return Configuration of All Servers in an HTTP Upstream Server Group",
+                      "id": "c2bd5720-d10b-47b2-a743-f4c14d69521a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            "servers",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "id": "b01188d2-b511-40f5-b993-dcaa8262a6c3",
+                              "key": "httpUpstreamName",
+                              "value": "<string>",
+                              "description": "(Required) The name of an upstream server group."
+                            }
+                          ]
+                        },
+                        "description": "Returns configuration of each server in a particular HTTP upstream server group."
+                      },
+                      "response": [
+                        {
+                          "id": "8e815898-e27a-495b-b225-45437348e3ab",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"server\": \"<string>\",\n    \"service\": \"<string>\",\n    \"weight\": \"<integer>\",\n    \"max_conns\": \"<integer>\",\n    \"max_fails\": \"<integer>\",\n    \"fail_timeout\": \"<string>\",\n    \"slow_start\": \"<string>\",\n    \"route\": \"<string>\",\n    \"backup\": \"<boolean>\",\n    \"down\": \"<boolean>\",\n    \"drain\": \"<boolean>\",\n    \"parent\": \"<string>\",\n    \"host\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"server\": \"<string>\",\n    \"service\": \"<string>\",\n    \"weight\": \"<integer>\",\n    \"max_conns\": \"<integer>\",\n    \"max_fails\": \"<integer>\",\n    \"fail_timeout\": \"<string>\",\n    \"slow_start\": \"<string>\",\n    \"route\": \"<string>\",\n    \"backup\": \"<boolean>\",\n    \"down\": \"<boolean>\",\n    \"drain\": \"<boolean>\",\n    \"parent\": \"<string>\",\n    \"host\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-8e815898-e27a-495b-b225-45437348e3ab"
+                        },
+                        {
+                          "id": "3e343874-a7e9-4e14-9153-0a43c9fed487",
+                          "name": "Upstream is static (*UpstreamStatic*)",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-3e343874-a7e9-4e14-9153-0a43c9fed487"
+                        },
+                        {
+                          "id": "084b9e8e-17f2-4d2a-9b66-aa7ca8821109",
+                          "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-084b9e8e-17f2-4d2a-9b66-aa7ca8821109"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-c2bd5720-d10b-47b2-a743-f4c14d69521a"
+                    },
+                    {
+                      "name": "NGINX Add a Server to an HTTP Upstream Server Group",
+                      "id": "e893b88c-fc08-4e67-b075-4b823666e749",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            "servers",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "id": "c67840e2-673a-4f8a-ba01-84725cf65de2",
+                              "key": "httpUpstreamName",
+                              "value": "<string>",
+                              "description": "(Required) The name of an upstream server group."
+                            }
+                          ]
+                        },
+                        "description": "Adds a new server to an HTTP upstream server group. Server parameters are specified in the JSON format."
+                      },
+                      "response": [
+                        {
+                          "id": "8909c054-3b5f-4cf9-8d73-7c4f1cfbfd0e",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-8909c054-3b5f-4cf9-8d73-7c4f1cfbfd0e"
+                        },
+                        {
+                          "id": "770b1db5-9952-4310-9221-10e3b78820b0",
+                          "name": "Upstream is static (*UpstreamStatic*),\ninvalid \u201c**parameter**\u201d value (*UpstreamConfFormatError*),\nmissing \u201c*server*\u201d argument (*UpstreamConfFormatError*),\nunknown parameter \u201c**name**\u201d (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormat",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-770b1db5-9952-4310-9221-10e3b78820b0"
+                        },
+                        {
+                          "id": "eda80ac7-67a1-42f0-bc59-a8869be56eea",
+                          "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-eda80ac7-67a1-42f0-bc59-a8869be56eea"
+                        },
+                        {
+                          "id": "0a9499c7-c7f0-4ba4-bc42-985a86db0c62",
+                          "name": "Method disabled (*MethodDisabled*)",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Method Not Allowed",
+                          "code": 405,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-0a9499c7-c7f0-4ba4-bc42-985a86db0c62"
+                        },
+                        {
+                          "id": "95511a10-9b52-46d1-b5b8-16d2679b082b",
+                          "name": "Entry exists (*EntryExists*)",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-95511a10-9b52-46d1-b5b8-16d2679b082b"
+                        },
+                        {
+                          "id": "f05a7db5-f5ed-4415-9357-bf68333b701f",
+                          "name": "JSON error (*JsonError*)",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<integer>\",\n  \"server\": \"<string>\",\n  \"service\": \"<string>\",\n  \"weight\": \"<integer>\",\n  \"max_conns\": \"<integer>\",\n  \"max_fails\": \"<integer>\",\n  \"fail_timeout\": \"<string>\",\n  \"slow_start\": \"<string>\",\n  \"route\": \"<string>\",\n  \"backup\": \"<boolean>\",\n  \"down\": \"<boolean>\",\n  \"drain\": \"<boolean>\",\n  \"parent\": \"<string>\",\n  \"host\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/servers/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "http",
+                                "upstreams",
+                                ":httpUpstreamName",
+                                "servers",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "httpUpstreamName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unsupported Media Type",
+                          "code": 415,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:51:04.000Z",
+                          "updatedAt": "2026-10-21T20:51:04.000Z",
+                          "uid": "35240-f05a7db5-f5ed-4415-9357-bf68333b701f"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-e893b88c-fc08-4e67-b075-4b823666e749"
+                    }
+                  ],
+                  "id": "12040c7c-04e7-426e-a1ab-6f7ea6eac7fd",
+                  "createdAt": "2026-10-21T20:51:04.000Z",
+                  "updatedAt": "2026-10-21T20:51:04.000Z",
+                  "uid": "35240-12040c7c-04e7-426e-a1ab-6f7ea6eac7fd"
+                },
+                {
+                  "name": "NGINX Return Status of an HTTP Upstream Server Group",
+                  "id": "932a64d4-a575-4920-a119-09b085cae86a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8b21c2f9-6661-4c98-9440-50b9085b3d8f",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bc139ab1-06c6-46ed-ba8c-2306bcb07ac3",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
-                    }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "46be88a4-d3e2-4d5c-ba88-88e1e8f69b4c",
-          "name": "NGINX Return Status of an HTTP Upstream Server Group",
-          "request": {
-            "name": "NGINX Return Status of an HTTP Upstream Server Group",
-            "description": {
-              "content": "Returns status of a particular HTTP upstream server group and its servers.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ":httpUpstreamName",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the upstream server group will be output.",
-                    "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "upstreams",
+                        ":httpUpstreamName",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the upstream server group will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "fc66f3ca-c72b-407d-a12d-4e106f9e671a",
+                          "key": "httpUpstreamName",
+                          "value": "<string>",
+                          "description": "(Required) The name of an HTTP upstream server group."
+                        }
+                      ]
+                    },
+                    "description": "Returns status of a particular HTTP upstream server group and its servers."
                   },
-                  "key": "fields",
-                  "value": ""
+                  "response": [
+                    {
+                      "id": "1f21d87f-ac19-4ee0-8ff9-f9bc50ab1d66",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the upstream server group will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpUpstreamName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"peers\": [\n    {\n      \"id\": \"<integer>\",\n      \"server\": \"<string>\",\n      \"service\": \"<string>\",\n      \"name\": \"<string>\",\n      \"backup\": \"<boolean>\",\n      \"weight\": \"<integer>\",\n      \"state\": \"unavail\",\n      \"active\": \"<integer>\",\n      \"ssl\": {\n        \"handshakes\": \"<integer>\",\n        \"handshakes_failed\": \"<integer>\",\n        \"session_reuses\": \"<integer>\",\n        \"no_common_protocol\": \"<integer>\",\n        \"handshake_timeout\": \"<integer>\",\n        \"peer_rejected_cert\": \"<integer>\",\n        \"verify_failures\": {\n          \"expired_cert\": \"<integer>\",\n          \"revoked_cert\": \"<integer>\",\n          \"hostname_mismatch\": \"<integer>\",\n          \"other\": \"<integer>\"\n        }\n      },\n      \"max_conns\": \"<integer>\",\n      \"requests\": \"<integer>\",\n      \"responses\": {\n        \"1xx\": \"<integer>\",\n        \"2xx\": \"<integer>\",\n        \"3xx\": \"<integer>\",\n        \"4xx\": \"<integer>\",\n        \"5xx\": \"<integer>\",\n        \"codes\": {\n          \"codeNumber\": \"<integer>\"\n        },\n        \"total\": \"<integer>\"\n      },\n      \"sent\": \"<integer>\",\n      \"received\": \"<integer>\",\n      \"fails\": \"<integer>\",\n      \"unavail\": \"<integer>\",\n      \"health_checks\": {\n        \"checks\": \"<integer>\",\n        \"fails\": \"<integer>\",\n        \"unhealthy\": \"<integer>\",\n        \"last_passed\": \"<boolean>\"\n      },\n      \"downtime\": \"<integer>\",\n      \"downstart\": \"<dateTime>\",\n      \"selected\": \"<dateTime>\",\n      \"header_time\": \"<integer>\",\n      \"response_time\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"server\": \"<string>\",\n      \"service\": \"<string>\",\n      \"name\": \"<string>\",\n      \"backup\": \"<boolean>\",\n      \"weight\": \"<integer>\",\n      \"state\": \"unavail\",\n      \"active\": \"<integer>\",\n      \"ssl\": {\n        \"handshakes\": \"<integer>\",\n        \"handshakes_failed\": \"<integer>\",\n        \"session_reuses\": \"<integer>\",\n        \"no_common_protocol\": \"<integer>\",\n        \"handshake_timeout\": \"<integer>\",\n        \"peer_rejected_cert\": \"<integer>\",\n        \"verify_failures\": {\n          \"expired_cert\": \"<integer>\",\n          \"revoked_cert\": \"<integer>\",\n          \"hostname_mismatch\": \"<integer>\",\n          \"other\": \"<integer>\"\n        }\n      },\n      \"max_conns\": \"<integer>\",\n      \"requests\": \"<integer>\",\n      \"responses\": {\n        \"1xx\": \"<integer>\",\n        \"2xx\": \"<integer>\",\n        \"3xx\": \"<integer>\",\n        \"4xx\": \"<integer>\",\n        \"5xx\": \"<integer>\",\n        \"codes\": {\n          \"codeNumber\": \"<integer>\"\n        },\n        \"total\": \"<integer>\"\n      },\n      \"sent\": \"<integer>\",\n      \"received\": \"<integer>\",\n      \"fails\": \"<integer>\",\n      \"unavail\": \"<integer>\",\n      \"health_checks\": {\n        \"checks\": \"<integer>\",\n        \"fails\": \"<integer>\",\n        \"unhealthy\": \"<integer>\",\n        \"last_passed\": \"<boolean>\"\n      },\n      \"downtime\": \"<integer>\",\n      \"downstart\": \"<dateTime>\",\n      \"selected\": \"<dateTime>\",\n      \"header_time\": \"<integer>\",\n      \"response_time\": \"<integer>\"\n    }\n  ],\n  \"keepalive\": \"<integer>\",\n  \"zombies\": \"<integer>\",\n  \"zone\": \"<string>\",\n  \"queue\": {\n    \"size\": \"<integer>\",\n    \"max_size\": \"<integer>\",\n    \"overflows\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-1f21d87f-ac19-4ee0-8ff9-f9bc50ab1d66"
+                    },
+                    {
+                      "id": "4a427ed0-380f-4350-9fa6-95ab4a83f0c9",
+                      "name": "Upstream is static (*UpstreamStatic*)",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the upstream server group will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpUpstreamName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-4a427ed0-380f-4350-9fa6-95ab4a83f0c9"
+                    },
+                    {
+                      "id": "757dd4de-01c9-4b1e-93ff-ff1db2b8ea9f",
+                      "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the upstream server group will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpUpstreamName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-757dd4de-01c9-4b1e-93ff-ff1db2b8ea9f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:51:04.000Z",
+                  "updatedAt": "2026-10-21T20:51:04.000Z",
+                  "uid": "35240-932a64d4-a575-4920-a119-09b085cae86a"
+                },
+                {
+                  "name": "NGINX Reset Statistics of an HTTP Upstream Server Group",
+                  "id": "0a1bc236-d711-475e-b349-557f475710a5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "upstreams",
+                        ":httpUpstreamName",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "107eb179-e263-4982-94e4-f5c335b7f3d4",
+                          "key": "httpUpstreamName",
+                          "value": "<string>",
+                          "description": "(Required) The name of an HTTP upstream server group."
+                        }
+                      ]
+                    },
+                    "description": "Resets the statistics for each upstream server in an upstream server group and queue statistics."
+                  },
+                  "response": [
+                    {
+                      "id": "4adccd2b-a624-4474-b5c0-51b79931ec08",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpUpstreamName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-4adccd2b-a624-4474-b5c0-51b79931ec08"
+                    },
+                    {
+                      "id": "55c6d54d-f039-4b30-b073-8ad5558b88f7",
+                      "name": "Upstream is static (*UpstreamStatic*)",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpUpstreamName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-55c6d54d-f039-4b30-b073-8ad5558b88f7"
+                    },
+                    {
+                      "id": "fbef9c20-6a70-4c6c-bd65-863d252b2ba6",
+                      "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpUpstreamName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-fbef9c20-6a70-4c6c-bd65-863d252b2ba6"
+                    },
+                    {
+                      "id": "08730e85-9e5f-440a-a6af-a21f114b2057",
+                      "name": "Method disabled (*MethodDisabled*)",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/http/upstreams/:httpUpstreamName/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "http",
+                            "upstreams",
+                            ":httpUpstreamName",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "httpUpstreamName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:51:04.000Z",
+                      "updatedAt": "2026-10-21T20:51:04.000Z",
+                      "uid": "35240-08730e85-9e5f-440a-a6af-a21f114b2057"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:51:04.000Z",
+                  "updatedAt": "2026-10-21T20:51:04.000Z",
+                  "uid": "35240-0a1bc236-d711-475e-b349-557f475710a5"
                 }
               ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamName",
-                  "description": "(Required) The name of an HTTP upstream server group."
-                }
-              ]
+              "id": "1ac54268-b5e2-47ad-9ccb-bd0acb95c742",
+              "createdAt": "2026-10-21T20:51:04.000Z",
+              "updatedAt": "2026-10-21T20:51:04.000Z",
+              "uid": "35240-1ac54268-b5e2-47ad-9ccb-bd0acb95c742"
             },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "fba46adf-8720-43cc-b738-a34ee761cda1",
-              "name": "Success",
-              "originalRequest": {
+              "name": "NGINX Return Status of All HTTP Upstream Server Groups",
+              "id": "26dc49dd-1a30-4c81-b733-af78acb49df0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/http/upstreams/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "http",
                     "upstreams",
-                    ":httpUpstreamName",
                     ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
                   ],
                   "query": [
                     {
+                      "description": "Limits which fields of upstream server groups will be output. If the \u201c<literal>fields</literal>\u201d value is empty, only names of upstreams will be output.",
                       "key": "fields",
-                      "value": ""
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an HTTP upstream server group."
+                      "value": "<string>"
                     }
                   ]
                 },
-                "method": "GET",
-                "body": {}
+                "description": "Returns status of each HTTP upstream server group and its servers."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b217f364-c028-4b26-8820-9d4b42981a05",
-              "name": "Upstream is static (*UpstreamStatic*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "aa24ff47-6747-4b08-ac3e-8ede446f03dd",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/upstreams/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "upstreams",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of upstream server groups will be output. If the \u201c<literal>fields</literal>\u201d value is empty, only names of upstreams will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an HTTP upstream server group."
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"occaecat_b30\": {\n    \"peers\": [\n      {\n        \"id\": \"<integer>\",\n        \"server\": \"<string>\",\n        \"service\": \"<string>\",\n        \"name\": \"<string>\",\n        \"backup\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"state\": \"unavail\",\n        \"active\": \"<integer>\",\n        \"ssl\": {\n          \"handshakes\": \"<integer>\",\n          \"handshakes_failed\": \"<integer>\",\n          \"session_reuses\": \"<integer>\",\n          \"no_common_protocol\": \"<integer>\",\n          \"handshake_timeout\": \"<integer>\",\n          \"peer_rejected_cert\": \"<integer>\",\n          \"verify_failures\": {\n            \"expired_cert\": \"<integer>\",\n            \"revoked_cert\": \"<integer>\",\n            \"hostname_mismatch\": \"<integer>\",\n            \"other\": \"<integer>\"\n          }\n        },\n        \"max_conns\": \"<integer>\",\n        \"requests\": \"<integer>\",\n        \"responses\": {\n          \"1xx\": \"<integer>\",\n          \"2xx\": \"<integer>\",\n          \"3xx\": \"<integer>\",\n          \"4xx\": \"<integer>\",\n          \"5xx\": \"<integer>\",\n          \"codes\": {\n            \"codeNumber\": \"<integer>\"\n          },\n          \"total\": \"<integer>\"\n        },\n        \"sent\": \"<integer>\",\n        \"received\": \"<integer>\",\n        \"fails\": \"<integer>\",\n        \"unavail\": \"<integer>\",\n        \"health_checks\": {\n          \"checks\": \"<integer>\",\n          \"fails\": \"<integer>\",\n          \"unhealthy\": \"<integer>\",\n          \"last_passed\": \"<boolean>\"\n        },\n        \"downtime\": \"<integer>\",\n        \"downstart\": \"<dateTime>\",\n        \"selected\": \"<dateTime>\",\n        \"header_time\": \"<integer>\",\n        \"response_time\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"server\": \"<string>\",\n        \"service\": \"<string>\",\n        \"name\": \"<string>\",\n        \"backup\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"state\": \"unavail\",\n        \"active\": \"<integer>\",\n        \"ssl\": {\n          \"handshakes\": \"<integer>\",\n          \"handshakes_failed\": \"<integer>\",\n          \"session_reuses\": \"<integer>\",\n          \"no_common_protocol\": \"<integer>\",\n          \"handshake_timeout\": \"<integer>\",\n          \"peer_rejected_cert\": \"<integer>\",\n          \"verify_failures\": {\n            \"expired_cert\": \"<integer>\",\n            \"revoked_cert\": \"<integer>\",\n            \"hostname_mismatch\": \"<integer>\",\n            \"other\": \"<integer>\"\n          }\n        },\n        \"max_conns\": \"<integer>\",\n        \"requests\": \"<integer>\",\n        \"responses\": {\n          \"1xx\": \"<integer>\",\n          \"2xx\": \"<integer>\",\n          \"3xx\": \"<integer>\",\n          \"4xx\": \"<integer>\",\n          \"5xx\": \"<integer>\",\n          \"codes\": {\n            \"codeNumber\": \"<integer>\"\n          },\n          \"total\": \"<integer>\"\n        },\n        \"sent\": \"<integer>\",\n        \"received\": \"<integer>\",\n        \"fails\": \"<integer>\",\n        \"unavail\": \"<integer>\",\n        \"health_checks\": {\n          \"checks\": \"<integer>\",\n          \"fails\": \"<integer>\",\n          \"unhealthy\": \"<integer>\",\n          \"last_passed\": \"<boolean>\"\n        },\n        \"downtime\": \"<integer>\",\n        \"downstart\": \"<dateTime>\",\n        \"selected\": \"<dateTime>\",\n        \"header_time\": \"<integer>\",\n        \"response_time\": \"<integer>\"\n      }\n    ],\n    \"keepalive\": \"<integer>\",\n    \"zombies\": \"<integer>\",\n    \"zone\": \"<string>\",\n    \"queue\": {\n      \"size\": \"<integer>\",\n      \"max_size\": \"<integer>\",\n      \"overflows\": \"<integer>\"\n    }\n  },\n  \"ametbd\": {\n    \"peers\": [\n      {\n        \"id\": \"<integer>\",\n        \"server\": \"<string>\",\n        \"service\": \"<string>\",\n        \"name\": \"<string>\",\n        \"backup\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"state\": \"checking\",\n        \"active\": \"<integer>\",\n        \"ssl\": {\n          \"handshakes\": \"<integer>\",\n          \"handshakes_failed\": \"<integer>\",\n          \"session_reuses\": \"<integer>\",\n          \"no_common_protocol\": \"<integer>\",\n          \"handshake_timeout\": \"<integer>\",\n          \"peer_rejected_cert\": \"<integer>\",\n          \"verify_failures\": {\n            \"expired_cert\": \"<integer>\",\n            \"revoked_cert\": \"<integer>\",\n            \"hostname_mismatch\": \"<integer>\",\n            \"other\": \"<integer>\"\n          }\n        },\n        \"max_conns\": \"<integer>\",\n        \"requests\": \"<integer>\",\n        \"responses\": {\n          \"1xx\": \"<integer>\",\n          \"2xx\": \"<integer>\",\n          \"3xx\": \"<integer>\",\n          \"4xx\": \"<integer>\",\n          \"5xx\": \"<integer>\",\n          \"codes\": {\n            \"codeNumber\": \"<integer>\"\n          },\n          \"total\": \"<integer>\"\n        },\n        \"sent\": \"<integer>\",\n        \"received\": \"<integer>\",\n        \"fails\": \"<integer>\",\n        \"unavail\": \"<integer>\",\n        \"health_checks\": {\n          \"checks\": \"<integer>\",\n          \"fails\": \"<integer>\",\n          \"unhealthy\": \"<integer>\",\n          \"last_passed\": \"<boolean>\"\n        },\n        \"downtime\": \"<integer>\",\n        \"downstart\": \"<dateTime>\",\n        \"selected\": \"<dateTime>\",\n        \"header_time\": \"<integer>\",\n        \"response_time\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"server\": \"<string>\",\n        \"service\": \"<string>\",\n        \"name\": \"<string>\",\n        \"backup\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"state\": \"checking\",\n        \"active\": \"<integer>\",\n        \"ssl\": {\n          \"handshakes\": \"<integer>\",\n          \"handshakes_failed\": \"<integer>\",\n          \"session_reuses\": \"<integer>\",\n          \"no_common_protocol\": \"<integer>\",\n          \"handshake_timeout\": \"<integer>\",\n          \"peer_rejected_cert\": \"<integer>\",\n          \"verify_failures\": {\n            \"expired_cert\": \"<integer>\",\n            \"revoked_cert\": \"<integer>\",\n            \"hostname_mismatch\": \"<integer>\",\n            \"other\": \"<integer>\"\n          }\n        },\n        \"max_conns\": \"<integer>\",\n        \"requests\": \"<integer>\",\n        \"responses\": {\n          \"1xx\": \"<integer>\",\n          \"2xx\": \"<integer>\",\n          \"3xx\": \"<integer>\",\n          \"4xx\": \"<integer>\",\n          \"5xx\": \"<integer>\",\n          \"codes\": {\n            \"codeNumber\": \"<integer>\"\n          },\n          \"total\": \"<integer>\"\n        },\n        \"sent\": \"<integer>\",\n        \"received\": \"<integer>\",\n        \"fails\": \"<integer>\",\n        \"unavail\": \"<integer>\",\n        \"health_checks\": {\n          \"checks\": \"<integer>\",\n          \"fails\": \"<integer>\",\n          \"unhealthy\": \"<integer>\",\n          \"last_passed\": \"<boolean>\"\n        },\n        \"downtime\": \"<integer>\",\n        \"downstart\": \"<dateTime>\",\n        \"selected\": \"<dateTime>\",\n        \"header_time\": \"<integer>\",\n        \"response_time\": \"<integer>\"\n      }\n    ],\n    \"keepalive\": \"<integer>\",\n    \"zombies\": \"<integer>\",\n    \"zone\": \"<string>\",\n    \"queue\": {\n      \"size\": \"<integer>\",\n      \"max_size\": \"<integer>\",\n      \"overflows\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-10-21T20:51:04.000Z",
+                  "updatedAt": "2026-10-21T20:51:04.000Z",
+                  "uid": "35240-aa24ff47-6747-4b08-ac3e-8ede446f03dd"
                 },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "25dd6eea-fee7-4b19-83a1-585f86a8180b",
-              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "f6af4da9-c7a1-404b-b18b-12e3720afcbe",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/upstreams/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "upstreams",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of upstream server groups will be output. If the \u201c<literal>fields</literal>\u201d value is empty, only names of upstreams will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an HTTP upstream server group."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:51:04.000Z",
+                  "updatedAt": "2026-10-21T20:51:04.000Z",
+                  "uid": "35240-f6af4da9-c7a1-404b-b18b-12e3720afcbe"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:51:04.000Z",
+              "updatedAt": "2026-10-21T20:51:04.000Z",
+              "uid": "35240-26dc49dd-1a30-4c81-b733-af78acb49df0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "533bed05-bfc2-4715-905c-3c1c98c5559a",
-          "name": "NGINX Reset Statistics of an HTTP Upstream Server Group",
-          "request": {
-            "name": "NGINX Reset Statistics of an HTTP Upstream Server Group",
-            "description": {
-              "content": "Resets the statistics for each upstream server in an upstream server group and queue statistics.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ":httpUpstreamName",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamName",
-                  "description": "(Required) The name of an HTTP upstream server group."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "6e38e55c-6284-4226-9e90-9b505632e68c",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an HTTP upstream server group."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "134acb45-5cd3-447e-9288-d2c6d8ca37c3",
-              "name": "Upstream is static (*UpstreamStatic*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an HTTP upstream server group."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b51123dc-6816-4ed2-aac4-dd86d750130a",
-              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an HTTP upstream server group."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4ca07603-fc30-40f1-9388-e306f7c46778",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an HTTP upstream server group."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "66fb0249-aae5-4761-90e2-279d4f63104c",
-          "name": "NGINX Return Configuration of All Servers in an HTTP Upstream Server Group",
-          "request": {
-            "name": "NGINX Return Configuration of All Servers in an HTTP Upstream Server Group",
-            "description": {
-              "content": "Returns configuration of each server in a particular HTTP upstream server group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ":httpUpstreamName",
-                "servers",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamName",
-                  "description": "(Required) The name of an upstream server group."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "08b70047-0c3b-4dac-a43b-4e6678085100",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8f433bdd-619a-4e36-bd68-5fb8f90ec61e",
-              "name": "Upstream is static (*UpstreamStatic*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1c5ed1fa-ea17-4368-b5aa-d89507bcdb40",
-              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f5548290-b299-4dbf-87aa-c6d4baf95db5",
-          "name": "NGINX Add a Server to an HTTP Upstream Server Group",
-          "request": {
-            "name": "NGINX Add a Server to an HTTP Upstream Server Group",
-            "description": {
-              "content": "Adds a new server to an HTTP upstream server group. Server parameters are specified in the JSON format.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ":httpUpstreamName",
-                "servers",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamName",
-                  "description": "(Required) The name of an upstream server group."
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "59d82c3d-6dec-4215-b0b0-e863e99bc58d",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "154d3342-d0bd-4620-b546-f88510871c53",
-              "name": "Upstream is static (*UpstreamStatic*),\ninvalid “**parameter**” value (*UpstreamConfFormatError*),\nmissing “*server*” argument (*UpstreamConfFormatError*),\nunknown parameter “**name**” (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormatError*),\n“*error*” while parsing (*UpstreamBadAddress*),\nservice upstream “*host*” may not have port (*UpstreamBadAddress*),\nservice upstream “*host*” requires domain name (*UpstreamBadAddress*),\ninvalid “*weight*” (*UpstreamBadWeight*),\ninvalid “*max_conns*” (*UpstreamBadMaxConns*),\ninvalid “*max_fails*” (*UpstreamBadMaxFails*),\ninvalid “*fail_timeout*” (*UpstreamBadFailTimeout*),\ninvalid “*slow_start*” (*UpstreamBadSlowStart*),\nreading request body failed *BodyReadError*),\nroute is too long (*UpstreamBadRoute*),\n“*service*” is empty (*UpstreamBadService*),\nno resolver defined to resolve (*UpstreamConfNoResolver*),\nupstream “**name**” has no backup (*UpstreamNoBackup*),\nupstream “**name**” memory exhausted (*UpstreamOutOfMemory*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1fdd7011-4468-4192-8d5c-372134b0c5e4",
-              "name": "Unknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "51be4413-74fb-47be-b89f-39e8931ea7de",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "60f1ccf8-8707-4f6e-88d0-c744798e8a78",
-              "name": "Entry exists (*EntryExists*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3a5f1c35-2349-4168-bd7d-aa5d09472799",
-              "name": "JSON error (*JsonError*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of an upstream server group."
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unsupported Media Type",
-              "code": 415,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "dd55df9c-9422-4d66-a23d-ae6e8aa3356e",
-          "name": "NGINX Return Configuration of a Server in an HTTP Upstream Server Group",
-          "request": {
-            "name": "NGINX Return Configuration of a Server in an HTTP Upstream Server Group",
-            "description": {
-              "content": "Returns configuration of a particular server in the HTTP upstream server group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ":httpUpstreamName",
-                "servers",
-                ":httpUpstreamServerId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamName",
-                  "description": "(Required) The name of the upstream server group."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamServerId",
-                  "description": "(Required) The ID of the server."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "51f319d6-a205-449f-8744-a23152985c6c",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3f278eb1-3302-4da7-86af-7c56e77f39ff",
-              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2640ed0a-1404-4ce8-aff1-7df14daade2d",
-              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "23898898-7105-4071-a67d-25fb9bc9b5f5",
-          "name": "NGINX Modify a Server in an HTTP Upstream Server Group",
-          "request": {
-            "name": "NGINX Modify a Server in an HTTP Upstream Server Group",
-            "description": {
-              "content": "Modifies settings of a particular server in an HTTP upstream server group. Server parameters are specified in the JSON format.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ":httpUpstreamName",
-                "servers",
-                ":httpUpstreamServerId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamName",
-                  "description": "(Required) The name of the upstream server group."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamServerId",
-                  "description": "(Required) The ID of the server."
-                }
-              ]
-            },
-            "method": "PATCH",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "80d2e4a1-9212-43bc-84e0-c9a47a62759b",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "PATCH",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "790a2072-e5bb-431c-a663-0c4913307de2",
-              "name": "Upstream is static (*UpstreamStatic*),\ninvalid “**parameter**” value (*UpstreamConfFormatError*),\nunknown parameter “**name**” (*UpstreamConfFormatError*),\nnested object or list (*UpstreamConfFormatError*),\n“*error*” while parsing (*UpstreamBadAddress*),\ninvalid “*server*” argument (*UpstreamBadAddress*),\ninvalid server ID (*UpstreamBadServerId*),\ninvalid “*weight*” (*UpstreamBadWeight*),\ninvalid “*max_conns*” (*UpstreamBadMaxConns*),\ninvalid “*max_fails*” (*UpstreamBadMaxFails*),\ninvalid “*fail_timeout*” (*UpstreamBadFailTimeout*),\ninvalid “*slow_start*” (*UpstreamBadSlowStart*),\nreading request body failed *BodyReadError*),\nroute is too long (*UpstreamBadRoute*),\n“*service*” is empty (*UpstreamBadService*),\nserver “**ID**” address is immutable (*UpstreamServerImmutable*),\nserver “*ID*” weight is immutable (*UpstreamServerWeightImmutable*),\nupstream “*name*” memory exhausted (*UpstreamOutOfMemory*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "PATCH",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6531a20a-4c7e-4a18-a6ab-92698ec2b893",
-              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "PATCH",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4c1fc95d-8b6d-40ae-9c37-3ebd95299a76",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "PATCH",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2be2f3d5-264e-4720-aaf9-430bb0cd4193",
-              "name": "JSON error (*JsonError*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "PATCH",
-                "body": {}
-              },
-              "status": "Unsupported Media Type",
-              "code": 415,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "43e01ce6-7272-44ca-b098-6d7f91fdf6ef",
-          "name": "NGINX Remove a Server from an HTTP Upstream Server Group",
-          "request": {
-            "name": "NGINX Remove a Server from an HTTP Upstream Server Group",
-            "description": {
-              "content": "Removes a server from an HTTP upstream server group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "upstreams",
-                ":httpUpstreamName",
-                "servers",
-                ":httpUpstreamServerId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamName",
-                  "description": "(Required) The name of the upstream server group."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "httpUpstreamServerId",
-                  "description": "(Required) The ID of the server."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5da2800f-0d4d-401e-9c67-2af8813b9c7f",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "82083ed5-e618-4e8f-9cbb-ae0450313fb9",
-              "name": "Upstream is static (*UpstreamStatic*),\ninvalid server ID (*UpstreamBadServerId*),\nserver “**id**” not removable (*UpstreamServerImmutable*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6e97b9ec-660d-4194-8e68-004637435f01",
-              "name": "Server with ID “**id**” does not exist (*UpstreamServerNotFound*),\nunknown version (*UnknownVersion*),\nupstream not found (*UpstreamNotFound*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f36e2189-63e4-42db-8eff-5fe143a24afa",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "upstreams",
-                    ":httpUpstreamName",
-                    "servers",
-                    ":httpUpstreamServerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamName",
-                      "description": "(Required) The name of the upstream server group."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "httpUpstreamServerId",
-                      "description": "(Required) The ID of the server."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2c738889-d421-44ed-b073-9461bd7aa877",
+          "createdAt": "2026-10-21T20:51:04.000Z",
+          "updatedAt": "2026-10-21T20:51:04.000Z",
+          "uid": "35240-2c738889-d421-44ed-b073-9461bd7aa877"
         }
       ],
-      "event": []
+      "id": "3c61b706-abdd-41d7-b3ab-ed8e601ab67a",
+      "createdAt": "2026-10-21T20:51:04.000Z",
+      "updatedAt": "2026-10-21T20:51:04.000Z",
+      "uid": "35240-3c61b706-abdd-41d7-b3ab-ed8e601ab67a"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "6d82bc3c-e334-4519-9706-80d36e2dcc72",
-    "name": "NGINX njs Scripting Connections HTTP Upstreams API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

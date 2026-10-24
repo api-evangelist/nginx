@@ -1,261 +1,303 @@
 {
+  "info": {
+    "_postman_id": "a0b1a00d-c96e-4fc0-a62b-7d15e90772d7",
+    "name": "NGINX Plus REST HTTP Requests API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:50:41.000Z",
+    "updatedAt": "2026-10-21T20:50:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a0b1a00d-c96e-4fc0-a62b-7d15e90772d7"
+  },
   "item": [
     {
-      "id": "af150a32-86c3-4003-b0cf-b5046f61dcc5",
-      "name": "HTTP Requests",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "http",
       "item": [
         {
-          "id": "e0f04b37-2838-43df-9142-29f688c6402f",
-          "name": "NGINX Return HTTP Requests Statistics",
-          "request": {
-            "name": "NGINX Return HTTP Requests Statistics",
-            "description": {
-              "content": "Returns status of client HTTP requests.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "requests"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "requests",
+          "item": [
+            {
+              "name": "NGINX Return HTTP Requests Statistics",
+              "id": "17d32054-eaaa-4e4c-97f2-806fc8fffec1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/http/requests?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "http",
+                    "requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "Limits which fields of client HTTP requests statistics will be output.",
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns status of client HTTP requests."
+              },
+              "response": [
                 {
-                  "description": {
-                    "content": "Limits which fields of client HTTP requests statistics will be output.",
-                    "type": "text/plain"
+                  "id": "3740ade9-0ac6-4256-b7e7-e932e23d41c7",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/requests?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "requests"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of client HTTP requests statistics will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
                   },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "bcb1dc43-11a8-4f25-9e66-5b1d936ed775",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "requests"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"total\": \"<integer>\",\n  \"current\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:50:42.000Z",
+                  "updatedAt": "2026-10-21T20:50:42.000Z",
+                  "uid": "35240-3740ade9-0ac6-4256-b7e7-e932e23d41c7"
                 },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6b7f1bf8-1893-4ab6-9bba-be1a8e493897",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "requests"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "373e782c-0ebc-4788-903c-4682b3f5e298",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/requests?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "requests"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of client HTTP requests statistics will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:50:42.000Z",
+                  "updatedAt": "2026-10-21T20:50:42.000Z",
+                  "uid": "35240-373e782c-0ebc-4788-903c-4682b3f5e298"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:50:42.000Z",
+              "updatedAt": "2026-10-21T20:50:42.000Z",
+              "uid": "35240-17d32054-eaaa-4e4c-97f2-806fc8fffec1"
+            },
+            {
+              "name": "NGINX Reset HTTP Requests Statistics",
+              "id": "351927af-780a-4583-86fd-13d7f785b98e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/http/requests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "http",
+                    "requests"
+                  ]
+                },
+                "description": "Resets the number of total client HTTP requests."
+              },
+              "response": [
+                {
+                  "id": "93f93615-b64b-4b62-ac58-3a24f32ad784",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/requests",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "requests"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:50:42.000Z",
+                  "updatedAt": "2026-10-21T20:50:42.000Z",
+                  "uid": "35240-93f93615-b64b-4b62-ac58-3a24f32ad784"
+                },
+                {
+                  "id": "f55048cb-0bc0-4468-92e5-c32eff589a3d",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/requests",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "requests"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:50:42.000Z",
+                  "updatedAt": "2026-10-21T20:50:42.000Z",
+                  "uid": "35240-f55048cb-0bc0-4468-92e5-c32eff589a3d"
+                },
+                {
+                  "id": "41de921a-77a3-4269-ab25-38d7212295de",
+                  "name": "Method disabled (*MethodDisabled*)",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/http/requests",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "http",
+                        "requests"
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:50:42.000Z",
+                  "updatedAt": "2026-10-21T20:50:42.000Z",
+                  "uid": "35240-41de921a-77a3-4269-ab25-38d7212295de"
+                }
+              ],
+              "createdAt": "2026-10-21T20:50:42.000Z",
+              "updatedAt": "2026-10-21T20:50:42.000Z",
+              "uid": "35240-351927af-780a-4583-86fd-13d7f785b98e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "81ea5541-b516-4a2f-b691-fca2874b474d",
-          "name": "NGINX Reset HTTP Requests Statistics",
-          "request": {
-            "name": "NGINX Reset HTTP Requests Statistics",
-            "description": {
-              "content": "Resets the number of total client HTTP requests.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "http",
-                "requests"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "551884e7-011b-4a97-9e6f-244a1aeebc34",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "requests"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0eb8750f-241c-4262-9a84-e6452d85de82",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "requests"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "83b71922-5b4e-47f9-a6f9-0f1e7c26b59d",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "http",
-                    "requests"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "26741901-0dd5-46fb-9a0d-c19bfb584892",
+          "createdAt": "2026-10-21T20:50:42.000Z",
+          "updatedAt": "2026-10-21T20:50:42.000Z",
+          "uid": "35240-26741901-0dd5-46fb-9a0d-c19bfb584892"
         }
       ],
-      "event": []
+      "id": "8c005c81-e712-407d-b44a-77cbc82679b8",
+      "createdAt": "2026-10-21T20:50:42.000Z",
+      "updatedAt": "2026-10-21T20:50:42.000Z",
+      "uid": "35240-8c005c81-e712-407d-b44a-77cbc82679b8"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "763d92ed-ddfb-40cd-9a6b-ec4ed75f5754",
-    "name": "NGINX njs Scripting Connections HTTP Requests API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

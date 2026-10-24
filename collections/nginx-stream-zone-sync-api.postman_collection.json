@@ -1,125 +1,149 @@
 {
+  "info": {
+    "_postman_id": "35fe3c39-96a2-462b-a297-e39c35ffbf34",
+    "name": "NGINX Plus REST Stream Zone Sync API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:52:18.000Z",
+    "updatedAt": "2026-10-21T20:52:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-35fe3c39-96a2-462b-a297-e39c35ffbf34"
+  },
   "item": [
     {
-      "id": "59fab4ec-c16b-48ac-812f-6c2d37bbfb41",
-      "name": "Stream Zone Sync",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "stream",
       "item": [
         {
-          "id": "f21441e8-d922-4bb6-93d2-09c34a586c4c",
-          "name": "NGINX Return Sync Status of a Node",
-          "request": {
-            "name": "NGINX Return Sync Status of a Node",
-            "description": {
-              "content": "Returns synchronization status of a cluster node.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stream",
-                "zone_sync",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "zone_sync",
+          "item": [
             {
-              "id": "572106c9-4da9-4291-ad2a-63abb1ff7a10",
-              "name": "Success",
-              "originalRequest": {
+              "name": "NGINX Return Sync Status of a Node",
+              "id": "06bc7f48-9f28-46cb-a918-a497dee31597",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/stream/zone_sync/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "stream",
                     "zone_sync",
                     ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "method": "GET",
-                "body": {}
+                "description": "Returns synchronization status of a cluster node."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "ffe11690-8729-40fb-b145-522b4aad48f9",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/zone_sync/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "zone_sync",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"zones\": {\n    \"ut54\": {\n      \"records_pending\": \"<integer>\",\n      \"records_total\": \"<integer>\"\n    }\n  },\n  \"status\": {\n    \"bytes_in\": \"<integer>\",\n    \"msgs_in\": \"<integer>\",\n    \"msgs_out\": \"<integer>\",\n    \"bytes_out\": \"<integer>\",\n    \"nodes_online\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:52:19.000Z",
+                  "updatedAt": "2026-10-21T20:52:19.000Z",
+                  "uid": "35240-ffe11690-8729-40fb-b145-522b4aad48f9"
+                },
+                {
+                  "id": "7628f787-af21-441b-8917-f4b160efa983",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/zone_sync/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "zone_sync",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:52:19.000Z",
+                  "updatedAt": "2026-10-21T20:52:19.000Z",
+                  "uid": "35240-7628f787-af21-441b-8917-f4b160efa983"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f84f5ad5-f1cd-4b14-aa9f-a67348e055b3",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "zone_sync",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:52:19.000Z",
+              "updatedAt": "2026-10-21T20:52:19.000Z",
+              "uid": "35240-06bc7f48-9f28-46cb-a918-a497dee31597"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9a30bc99-88a7-4945-955c-b44506c4b254",
+          "createdAt": "2026-10-21T20:52:19.000Z",
+          "updatedAt": "2026-10-21T20:52:19.000Z",
+          "uid": "35240-9a30bc99-88a7-4945-955c-b44506c4b254"
         }
       ],
-      "event": []
+      "id": "451e0ead-1370-421b-bbdc-5d5df4474c6f",
+      "createdAt": "2026-10-21T20:52:19.000Z",
+      "updatedAt": "2026-10-21T20:52:19.000Z",
+      "uid": "35240-451e0ead-1370-421b-bbdc-5d5df4474c6f"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "6763c196-2112-459d-baf6-2fd6e27a7266",
-    "name": "NGINX njs Scripting Connections Stream Zone Sync API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

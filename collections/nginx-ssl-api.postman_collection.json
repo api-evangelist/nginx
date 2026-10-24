@@ -1,254 +1,287 @@
 {
+  "info": {
+    "_postman_id": "87d4823e-cf48-424b-b8a4-69a22e08b444",
+    "name": "NGINX Plus REST SSL API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:51:34.000Z",
+    "updatedAt": "2026-10-21T20:51:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87d4823e-cf48-424b-b8a4-69a22e08b444"
+  },
   "item": [
     {
-      "id": "4253ecae-0e8d-46ac-8451-d025f6722fae",
-      "name": "SSL",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "ssl",
       "item": [
         {
-          "id": "58cd95e2-81ef-462a-8dd5-3e224e3962b3",
           "name": "NGINX Return SSL Statistics",
+          "id": "3c6cf35f-fa62-4953-bc7a-fec717c0b1c7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "NGINX Return SSL Statistics",
-            "description": {
-              "content": "Returns SSL statistics.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "ssl"
-              ],
+              "raw": "{{baseUrl}}/ssl?fields=<string>",
               "host": [
                 "{{baseUrl}}"
+              ],
+              "path": [
+                "ssl"
               ],
               "query": [
                 {
-                  "description": {
-                    "content": "Limits which fields of SSL statistics will be output.",
-                    "type": "text/plain"
-                  },
+                  "description": "Limits which fields of SSL statistics will be output.",
                   "key": "fields",
-                  "value": ""
+                  "value": "<string>"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "method": "GET",
-            "auth": null
+            "description": "Returns SSL statistics."
           },
           "response": [
             {
-              "id": "3d8694f3-e075-496b-9d2f-63b7775cec45",
+              "id": "ce5d21db-dc79-4f7a-9b3f-deeb105f7c03",
               "name": "Success",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "ssl"
-                  ],
+                  "raw": "{{baseUrl}}/ssl?fields=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "ssl"
+                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of SSL statistics will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"handshakes\": \"<integer>\",\n  \"handshakes_failed\": \"<integer>\",\n  \"session_reuses\": \"<integer>\",\n  \"no_common_protocol\": \"<integer>\",\n  \"no_common_cipher\": \"<integer>\",\n  \"handshake_timeout\": \"<integer>\",\n  \"peer_rejected_cert\": \"<integer>\",\n  \"verify_failures\": {\n    \"no_cert\": \"<integer>\",\n    \"expired_cert\": \"<integer>\",\n    \"revoked_cert\": \"<integer>\",\n    \"hostname_mismatch\": \"<integer>\",\n    \"other\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-10-21T20:51:35.000Z",
+              "updatedAt": "2026-10-21T20:51:35.000Z",
+              "uid": "35240-ce5d21db-dc79-4f7a-9b3f-deeb105f7c03"
             },
             {
-              "id": "7d53d7a9-6b3b-417d-bc34-0052e66246a6",
+              "id": "47143ae2-0940-4cf6-ba7e-fdded7e3d03f",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "ssl"
-                  ],
+                  "raw": "{{baseUrl}}/ssl?fields=<string>",
                   "host": [
                     "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ssl"
                   ],
                   "query": [
                     {
+                      "description": "Limits which fields of SSL statistics will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:35.000Z",
+              "updatedAt": "2026-10-21T20:51:35.000Z",
+              "uid": "35240-47143ae2-0940-4cf6-ba7e-fdded7e3d03f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:51:35.000Z",
+          "updatedAt": "2026-10-21T20:51:35.000Z",
+          "uid": "35240-3c6cf35f-fa62-4953-bc7a-fec717c0b1c7"
         },
         {
-          "id": "0a8e9d71-deaa-43f3-8ba2-e839d4dc64a0",
           "name": "NGINX Reset SSL Statistics",
+          "id": "25c9c0f9-d395-4851-a55b-31fab1a2298e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "NGINX Reset SSL Statistics",
-            "description": {
-              "content": "Resets counters of SSL handshakes and session reuses.",
-              "type": "text/plain"
-            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
-              "path": [
-                "ssl"
-              ],
+              "raw": "{{baseUrl}}/ssl",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "ssl"
+              ]
             },
-            "method": "DELETE",
-            "auth": null
+            "description": "Resets counters of SSL handshakes and session reuses."
           },
           "response": [
             {
-              "id": "605e0d2e-2b8e-48e8-97bb-c67c08d8b60a",
+              "id": "8b40943f-0033-4a80-a93d-af062817a654",
               "name": "Success",
               "originalRequest": {
+                "method": "DELETE",
+                "header": [],
                 "url": {
-                  "path": [
-                    "ssl"
-                  ],
+                  "raw": "{{baseUrl}}/ssl",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
+                  "path": [
+                    "ssl"
+                  ]
+                }
               },
               "status": "No Content",
               "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:51:35.000Z",
+              "updatedAt": "2026-10-21T20:51:35.000Z",
+              "uid": "35240-8b40943f-0033-4a80-a93d-af062817a654"
             },
             {
-              "id": "e23cbdc1-327d-49e4-9602-64afa7e559a0",
+              "id": "d4c97033-9663-4c6a-8bcd-c02fe2bd9633",
               "name": "Unknown version (*UnknownVersion*)",
               "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "ssl"
-                  ],
+                  "raw": "{{baseUrl}}/ssl",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
+                  "path": [
+                    "ssl"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:35.000Z",
+              "updatedAt": "2026-10-21T20:51:35.000Z",
+              "uid": "35240-d4c97033-9663-4c6a-8bcd-c02fe2bd9633"
             },
             {
-              "id": "be042f0f-5c70-4e6c-9d78-87df2f420a62",
+              "id": "2de3e2a8-ef3d-4cbf-adb7-aef669ef5e11",
               "name": "Method disabled (*MethodDisabled*)",
               "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "ssl"
-                  ],
+                  "raw": "{{baseUrl}}/ssl",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "method": "DELETE",
-                "body": {}
+                  "path": [
+                    "ssl"
+                  ]
+                }
               },
               "status": "Method Not Allowed",
               "code": 405,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:51:35.000Z",
+              "updatedAt": "2026-10-21T20:51:35.000Z",
+              "uid": "35240-2de3e2a8-ef3d-4cbf-adb7-aef669ef5e11"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:51:35.000Z",
+          "updatedAt": "2026-10-21T20:51:35.000Z",
+          "uid": "35240-25c9c0f9-d395-4851-a55b-31fab1a2298e"
         }
       ],
-      "event": []
+      "id": "d1418943-08b0-4663-b8a1-1f3adda8e0f2",
+      "createdAt": "2026-10-21T20:51:34.000Z",
+      "updatedAt": "2026-10-21T20:51:34.000Z",
+      "uid": "35240-d1418943-08b0-4663-b8a1-1f3adda8e0f2"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "9cce45a7-da36-4fae-a083-500791631c25",
-    "name": "NGINX njs Scripting Connections SSL API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

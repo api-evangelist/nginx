@@ -1,436 +1,492 @@
 {
+  "info": {
+    "_postman_id": "9009bb2a-e6dd-4c6c-8632-6799556c2b53",
+    "name": "NGINX Plus REST Stream Limit Conns API",
+    "description": "NGINX Plus REST API provides access to NGINX Plus status information, on-the-fly configuration of upstream servers and key-value pairs management for http and stream.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:52:00.000Z",
+    "updatedAt": "2026-10-21T20:52:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9009bb2a-e6dd-4c6c-8632-6799556c2b53"
+  },
   "item": [
     {
-      "id": "8ea16918-9aaf-40be-89e6-3682bec9d778",
-      "name": "Stream Limit Conns",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "stream",
       "item": [
         {
-          "id": "87dc3e66-305c-49af-92f8-4ef9c31cd230",
-          "name": "NGINX Return Status of All Stream Limit_conn Zones",
-          "request": {
-            "name": "NGINX Return Status of All Stream Limit_conn Zones",
-            "description": {
-              "content": "Returns status information for each stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stream",
-                "limit_conns",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "limit_conns",
+          "item": [
+            {
+              "name": "{streamLimitConnZoneName}",
+              "item": [
                 {
-                  "description": {
-                    "content": "Limits which fields of limit_conn zones will be output. If the “<literal>fields</literal>” value is empty, then only zone names will be output.",
-                    "type": "text/plain"
+                  "name": "NGINX Return Status of an Stream Limit_conn Zone",
+                  "id": "4a665f25-9dcf-4c9f-bfd8-246a9fe7a78e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  "key": "fields",
-                  "value": ""
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "limit_conns",
+                        ":streamLimitConnZoneName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone) will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ffc265d7-0ccc-46c2-9b92-c83d2c0f56eb",
+                          "key": "streamLimitConnZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                        }
+                      ]
+                    },
+                    "description": "Returns status of a particular stream limit_conn zone."
+                  },
+                  "response": [
+                    {
+                      "id": "dacc9708-15bd-4b07-b1a2-a849ba40615d",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "limit_conns",
+                            ":streamLimitConnZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone) will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamLimitConnZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"passed\": \"<integer>\",\n  \"rejected\": \"<integer>\",\n  \"rejected_dry_run\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:52:01.000Z",
+                      "updatedAt": "2026-10-21T20:52:01.000Z",
+                      "uid": "35240-dacc9708-15bd-4b07-b1a2-a849ba40615d"
+                    },
+                    {
+                      "id": "914ba661-3939-4035-b435-bb56ac04610f",
+                      "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "limit_conns",
+                            ":streamLimitConnZoneName"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone) will be output.",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamLimitConnZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:52:01.000Z",
+                      "updatedAt": "2026-10-21T20:52:01.000Z",
+                      "uid": "35240-914ba661-3939-4035-b435-bb56ac04610f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:52:01.000Z",
+                  "updatedAt": "2026-10-21T20:52:01.000Z",
+                  "uid": "35240-4a665f25-9dcf-4c9f-bfd8-246a9fe7a78e"
+                },
+                {
+                  "name": "NGINX Reset Statistics for a Stream Limit_conn Zone",
+                  "id": "897bfe3a-ab47-4f07-8ad2-c67804c2023c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "limit_conns",
+                        ":streamLimitConnZoneName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b8cabb1d-4879-423c-ae46-e830799f522b",
+                          "key": "streamLimitConnZoneName",
+                          "value": "<string>",
+                          "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
+                        }
+                      ]
+                    },
+                    "description": "Resets the connection limiting statistics."
+                  },
+                  "response": [
+                    {
+                      "id": "e4f0b085-dde7-4ef2-87ce-41b745f46180",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "limit_conns",
+                            ":streamLimitConnZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamLimitConnZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:52:01.000Z",
+                      "updatedAt": "2026-10-21T20:52:01.000Z",
+                      "uid": "35240-e4f0b085-dde7-4ef2-87ce-41b745f46180"
+                    },
+                    {
+                      "id": "b83086bd-ee68-49d2-b6c9-4a0ee1a692d2",
+                      "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "limit_conns",
+                            ":streamLimitConnZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamLimitConnZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:52:01.000Z",
+                      "updatedAt": "2026-10-21T20:52:01.000Z",
+                      "uid": "35240-b83086bd-ee68-49d2-b6c9-4a0ee1a692d2"
+                    },
+                    {
+                      "id": "b9e99102-c7b2-457c-9361-3b362c5dee36",
+                      "name": "Method disabled (*MethodDisabled*)",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stream/limit_conns/:streamLimitConnZoneName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stream",
+                            "limit_conns",
+                            ":streamLimitConnZoneName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "streamLimitConnZoneName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:52:01.000Z",
+                      "updatedAt": "2026-10-21T20:52:01.000Z",
+                      "uid": "35240-b9e99102-c7b2-457c-9361-3b362c5dee36"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:52:01.000Z",
+                  "updatedAt": "2026-10-21T20:52:01.000Z",
+                  "uid": "35240-897bfe3a-ab47-4f07-8ad2-c67804c2023c"
                 }
               ],
-              "variable": []
+              "id": "4f90307e-1c9e-46a4-9009-91bca36f4f65",
+              "createdAt": "2026-10-21T20:52:01.000Z",
+              "updatedAt": "2026-10-21T20:52:01.000Z",
+              "uid": "35240-4f90307e-1c9e-46a4-9009-91bca36f4f65"
             },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "7c7ddd79-6eed-4869-97b7-a741963ee55a",
-              "name": "Success",
-              "originalRequest": {
+              "name": "NGINX Return Status of All Stream Limit_conn Zones",
+              "id": "04cbf6a2-cf66-45b4-a41b-003d8529e257",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/stream/limit_conns/?fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "stream",
                     "limit_conns",
                     ""
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Limits which fields of limit_conn zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
                       "key": "fields",
-                      "value": ""
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "method": "GET",
-                "body": {}
+                "description": "Returns status information for each stream limit_conn zone."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "07021565-7c9e-4d36-ae20-a3969ab21ddb",
-              "name": "Unknown version (*UnknownVersion*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "limit_conns",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": ""
+                  "id": "a1fc3dfb-360f-4d20-bd2d-55666c0bb482",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/limit_conns/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "limit_conns",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of limit_conn zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5a765798-7610-474f-b344-d824f18ea05d",
-          "name": "NGINX Return Status of an Stream Limit_conn Zone",
-          "request": {
-            "name": "NGINX Return Status of an Stream Limit_conn Zone",
-            "description": {
-              "content": "Returns status of a particular stream [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stream",
-                "limit_conns",
-                ":streamLimitConnZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "description": {
-                    "content": "Limits which fields of the [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone) will be output.",
-                    "type": "text/plain"
                   },
-                  "key": "fields",
-                  "value": ""
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "streamLimitConnZoneName",
-                  "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e927880f-180f-4639-a11b-d9f72ad63d3b",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "limit_conns",
-                    ":streamLimitConnZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamLimitConnZoneName",
-                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"incididunt_d7\": {\n    \"passed\": \"<integer>\",\n    \"rejected\": \"<integer>\",\n    \"rejected_dry_run\": \"<integer>\"\n  },\n  \"nisi_c3\": {\n    \"passed\": \"<integer>\",\n    \"rejected\": \"<integer>\",\n    \"rejected_dry_run\": \"<integer>\"\n  },\n  \"occaecat_619\": {\n    \"passed\": \"<integer>\",\n    \"rejected\": \"<integer>\",\n    \"rejected_dry_run\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:52:01.000Z",
+                  "updatedAt": "2026-10-21T20:52:01.000Z",
+                  "uid": "35240-a1fc3dfb-360f-4d20-bd2d-55666c0bb482"
                 },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6b0d998b-449f-4951-acc8-5ecf3cd530ec",
-              "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "limit_conns",
-                    ":streamLimitConnZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "c439ee54-b736-40f2-894f-6cc3f9fffb0b",
+                  "name": "Unknown version (*UnknownVersion*)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stream/limit_conns/?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stream",
+                        "limit_conns",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Limits which fields of limit_conn zones will be output. If the \u201c<literal>fields</literal>\u201d value is empty, then only zone names will be output.",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": ""
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamLimitConnZoneName",
-                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
-                    }
-                  ]
-                },
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"status\": \"<integer>\",\n    \"text\": \"<string>\",\n    \"code\": \"<string>\"\n  },\n  \"request_id\": \"<string>\",\n  \"href\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:52:01.000Z",
+                  "updatedAt": "2026-10-21T20:52:01.000Z",
+                  "uid": "35240-c439ee54-b736-40f2-894f-6cc3f9fffb0b"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:52:01.000Z",
+              "updatedAt": "2026-10-21T20:52:01.000Z",
+              "uid": "35240-04cbf6a2-cf66-45b4-a41b-003d8529e257"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bbfdbdd3-9a03-48c7-acd7-f5603eb4ba17",
-          "name": "NGINX Reset Statistics for a Stream Limit_conn Zone",
-          "request": {
-            "name": "NGINX Reset Statistics for a Stream Limit_conn Zone",
-            "description": {
-              "content": "Resets the connection limiting statistics.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stream",
-                "limit_conns",
-                ":streamLimitConnZoneName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "streamLimitConnZoneName",
-                  "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ff6e1fa7-4f89-4971-996d-9f9f8aea052c",
-              "name": "Success",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "limit_conns",
-                    ":streamLimitConnZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamLimitConnZoneName",
-                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "57ad3f6c-5bc7-4da9-89cf-743634dc14a5",
-              "name": "limit_conn not found (*LimitConnNotFound*),\nunknown version (*UnknownVersion*)\n",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "limit_conns",
-                    ":streamLimitConnZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamLimitConnZoneName",
-                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9a592cc2-7af1-4094-b769-bbe86ddd70b7",
-              "name": "Method disabled (*MethodDisabled*)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "stream",
-                    "limit_conns",
-                    ":streamLimitConnZoneName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "streamLimitConnZoneName",
-                      "description": "(Required) The name of a [limit_conn zone](https://nginx.org/en/docs/stream/ngx_stream_limit_conn_module.html#limit_conn_zone)."
-                    }
-                  ]
-                },
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "4c0b8000-f378-4c5d-a59b-ec8fe763b7a2",
+          "createdAt": "2026-10-21T20:52:01.000Z",
+          "updatedAt": "2026-10-21T20:52:01.000Z",
+          "uid": "35240-4c0b8000-f378-4c5d-a59b-ec8fe763b7a2"
         }
       ],
-      "event": []
+      "id": "966cf31a-e32b-477b-9d98-61bb5ce6cb2d",
+      "createdAt": "2026-10-21T20:52:01.000Z",
+      "updatedAt": "2026-10-21T20:52:01.000Z",
+      "uid": "35240-966cf31a-e32b-477b-9d98-61bb5ce6cb2d"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "/",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "/api/9"
     }
-  ],
-  "info": {
-    "_postman_id": "35b269ae-5f6f-4d9a-8873-0fd7967dd010",
-    "name": "NGINX njs Scripting Connections Stream Limit Conns API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The NGINX njs module provides a JavaScript runtime embedded inside NGINX. It does not expose HTTP endpoints itself. Instead, it offers scripting objects (HTTP request, stream session, Fetch API, etc.) that are available within njs handler functions configured in the NGINX configuration file. This specification documents the key njs objects as OpenAPI schemas only; the paths object is intentionally empty because there are no REST endpoints to describe.\n\nContact Support:\n Name: NGINX",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
