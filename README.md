@@ -1,4 +1,4 @@
-# NGINX (nginx)
+# NGINX
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,399 +66,291 @@
 
 NGINX is a high-performance open-source web server, reverse proxy, and API gateway widely used for load balancing, SSL termination, caching, and traffic management for APIs and microservices. Originally written by Igor Sysoev and released under the 2-clause BSD license, NGINX powers a significant portion of the world's web traffic. Enterprise support and commercial features are available from F5, Inc.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/apis.yml)
+**Areas:** NGINX · API Gateway · Caching · Cloud-Native · Load Balancer · Open Source · Reverse Proxy · Web Server
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## NGINX on APIs.io
 
-## Tags:
- - API Gateway, Caching, Cloud Native, Load Balancer, Open Source, Reverse Proxy, Web Server
+Everything profiled for NGINX is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nginx/](https://apis.io/providers/nginx/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
-- **Created:** 2026-03-18
-- **Modified:** 2026-04-28
+### APIs (28)
 
-## APIs
+- [NGINX](https://apis.io/apis/nginx/nginx/) — NGINX is a versatile open-source software for web serving, reverse proxying, caching, load balancing, media streaming, and API gateway functionality…
+- [NGINX Ingress Controller](https://apis.io/apis/nginx/nginx-ingress-controller/) — The NGINX Ingress Controller is a Kubernetes-native ingress controller built on NGINX that manages external access to services in a Kubernetes cluster. It…
+- [NGINX Gateway Fabric](https://apis.io/apis/nginx/nginx-gateway-fabric/) — NGINX Gateway Fabric is a Kubernetes Gateway API implementation using NGINX as the data plane. It provides standards-based traffic management through…
+- [NGINX Agent](https://apis.io/apis/nginx/nginx-agent/) — NGINX Agent provides an administrative entry point to remotely manage, configure, and collect metrics and events from NGINX instances. It enables…
+- [NGINX Connections API](https://apis.io/apis/nginx/nginx-connections-api/) — The Connections API from NGINX — 1 operation(s) for connections.
+- [NGINX General Info API](https://apis.io/apis/nginx/nginx-general-info-api/) — The General Info API from NGINX — 2 operation(s) for general info.
+- [NGINX HTTP API](https://apis.io/apis/nginx/nginx-http-api/) — The HTTP API from NGINX — 1 operation(s) for http.
+- [NGINX HTTP Caches API](https://apis.io/apis/nginx/nginx-http-caches-api/) — The HTTP Caches API from NGINX — 2 operation(s) for http caches.
+- [NGINX HTTP Keyvals API](https://apis.io/apis/nginx/nginx-http-keyvals-api/) — The HTTP Keyvals API from NGINX — 2 operation(s) for http keyvals.
+- [NGINX HTTP Limit Conns API](https://apis.io/apis/nginx/nginx-http-limit-conns-api/) — The HTTP Limit Conns API from NGINX — 2 operation(s) for http limit conns.
+- [NGINX HTTP Limit Reqs API](https://apis.io/apis/nginx/nginx-http-limit-reqs-api/) — The HTTP Limit Reqs API from NGINX — 2 operation(s) for http limit reqs.
+- [NGINX HTTP Location Zones API](https://apis.io/apis/nginx/nginx-http-location-zones-api/) — The HTTP Location Zones API from NGINX — 2 operation(s) for http location zones.
+- [NGINX HTTP Requests API](https://apis.io/apis/nginx/nginx-http-requests-api/) — The HTTP Requests API from NGINX — 1 operation(s) for http requests.
+- [NGINX HTTP Server Zones API](https://apis.io/apis/nginx/nginx-http-server-zones-api/) — The HTTP Server Zones API from NGINX — 2 operation(s) for http server zones.
+- [NGINX HTTP Upstreams API](https://apis.io/apis/nginx/nginx-http-upstreams-api/) — The HTTP Upstreams API from NGINX — 4 operation(s) for http upstreams.
+- [NGINX License API](https://apis.io/apis/nginx/nginx-license-api/) — The License API from NGINX — 1 operation(s) for license.
+- [NGINX Processes API](https://apis.io/apis/nginx/nginx-processes-api/) — The Processes API from NGINX — 1 operation(s) for processes.
+- [NGINX Resolvers API](https://apis.io/apis/nginx/nginx-resolvers-api/) — The Resolvers API from NGINX — 2 operation(s) for resolvers.
+- [NGINX Slabs API](https://apis.io/apis/nginx/nginx-slabs-api/) — The Slabs API from NGINX — 2 operation(s) for slabs.
+- [NGINX SSL API](https://apis.io/apis/nginx/nginx-ssl-api/) — The SSL API from NGINX — 1 operation(s) for ssl.
+- [NGINX Status API](https://apis.io/apis/nginx/nginx-status-api/) — The Status API from NGINX — 1 operation(s) for status.
+- [NGINX Stream API](https://apis.io/apis/nginx/nginx-stream-api/) — The Stream API from NGINX — 1 operation(s) for stream.
+- [NGINX Stream Keyvals API](https://apis.io/apis/nginx/nginx-stream-keyvals-api/) — The Stream Keyvals API from NGINX — 2 operation(s) for stream keyvals.
+- [NGINX Stream Limit Conns API](https://apis.io/apis/nginx/nginx-stream-limit-conns-api/) — The Stream Limit Conns API from NGINX — 2 operation(s) for stream limit conns.
+- [NGINX Stream Server Zones API](https://apis.io/apis/nginx/nginx-stream-server-zones-api/) — The Stream Server Zones API from NGINX — 2 operation(s) for stream server zones.
+- [NGINX Stream Upstreams API](https://apis.io/apis/nginx/nginx-stream-upstreams-api/) — The Stream Upstreams API from NGINX — 4 operation(s) for stream upstreams.
+- [NGINX Stream Zone Sync API](https://apis.io/apis/nginx/nginx-stream-zone-sync-api/) — The Stream Zone Sync API from NGINX — 1 operation(s) for stream zone sync.
+- [NGINX Workers API](https://apis.io/apis/nginx/nginx-workers-api/) — The Workers API from NGINX — 2 operation(s) for workers.
 
-### NGINX
-NGINX is a versatile open-source software for web serving, reverse proxying, caching, load balancing, media streaming, and API gateway functionality powering a significant portion of the world's web traffic. Licensed under the 2-clause BSD license and governed by F5, Inc.
+### Published properties
 
-**Human URL:** [https://nginx.org/](https://nginx.org/)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-#### Tags:
- - API Gateway, Load Balancer, Open Source, Reverse Proxy, Web Server
+#### MCP servers (1)
 
-#### Properties
-- [Documentation](https://nginx.org/en/docs/)
-- [GettingStarted](https://nginx.org/en/docs/beginners_guide.html)
-- [APIReference](https://nginx.org/en/docs/dirindex.html)
-- [ChangeLog](https://nginx.org/en/CHANGES)
-- [GitHubRepository](https://github.com/nginx/nginx)
+Model Context Protocol servers that expose the API to agents.
 
----
+- [MCP Server](https://apis.io/servers/nginx/mcp-server/)
 
-### NGINX Plus HTTP API
-The NGINX Plus HTTP API provides a RESTful interface for dynamic configuration and real-time monitoring of a running NGINX Plus instance. It supports managing upstream servers, key-value pairs, and retrieving connection, cache, and rate-limiting statistics without requiring configuration reloads. Available as part of the NGINX commercial subscription.
+#### Agentic access (1)
 
-**Human URL:** [https://nginx.org/en/docs/http/ngx_http_api_module.html](https://nginx.org/en/docs/http/ngx_http_api_module.html)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
- - Admin, Management, Monitoring, NGINX Plus, REST API
+- [Nginx Agentic Access](https://apis.io/agentic-access/nginx/nginx-agentic-access/)
 
-#### Properties
-- [Documentation](https://nginx.org/en/docs/http/ngx_http_api_module.html)
-- [APIReference](https://nginx.org/en/docs/http/ngx_http_api_module.html#api)
-- [OpenAPI](openapi/nginx-plus-http-api-openapi.yaml)
-- [JSONLD](json-ld/nginx-plus-http-api-context.jsonld)
-- [SDK - Go SDK](https://github.com/nginx/nginx-plus-go-client)
+#### JSON Schema (58)
 
----
+The data models the API reads and writes.
 
-### NGINX Stub Status API
-The NGINX Stub Status module exposes a simple HTTP endpoint providing basic server performance metrics including active connections, total accepts, handled connections, and request counts. It is available in open-source NGINX and must be enabled at compile time with the --with-http_stub_status_module flag.
+- [Headers](https://apis.io/schemas/nginx/njs-headers/)
+- [HttpRequest](https://apis.io/schemas/nginx/njs-http-request/)
+- [Ngx](https://apis.io/schemas/nginx/njs-ngx/)
+- [NgxShared](https://apis.io/schemas/nginx/njs-ngx-shared/)
+- [PeriodicSession](https://apis.io/schemas/nginx/njs-periodic-session/)
+- [Request](https://apis.io/schemas/nginx/njs-request/)
+- [Response](https://apis.io/schemas/nginx/njs-response/)
+- [SharedDict](https://apis.io/schemas/nginx/njs-shared-dict/)
+- [StreamSession](https://apis.io/schemas/nginx/njs-stream-session/)
+- [Array](https://apis.io/schemas/nginx/plus-http-api-array-of-strings/)
+- [Connections](https://apis.io/schemas/nginx/plus-http-api-nginx-connections/)
+- [Error](https://apis.io/schemas/nginx/plus-http-api-nginx-error/)
+- [HTTP Cache](https://apis.io/schemas/nginx/plus-http-api-nginx-http-cache/)
+- [HTTP Caches](https://apis.io/schemas/nginx/plus-http-api-nginx-http-caches-map/)
+- [HTTP Keyval Shared Memory Zone](https://apis.io/schemas/nginx/plus-http-api-nginx-http-keyval-zone/)
+- [HTTP Keyval Shared Memory Zone](https://apis.io/schemas/nginx/plus-http-api-nginx-http-keyval-zone-post-patch/)
+- [HTTP Keyval Shared Memory Zones](https://apis.io/schemas/nginx/plus-http-api-nginx-http-keyval-zones-map/)
+- [HTTP Connections Limiting](https://apis.io/schemas/nginx/plus-http-api-nginx-http-limit-conn-zone/)
+- [HTTP limit_conns](https://apis.io/schemas/nginx/plus-http-api-nginx-http-limit-conn-zones-map/)
+- [HTTP Requests Rate Limiting](https://apis.io/schemas/nginx/plus-http-api-nginx-http-limit-req-zone/)
+- [HTTP limit_reqs](https://apis.io/schemas/nginx/plus-http-api-nginx-http-limit-req-zones-map/)
+- [HTTP Location Zone](https://apis.io/schemas/nginx/plus-http-api-nginx-http-location-zone/)
+- [HTTP Location Zones](https://apis.io/schemas/nginx/plus-http-api-nginx-http-location-zones-map/)
+- [HTTP Requests](https://apis.io/schemas/nginx/plus-http-api-nginx-http-requests/)
+- [HTTP Server Zone](https://apis.io/schemas/nginx/plus-http-api-nginx-http-server-zone/)
+- …and 33 more published on APIs.io
 
-**Human URL:** [https://nginx.org/en/docs/http/ngx_http_stub_status_module.html](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html)
+#### JSON Structure (58)
 
-#### Tags:
- - Metrics, Monitoring, Open Source, Status
+Data models expressed in JSON Structure.
 
-#### Properties
-- [Documentation](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html)
-- [OpenAPI](openapi/nginx-stub-status-openapi.yaml)
+- [Njs Headers Structure](https://apis.io/json-structure/nginx/njs-headers-structure/)
+- [Njs Http Request Structure](https://apis.io/json-structure/nginx/njs-http-request-structure/)
+- [Njs Ngx Shared Structure](https://apis.io/json-structure/nginx/njs-ngx-shared-structure/)
+- [Njs Ngx Structure](https://apis.io/json-structure/nginx/njs-ngx-structure/)
+- [Njs Periodic Session Structure](https://apis.io/json-structure/nginx/njs-periodic-session-structure/)
+- [Njs Request Structure](https://apis.io/json-structure/nginx/njs-request-structure/)
+- [Njs Response Structure](https://apis.io/json-structure/nginx/njs-response-structure/)
+- [Njs Shared Dict Structure](https://apis.io/json-structure/nginx/njs-shared-dict-structure/)
+- [Njs Stream Session Structure](https://apis.io/json-structure/nginx/njs-stream-session-structure/)
+- [Plus Http Api Array Of Strings Structure](https://apis.io/json-structure/nginx/plus-http-api-array-of-strings-structure/)
+- [Plus Http Api Nginx Connections Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-connections-structure/)
+- [Plus Http Api Nginx Error Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-error-structure/)
+- [Plus Http Api Nginx Http Cache Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-cache-structure/)
+- [Plus Http Api Nginx Http Caches Map Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-caches-map-structure/)
+- [Plus Http Api Nginx Http Keyval Zone Post Patch Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-keyval-zone-post-patch-structure/)
+- [Plus Http Api Nginx Http Keyval Zone Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-keyval-zone-structure/)
+- [Plus Http Api Nginx Http Keyval Zones Map Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-keyval-zones-map-structure/)
+- [Plus Http Api Nginx Http Limit Conn Zone Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-limit-conn-zone-structure/)
+- [Plus Http Api Nginx Http Limit Conn Zones Map Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-limit-conn-zones-map-structure/)
+- [Plus Http Api Nginx Http Limit Req Zone Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-limit-req-zone-structure/)
+- [Plus Http Api Nginx Http Limit Req Zones Map Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-limit-req-zones-map-structure/)
+- [Plus Http Api Nginx Http Location Zone Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-location-zone-structure/)
+- [Plus Http Api Nginx Http Location Zones Map Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-location-zones-map-structure/)
+- [Plus Http Api Nginx Http Requests Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-requests-structure/)
+- [Plus Http Api Nginx Http Server Zone Structure](https://apis.io/json-structure/nginx/plus-http-api-nginx-http-server-zone-structure/)
+- …and 33 more published on APIs.io
 
----
+#### JSON-LD (2)
 
-### NGINX njs Scripting API
-The NGINX njs module embeds a JavaScript (ECMAScript 5.1+) runtime into NGINX, allowing developers to write custom request/response handlers, access control logic, and content filters. It provides HTTP and stream request objects, a Fetch-compatible web API, cryptographic functions, and built-in modules for file system, XML, and query string operations.
+Linked-data contexts for the provider's vocabulary.
 
-**Human URL:** [https://nginx.org/en/docs/njs/](https://nginx.org/en/docs/njs/)
+- [Nginx Context](https://apis.io/jsonld/nginx/nginx-context/)
+- [Nginx Plus Http Api Context](https://apis.io/jsonld/nginx/nginx-plus-http-api-context/)
 
-#### Tags:
- - Extensibility, JavaScript, Modules, Scripting
+#### Vocabulary (1)
 
-#### Properties
-- [Documentation](https://nginx.org/en/docs/njs/)
-- [APIReference](https://nginx.org/en/docs/njs/reference.html)
-- [GettingStarted](https://nginx.org/en/docs/njs/install.html)
-- [OpenAPI](openapi/nginx-njs-openapi.yaml)
-- [JSONLD](json-ld/nginx-context.jsonld)
-- [GitHubRepository](https://github.com/nginx/njs)
+The provider's domain terms, defined.
 
----
+- [NGINX Vocabulary](https://apis.io/vocabularies/nginx/nginx-vocabulary/)
 
-### NGINX Ingress Controller
-The NGINX Ingress Controller is a Kubernetes-native ingress controller built on NGINX that manages external access to services in a Kubernetes cluster. It supports TLS termination, path-based routing, rate limiting, and advanced traffic management through annotations and custom resources.
+#### Examples (54)
 
-**Human URL:** [https://github.com/nginx/kubernetes-ingress](https://github.com/nginx/kubernetes-ingress)
+Example requests and responses.
 
-#### Tags:
- - Cloud Native, Ingress, Kubernetes, Traffic Management
+- [Njs Headers Example](https://apis.io/examples/nginx/njs-headers-example/)
+- [Njs Http Request Example](https://apis.io/examples/nginx/njs-http-request-example/)
+- [Njs Ngx Example](https://apis.io/examples/nginx/njs-ngx-example/)
+- [Njs Ngx Shared Example](https://apis.io/examples/nginx/njs-ngx-shared-example/)
+- [Njs Periodic Session Example](https://apis.io/examples/nginx/njs-periodic-session-example/)
+- [Njs Request Example](https://apis.io/examples/nginx/njs-request-example/)
+- [Njs Response Example](https://apis.io/examples/nginx/njs-response-example/)
+- [Njs Shared Dict Example](https://apis.io/examples/nginx/njs-shared-dict-example/)
+- [Njs Stream Session Example](https://apis.io/examples/nginx/njs-stream-session-example/)
+- [Plus Http Api Nginx Connections Example](https://apis.io/examples/nginx/plus-http-api-nginx-connections-example/)
+- [Plus Http Api Nginx Error Example](https://apis.io/examples/nginx/plus-http-api-nginx-error-example/)
+- [Plus Http Api Nginx Http Cache Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-cache-example/)
+- [Plus Http Api Nginx Http Caches Map Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-caches-map-example/)
+- [Plus Http Api Nginx Http Keyval Zone Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-keyval-zone-example/)
+- [Plus Http Api Nginx Http Keyval Zone Post Patch Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-keyval-zone-post-patch-example/)
+- [Plus Http Api Nginx Http Keyval Zones Map Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-keyval-zones-map-example/)
+- [Plus Http Api Nginx Http Limit Conn Zone Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-limit-conn-zone-example/)
+- [Plus Http Api Nginx Http Limit Conn Zones Map Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-limit-conn-zones-map-example/)
+- [Plus Http Api Nginx Http Limit Req Zone Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-limit-req-zone-example/)
+- [Plus Http Api Nginx Http Limit Req Zones Map Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-limit-req-zones-map-example/)
+- [Plus Http Api Nginx Http Location Zone Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-location-zone-example/)
+- [Plus Http Api Nginx Http Location Zones Map Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-location-zones-map-example/)
+- [Plus Http Api Nginx Http Requests Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-requests-example/)
+- [Plus Http Api Nginx Http Server Zone Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-server-zone-example/)
+- [Plus Http Api Nginx Http Server Zones Map Example](https://apis.io/examples/nginx/plus-http-api-nginx-http-server-zones-map-example/)
+- …and 29 more published on APIs.io
 
-#### Properties
-- [Documentation](https://docs.nginx.com/nginx-ingress-controller/)
-- [GettingStarted](https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/)
-- [GitHubRepository](https://github.com/nginx/kubernetes-ingress)
+#### Collections (28)
 
----
+Postman and Open Collection request collections.
 
-### NGINX Gateway Fabric
-NGINX Gateway Fabric is a Kubernetes Gateway API implementation using NGINX as the data plane. It provides standards-based traffic management through Gateway API resources including Gateway, HTTPRoute, GRPCRoute, and TLSRoute, enabling fine-grained control over ingress and routing in Kubernetes environments.
+- [NGINX njs Scripting Connections API](https://apis.io/collections/nginx/open-nginx-connections-api/)
+- [NGINX njs Scripting Connections General Info API](https://apis.io/collections/nginx/open-nginx-general-info-api/)
+- [NGINX njs Scripting Connections HTTP API](https://apis.io/collections/nginx/open-nginx-http-api/)
+- [NGINX njs Scripting Connections HTTP Caches API](https://apis.io/collections/nginx/open-nginx-http-caches-api/)
+- [NGINX njs Scripting Connections HTTP Keyvals API](https://apis.io/collections/nginx/open-nginx-http-keyvals-api/)
+- [NGINX njs Scripting Connections HTTP Limit Conns API](https://apis.io/collections/nginx/open-nginx-http-limit-conns-api/)
+- [NGINX njs Scripting Connections HTTP Limit Reqs API](https://apis.io/collections/nginx/open-nginx-http-limit-reqs-api/)
+- [NGINX njs Scripting Connections HTTP Location Zones API](https://apis.io/collections/nginx/open-nginx-http-location-zones-api/)
+- [NGINX njs Scripting Connections HTTP Requests API](https://apis.io/collections/nginx/open-nginx-http-requests-api/)
+- [NGINX njs Scripting Connections HTTP Server Zones API](https://apis.io/collections/nginx/open-nginx-http-server-zones-api/)
+- [NGINX njs Scripting Connections HTTP Upstreams API](https://apis.io/collections/nginx/open-nginx-http-upstreams-api/)
+- [NGINX njs Scripting Connections License API](https://apis.io/collections/nginx/open-nginx-license-api/)
+- [NGINX njs Scripting Connections Method DELETE API](https://apis.io/collections/nginx/open-nginx-method-delete-api/)
+- [NGINX njs Scripting Connections Method GET API](https://apis.io/collections/nginx/open-nginx-method-get-api/)
+- [NGINX njs Scripting Connections Method PATCH API](https://apis.io/collections/nginx/open-nginx-method-patch-api/)
+- [NGINX njs Scripting Connections Method POST API](https://apis.io/collections/nginx/open-nginx-method-post-api/)
+- [NGINX njs Scripting Connections Processes API](https://apis.io/collections/nginx/open-nginx-processes-api/)
+- [NGINX njs Scripting Connections Resolvers API](https://apis.io/collections/nginx/open-nginx-resolvers-api/)
+- [NGINX njs Scripting Connections Slabs API](https://apis.io/collections/nginx/open-nginx-slabs-api/)
+- [NGINX njs Scripting Connections SSL API](https://apis.io/collections/nginx/open-nginx-ssl-api/)
+- [NGINX njs Scripting Connections Status API](https://apis.io/collections/nginx/open-nginx-status-api/)
+- [NGINX njs Scripting Connections Stream API](https://apis.io/collections/nginx/open-nginx-stream-api/)
+- [NGINX njs Scripting Connections Stream Keyvals API](https://apis.io/collections/nginx/open-nginx-stream-keyvals-api/)
+- [NGINX njs Scripting Connections Stream Limit Conns API](https://apis.io/collections/nginx/open-nginx-stream-limit-conns-api/)
+- [NGINX njs Scripting Connections Stream Server Zones API](https://apis.io/collections/nginx/open-nginx-stream-server-zones-api/)
+- …and 3 more published on APIs.io
 
-**Human URL:** [https://github.com/nginx/nginx-gateway-fabric](https://github.com/nginx/nginx-gateway-fabric)
+#### Governance rules (2)
 
-#### Tags:
- - Cloud Native, Gateway API, Kubernetes, Routing
+Spectral rulesets for the provider's contracts.
 
-#### Properties
-- [Documentation](https://docs.nginx.com/nginx-gateway-fabric/)
-- [GitHubRepository](https://github.com/nginx/nginx-gateway-fabric)
+- [NGINX — jsonschema rules](https://apis.io/rules/nginx/nginx-jsonschema-spectral-rules/)
+- [NGINX API Rules](https://apis.io/rules/nginx/nginx-spectral-rules/)
 
----
+#### Security (1)
 
-### NGINX Agent
-NGINX Agent provides an administrative entry point to remotely manage, configure, and collect metrics and events from NGINX instances. It enables centralized management of distributed NGINX deployments through a gRPC-based control plane interface.
+Authentication, trust centre, and vulnerability disclosure.
 
-**Human URL:** [https://github.com/nginx/agent](https://github.com/nginx/agent)
+- [Nginx Domain Security](https://apis.io/security/nginx/nginx-domain-security/)
 
-#### Tags:
- - Agent, Management, Monitoring, Remote Administration
+#### Plans and pricing (1)
 
-#### Properties
-- [Documentation](https://github.com/nginx/agent)
-- [GitHubRepository](https://github.com/nginx/agent)
+Published plans, tiers and prices.
 
-## Common Properties
+- [Nginx Plans Pricing](https://apis.io/plans/nginx/nginx-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Nginx Rate Limits](https://apis.io/rate-limits/nginx/nginx-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Nginx Finops](https://apis.io/finops/nginx/nginx-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://nginx.org/)
 - [Documentation](https://nginx.org/en/docs/)
-- [GettingStarted](https://nginx.org/en/docs/beginners_guide.html)
-- [Blog](https://blog.nginx.org/)
-- [ChangeLog](https://nginx.org/en/CHANGES)
-- [Security](https://nginx.org/en/security_advisories.html)
+- [Getting started](https://nginx.org/en/docs/beginners_guide.html)
 - [Support](https://community.nginx.org)
-- [GitHubOrganization](https://github.com/nginx)
-- [GitHubRepository](https://github.com/nginx/nginx)
-- [YouTube](https://www.youtube.com/nginxinc)
-- [StackOverflow](https://stackoverflow.com/questions/tagged/nginx)
-- [X](https://x.com/nginxorg)
-- [FAQ](https://nginx.org/en/docs/faq.html)
-- [CLI - Prometheus Exporter](https://github.com/nginx/nginx-prometheus-exporter)
-- [SDK - Directive Reference Library (npm)](https://www.npmjs.com/package/@nginx/reference-lib)
-- [SDK - Rust Bindings (crates.io)](https://crates.io/crates/ngx)
-- [CodeExamples - NGINX Demos](https://github.com/nginx/nginx-demos)
-- [CodeExamples - njs Examples](https://github.com/nginx/njs-examples)
-- [SpectralRules](rules/nginx-spectral-rules.yml)
-- [Vocabulary](vocabulary/nginx-vocabulary.yaml)
-- [NaftikoCapability - Traffic Management](capabilities/traffic-management.yaml)
-- [NaftikoCapability - Monitoring and Observability](capabilities/monitoring-and-observability.yaml)
+- [Changelog](https://nginx.org/en/CHANGES)
+- [Blog](https://blog.nginx.org/)
+- [Security](https://nginx.org/en/security_advisories.html)
+- [GitHub](https://github.com/nginx)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
+**Kin Score 44.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| HTTP Web Server | High-performance HTTP and HTTPS server with support for HTTP/1.1, HTTP/2, HTTP/3, and early hints (103). |
-| Reverse Proxy | Forward client requests to backend application servers with load balancing, buffering, and caching. |
-| Load Balancing | Distribute traffic across upstream servers using round-robin, least-connections, IP hash, and sticky session algorithms. |
-| SSL/TLS Termination | Terminate and offload SSL/TLS connections at the proxy layer with support for SNI, OCSP stapling, and encrypted client hello. |
-| Content Caching | Cache responses from upstream servers to reduce backend load and improve response times. |
-| gRPC Proxying | Route and load balance gRPC traffic to backend services. |
-| WebSocket Support | Proxy WebSocket connections for real-time bidirectional communication. |
-| TCP/UDP Proxy | Stream module for proxying and load balancing arbitrary TCP and UDP traffic. |
-| Mail Proxy | Proxy IMAP, POP3, and SMTP mail protocols with authentication support. |
-| Dynamic Modules | Extend functionality at runtime through loadable modules without recompiling. |
-| njs Scripting | Embed JavaScript logic for custom request handling, access control, and content filtering. |
-| OpenTelemetry | Built-in OpenTelemetry module for distributed tracing and observability. |
+| Discoverability | 63.3 |
+| Contract quality | 45.6 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 60.7 |
+| Access clarity | 7.9 |
 
-## Use Cases
+**Agent readiness 29.7** — agent-ready
 
-| Name | Description |
+| Agent-readiness dimension | Result |
 |---|---|
-| API Gateway | Route, authenticate, rate limit, and load balance API traffic across microservices. |
-| Kubernetes Ingress | Manage external access to Kubernetes services with the NGINX Ingress Controller or Gateway Fabric. |
-| Content Delivery | Cache and serve static content close to users with high throughput and low latency. |
-| Microservices Proxy | Act as a sidecar or edge proxy for service-to-service communication in microservices architectures. |
-| SSL Offloading | Terminate TLS at the edge to reduce cryptographic overhead on backend application servers. |
-| Load Balancing | Distribute HTTP, TCP, UDP, and gRPC traffic across pools of upstream servers for high availability. |
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
 
-## Integrations
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
 
-| Name | Description |
-|---|---|
-| Kubernetes | Native Kubernetes integration through NGINX Ingress Controller and Gateway Fabric. |
-| OpenTelemetry | Built-in ngx_otel_module for exporting traces to OpenTelemetry collectors. |
-| Prometheus | Expose metrics for scraping by Prometheus via stub status or the NGINX Plus API. |
-| Ansible | Official Ansible roles for automated NGINX installation and configuration management. |
-| Docker | Official Docker images for containerized NGINX deployments. |
-| Helm | Helm charts for deploying NGINX Ingress Controller and Gateway Fabric on Kubernetes. |
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nginx/](https://apis.io/providers/nginx/).
 
-## Artifacts
+## How this profile is made
 
-### OpenAPI (3)
-- [nginx-njs-openapi.yaml](openapi/nginx-njs-openapi.yaml)
-- [nginx-plus-http-api-openapi.yaml](openapi/nginx-plus-http-api-openapi.yaml)
-- [nginx-stub-status-openapi.yaml](openapi/nginx-stub-status-openapi.yaml)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-### JSON Schema (58)
-- [njs-headers-schema.json](json-schema/njs-headers-schema.json)
-- [njs-http-request-schema.json](json-schema/njs-http-request-schema.json)
-- [njs-ngx-schema.json](json-schema/njs-ngx-schema.json)
-- [njs-ngx-shared-schema.json](json-schema/njs-ngx-shared-schema.json)
-- [njs-periodic-session-schema.json](json-schema/njs-periodic-session-schema.json)
-- [njs-request-schema.json](json-schema/njs-request-schema.json)
-- [njs-response-schema.json](json-schema/njs-response-schema.json)
-- [njs-shared-dict-schema.json](json-schema/njs-shared-dict-schema.json)
-- [njs-stream-session-schema.json](json-schema/njs-stream-session-schema.json)
-- [plus-http-api-array-of-strings-schema.json](json-schema/plus-http-api-array-of-strings-schema.json)
-- [plus-http-api-nginx-connections-schema.json](json-schema/plus-http-api-nginx-connections-schema.json)
-- [plus-http-api-nginx-error-schema.json](json-schema/plus-http-api-nginx-error-schema.json)
-- [plus-http-api-nginx-http-cache-schema.json](json-schema/plus-http-api-nginx-http-cache-schema.json)
-- [plus-http-api-nginx-http-caches-map-schema.json](json-schema/plus-http-api-nginx-http-caches-map-schema.json)
-- [plus-http-api-nginx-http-keyval-zone-post-patch-schema.json](json-schema/plus-http-api-nginx-http-keyval-zone-post-patch-schema.json)
-- [plus-http-api-nginx-http-keyval-zone-schema.json](json-schema/plus-http-api-nginx-http-keyval-zone-schema.json)
-- [plus-http-api-nginx-http-keyval-zones-map-schema.json](json-schema/plus-http-api-nginx-http-keyval-zones-map-schema.json)
-- [plus-http-api-nginx-http-limit-conn-zone-schema.json](json-schema/plus-http-api-nginx-http-limit-conn-zone-schema.json)
-- [plus-http-api-nginx-http-limit-conn-zones-map-schema.json](json-schema/plus-http-api-nginx-http-limit-conn-zones-map-schema.json)
-- [plus-http-api-nginx-http-limit-req-zone-schema.json](json-schema/plus-http-api-nginx-http-limit-req-zone-schema.json)
-- [plus-http-api-nginx-http-limit-req-zones-map-schema.json](json-schema/plus-http-api-nginx-http-limit-req-zones-map-schema.json)
-- [plus-http-api-nginx-http-location-zone-schema.json](json-schema/plus-http-api-nginx-http-location-zone-schema.json)
-- [plus-http-api-nginx-http-location-zones-map-schema.json](json-schema/plus-http-api-nginx-http-location-zones-map-schema.json)
-- [plus-http-api-nginx-http-requests-schema.json](json-schema/plus-http-api-nginx-http-requests-schema.json)
-- [plus-http-api-nginx-http-server-zone-schema.json](json-schema/plus-http-api-nginx-http-server-zone-schema.json)
-- [plus-http-api-nginx-http-server-zones-map-schema.json](json-schema/plus-http-api-nginx-http-server-zones-map-schema.json)
-- [plus-http-api-nginx-http-upstream-conf-server-map-schema.json](json-schema/plus-http-api-nginx-http-upstream-conf-server-map-schema.json)
-- [plus-http-api-nginx-http-upstream-conf-server-schema.json](json-schema/plus-http-api-nginx-http-upstream-conf-server-schema.json)
-- [plus-http-api-nginx-http-upstream-map-schema.json](json-schema/plus-http-api-nginx-http-upstream-map-schema.json)
-- [plus-http-api-nginx-http-upstream-peer-map-schema.json](json-schema/plus-http-api-nginx-http-upstream-peer-map-schema.json)
-- [plus-http-api-nginx-http-upstream-peer-schema.json](json-schema/plus-http-api-nginx-http-upstream-peer-schema.json)
-- [plus-http-api-nginx-http-upstream-schema.json](json-schema/plus-http-api-nginx-http-upstream-schema.json)
-- [plus-http-api-nginx-license-object-schema.json](json-schema/plus-http-api-nginx-license-object-schema.json)
-- [plus-http-api-nginx-object-schema.json](json-schema/plus-http-api-nginx-object-schema.json)
-- [plus-http-api-nginx-processes-schema.json](json-schema/plus-http-api-nginx-processes-schema.json)
-- [plus-http-api-nginx-resolver-zone-schema.json](json-schema/plus-http-api-nginx-resolver-zone-schema.json)
-- [plus-http-api-nginx-resolver-zones-map-schema.json](json-schema/plus-http-api-nginx-resolver-zones-map-schema.json)
-- [plus-http-api-nginx-slab-zone-map-schema.json](json-schema/plus-http-api-nginx-slab-zone-map-schema.json)
-- [plus-http-api-nginx-slab-zone-schema.json](json-schema/plus-http-api-nginx-slab-zone-schema.json)
-- [plus-http-api-nginx-slab-zone-slot-schema.json](json-schema/plus-http-api-nginx-slab-zone-slot-schema.json)
-- [plus-http-api-nginx-ssl-object-schema.json](json-schema/plus-http-api-nginx-ssl-object-schema.json)
-- [plus-http-api-nginx-stream-keyval-zone-post-patch-schema.json](json-schema/plus-http-api-nginx-stream-keyval-zone-post-patch-schema.json)
-- [plus-http-api-nginx-stream-keyval-zone-schema.json](json-schema/plus-http-api-nginx-stream-keyval-zone-schema.json)
-- [plus-http-api-nginx-stream-keyval-zones-map-schema.json](json-schema/plus-http-api-nginx-stream-keyval-zones-map-schema.json)
-- [plus-http-api-nginx-stream-limit-conn-zone-schema.json](json-schema/plus-http-api-nginx-stream-limit-conn-zone-schema.json)
-- [plus-http-api-nginx-stream-limit-conn-zones-map-schema.json](json-schema/plus-http-api-nginx-stream-limit-conn-zones-map-schema.json)
-- [plus-http-api-nginx-stream-server-zone-schema.json](json-schema/plus-http-api-nginx-stream-server-zone-schema.json)
-- [plus-http-api-nginx-stream-server-zones-map-schema.json](json-schema/plus-http-api-nginx-stream-server-zones-map-schema.json)
-- [plus-http-api-nginx-stream-upstream-conf-server-map-schema.json](json-schema/plus-http-api-nginx-stream-upstream-conf-server-map-schema.json)
-- [plus-http-api-nginx-stream-upstream-conf-server-schema.json](json-schema/plus-http-api-nginx-stream-upstream-conf-server-schema.json)
-- [plus-http-api-nginx-stream-upstream-map-schema.json](json-schema/plus-http-api-nginx-stream-upstream-map-schema.json)
-- [plus-http-api-nginx-stream-upstream-peer-map-schema.json](json-schema/plus-http-api-nginx-stream-upstream-peer-map-schema.json)
-- [plus-http-api-nginx-stream-upstream-peer-schema.json](json-schema/plus-http-api-nginx-stream-upstream-peer-schema.json)
-- [plus-http-api-nginx-stream-upstream-schema.json](json-schema/plus-http-api-nginx-stream-upstream-schema.json)
-- [plus-http-api-nginx-stream-zone-sync-schema.json](json-schema/plus-http-api-nginx-stream-zone-sync-schema.json)
-- [plus-http-api-nginx-stream-zone-sync-zone-schema.json](json-schema/plus-http-api-nginx-stream-zone-sync-zone-schema.json)
-- [plus-http-api-nginx-worker-schema.json](json-schema/plus-http-api-nginx-worker-schema.json)
-- [plus-http-api-nginx-workers-map-schema.json](json-schema/plus-http-api-nginx-workers-map-schema.json)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for NGINX: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON-LD (2)
-- [nginx-context.jsonld](json-ld/nginx-context.jsonld)
-- [nginx-plus-http-api-context.jsonld](json-ld/nginx-plus-http-api-context.jsonld)
+## Open an issue
 
-### JSON Structure (58)
-- [njs-headers-structure.json](json-structure/njs-headers-structure.json)
-- [njs-http-request-structure.json](json-structure/njs-http-request-structure.json)
-- [njs-ngx-shared-structure.json](json-structure/njs-ngx-shared-structure.json)
-- [njs-ngx-structure.json](json-structure/njs-ngx-structure.json)
-- [njs-periodic-session-structure.json](json-structure/njs-periodic-session-structure.json)
-- [njs-request-structure.json](json-structure/njs-request-structure.json)
-- [njs-response-structure.json](json-structure/njs-response-structure.json)
-- [njs-shared-dict-structure.json](json-structure/njs-shared-dict-structure.json)
-- [njs-stream-session-structure.json](json-structure/njs-stream-session-structure.json)
-- [plus-http-api-array-of-strings-structure.json](json-structure/plus-http-api-array-of-strings-structure.json)
-- [plus-http-api-nginx-connections-structure.json](json-structure/plus-http-api-nginx-connections-structure.json)
-- [plus-http-api-nginx-error-structure.json](json-structure/plus-http-api-nginx-error-structure.json)
-- [plus-http-api-nginx-http-cache-structure.json](json-structure/plus-http-api-nginx-http-cache-structure.json)
-- [plus-http-api-nginx-http-caches-map-structure.json](json-structure/plus-http-api-nginx-http-caches-map-structure.json)
-- [plus-http-api-nginx-http-keyval-zone-post-patch-structure.json](json-structure/plus-http-api-nginx-http-keyval-zone-post-patch-structure.json)
-- [plus-http-api-nginx-http-keyval-zone-structure.json](json-structure/plus-http-api-nginx-http-keyval-zone-structure.json)
-- [plus-http-api-nginx-http-keyval-zones-map-structure.json](json-structure/plus-http-api-nginx-http-keyval-zones-map-structure.json)
-- [plus-http-api-nginx-http-limit-conn-zone-structure.json](json-structure/plus-http-api-nginx-http-limit-conn-zone-structure.json)
-- [plus-http-api-nginx-http-limit-conn-zones-map-structure.json](json-structure/plus-http-api-nginx-http-limit-conn-zones-map-structure.json)
-- [plus-http-api-nginx-http-limit-req-zone-structure.json](json-structure/plus-http-api-nginx-http-limit-req-zone-structure.json)
-- [plus-http-api-nginx-http-limit-req-zones-map-structure.json](json-structure/plus-http-api-nginx-http-limit-req-zones-map-structure.json)
-- [plus-http-api-nginx-http-location-zone-structure.json](json-structure/plus-http-api-nginx-http-location-zone-structure.json)
-- [plus-http-api-nginx-http-location-zones-map-structure.json](json-structure/plus-http-api-nginx-http-location-zones-map-structure.json)
-- [plus-http-api-nginx-http-requests-structure.json](json-structure/plus-http-api-nginx-http-requests-structure.json)
-- [plus-http-api-nginx-http-server-zone-structure.json](json-structure/plus-http-api-nginx-http-server-zone-structure.json)
-- [plus-http-api-nginx-http-server-zones-map-structure.json](json-structure/plus-http-api-nginx-http-server-zones-map-structure.json)
-- [plus-http-api-nginx-http-upstream-conf-server-map-structure.json](json-structure/plus-http-api-nginx-http-upstream-conf-server-map-structure.json)
-- [plus-http-api-nginx-http-upstream-conf-server-structure.json](json-structure/plus-http-api-nginx-http-upstream-conf-server-structure.json)
-- [plus-http-api-nginx-http-upstream-map-structure.json](json-structure/plus-http-api-nginx-http-upstream-map-structure.json)
-- [plus-http-api-nginx-http-upstream-peer-map-structure.json](json-structure/plus-http-api-nginx-http-upstream-peer-map-structure.json)
-- [plus-http-api-nginx-http-upstream-peer-structure.json](json-structure/plus-http-api-nginx-http-upstream-peer-structure.json)
-- [plus-http-api-nginx-http-upstream-structure.json](json-structure/plus-http-api-nginx-http-upstream-structure.json)
-- [plus-http-api-nginx-license-object-structure.json](json-structure/plus-http-api-nginx-license-object-structure.json)
-- [plus-http-api-nginx-object-structure.json](json-structure/plus-http-api-nginx-object-structure.json)
-- [plus-http-api-nginx-processes-structure.json](json-structure/plus-http-api-nginx-processes-structure.json)
-- [plus-http-api-nginx-resolver-zone-structure.json](json-structure/plus-http-api-nginx-resolver-zone-structure.json)
-- [plus-http-api-nginx-resolver-zones-map-structure.json](json-structure/plus-http-api-nginx-resolver-zones-map-structure.json)
-- [plus-http-api-nginx-slab-zone-map-structure.json](json-structure/plus-http-api-nginx-slab-zone-map-structure.json)
-- [plus-http-api-nginx-slab-zone-slot-structure.json](json-structure/plus-http-api-nginx-slab-zone-slot-structure.json)
-- [plus-http-api-nginx-slab-zone-structure.json](json-structure/plus-http-api-nginx-slab-zone-structure.json)
-- [plus-http-api-nginx-ssl-object-structure.json](json-structure/plus-http-api-nginx-ssl-object-structure.json)
-- [plus-http-api-nginx-stream-keyval-zone-post-patch-structure.json](json-structure/plus-http-api-nginx-stream-keyval-zone-post-patch-structure.json)
-- [plus-http-api-nginx-stream-keyval-zone-structure.json](json-structure/plus-http-api-nginx-stream-keyval-zone-structure.json)
-- [plus-http-api-nginx-stream-keyval-zones-map-structure.json](json-structure/plus-http-api-nginx-stream-keyval-zones-map-structure.json)
-- [plus-http-api-nginx-stream-limit-conn-zone-structure.json](json-structure/plus-http-api-nginx-stream-limit-conn-zone-structure.json)
-- [plus-http-api-nginx-stream-limit-conn-zones-map-structure.json](json-structure/plus-http-api-nginx-stream-limit-conn-zones-map-structure.json)
-- [plus-http-api-nginx-stream-server-zone-structure.json](json-structure/plus-http-api-nginx-stream-server-zone-structure.json)
-- [plus-http-api-nginx-stream-server-zones-map-structure.json](json-structure/plus-http-api-nginx-stream-server-zones-map-structure.json)
-- [plus-http-api-nginx-stream-upstream-conf-server-map-structure.json](json-structure/plus-http-api-nginx-stream-upstream-conf-server-map-structure.json)
-- [plus-http-api-nginx-stream-upstream-conf-server-structure.json](json-structure/plus-http-api-nginx-stream-upstream-conf-server-structure.json)
-- [plus-http-api-nginx-stream-upstream-map-structure.json](json-structure/plus-http-api-nginx-stream-upstream-map-structure.json)
-- [plus-http-api-nginx-stream-upstream-peer-map-structure.json](json-structure/plus-http-api-nginx-stream-upstream-peer-map-structure.json)
-- [plus-http-api-nginx-stream-upstream-peer-structure.json](json-structure/plus-http-api-nginx-stream-upstream-peer-structure.json)
-- [plus-http-api-nginx-stream-upstream-structure.json](json-structure/plus-http-api-nginx-stream-upstream-structure.json)
-- [plus-http-api-nginx-stream-zone-sync-structure.json](json-structure/plus-http-api-nginx-stream-zone-sync-structure.json)
-- [plus-http-api-nginx-stream-zone-sync-zone-structure.json](json-structure/plus-http-api-nginx-stream-zone-sync-zone-structure.json)
-- [plus-http-api-nginx-worker-structure.json](json-structure/plus-http-api-nginx-worker-structure.json)
-- [plus-http-api-nginx-workers-map-structure.json](json-structure/plus-http-api-nginx-workers-map-structure.json)
-
-### Examples (59)
-- [njs-headers-example.json](examples/njs-headers-example.json)
-- [njs-http-request-example.json](examples/njs-http-request-example.json)
-- [njs-ngx-example.json](examples/njs-ngx-example.json)
-- [njs-ngx-shared-example.json](examples/njs-ngx-shared-example.json)
-- [njs-periodic-session-example.json](examples/njs-periodic-session-example.json)
-- [njs-request-example.json](examples/njs-request-example.json)
-- [njs-response-example.json](examples/njs-response-example.json)
-- [njs-shared-dict-example.json](examples/njs-shared-dict-example.json)
-- [njs-stream-session-example.json](examples/njs-stream-session-example.json)
-- [plus-http-api-array-of-strings-example.json](examples/plus-http-api-array-of-strings-example.json)
-- [plus-http-api-nginx-connections-example.json](examples/plus-http-api-nginx-connections-example.json)
-- [plus-http-api-nginx-error-example.json](examples/plus-http-api-nginx-error-example.json)
-- [plus-http-api-nginx-http-cache-example.json](examples/plus-http-api-nginx-http-cache-example.json)
-- [plus-http-api-nginx-http-caches-map-example.json](examples/plus-http-api-nginx-http-caches-map-example.json)
-- [plus-http-api-nginx-http-keyval-zone-example.json](examples/plus-http-api-nginx-http-keyval-zone-example.json)
-- [plus-http-api-nginx-http-keyval-zone-post-patch-example.json](examples/plus-http-api-nginx-http-keyval-zone-post-patch-example.json)
-- [plus-http-api-nginx-http-keyval-zones-map-example.json](examples/plus-http-api-nginx-http-keyval-zones-map-example.json)
-- [plus-http-api-nginx-http-limit-conn-zone-example.json](examples/plus-http-api-nginx-http-limit-conn-zone-example.json)
-- [plus-http-api-nginx-http-limit-conn-zones-map-example.json](examples/plus-http-api-nginx-http-limit-conn-zones-map-example.json)
-- [plus-http-api-nginx-http-limit-req-zone-example.json](examples/plus-http-api-nginx-http-limit-req-zone-example.json)
-- [plus-http-api-nginx-http-limit-req-zones-map-example.json](examples/plus-http-api-nginx-http-limit-req-zones-map-example.json)
-- [plus-http-api-nginx-http-location-zone-example.json](examples/plus-http-api-nginx-http-location-zone-example.json)
-- [plus-http-api-nginx-http-location-zones-map-example.json](examples/plus-http-api-nginx-http-location-zones-map-example.json)
-- [plus-http-api-nginx-http-requests-example.json](examples/plus-http-api-nginx-http-requests-example.json)
-- [plus-http-api-nginx-http-server-zone-example.json](examples/plus-http-api-nginx-http-server-zone-example.json)
-- [plus-http-api-nginx-http-server-zones-map-example.json](examples/plus-http-api-nginx-http-server-zones-map-example.json)
-- [plus-http-api-nginx-http-upstream-conf-server-example.json](examples/plus-http-api-nginx-http-upstream-conf-server-example.json)
-- [plus-http-api-nginx-http-upstream-conf-server-map-example.json](examples/plus-http-api-nginx-http-upstream-conf-server-map-example.json)
-- [plus-http-api-nginx-http-upstream-example.json](examples/plus-http-api-nginx-http-upstream-example.json)
-- [plus-http-api-nginx-http-upstream-map-example.json](examples/plus-http-api-nginx-http-upstream-map-example.json)
-- [plus-http-api-nginx-http-upstream-peer-example.json](examples/plus-http-api-nginx-http-upstream-peer-example.json)
-- [plus-http-api-nginx-http-upstream-peer-map-example.json](examples/plus-http-api-nginx-http-upstream-peer-map-example.json)
-- [plus-http-api-nginx-license-object-example.json](examples/plus-http-api-nginx-license-object-example.json)
-- [plus-http-api-nginx-object-example.json](examples/plus-http-api-nginx-object-example.json)
-- [plus-http-api-nginx-processes-example.json](examples/plus-http-api-nginx-processes-example.json)
-- [plus-http-api-nginx-resolver-zone-example.json](examples/plus-http-api-nginx-resolver-zone-example.json)
-- [plus-http-api-nginx-resolver-zones-map-example.json](examples/plus-http-api-nginx-resolver-zones-map-example.json)
-- [plus-http-api-nginx-slab-zone-example.json](examples/plus-http-api-nginx-slab-zone-example.json)
-- [plus-http-api-nginx-slab-zone-map-example.json](examples/plus-http-api-nginx-slab-zone-map-example.json)
-- [plus-http-api-nginx-slab-zone-slot-example.json](examples/plus-http-api-nginx-slab-zone-slot-example.json)
-- [plus-http-api-nginx-ssl-object-example.json](examples/plus-http-api-nginx-ssl-object-example.json)
-- [plus-http-api-nginx-stream-keyval-zone-example.json](examples/plus-http-api-nginx-stream-keyval-zone-example.json)
-- [plus-http-api-nginx-stream-keyval-zone-post-patch-example.json](examples/plus-http-api-nginx-stream-keyval-zone-post-patch-example.json)
-- [plus-http-api-nginx-stream-keyval-zones-map-example.json](examples/plus-http-api-nginx-stream-keyval-zones-map-example.json)
-- [plus-http-api-nginx-stream-limit-conn-zone-example.json](examples/plus-http-api-nginx-stream-limit-conn-zone-example.json)
-- [plus-http-api-nginx-stream-limit-conn-zones-map-example.json](examples/plus-http-api-nginx-stream-limit-conn-zones-map-example.json)
-- [plus-http-api-nginx-stream-server-zone-example.json](examples/plus-http-api-nginx-stream-server-zone-example.json)
-- [plus-http-api-nginx-stream-server-zones-map-example.json](examples/plus-http-api-nginx-stream-server-zones-map-example.json)
-- [plus-http-api-nginx-stream-upstream-conf-server-example.json](examples/plus-http-api-nginx-stream-upstream-conf-server-example.json)
-- [plus-http-api-nginx-stream-upstream-conf-server-map-example.json](examples/plus-http-api-nginx-stream-upstream-conf-server-map-example.json)
-- [plus-http-api-nginx-stream-upstream-example.json](examples/plus-http-api-nginx-stream-upstream-example.json)
-- [plus-http-api-nginx-stream-upstream-map-example.json](examples/plus-http-api-nginx-stream-upstream-map-example.json)
-- [plus-http-api-nginx-stream-upstream-peer-example.json](examples/plus-http-api-nginx-stream-upstream-peer-example.json)
-- [plus-http-api-nginx-stream-upstream-peer-map-example.json](examples/plus-http-api-nginx-stream-upstream-peer-map-example.json)
-- [plus-http-api-nginx-stream-zone-sync-example.json](examples/plus-http-api-nginx-stream-zone-sync-example.json)
-- [plus-http-api-nginx-stream-zone-sync-zone-example.json](examples/plus-http-api-nginx-stream-zone-sync-zone-example.json)
-- [plus-http-api-nginx-worker-example.json](examples/plus-http-api-nginx-worker-example.json)
-- [plus-http-api-nginx-workers-map-example.json](examples/plus-http-api-nginx-workers-map-example.json)
-- [stub-status-stub-status-example.json](examples/stub-status-stub-status-example.json)
-
-## Capabilities
-
-### Shared Per-API Definitions
-- [NGINX Plus REST API](capabilities/shared/plus-http-api.yaml) - 30 resources, 62 operations covering dynamic configuration and real-time monitoring
-- [NGINX Stub Status API](capabilities/shared/stub-status.yaml) - 1 resource, 1 operation for basic status metrics
-
-### Workflow Capabilities
-
-| Name | MCP Tools | Description |
-|---|---|---|
-| [Traffic Management](capabilities/traffic-management.yaml) | 11 | Dynamic upstream server management, load balancing, key-value store operations, and upstream health monitoring for HTTP and stream protocols. |
-| [Monitoring and Observability](capabilities/monitoring-and-observability.yaml) | 14 | Comprehensive observability across connections, HTTP requests, server zones, location zones, caches, rate limiting, and upstream health. |
-
-## Vocabulary
-- [NGINX Vocabulary](vocabulary/nginx-vocabulary.yaml) - 24 resources, 6 actions, 3 APIs (Plus REST API, Stub Status, njs Scripting)
-
-## Rules
-- [NGINX Spectral Rules](rules/nginx-spectral-rules.yml) - 52 rules covering info/metadata, OpenAPI version, servers, paths, operations, tags, parameters, responses, schemas, security, HTTP method conventions, and general quality
-
-## Maintainers
-- Kin Lane (kin@apievangelist.com)
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nginx/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
