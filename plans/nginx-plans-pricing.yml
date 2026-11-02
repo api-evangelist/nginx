@@ -1,0 +1,209 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: NGINX
+providerId: nginx
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - API Gateway
+  - Load Balancer
+  - Open Source
+  - Reverse Proxy
+  - Web Server
+notes: NGINX Open Source is free under the 2-clause BSD license. F5 (which owns NGINX) does not publish
+  per-instance subscription pricing for NGINX Plus, NGINX One, NGINX App Protect, or F5 WAF for NGINX
+  on its public site — pricing is contact-sales or via cloud marketplaces (NGINXaaS for Azure / Google
+  Cloud). Reconcile via Azure Marketplace or Google Cloud Marketplace listings, or F5 sales quotes.
+description: NGINX is open source under the 2-clause BSD license; the project is free to use and self-host.
+  Commercial offerings from F5 include NGINX Plus (subscription per instance), NGINX One (the SaaS-managed
+  data plane with observability/security), F5 WAF for NGINX, and NGINXaaS distributed via Azure and Google
+  Cloud marketplaces. Public per-instance pricing is not posted on f5.com; customers obtain quotes via
+  sales or marketplace listings.
+sources:
+  - https://www.f5.com/products/nginx
+  - https://nginx.org/
+plans:
+  - id: nginx-open-source
+    name: NGINX Open Source
+    type: freemium
+    description: Self-hosted open-source NGINX server, reverse proxy, load balancer.
+    entries:
+      - label: Self-hosted OSS
+        name: oss_self_hosted
+        type: flat
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: 2-clause BSD license
+      - name: Web server, reverse proxy, load balancer
+      - name: Community support
+      - name: Available via nginx.org and GitHub
+  - id: nginx-plus
+    name: NGINX Plus
+    type: subscription
+    description: All-in-one cloud-native load balancer, reverse proxy, web server, content cache, and
+      API gateway with commercial support and advanced features.
+    entries:
+      - label: Plus subscription
+        name: nginx_plus_subscription
+        type: subscription
+        metric: instance
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact F5 sales
+        userMultiplied: false
+    elements:
+      - name: Active health checks
+      - name: Session persistence
+      - name: JWT authentication
+      - name: Live activity monitoring
+      - name: Commercial support
+  - id: nginx-one
+    name: NGINX One
+    type: subscription
+    description: NGINX data plane plus SaaS-based observability, management, and security.
+    entries:
+      - label: NGINX One subscription
+        name: nginx_one_subscription
+        type: subscription
+        metric: instance
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact F5 sales
+        userMultiplied: false
+    elements:
+      - name: SaaS observability
+      - name: Centralized management console
+      - name: Configuration drift detection
+      - name: Trial available
+  - id: nginx-app-protect
+    name: F5 WAF for NGINX
+    type: subscription
+    description: WAF security solution for NGINX protecting apps and APIs from layer 7 attacks.
+    entries:
+      - label: WAF subscription
+        name: waf_subscription
+        type: subscription
+        metric: instance
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact F5 sales
+        userMultiplied: false
+    elements:
+      - name: Layer 7 protection
+      - name: Bot defense
+      - name: API security
+  - id: nginxaas-azure
+    name: NGINXaaS for Azure
+    type: usage-based
+    description: Managed NGINX delivered via Azure Marketplace.
+    entries:
+      - label: Azure marketplace
+        name: nginxaas_azure
+        type: metered
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: see Azure Marketplace listing
+        userMultiplied: false
+    elements:
+      - name: Marketplace billing
+      - name: Managed by F5
+  - id: nginxaas-gcp
+    name: NGINXaaS for Google Cloud
+    type: usage-based
+    description: Managed NGINX delivered via Google Cloud Marketplace.
+    entries:
+      - label: GCP marketplace
+        name: nginxaas_gcp
+        type: metered
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: see Google Cloud Marketplace listing
+        userMultiplied: false
+    elements:
+      - name: Marketplace billing
+      - name: Managed by F5
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - compute
+  - negotiated
+  - period
+  plans:
+  - name: NGINX Open Source
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: NGINX Plus
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - year
+  - name: NGINX One
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - year
+  - name: F5 WAF for NGINX
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - year
+  - name: NGINXaaS for Azure
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: NGINXaaS for Google Cloud
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    periods:
+    - month
